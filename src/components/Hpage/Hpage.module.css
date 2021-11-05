@@ -6,10 +6,6 @@
     color: #522B59;
     flex-direction: column;
 }
-h2{
-    
-    font-size: 36px;
-}
 .pagesHome {
     /* background-color: red; */
     width: 100%;
@@ -19,6 +15,73 @@ h2{
     align-items: center;
     /* justify-content: center; */
 }
+.principalPage{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-image: url(../../img/shutterstock_1739543105.jpg);
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    /* background-color: #967c9b; */
+    color: white;
+    align-items: flex-start;
+    position: relative;
+    
+}
+.principalPage::before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color:  black;
+    position: absolute;
+    opacity: 0.6; 
+}
+
+.button {
+    background-color: #763D80;
+    border: none;
+    color: white;
+    height: 58px;
+    width: 215px;
+    border-radius: 100px;
+    margin-top: 50px;
+    font-size: 21px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #522B59;
+}
+.principalButton {
+    margin-top: 52px;
+    position: relative;
+}
+.leftSize{
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 131px; 
+}
+.leftSize h1{
+    height: 432px;
+    width: 582px;
+    font-size: 72px;
+    font-weight: bolder;
+    /* color: #522B59; */
+}
+
+.container h2{
+    
+    font-size: 36px;
+}
+.principalPage img{
+    position: relative;
+    margin-top: 155px;
+    margin-right: 160px;
+}
+
 .box{
     margin-top: 30px;
     border: 3px solid #763D80;
@@ -38,20 +101,7 @@ h2{
 .whatIs h2{
     margin-bottom: 26px;
 }
-.button{
-    background-color: #763D80;
-    border: none;
-    color: white;
-    height: 58px;
-    width: 215px;
-    border-radius: 100px;
-    margin-top: 50px;
-    font-size: 21px;
-}
-.button:hover{
-    cursor: pointer;
-    background-color: #522B59;
-}
+
 .boxArea{
     
     height: 482px;
@@ -167,4 +217,130 @@ h2{
 .withArrow img{
     height: 95px;
     width: 67px;
+}
+
+.boxNuestrosPsico {
+    height: 411px;
+    display: flex;
+    padding: 11px 109px 43px 186px ;
+}
+.psicologo{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    background-color: #F7E8F9;
+    border-radius: 70px;
+    padding: 25px 30px 25px 43px;
+    height: 287px;
+    width: 1008px;
+    margin-top: 16px;
+}
+
+.boxPhoto {
+    
+    height: 201px;
+    width: 201px;
+    border-radius: 100px;
+    /* background-color: red; */
+    margin-right: 19px;
+    background-size: cover;
+}
+.boxPhoto img {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+}
+
+.pais img {
+    width: 100%;
+    height: 100%;
+}
+.infoPsico{
+    
+    width: 557px;
+    
+}
+.infoPsico button{
+    margin-top: 12px;
+}
+.pais{
+    width: 50px;
+    height: 50px;
+    /* background-color: aqua; */
+    border-radius: 100px;
+    position:relative;  
+    align-self: flex-start;
+    margin-left: auto;
+    background-size: cover;
+}
+
+
+.boxClientesSatisfechos{
+    height: 397px;
+    padding-top: 12px ;
+    
+}
+.boxClientesSatisfechos button{
+    margin-top: 16px;
+}
+
+.mensajeCliente{
+    background-color: #F7E8F9;
+    width: 1169px;
+    height: 221px;
+    padding: 39px 70px 30px 67px;
+    border-radius: 70px;
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 80px;
+}
+.firmaCliente {
+
+    position: relative;
+    display: block;
+    bottom: 0;
+}
+
+.finPagina{
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.psicoWork{
+    height: 254px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.psicoWork .button{
+    margin-top: 0px;
+}
+.footer{
+    
+    height: 91px;
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    flex-direction:  row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer p{
+    width: 414px;
+    margin-left: 30px;
+    margin-bottom: 40px;
+}
+.logoSocialNetwork{
+    margin-right: 27px;
+}
+.logoSocialNetwork img{
+    margin-left: 21px;
+    margin-bottom: 40px;
+}
+.logoSocialNetwork img:hover{
+    cursor: pointer;
 }
