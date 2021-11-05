@@ -1,11 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import Hpage from "../components/Hpage/Hpage";
 const HomePage = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <Hpage />;
+};
 
-export default HomePage
+export default HomePage;
