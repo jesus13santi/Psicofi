@@ -172,7 +172,6 @@ const Hpage = () => {
                 “Muy recomendado el servicio. Nunca había tenido terapia online
                 antes y me pareció una experiencia genial.”
               </p>
-              <p className={styles.firmaCliente}> Arturo, Chile</p>
             </div>
             <img src={ArrowSmall} alt="" />
           </div>
