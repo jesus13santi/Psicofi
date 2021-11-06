@@ -99,7 +99,7 @@
 .box{
     margin-top: 30px;
     border: 3px solid #763D80;
-    width: 85%;
+    width: 90%;
     /* width: 1380px; */
     display: flex;
     flex-direction: column;
@@ -138,8 +138,8 @@
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    height: 82px;
-    width: 365px;
+    height: 80px;
+    width: 340px;
     background-color: #F7E8F9;
     border-radius: 70px;
     font-weight: 600;
@@ -152,7 +152,7 @@
 
 .function{
     height: 411px;
-    padding: 11px 40px 10px 40px ;
+    padding: 11px 40px 10px 10px ;
     align-items: center;
     justify-content: center;
     
@@ -299,7 +299,7 @@
 
 .mensajeCliente{
     background-color: #F7E8F9;
-    width: 550px;
+    width: 80%;
     height:200px;
     padding: 10px 20px 10px 35px;
     border-radius: 70px;
@@ -365,7 +365,7 @@
 
 
 
-/* TABLE */
+/* TABLET */
 @media (max-width:1024px){
     .container{
         font-size: 20px;
