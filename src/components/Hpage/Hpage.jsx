@@ -37,7 +37,7 @@ const Hpage = () => {
           <img src={BigLogo} alt="" />
         </picture>
       </div>
-      <div className={styles.pagesHome}>
+      <div className={`${styles.pagesHome} ${styles.areaPage}` }>
         <div className={`${styles.whatIs} ${styles.box}`}>
           <h2 className={styles.title}>¿Qué es PsicoFi?</h2>
           <p className={styles.info}>
@@ -76,7 +76,7 @@ const Hpage = () => {
       </div>
       <div className={`${styles.pagesHome}`}>
         <div className={`${styles.function} ${styles.box}`}>
-          <h1>¿Cómo funcionan las sesiones online?</h1>
+          <h2 className={styles.title}>¿Cómo funcionan las sesiones online?</h2>
           <div className={styles.pasos}>
             <div className={styles.paso}>
               <picture className={styles.boxImg}>
@@ -130,7 +130,7 @@ const Hpage = () => {
           </button>
         </div>
       </div>
-      <div className={styles.pagesHome}>
+      <div className={`${styles.pagesHome} ${styles.nuestroPsicoPage}`}>
         <div className={`${styles.box} ${styles.boxNuestrosPsico}`}>
           <h2 className={styles.title}>Nuestros Psicólogos</h2>
           <div className={styles.withArrow}>
@@ -139,7 +139,7 @@ const Hpage = () => {
                 <img src={photo} alt="" />
               </picture>
               <div className={styles.infoPsico}>
-                <h2>Román Riquelme</h2>
+                <h2 className={styles.name}>Román Riquelme</h2>
                 <div className={styles.valoracion}>
                   <p>Valoracion:</p>
                 </div>
@@ -158,7 +158,7 @@ const Hpage = () => {
                 <img src={bandera} alt="" />
               </picture>
             </div>
-            <img src={ArrowSmall} alt="" />
+            <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
           </div>
         </div>
         <div
@@ -187,7 +187,7 @@ const Hpage = () => {
       </div>
       <div className={`${styles.pagesHome} ${styles.finPagina}`}>
         <div className={`${styles.psicoWork} ${styles.box}`}>
-          <h2 className={styles.tittle}>Buscamos psicólogos</h2>
+          <h2 className={styles.title}>Buscamos psicólogos</h2>
           <p>
             Si eres psicólogo clínico, te invitamos a formar parte de nuestra
             plataforma
