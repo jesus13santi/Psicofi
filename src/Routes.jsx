@@ -9,6 +9,9 @@ function Routes(){
         <Route exact path="/register" component={RegisterPage}></Route>
         <Route exact path="/login" component={LoginPage}></Route>
         <Route exact path="/" component={HomePage}></Route>
+        <Route exact path="*">
+          <h1>"404: Page not found"</h1>
+        </Route>
       </Switch>
     );
 }
