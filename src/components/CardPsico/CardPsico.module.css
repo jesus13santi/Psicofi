@@ -1,0 +1,52 @@
+.container{
+    border: solid 1px #522B59;
+    display: flex;
+    color: #522B59;
+    height: 90px;
+    width: 100%;
+    border-radius: 70px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background-color: white;
+    
+   
+}
+.psico{
+    display: flex;
+    flex-direction: row;
+}
+.boxImg {
+    background-size: cover;
+    height: 75px;
+    width: 75px;
+    position: relative;
+    margin-right: 26px;
+}
+
+
+.boxImg img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    /* background-color: aqua; */
+}
+.link{
+    text-decoration: none;
+    color: #522B59;
+}
+.button{
+    background-color: #763D80;
+    border: none;
+    color: white;
+    font-size: 500;
+    width: 170px;
+    height: 60px;
+    border-radius: 30px;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: #522B59;
+}

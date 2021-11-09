@@ -21,7 +21,7 @@ const NavBar = () => {
         <Link to="/" className={styles.link}>
           Testimonios
         </Link>
-        <Link className={styles.link}>Psicologos</Link>
+        <Link to="/psicologos" className={styles.link}>Psicologos</Link>
         <Link to="/" className={styles.link}>
           Precios
         </Link>
