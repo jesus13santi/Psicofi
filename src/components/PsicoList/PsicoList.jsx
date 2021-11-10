@@ -1,7 +1,7 @@
 import React from "react";
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";
-const PsicoList = () => {
+const PsicoList = ({psicologos}) => {
   return (
     <div className={styles.container}>
       <div className={styles.boxPsico}>
@@ -11,7 +11,7 @@ const PsicoList = () => {
             <input
               className={styles.input}
               type="text"
-              placeHolder="Buscar..."
+              placeholder="Buscar..."
             />
           </div>
           <div className={styles.listEspecial}>
@@ -27,15 +27,19 @@ const PsicoList = () => {
         </div>
 
         <div className={styles.list}>
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
-          <CardPsico />
+          {psicologos.map((psicologo) => (
+           
+              <CardPsico
+                key= {psicologo.id}
+                id={psicologo.id}
+                name={psicologo.name}
+                pais={psicologo.pais}
+                lastName={psicologo.lastName}
+                photo={psicologo.photo}
+                description={psicologo.description}
+              />
+              
+          ))}
         </div>
       </div>
     </div>

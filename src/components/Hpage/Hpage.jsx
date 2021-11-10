@@ -11,7 +11,7 @@ import logoTwitter from "../../img/icons_twitter.png";
 import logoMail from "../../img/icons_mail.png";
 import logoWhat from "../../img/icons_whatsapp.png";
 import photo from "../../img/photo.png";
-import bandera from "../../img/flagArgentina.png";
+
 import { useHistory } from "react-router-dom";
 import BigLogo from "../../img/Group.png";
 import Fondo from "../../img/shutterstock_1739543105.jpg";
@@ -154,9 +154,6 @@ const Hpage = () => {
                   Agendar una cita
                 </button>
               </div>
-              <picture className={styles.pais}>
-                <img src={bandera} alt="" />
-              </picture>
             </div>
             <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
           </div>

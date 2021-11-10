@@ -8,7 +8,7 @@
 .boxPsico {
     background-color: #F7E8F9;
     width: 80%;
-    height: 625px;
+    /* height: 625px; */
     
     
     border-radius: 70px;
@@ -17,8 +17,15 @@
     align-items: center;
     padding: 30px;
     /* padding-top: 44px; */
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   
+}
+.boxPsico::-webkit-scrollbar{
+    height: 50%;
+    width: 2px;
+    margin-right: 10px;
+    background-color: red;
+
 }
 .firstText{
     width: 999px;
@@ -70,6 +77,13 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    grid-template-columns: .7fr;
+    grid-template-columns: 1fr 1fr;
+   
     
+}
+
+@media (max-width:540px) {
+    .list{
+        grid-template-columns: 1fr;
+    }
 }
