@@ -20,13 +20,7 @@
     /* overflow-y: scroll; */
   
 }
-.boxPsico::-webkit-scrollbar{
-    height: 50%;
-    width: 2px;
-    margin-right: 10px;
-    background-color: red;
 
-}
 .firstText{
     width: 999px;
     margin-left: auto;
@@ -40,7 +34,7 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
-  color: #522B59;
+    color: #522B59;
     
 }
 .input{
