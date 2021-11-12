@@ -49,7 +49,7 @@ const Hpage = () => {
   useEffect(() => {
     fetchPsico();
   }, []);
-  console.log(psicologo)
+  
 
   const psicologosAleatorios = () => {
     if (!!psicologos) {
@@ -181,7 +181,7 @@ const Hpage = () => {
 
               <p>1 hora de videollamada</p>
             </div>
-            <img src={ArrowSmall} alt="" onClick={handdlePrecio} />
+            <img src={ArrowSmall} alt="" onClick={handdlePrecio} className={styles.arrowSmall}/>
           </div>
 
           <button
@@ -240,7 +240,7 @@ const Hpage = () => {
                 antes y me pareció una experiencia genial.”
               </p>
             </div>
-            <img src={ArrowSmall} alt="" />
+            <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
           </div>
           <button
             type="button"

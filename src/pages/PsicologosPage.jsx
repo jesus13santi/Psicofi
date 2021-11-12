@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext,createContext } from "react";
 import PsicoList from "../components/PsicoList/PsicoList";
 import { db } from "../utils/firebaseConfig";
-const PsicologosPage = () => {
+
+
+const PsicologosPage = ({children}) => {
   const [psicologos, setPsicologos] = useState([]);
+  
+  
+  const [isLoading, setLoading] = useState(true);
   const getArrayCollection = (snapshot) => {
     const collection = [];
     snapshot.forEach((element) => {
@@ -18,32 +23,28 @@ const PsicologosPage = () => {
     return collection;
   };
 
-  const fetchPsico = async ()=>{
-     const userReference = db.collection("users") 
-     const snapshot = await userReference.where("role", "==", "doctor").get();
-     console.log({snapshot})
-     if (!snapshot.size) return null;
-     const listaPsico = getElementArrayCollection(snapshot);
-     setPsicologos(listaPsico);
-     console.log(psicologos)
+  const fetchPsico = async () => {
+    const userReference = db.collection("users");
+    const snapshot = await userReference.where("role", "==", "doctor").get();
+    
+    if (!snapshot.size) return null;
+    const listaPsico = getElementArrayCollection(snapshot);
+    setPsicologos(listaPsico);
+    
+  };
 
-  }
+  useEffect(() => {
+    fetchPsico();
+    setLoading(false);
+  }, []);
 
-  useEffect(()=>{
-      fetchPsico();
-      console.log(psicologos);
-  },[])
-
- 
-  
-  
-  
   return (
     <div>
-      <div></div>
-      <PsicoList psicologos={psicologos} />
+      {isLoading ? <h1>Cargando...</h1> :
+       <PsicoList psicologos={psicologos} />}
     </div>
   );
 };
 
 export default PsicologosPage;
+

@@ -226,11 +226,12 @@
     align-items: center;
     justify-content: center;
 }
-.withArrow img{
+.arrowSmall{
     height: 95px;
     width: 67px;
+   
 }
-.costo .withArrow img:hover{
+.arrowSmall:hover{
     cursor: pointer;
 }
 
@@ -911,6 +912,7 @@
         
         
     }
+    
 
     .logoSocialNetwork img {
         margin-left: 5px;

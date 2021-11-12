@@ -41,7 +41,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className={styles.link}>
+            <Link to="/precio" className={styles.link}>
               Precios
             </Link>
           </li>
@@ -80,15 +80,12 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu}>
-            <Link to="/" className={styles.linkMobile}>
+            <Link to="/precio" className={styles.linkMobile}>
               Precios
             </Link>
           </li>
           <li onClick={handdleMenu}>
-            <Link to="/login"
-              className={styles.linkMobile}
-              
-            >
+            <Link to="/login" className={styles.linkMobile}>
               Iniciar Sesion
             </Link>
           </li>

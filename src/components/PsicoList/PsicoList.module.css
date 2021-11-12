@@ -2,14 +2,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    
 }
 
 
 .boxPsico {
     background-color: #F7E8F9;
-    width: 80%;
+    width: 90%;
     /* height: 625px; */
-    
+   
     
     border-radius: 70px;
     margin-top: 68px;
@@ -22,7 +24,8 @@
 }
 
 .firstText{
-    width: 999px;
+    
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -43,6 +46,7 @@
     outline: none;
     font-size: 24px;
     width: 200px;
+    color: #522B59;
     
 }
 .input::placeholder{
@@ -67,7 +71,7 @@
 
 .list {
     display: grid;
-    overflow: hidden;
+    /* overflow: hidden; */
     gap: 1rem;
     justify-content: center;
     align-items: center;
@@ -75,9 +79,48 @@
    
     
 }
+.select{
+    background: none;
+    border: none;
+    outline: none;
+    color: #522B59;
+   margin-right: 20px;  
+}
+.select option:target{
+    background-color: red;
+}
 
 @media (max-width:540px) {
     .list{
         grid-template-columns: 1fr;
     }
+    .boxList ul {
+        list-style: none;
+        margin-right: 30px;
+        font-size: 12px;
+    }
+    .boxPsico{
+        border-radius: 30px;
+    }
+
+
+    .boxTitle {
+
+        font-size: 12px;
+        font-weight: bolder;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        color: #522B59;
+    }
+    .boxTitle .input{
+        margin-top: 10px;
+    }
+    .boxTitle .input::placeholder{
+        font-size: 16px;
+    }
+
+
 }
