@@ -1,0 +1,26 @@
+.footer{
+    margin-top: 7.5rem;
+    height: 5.625rem;
+    width: 100%;
+    font-size: 1.125rem;
+    display: flex;
+    flex-direction:  row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer p{
+    width: 25.938rem;
+    margin-left: 1.875rem;
+    margin-bottom: 2.5rem;
+}
+.logoSocialNetwork{
+    margin-right: 1.688rem;
+}
+.logoSocialNetwork img{
+    margin-left: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+.logoSocialNetwork img:hover{
+    cursor: pointer;
+}
