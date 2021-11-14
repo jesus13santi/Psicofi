@@ -1,14 +1,14 @@
 .container{
-    border: solid 1px #522B59;
+    border: solid 0.063rem #522B59;
     display: flex;
     color: #522B59;
-    height: 90px;
+    height: 5.625rem;
     width: 100%;
-    border-radius: 70px;
+    border-radius: 4.375rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 0.625rem;
     background-color: white;
     
    
@@ -19,8 +19,8 @@
 }
 .boxImg {
     background-size: cover;
-    height: 75px;
-    width: 75px;
+    height: 4.688rem;
+    width: 4.688rem;
     position: relative;
     margin-right: 26px;
 }
@@ -41,12 +41,11 @@
     background-color: #763D80;
     border: none;
     color: white;
-    width: 170px;
-    height: 60px;
-    border-radius: 30px;
+    width: 10.625rem;
+    height: 3.75rem;
+    border-radius: 1.875rem;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 1.125rem;
 }
 .button .link{
     color:white
@@ -54,4 +53,68 @@
 .button:hover{
     cursor: pointer;
     background-color: #522B59;
+}
+
+@media(max-width:26.75rem){
+    .container{
+        border: solid 0.063rem #522B59;
+        display: flex;
+        color: #522B59;
+        height: 3.75rem;
+        width: 100%;
+        border-radius: 4.375rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.625rem;
+        background-color: white;
+        
+       
+    }
+    .psico{
+        display: flex;
+        flex-direction: row;
+    }
+    .boxImg {
+        background-size: cover;
+        height: 2.5rem;
+        width: 2.5rem;
+        position: relative;
+        margin-right: 0.625rem;
+    }
+    
+    
+    .boxImg img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .link{
+        text-decoration: none;
+        color: #522B59;
+    }
+    .button{
+        background-color: #763D80;
+        border: none;
+        color: white;
+        width: 5rem;
+        height: 2.5rem;
+        border-radius: 1.875rem;
+        font-weight: 600;
+        font-size: 0.625rem;
+
+    }
+    .button .link{
+        color:white
+    }
+    .button:hover{
+        cursor: pointer;
+        background-color: #522B59;
+    }
+    .boxInfo{
+        font-size: 0.75rem;
+    }
+    .title{
+        font-size: 0.75rem; 
+    }
 }
