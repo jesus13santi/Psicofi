@@ -22,7 +22,6 @@ const PacienteTab =  () => {
         </div>
         <div className={styles.sort}>
         <h1 className={styles.boxTitle}>Historial de consultas:</h1>
-        
         <h1 className={styles.sortText}>Filtrar</h1>
         </div>
         <CardStory />
