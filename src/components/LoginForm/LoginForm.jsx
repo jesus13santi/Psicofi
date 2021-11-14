@@ -19,8 +19,7 @@ function LoginForm() {
     console.log({ inputName, value });
     setValues({ ...values, [inputName]: value });
   };
-
-  // HANDLE GOOGLE LOGIN
+  
   const handleGoogleLogin = async () => {
     await auth.signInWithPopup(googleProvider);
     history.push('/');
@@ -49,6 +48,7 @@ function LoginForm() {
             <span>Inicia sesión con...</span>
             </div>
 
+            <div className={styles.image}>
             <img
             src="GoogleIcon.png"
             alt="Google Login"
@@ -69,6 +69,7 @@ function LoginForm() {
             width="63" height="51"
             onClick={handleGoogleLogin}
             />
+            </div>
 
             <div>
             <span>O utiliza tu correo electrónico:</span>
