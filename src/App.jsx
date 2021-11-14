@@ -1,16 +1,19 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import UserContextProvider from "./context/UserContex";
-import Routes from "./Routes";
+import Routes from "./Routes"
+import UserContextProvider from './context/UserContext';
+
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <div className="container">
-        <Routes />
-      </div>
-    </Router>
-  );
+    <UserContextProvider>
+      <Router>
+        <NavBar />
+        <div className="container">
+          <Routes />
+        </div>
+      </Router>
+    </UserContextProvider>
+  )
 }
 
 export default App;
