@@ -10,21 +10,27 @@ const NavBar = () => {
   };
   const handdleLogin = () => {
     history.push("/login");
-  };
+  };  
   return (
     <nav className={styles.nav}>
       <img src={Logo} alt="" className={styles.img} onClick={handdleHome} />
       <div className={styles.rightSize}>
-        <a href="/" className={styles.link}>
+        <Link to="/" className={styles.link}>
           Contacto
-        </a>
-        <a href="/" className={styles.link}>
+        </Link>
+        <Link to="/" className={styles.link}>
           Testimonios
-        </a>
+        </Link>
         <Link className={styles.link}>Psicologos</Link>
-        <a href="/" className={styles.link}>
+        <Link to="/" className={styles.link}>
           Precios
-        </a>
+        </Link>
+        <Link to="/perfilPaciente" className={styles.link}>
+          Perfil
+        </Link>
+        <Link to="/perfilEspecialista" className={styles.link}>
+          Perfil Especialista
+        </Link>
         {/* <Link to="/register" className={styles.link}>Registrarse</Link> */}
         <button type="button" className={styles.button} onClick={handdleLogin}>
           Iniciar Sesion
