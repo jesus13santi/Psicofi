@@ -32,17 +32,12 @@ function LoginForm() {
   };
 
   return (
-      <>
-
-        <div className={styles.container}>
+    <div className={styles.container}>
             
-        </div>
-
-        <div className={styles.container}>
+        <div className={styles.window}>
           <form onSubmit={handleSubmit}>
-
-            <div>
-            <h1>Bienvenido de vuelta</h1>
+            <div className={styles.title}>
+              <h1>Bienvenido de vuelta</h1>
             </div>
             <div>
             <span>Inicia sesión con...</span>
@@ -97,13 +92,13 @@ function LoginForm() {
               />
             </div>
 
-            <button type="submit" onClick={handleSubmit}>
+            <button className={styles.button} type="submit" onClick={handleSubmit}>
               Iniciar Sesión
             </button>
           </form>
           
         </div>
-    </>
+    </div>
   );
 }
 

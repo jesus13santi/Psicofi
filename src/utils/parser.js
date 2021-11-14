@@ -13,4 +13,3 @@ export const getArrayCollection = (snapshot) => {
     const collection = getArrayCollection(snapshot);
     return collection[0];
   };
-  

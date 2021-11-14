@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    font-size: 24px;
+    color: #522B59;
+    flex-direction: column;
+}
+.loginPage {  
+    width: 100%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.window{    
+    width: 900px;
+    height: 823px;
+    top: 126px;
+    margin-top: 50px;
+    background: #F7E8F9;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    color: #522B59;
+    margin-bottom: 20px;
+}
+.inputGroup{
+    border-radius: 24px;
+    border-color: #763d80;
+    padding-left: 16px;
+    margin-top: 16px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 649px;
+    height: 50px;
+}
+.button{
+    margin-top: 15px;
+    font-size: 18px;
+    border-radius: 24px;
+    width: 215px;
+    height: 50px;
+    background: #763D80;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: white;
+}
