@@ -25,7 +25,7 @@ const NavBar = () => {
         <Link to="/" className={styles.link}>
           Precios
         </Link>
-        {/* <Link to="/register" className={styles.link}>Registrarse</Link> */}
+        <Link to="/register" className={styles.link}>Registrarse</Link>
         <button type="button" className={styles.button} onClick={handdleLogin}>
           Iniciar Sesion
         </button>
