@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
+import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
+import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 function Routes() {
   return (
     <Switch>
@@ -13,6 +15,8 @@ function Routes() {
       <Route exact path="/register" component={RegisterPage}></Route>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
+      <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
+        <Route exact path="/perfilEspecialista" component={PerfilEspecialista}></Route>
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
