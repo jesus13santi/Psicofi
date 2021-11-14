@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
+import TableroPage from './pages/TableroPage';
 function Routes() {
   return (
     <Switch>
@@ -12,6 +13,7 @@ function Routes() {
       <Route exact path="/register" component={RegisterPage}></Route>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
+      <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
