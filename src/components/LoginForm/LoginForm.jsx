@@ -52,21 +52,21 @@ function LoginForm() {
             <img
             src="GoogleIcon.png"
             alt="Google Login"
-            width="114" height="116"
+            width="57" height="58"
             onClick={handleGoogleLogin}
             />
 
             <img
             src="FacebookIcon.png"
             alt="Facebook Login"
-            width="114" height="116"
+            width="66" height="66"
             onClick={handleGoogleLogin}
             />
 
             <img
             src="TwitterIcon.png"
             alt="Twitter Login"
-            width="114" height="116"
+            width="63" height="51"
             onClick={handleGoogleLogin}
             />
 

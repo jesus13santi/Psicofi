@@ -4,7 +4,8 @@ import { UserContext } from "./context/UserContext";
 import Routes from "./Routes"
 function App() {
   return (
-    <UserContext.Provider>
+    <UserContext.Provider
+    value={UserContext}>
       <Router>
         <NavBar/>
         <div className="container">
