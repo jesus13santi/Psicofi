@@ -1,26 +1,57 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";
 
+const PsicoList = ({ psicologos }) => {
+  const [value, setValue] = useState("");
+  const [orden, setOrden] = useState("ordenAlfabetico");
+  const [listaOrdenada, setListaOrdenada] = useState(null);
 
-
-const PsicoList = ({psicologos}) => {
-  
-  const [ value, setValue ] = useState("")
-  
   
   const handleOnchange = (event) => {
-        setValue(event.target.value.toLowerCase())
-        
+    setValue(event.target.value.toLowerCase());
   };
-  const searchingTerm=(value)=>{
-    return function(x){
-      return x.name.toLowerCase().includes(value)|| x.lastName.toLowerCase().includes(value)||x.pais.toLowerCase().includes(value)
+  const searchingTerm = (value) => {
+    return function (x) {
+      return (
+        x.name.toLowerCase().includes(value) ||
+        x.lastName.toLowerCase().includes(value) ||
+        x.pais.toLowerCase().includes(value)
+      );
+    };
+  };
+  const ordenarNombres = (lista) => {
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
+  const haddleSelect = (e) => {
+    setOrden(e.target.value);
+    if (e.target.value === "ordenAlfabetico") {
+      setListaOrdenada(ordenarNombres(psicologos));
+    } else {
+      setListaOrdenada(psicologos);
     }
-  }
+  };
+  const cambiarLista = async () => {
+    if (orden === "ordenAlfabetico") {
+      setListaOrdenada(psicologos);
+    }
+  };
+
  
+
   return (
     <div className={styles.container}>
       <div className={styles.boxPsico}>
@@ -43,7 +74,13 @@ const PsicoList = ({psicologos}) => {
                 <option value="estres">Estres</option>
                 <option value="depresion">Depresion</option>
               </select>
-              <select name="especialidades" id="" className={styles.select}>
+              <select
+                name="especialidades"
+                id=""
+                className={styles.select}
+                onChange={haddleSelect}
+              >
+                <option value>Selecciona Una opcion</option>
                 <option value="ordenAlfabetico"> Orden Alfabetico</option>
                 <option value="ranking">Ranking</option>
               </select>
@@ -52,17 +89,33 @@ const PsicoList = ({psicologos}) => {
         </div>
 
         <div className={styles.list}>
-          {psicologos.filter(searchingTerm(value)).map((psicologo) => (
-            <CardPsico
-              key={psicologo.id}
-              id={psicologo.id}
-              name={psicologo.name}
-              pais={psicologo.pais}
-              lastName={psicologo.lastName}
-              photo={psicologo.photo}
-              description={psicologo.description}
-            />
-          ))}
+          {!!listaOrdenada
+            ? listaOrdenada
+                .filter(searchingTerm(value))
+                .map((psicologo) => (
+                  <CardPsico
+                    key={psicologo.id}
+                    id={psicologo.id}
+                    name={psicologo.name}
+                    pais={psicologo.pais}
+                    lastName={psicologo.lastName}
+                    photo={psicologo.photo}
+                    description={psicologo.description}
+                  />
+                ))
+            : psicologos
+                .filter(searchingTerm(value))
+                .map((psicologo) => (
+                  <CardPsico
+                    key={psicologo.id}
+                    id={psicologo.id}
+                    name={psicologo.name}
+                    pais={psicologo.pais}
+                    lastName={psicologo.lastName}
+                    photo={psicologo.photo}
+                    description={psicologo.description}
+                  />
+                ))}
         </div>
       </div>
     </div>
