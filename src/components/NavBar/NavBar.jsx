@@ -46,6 +46,11 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/register" className={styles.link}>
+              Registrarse
+            </Link>
+          </li>
+          <li>
             <button
               type="button"
               className={styles.button}
