@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";
@@ -8,8 +8,6 @@ const PsicoList = ({ psicologos }) => {
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
-
-  
   const handleOnchange = (event) => {
     setValue(event.target.value.toLowerCase());
   };
@@ -50,7 +48,7 @@ const PsicoList = ({ psicologos }) => {
     }
   };
 
- 
+  console.log(orden);
 
   return (
     <div className={styles.container}>
@@ -80,7 +78,7 @@ const PsicoList = ({ psicologos }) => {
                 className={styles.select}
                 onChange={haddleSelect}
               >
-                <option value>Selecciona Una opcion</option>
+                <option value>Selecciona una opcion</option>
                 <option value="ordenAlfabetico"> Orden Alfabetico</option>
                 <option value="ranking">Ranking</option>
               </select>
