@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Hpage.module.css";
 import Vector from "../../img/Vector.png";
 import Video from "../../img/mdi_video.png";
@@ -11,15 +10,72 @@ import logoTwitter from "../../img/icons_twitter.png";
 import logoMail from "../../img/icons_mail.png";
 import logoWhat from "../../img/icons_whatsapp.png";
 import photo from "../../img/photo.png";
-import bandera from "../../img/flagArgentina.png";
+
 import { useHistory } from "react-router-dom";
 import BigLogo from "../../img/Group.png";
 import Fondo from "../../img/shutterstock_1739543105.jpg";
+import { useState, useEffect } from "react";
+import { db } from "../../utils/firebaseConfig";
 const Hpage = () => {
+  const [psicologos, setPsicologos] = useState([]);
+  const [psicologo, setPsicologo] = useState(null);
+  const [precio, setPrecio] = useState("0");
   const history = useHistory();
+
+  const getArrayCollection = (snapshot) => {
+    const collection = [];
+    snapshot.forEach((element) => {
+      collection.push({
+        id: element.id,
+        ...element.data(),
+      });
+    });
+    return collection;
+  };
+  const getElementArrayCollection = (snapshot) => {
+    const collection = getArrayCollection(snapshot);
+    return collection;
+  };
+
+  const fetchPsico = async () => {
+    const userReference = db.collection("users");
+    const snapshot = await userReference.where("role", "==", "doctor").get();
+    if (!snapshot.size) return null;
+    const listaPsico = getElementArrayCollection(snapshot);
+    setPsicologos(listaPsico);
+    setPsicologo(listaPsico[0])
+  };
+
+  useEffect(() => {
+    fetchPsico();
+  }, []);
+  
+
+  const psicologosAleatorios = () => {
+    if (!!psicologos) {
+      const item = psicologos[
+        Math.floor(Math.random() * psicologos.length)
+      ];
+      setPsicologo(item);
+    }
+  };
+
+
   const handdleLoginOrRegister = () => {
     history.push("/login");
   };
+
+  
+  const handdlePrecio = () => {
+    if (precio === "0") {
+      setPrecio("1");
+      return precio;
+    } else if (precio === "1") {
+      setPrecio("0");
+      return precio;
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={`${styles.pagesHome} ${styles.principalPage}`}>
@@ -33,11 +89,8 @@ const Hpage = () => {
             Empieza ahora
           </button>
         </div>
-        <picture className={styles.boxLogo}>
-          <img src={BigLogo} alt="" />
-        </picture>
       </div>
-      <div className={`${styles.pagesHome} ${styles.areaPage}` }>
+      <div className={`${styles.pagesHome} ${styles.areaPage}`}>
         <div className={`${styles.whatIs} ${styles.box}`}>
           <h2 className={styles.title}>¿Qué es PsicoFi?</h2>
           <p className={styles.info}>
@@ -48,7 +101,7 @@ const Hpage = () => {
           </p>
           <button
             type="button"
-            className={styles.button}
+            className={`${styles.button} ${styles.btnWhatIs}`}
             onClick={handdleLoginOrRegister}
           >
             Empieza ahora
@@ -114,11 +167,21 @@ const Hpage = () => {
           <h2 className={styles.title}>¿Cuenta cuesta una sesion?</h2>
           <div className={styles.withArrow}>
             <div className={styles.boxCosto}>
-              <p className={styles.individual}>Cita Individual</p>
-              <h1>$29.29 USD</h1>
+              {precio === "0" ? (
+                <>
+                  <p className={styles.individual}>Cita Individual</p>
+                  <h1>$29.99 USD</h1>
+                </>
+              ) : (
+                <>
+                  <p className={styles.individual}>Cita Doble</p>
+                  <h1>$49.99 USD</h1>
+                </>
+              )}
+
               <p>1 hora de videollamada</p>
             </div>
-            <img src={ArrowSmall} alt="" />
+            <img src={ArrowSmall} alt="" onClick={handdlePrecio} className={styles.arrowSmall}/>
           </div>
 
           <button
@@ -135,30 +198,34 @@ const Hpage = () => {
           <h2 className={styles.title}>Nuestros Psicólogos</h2>
           <div className={styles.withArrow}>
             <div className={styles.psicologo}>
-              <picture className={styles.boxPhoto}>
-                <img src={photo} alt="" />
-              </picture>
-              <div className={styles.infoPsico}>
-                <h2 className={styles.name}>Román Riquelme</h2>
-                <div className={styles.valoracion}>
-                  <p>Valoracion:</p>
-                </div>
-                <p>
-                  Especialidades: ansiedad, estrés y autoestima Lugar de
-                  residencia: Buenos Aires, Argentina
-                </p>
-                <button
-                  className={styles.button}
-                  onClick={handdleLoginOrRegister}
-                >
-                  Agendar una cita
-                </button>
-              </div>
-              <picture className={styles.pais}>
-                <img src={bandera} alt="" />
-              </picture>
+              {!!psicologo && (
+                <>
+                  <picture className={styles.boxPhoto}>
+                    <img src={psicologo.photo} alt="" />
+                  </picture>
+                  <div className={styles.infoPsico}>
+                    <h2 className={styles.name}>{psicologo.name}</h2>
+                    <div className={styles.valoracion}>
+                      <p>Valoracion:</p>
+                    </div>
+                    <p>Especialidades: {psicologo.especialidades}</p>
+                    <p>Lugar de Residencia: {psicologo.pais}</p>
+                    <button
+                      className={styles.button}
+                      onClick={handdleLoginOrRegister}
+                    >
+                      Agendar una cita
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
-            <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
+            <img
+              src={ArrowSmall}
+              alt=""
+              className={styles.arrowSmall}
+              onClick={psicologosAleatorios}
+            />
           </div>
         </div>
         <div
@@ -173,7 +240,7 @@ const Hpage = () => {
                 antes y me pareció una experiencia genial.”
               </p>
             </div>
-            <img src={ArrowSmall} alt="" />
+            <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
           </div>
           <button
             type="button"

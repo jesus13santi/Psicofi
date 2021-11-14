@@ -1,0 +1,80 @@
+.container{
+    
+    height: 92vh;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    color: #522B59;
+    font-size: 24px;
+    
+}
+.container h1{
+    font-size: 64px;
+    text-align: center;
+}
+.box{
+    
+    height: 80%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #522B59;
+    border-radius: 30px;
+}
+/* .costo {
+    height: 397px;
+    padding: 12px 0px 30px 0px;
+} */
+
+.boxCosto {
+    height: 35%;
+    width: 70%;
+    background-color: #F7E8F9;
+    border-radius: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    
+}
+
+.boxCosto h1 {
+    font-size: 64px;
+    
+}
+
+.individual {
+    font-weight: 500;
+}
+
+.button{
+    background-color: #763D80;
+    height: 60px;
+    width: 40%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 24px;
+    margin-top: 10px;
+}
+.button:hover{
+    cursor: pointer;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #522B59;
+}
+
+@media (max-width:540px) {
+    .container{
+        font-size: 16px;
+    }
+    .container h1{
+        font-size: 24px;
+    }
+}
