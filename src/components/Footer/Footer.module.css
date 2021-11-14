@@ -1,0 +1,83 @@
+.footer{
+    margin-top: 7.5rem;
+    height: 5.625rem;
+    width: 100%;
+    font-size: 1.125rem;
+    display: flex;
+    flex-direction:  row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer p{
+    width: 25.938rem;
+    margin-left: 1.875rem;
+    margin-bottom: 2.5rem;
+}
+.logoSocialNetwork{
+    margin-right: 1.688rem;
+}
+.logoSocialNetwork img{
+    margin-left: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+.logoSocialNetwork img:hover{
+    cursor: pointer;
+}
+
+/*MEDIA QUERY*/
+/*Tablet*/
+@media (max-width:1024px){
+    .footer{
+        margin-top: 7.5rem;
+        height: 5.625rem;
+        width: 100%;
+        font-size: 1.125rem;
+        display: flex;
+        flex-direction:  row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    
+    .footer p{
+        width: 25.938rem;
+        margin-left: 1.875rem;
+        margin-bottom: 2.5rem;
+    }
+    .logoSocialNetwork{
+        margin-right: 1.688rem;
+    }
+    .logoSocialNetwork img{
+        margin-left: 1.25rem;
+        margin-bottom: 2.5rem;
+}
+}
+
+/*Mobile*/
+@media (max-width:428px){
+    .footer{
+        margin-top: 7.5rem;
+        height: 1.563rem;
+        width: 100%;
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction:  row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    
+    .footer p{
+        width: 11.5rem;
+        margin-left: 0.75rem;
+        margin-bottom: 1.375rem;
+    }
+    .logoSocialNetwork{
+        margin-right: 1.25rem;
+    }
+    .logoSocialNetwork img{
+        margin-left: 0.813rem;
+        margin-bottom: 1.375rem;
+        height: 1.563rem;
+        width: 1.563rem; 
+}
+}
