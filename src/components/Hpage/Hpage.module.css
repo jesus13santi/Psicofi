@@ -25,6 +25,7 @@
     color: white;
     align-items: flex-start;
     position: relative;
+
     
 }
 .principalPage::before{
@@ -45,6 +46,7 @@
     border-radius: 100px;
     margin-top: 50px;
     font-size: 21px;
+    font-weight: 600;
 }
 
 .button:hover {
@@ -106,7 +108,7 @@
 }
 .whatIs {
     
-    height: 328px;
+    height: 350px;
     padding: 30px 39px 24px 39px ;
       
 }
@@ -148,7 +150,7 @@
 
 
 .function{
-    height: 411px;
+    height: 430px;
     padding: 11px 40px 10px 10px ;
     align-items: center;
     justify-content: center;
@@ -173,8 +175,7 @@
     width: 250px;
    
     text-align: center;
-    
-   
+  
 }
 .paso1{
     width: 310px;
@@ -620,6 +621,7 @@
         width: 253px;
         margin-top: 0px;
         font-size: 16px;
+        
     }
 
     .principalButton {
@@ -666,7 +668,7 @@
 
     .whatIs {
         
-        height: 210px;
+        height: 230px;
         padding: 5px 10px 10px 15px;
 
     }
@@ -704,7 +706,7 @@
 
 
     .function {
-        height: 319px;
+        height: 380px;
         padding: 10px 5px 5px 0px;
         margin-top: 0px;
        
