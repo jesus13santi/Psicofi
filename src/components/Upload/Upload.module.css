@@ -20,12 +20,45 @@
 
 .container{    
     width: 900px;
-    height: 600px;
+    height: 525px;
     top: 126px;
     margin-top: 125px;
 
     background: #F7E8F9;
     border-radius: 35px;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 716px;
+    height: 188px;
+    top: 126px;
+
+    background:white;
+    border: 1px solid #763d80;
+    border-radius: 35px;
+    margin-bottom: 20px;
+}
+
+.Up{
+    border-radius: 24px;
+    border-color: #763d80;
+    padding-left: 16px;
+    margin-top: 100px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 649px;
+    height: 50px;
+}
+
+.tittle{
+    font-size: 48px;
+    color: #522B59;
+    margin-bottom: 20px;
+
 }
 
 .header{
@@ -36,28 +69,22 @@
     margin-top: 30px;
 }
 
-.tittle{
-    font-size: 48px;
+.nextText{
+    font-size: 16px;
     color: #522B59;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+}
 
+.nextText2{
+    font-size: 13px;
+    color: #522B59;
+    margin-bottom: 20px;
 }
 
 .input{ 
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.formRegis{
-    border-radius: 24px;
-    border-color: #763d80;
-    padding-left: 16px;
-    margin-top: 100px;
-    margin-bottom: 15px;
-    font-size: 18px;
-    width: 649px;
-    height: 50px;
 }
 
 .continue{
@@ -71,34 +98,4 @@
     cursor: pointer;
     margin-bottom: 20px;
     color: white;
-}
-
-.formPersonal span{
-    margin-bottom: 20px;
-}
-  
-.formPersonal .labelRol{
-    font-size: 30px;
-    padding: 75px 100px;
-    border-radius: 20px;
-    border: 2px solid #ccc;
-  
-}
-  
-.boxRol:checked + label{
-    background: #763D80;
-    color: white;
-    border: none;
-}
-  
-.boxRol{
-    display: none;
-}
-
-.alert{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: red;
 }
