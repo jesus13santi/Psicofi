@@ -8,7 +8,7 @@ import { size } from "lodash";
 
 function LoginForm() {
   const history = useHistory();
-  const { createUser } = useContext(UserContext);
+  const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
 
   const [errorName, setErrorName] = useState("");
   const [errorLastName, setErrorLastName] = useState("");
@@ -23,21 +23,21 @@ function LoginForm() {
   };
 
   const [values, setValues] = useState({
-    name: "",
-    lastname: "",
     email: "",
     password: "",
-    passwordB: "",
-    number: "",
+    
+    
   });
 
   const handleGoogleLogin = async () => {
     await auth.signInWithPopup(googleProvider);
+    const userByEmail= await getUserByEmail(user.email)
+    await history.push(`/deck/${userByEmail.id}`);
   };
 
   const handleOnChange = (event) => {
     const { value, name: inputName } = event.target;
-    console.log({ inputName, value });
+    // console.log({ inputName, value });
     setValues({ ...values, [inputName]: value });
   };
 
@@ -99,7 +99,8 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await auth.signInWithEmailAndPassword(values.email, values.password);
-    history.push("/");
+    const userByEmail = await getUserByEmail(user.email);
+    await history.push(`/deck/${userByEmail.id}`);
     // console.log("LOGIN_PASSWOROD");
   };
 

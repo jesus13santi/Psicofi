@@ -18,8 +18,8 @@ function Routes() {
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
       <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
-        <Route exact path="/perfilEspecialista" component={PerfilEspecialista}></Route>
-      <Route exact path="/deck" component={TableroPage}></Route>
+      <Route exact path="/perfilEspecialista" component={PerfilEspecialista}></Route>
+      <Route exact path="/deck/:uid" component={TableroPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
