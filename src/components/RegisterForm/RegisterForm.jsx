@@ -93,10 +93,9 @@ function RegisterForm() {
               role: "",
 
               },
-              response.user.uid,
+              response.user.uid)
               /* console.log(response.user.uid), */
               history.push("/election")           
-          );
         }
 
         e.preventDefault();
