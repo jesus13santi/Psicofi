@@ -7,34 +7,31 @@ import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
 
 
+
 function RegisterForm() {
 
-    const history = useHistory;
+    const history = useHistory();
     const {createUser} = useContext(UserContext)
 
     const [errorName, setErrorName] = useState("")
-    const [errorLastName, setErrorLastName] = useState("")
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
     const [errorPasswordB, setErrorPasswordB] = useState("")
-    const [errorNumber, setErrorNumber] = useState("")
 
-    const [role, setRole] = useState("")
-    const cambioRole = a =>{
-      setRole(a.target.value)
-    }
+    const { user, setUser} = useContext(UserContext);
       
     const [values, setValues] = useState({
         name: "",
-        lastname: "",
         email: "",
         password: "",
         passwordB: "",
-        number: "",
     });
 
     const handleGoogleLogin = async () =>{
         await auth.signInWithPopup(googleProvider);
+        console.log(user)
+        await history.push("/election");
+        
     };
 
     const handleOnChange = (event) => {
@@ -46,20 +43,13 @@ function RegisterForm() {
 
     const validateData = () => {
         setErrorName("")
-        setErrorLastName("")
         setErrorPasswordB("")
         setErrorEmail("")
         setErrorPassword("")
-        setErrorNumber("")
         let isValid = true
 
         if(size(values.name) < 3) {
             setErrorName("Debes ingresar un nombre de al menos tres carácteres.")
-            isValid = false
-        }
-
-        if(size(values.lastname) < 3) {
-            setErrorLastName("Debes ingresar una contraseña de al menos tres carácteres.")
             isValid = false
         }
 
@@ -84,11 +74,6 @@ function RegisterForm() {
             isValid = false
             console.log("no ta iguales")
         }
-        
-        if(size(values.number) < 1) {
-            setErrorName("Ingrese un numero de telefono valido")
-            isValid = false
-        }
 
         return isValid
     }
@@ -109,21 +94,22 @@ function RegisterForm() {
         await createUser(
             {
             name: values.name,
-            lastname: values.lastname,
             email: values.email,
             password: values.password,
-            number: values.number,
-            role: {role},
+            number: "",
+            role: "",
 
             },
-            response.user.uid
+            response.user.uid,
+            console.log(response.user.uid),
+            history.push("/election")           
         );
-           //history.push("/perfil");//
+        
     };
    
 
     return (
-
+      
     <section className={styles.registerSecc}>
         <div className={styles.container}>
           <div className={styles.header}>
@@ -145,29 +131,16 @@ function RegisterForm() {
           
           <form onSubmit={handleSubmit}>
 
-            <div className={styles.input1}>
-
-              <input className={styles.formRegis}
-                name="name"
-                id={styles.name}
-                type="text"
-                placeholder="Enter your name"
-                value={values.name}
-                onChange={handleOnChange}
-              />
-
-              <input className={styles.formRegis}
-                name="lastname"
-                id={styles.lastname}
-                type="lastname"
-                placeholder="Enter your lastname"
-                value={values.lastname}
-                onChange={handleOnChange}
-              />
-
-            </div>
-
             <div className={styles.input2}>
+
+              <input className={styles.formRegis}
+                  name="name"
+                  id={styles.name}
+                  type="text"
+                  placeholder="Enter your fullname"
+                  value={values.name}
+                  onChange={handleOnChange}
+                />  
 
               <input className={styles.formRegis}
                   name="email"
@@ -200,19 +173,6 @@ function RegisterForm() {
                 />
 
             </div>
-            
-            <div className={styles.input3}>
-
-              <input className={styles.formRegis}
-                name="number"
-                id={styles.number}
-                type="text"
-                placeholder="Enter your phone"
-                value={values.number}
-                onChange={handleOnChange}
-              />
-
-            </div>
            
             <div className={styles.submit}>
               <button className={styles.continue} type="submit" onClick={handleSubmit}> Continuar </button>
@@ -220,34 +180,6 @@ function RegisterForm() {
             </div>           
           </form> 
         </div>
-
-        <div class="infoPersonal">
-            <form class={styles.formPersonal}>
-                <span class={styles.textForm}>Indique rol de registro:</span>
-                
-                <input class={styles.boxRol} 
-                  type="radio" 
-                  value="Paciente" 
-                  id="Role1" 
-                  checked={role == "Paciente" ? true:false}
-                  onChange={cambioRole}>
-                </input>
-                  
-                <label class={styles.labelRol} for="Role1">Paciente</label>
-                
-                <input class={styles.boxRol} 
-                  type="radio" 
-                  value="Psicologo" 
-                  id="Role2" 
-                  checked={role == "Psicologo" ? true:false}
-                  onChange={cambioRole}>                    
-                  </input>
-                <label class={styles.labelRol} for="Role2">Psicologo</label>
-       
-            </form>
-            <p>El radio button es: <b>{role}</b></p>
-        </div>
-
       </section>
        
     );    

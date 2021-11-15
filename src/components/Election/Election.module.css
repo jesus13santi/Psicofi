@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  *:focus {
+    outline: none;
+  }
+  
+  body {
+    width: 100%;
+    position: relative;
+  }
+
+.registerSecc{  
+    display: flex;
+    justify-content: center;
+}
+
+.container{    
+    width: 900px;
+    height: 600px;
+    top: 126px;
+    margin-top: 125px;
+
+    background: #F7E8F9;
+    border-radius: 35px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.tittle{
+    font-size: 48px;
+    color: #522B59;
+    margin-bottom: 100px;
+
+}
+
+.input{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formRegis{
+    border-radius: 24px;
+    border-color: #763d80;
+    padding-left: 16px;
+    margin-top: 100px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 649px;
+    height: 50px;
+}
+
+.continue{
+    margin-top: 15px;
+    font-size: 18px;
+    border-radius: 24px;
+    width: 215px;
+    height: 50px;
+    background: #763D80;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.formPersonal span{
+    margin-bottom: 20px;
+}
+  
+.formPersonal .labelRol{
+    font-size: 30px;
+    padding: 75px 100px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+  
+}
+  
+.boxRol:checked + label{
+    background: #763D80;
+    color: white;
+    border: none;
+}
+  
+.boxRol{
+    display: none;
+}
