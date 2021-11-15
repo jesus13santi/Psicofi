@@ -73,11 +73,12 @@ function RegisterForm() {
 
     
     const handleSubmit = async (e) => {
+        e.preventDefault();
 
         if (!validateData()){
 
         } else{
-          e.preventDefault();
+          // e.preventDefault();
 
           const response = await auth.createUserWithEmailAndPassword(
               values.email, 
@@ -94,32 +95,14 @@ function RegisterForm() {
 
               },
               response.user.uid)
-              /* console.log(response.user.uid), */
               history.push("/election")           
         }
 
-        e.preventDefault();
-
-        const response = await auth.createUserWithEmailAndPassword(
-            values.email, 
-            values.password,
-        );
-
-        await createUser(
-            {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            number: "",
-            role: "",
-
-            },response.user.uid)
-                      
-        console.log(response.user.uid)
-        history.push("/election"); 
+        
+ 
         
     };
-    console.log(user)
+    // console.log(user)
    
 
     return (
