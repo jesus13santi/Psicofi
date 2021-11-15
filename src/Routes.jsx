@@ -8,11 +8,13 @@ import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
 import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
 import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
+import ElectionPage from "./pages/ElectionPage";
 function Routes() {
   return (
     <Switch>
       <Route exact path="/psicologos" component={PsicologosPage}></Route>
       <Route exact path="/register" component={RegisterPage}></Route>
+      <Route exact path="/election" component={ElectionPage}></Route>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
       <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
