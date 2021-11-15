@@ -1,6 +1,6 @@
 export const getArrayCollection = (snapshot) => {
     const collection = [];
-    snapshot.forEach((element) => {
+    snapshot.array.forEach((element) => {
       collection.push({
         id: element.id,
         ...element.data(),

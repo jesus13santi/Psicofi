@@ -12,6 +12,6 @@ const TableroPage = () =>{
     }
     return(<EspecialistaProf />)
     */
-   return (<PacienteTab />)
+   return (<EspecialistaTab />)
 }
 export default TableroPage
