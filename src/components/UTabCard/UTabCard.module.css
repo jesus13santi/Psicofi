@@ -3,7 +3,6 @@
     border: 0.063rem solid #763D80;
     box-sizing: border-box;
     border-radius: 1.875rem;
-    height: 16.25rem;
     padding: 1.25rem;
     margin-right: 1.875rem;
     margin-bottom: 1.25rem;
@@ -45,7 +44,6 @@
         box-sizing: border-box;
         border-radius: 1.875rem;
         /*width: 15.625rem;*/
-        height: 11.563rem;
         padding: 0.625rem;
         margin-right: 1.25rem;
         margin-bottom: 1.875rem;

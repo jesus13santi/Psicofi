@@ -11,9 +11,6 @@ import { UserContext } from "../../context/UserContext";
 
 function Tablero() {
     const {user, setUser}= useContext(UserContext);
-    //const nextAppointments = user.nextAppointments;
-
-
     console.log(user)
     return (
     <>
@@ -28,7 +25,7 @@ function Tablero() {
 
         <div className={styles.citasProximas}>
 
-        <UTabCard />
+        {UTabCard(user.nextAppointments.appKey)}
         {user.role =='paciente' && 
           <Link to ="/" className={styles.link}>
           <button className={styles.addButton}>+</button>
@@ -43,7 +40,7 @@ function Tablero() {
         </h1>
         <h1 className={styles.sortText}>Filtrar</h1>
         </div>
-        <CardStory />
+        {CardStory(user.history.historyKey)}
     </div>
     <Footer />    
     </div>

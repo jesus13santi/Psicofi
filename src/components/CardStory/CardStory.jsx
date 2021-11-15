@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CardStory.module.css";
 import img from "../../img/photo.png";
 import { Link } from "react-router-dom";
-const CardStory = () => {
+function CardStory(params) {
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
@@ -11,9 +11,9 @@ const CardStory = () => {
         </picture>
         <div className={styles.boxInfo}>
           <Link className={styles.link}>
-            <h2 className={styles.title}>Nombre Apellido</h2>
+            <h2 className={styles.title}>{params.name}</h2>
           </Link>
-          <p>DD/HH/AAAA</p>
+          <p>{params.date}</p>
         </div>
       </div>
       <Link to ='/' className={styles.link} >
