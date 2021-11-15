@@ -7,6 +7,7 @@ import Footer from "../../Footer/Footer";
 
 
 const PacienteTab =  () => {
+    
     return (
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, NOMBRE</h1>

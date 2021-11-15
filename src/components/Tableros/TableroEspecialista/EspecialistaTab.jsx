@@ -7,33 +7,35 @@ import Footer from "../../Footer/Footer";
 import { useParams } from "react-router";
 import { db } from '../../../utils/firebaseConfig';
 import { useState, useEffect } from "react";
-import { getArrayCollection, getFirstElementArrayCollection } from "../../../utils/parser";
-
-
+//import { getArrayCollection, getFirstElementArrayCollection } from "../../../utils/parser";
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 
 function EspecialistaTab(){
-  const [activeUser, setActiveUser] = useState(null);
+  const {user , setUser} = useContext(UserContext)
+  console.log('USER',user)
+  //const [activeUser, setActiveUser] = useState(user);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); 
-  const params = useParams();
+  //const params = useParams();
+  //setActiveUser(user)
   
-  
-
+/*
   const fetchUser = async () => {
     
-    const uid = params.uid
-    const usersReference = db.collection('users');
-    console.log("UID:",params.uid)
-    console.log("ID:",uid)
+    //const uid = params.uid
+    //const usersReference = db.collection('users');
+    //console.log("UID:",params.uid)
+    //console.log("ID:",uid)
     try {
       setIsLoading(true);
-      const snapshot = await usersReference.doc(uid).get().then(snap => setActiveUser(snap.data()));
-      console.log('Snapshot: ', snapshot)
+      //const snapshot = await usersReference.doc(uid).get().then(snap => setActiveUser(snap.data()));
+      //console.log('Snapshot: ', snapshot)
       //ojo
-      if (!snapshot.size) return null;
+      //if (!snapshot.size) return null;
 
-      setActiveUser(getFirstElementArrayCollection(snapshot));
+      //setActiveUser(getFirstElementArrayCollection(snapshot));
       console.log('ACTIVE USER',activeUser)
 
       setIsLoading(false);
@@ -44,17 +46,19 @@ function EspecialistaTab(){
     }
   };
     console.log("Bien")
+   */
   useEffect(() => {
-    fetchUser();
-    console.log("Mal")
+    if (!!user){
+      console.log('User: ', user)
+    }
   }, []); 
- 
 
+  
   return (
     <>
-      {!isLoading && activeUser ? (
+      {!isLoading && user ? (
     <div className={styles.container}>
-    <h1 className={styles.title}>Bienvenido, {activeUser.name}</h1>
+    <h1 className={styles.title}>Bienvenido, {user.name}</h1>
     <div className={styles.box}>
         <h1 className={styles.boxTitle}>Citas próximas:</h1>
         <div className={styles.citasProximas}>
