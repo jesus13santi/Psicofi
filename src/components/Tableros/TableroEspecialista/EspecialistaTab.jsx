@@ -14,49 +14,12 @@ import { UserContext } from "../../../context/UserContext";
 
 function EspecialistaTab(){
   const {user , setUser} = useContext(UserContext)
-  console.log('USER',user)
-  //const [activeUser, setActiveUser] = useState(user);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null); 
-  //const params = useParams();
-  //setActiveUser(user)
-  
-/*
-  const fetchUser = async () => {
-    
-    //const uid = params.uid
-    //const usersReference = db.collection('users');
-    //console.log("UID:",params.uid)
-    //console.log("ID:",uid)
-    try {
-      setIsLoading(true);
-      //const snapshot = await usersReference.doc(uid).get().then(snap => setActiveUser(snap.data()));
-      //console.log('Snapshot: ', snapshot)
-      //ojo
-      //if (!snapshot.size) return null;
+ 
 
-      //setActiveUser(getFirstElementArrayCollection(snapshot));
-      console.log('ACTIVE USER',activeUser)
 
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-      setError(err);
-      console.log('ERROR:', err);
-    }
-  };
-    console.log("Bien")
-   */
-  useEffect(() => {
-    if (!!user){
-      console.log('User: ', user)
-    }
-  }, []); 
-
-  
   return (
     <>
-      {!isLoading && user ? (
+      {!! user ? (
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, {user.name}</h1>
     <div className={styles.box}>
@@ -80,8 +43,6 @@ function EspecialistaTab(){
      ) : (
       <h1>Loading...</h1>
     )}
-
-    {error && <h1>{error.message}</h1>}
   </>
   );
 };

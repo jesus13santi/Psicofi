@@ -8,8 +8,13 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 
 const PacienteTab =  () => {
-    
+  const {user, setUser}= useContext(UserContext)
+
+
+  console.log(user)
     return (
+    <>
+    {!!user ?(
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, {!!user?(user.name): (console.log("cargando"))} </h1>
     <div className={styles.box}>
@@ -30,6 +35,10 @@ const PacienteTab =  () => {
     </div>
     <Footer />    
     </div>
+    ) : (
+      <h1>Loading...</h1>
+    )}
+    </>
   );
 };
 export default PacienteTab;
