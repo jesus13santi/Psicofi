@@ -99,9 +99,8 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await auth.signInWithEmailAndPassword(values.email, values.password);
-    const userByEmail = await getUserByEmail(user.email);
-    await history.push(`/deck/${userByEmail.id}`);
-    // console.log("LOGIN_PASSWOROD");
+    history.push("/deck");
+    console.log("LOGIN_PASSWOROD");
   };
 
   return (
