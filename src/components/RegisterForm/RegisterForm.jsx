@@ -99,13 +99,13 @@ function RegisterForm() {
             number: "",
             role: "",
 
-            },
-            response.user.uid,
-            console.log(response.user.uid),
-            history.push("/election")           
-        );
+            },response.user.uid)
+                      
+        console.log(response.user.uid)
+        history.push("/election"); 
         
     };
+    console.log(user)
    
 
     return (

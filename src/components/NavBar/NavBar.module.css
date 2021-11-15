@@ -62,6 +62,52 @@
     border: solid 1px white;
     
 }
+.menuLog {
+    width: 193px;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    margin-right: 100px;
+
+}
+.menuLog li {
+    height: 60px;
+    width: 300px;
+    background-color: #3B1F40;
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+
+}
+
+.menuLog li:hover {
+    background-color: #763D80;
+}
+
+.linkMobile {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* padding: 15px 40px; */
+}
+.buttonMobile {
+    background-color: #3B1F40;
+    width: 100%;
+    height: 100%;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 21px;
+}
+
 @media(max-width: 800px){
     .nav {
         width: 100%;
@@ -90,6 +136,7 @@
     }
 
 }
+
 
 
 
