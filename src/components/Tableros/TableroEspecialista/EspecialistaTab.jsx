@@ -60,6 +60,7 @@ function EspecialistaTab(){
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, {user.name}</h1>
     <div className={styles.box}>
+        
         <h1 className={styles.boxTitle}>Citas próximas:</h1>
         <div className={styles.citasProximas}>
 
