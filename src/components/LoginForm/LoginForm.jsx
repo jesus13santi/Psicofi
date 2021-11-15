@@ -31,8 +31,8 @@ function LoginForm() {
 
   const handleGoogleLogin = async () => {
     await auth.signInWithPopup(googleProvider);
-    const userByEmail= await getUserByEmail(user.email)
-    await history.push(`/deck/${userByEmail.id}`);
+    history.push("/deck");
+    
   };
 
   const handleOnChange = (event) => {
