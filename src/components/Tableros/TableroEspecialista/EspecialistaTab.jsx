@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 
 
+
 const EspecialistaTab =  () => {
+    
     return (
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, NOMBRE</h1>
     <div className={styles.box}>
+        
         <h1 className={styles.boxTitle}>Citas próximas:</h1>
         <div className={styles.citasProximas}>
 
