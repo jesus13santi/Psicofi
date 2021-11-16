@@ -81,32 +81,31 @@ function RegisterForm() {
     const handleSubmit = async (e) => {
 
         if (!validateData()){
-            return
+
+        } else{
+          e.preventDefault();
+
+          const response = await auth.createUserWithEmailAndPassword(
+              values.email, 
+              values.password,
+          );
+
+          await createUser(
+              {
+              name: values.name,
+              email: values.email,
+              password: values.password,
+              number: "",
+              role: "",
+
+              },
+              response.user.uid)
+              console.log(response.user.uid)
+              history.push("/election")     
+                  
         }
-
-        e.preventDefault();
-
-        const response = await auth.createUserWithEmailAndPassword(
-            values.email, 
-            values.password,
-        );
-
-        await createUser(
-            {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            number: "",
-            role: "",
-
-            },
-            response.user.uid,
-            console.log(response.user.uid),
-            history.push("/election")           
-        );
-        
+        e.preventDefault()
     };
-   
 
     return (
       
