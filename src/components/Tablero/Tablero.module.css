@@ -1,0 +1,279 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.125rem;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boxTitle {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    text-align: left;
+    color: #522B59;
+    margin-bottom: 1.875rem;
+}
+
+.title  {
+    margin-bottom: 1.25rem;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 72px;
+    color: #522B59;
+}
+
+.box {
+    width: 90%;
+
+    background: #F7E8F9;
+    border-radius: 4.375rem;
+    padding: 1.875rem 5.625rem;
+
+}
+
+
+.citasProximas {
+    display: flex;
+    align-items: center;
+}
+
+.sort{
+    display: flex;
+    justify-content: space-between;
+}
+.sortText{
+    background: none;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.313rem;
+    line-height: 1.875rem;
+    margin-right: 1.875rem;
+    text-align: center;
+    color: #522B59;
+}
+
+.sortText:hover{
+    cursor: pointer;
+    text-decoration-line: underline;
+
+}
+
+
+
+.addButton {
+    align-content: center;
+    vertical-align: middle;
+    background-color: #763D80;
+    color: white;
+    width: 4.688rem;
+    height: 4.688rem;
+    border-radius: 2.5rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    border: none;
+
+
+}
+
+.addButton:hover {
+    cursor: pointer;
+    background-color: #522B59;
+
+}
+.emptyText{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.313rem;
+    text-align: left;
+    margin-bottom: 1.875rem;
+    color: #522B59;
+}
+
+@media (max-width:48rem){
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.563rem;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    .boxTitle {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1.313rem;
+        text-align: left;
+        color: #522B59;
+        margin-bottom: 0.625rem;
+    }
+    
+    .title  {
+        margin-bottom: 0.938rem;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 2.25rem;
+        color: #522B59;
+    }
+    
+    .box {
+        
+        width: 90%;
+        background: #F7E8F9;
+        border-radius: 2.188rem;
+        padding: 1.25rem 2.5rem;
+    
+    }
+    
+    
+    .citasProximas {
+        display: flex;
+        align-items: center;
+    }
+    
+    .sort{
+        display: flex;
+        justify-content: space-between;
+    }
+    .sortText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.313rem;
+        margin-right: 2.5rem;
+        text-align: center;
+        color: #522B59;
+    }
+    
+    .sortText:hover{
+        cursor: pointer;
+        text-decoration-line: underline;
+    
+    }
+    .addButton {
+        align-content: center;
+        vertical-align: middle;
+        background-color: #763D80;
+        color: white;
+        width: 3.75rem;
+        height: 3.75rem;
+        border-radius: 2.5rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.25rem;
+        border: none;
+    
+    
+    }
+
+    .addButton:hover {
+        cursor: pointer;
+        background-color: #522B59;
+    
+    }
+    .emptyText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.313rem;
+        text-align: left;
+        margin-bottom: 0.625rem;
+        color: #522B59;
+    }
+}
+
+@media (max-width:26.75rem){
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.875rem;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    .boxTitle {
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1rem;
+        text-align: left;
+        color: #522B59;
+        margin-bottom: 0.625rem;
+    }
+    
+    .title  {
+        margin-bottom: 0.938rem;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.313rem;
+        color: #522B59;
+    }
+    
+    .box {
+        
+        width: 90%;
+    
+        background: #F7E8F9;
+        border-radius: 2.188rem;
+        padding: 1.25rem 1.875rem;
+    
+    }
+    
+    
+    .citasProximas {
+        display: flex;
+        align-items: center;
+    }
+    
+    .sort{
+        display: flex;
+        justify-content: space-between;
+    }
+    .sortText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        margin-right: 1.25rem;
+        text-align: center;
+        color: #522B59;
+    }
+    
+    .sortText:hover{
+        cursor: pointer;
+        text-decoration-line: underline;
+    
+    }
+    .addButton {
+        align-content: center;
+        vertical-align: middle;
+        background-color: #763D80;
+        color: white;
+        width: 3.75rem;
+        height: 3.75rem;
+        border-radius: 2.5rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.25rem;
+        border: none;
+    
+    
+    }
+    
+    .addButton:hover {
+        cursor: pointer;
+        background-color: #522B59;
+    
+    }
+    .emptyText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        text-align: left;
+        margin-bottom: 0.625rem;
+        color: #522B59;
+    }
+}
