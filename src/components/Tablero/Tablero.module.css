@@ -86,6 +86,14 @@
     background-color: #522B59;
 
 }
+.emptyText{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.313rem;
+    text-align: left;
+    margin-bottom: 1.875rem;
+    color: #522B59;
+}
 
 @media (max-width:48rem){
     .container{
@@ -162,11 +170,19 @@
     
     
     }
-    
+
     .addButton:hover {
         cursor: pointer;
         background-color: #522B59;
     
+    }
+    .emptyText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.313rem;
+        text-align: left;
+        margin-bottom: 0.625rem;
+        color: #522B59;
     }
 }
 
@@ -221,7 +237,7 @@
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
-        margin-right: 2.5rem;
+        margin-right: 1.25rem;
         text-align: center;
         color: #522B59;
     }
@@ -251,5 +267,13 @@
         cursor: pointer;
         background-color: #522B59;
     
+    }
+    .emptyText{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        text-align: left;
+        margin-bottom: 0.625rem;
+        color: #522B59;
     }
 }
