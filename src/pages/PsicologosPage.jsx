@@ -25,7 +25,7 @@ const PsicologosPage = ({children}) => {
 
   const fetchPsico = async () => {
     const userReference = db.collection("users");
-    const snapshot = await userReference.where("role", "==", "doctor").get();
+    const snapshot = await userReference.where("role", "==", "Psicologo").get();
     
     if (!snapshot.size) return null;
     const listaPsico = getElementArrayCollection(snapshot);

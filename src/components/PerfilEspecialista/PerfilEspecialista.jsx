@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from "./PerfilEspecialista.module.css";
+import { UserContext } from '../../context/UserContext';
 
 const PerfilPaciente = () => {
     const [name, setName] = useState("");    
@@ -8,7 +9,8 @@ const PerfilPaciente = () => {
     const [email, setEmail] = useState("");    
     const [phone, setPhone] = useState("");    
     const [home, setHome] = useState("");    
-    const [biography, setBiography] = useState("");    
+    const [biography, setBiography] = useState("");
+    const {user, setUser} = useContext(UserContext)   
 
     useEffect (() => {
         getInfo()
@@ -32,7 +34,7 @@ const PerfilPaciente = () => {
             <form>
                 <div>
                     <div className={styles.etiqueta}><label for="NombreCompleto">Nombre Completo:</label></div>
-                    <div className={styles.campo}> <label id="NombreCompleto">{name}</label></div>
+                    <div className={styles.campo}> <label id="NombreCompleto">{user.name}</label></div>
                 </div>
                 <div>
                     <div className={styles.etiqueta}><label for="FechaNacimiento">Fecha de nacimiento:</label></div>
@@ -41,18 +43,18 @@ const PerfilPaciente = () => {
                 <div>
                     <div className={`${styles.etiqueta} ${styles.lineagruesa}`}><label for="FotoPerfil">Foto de perfil:</label></div>
                     <div className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}>
-                        <img src={imagenurl} className={styles.fotoperfil}></img>
+                        <img src={user.photo} className={styles.fotoperfil}></img>
                         <a href ="#" className={styles.boton} >Cambiar</a>
                         <a href ="#" className={`${styles.boton} ${styles.eliminar}`} >Eliminar</a>
                     </div>
                 </div>
                 <div>
                     <div className={styles.etiqueta}><label for="Correo">Correo electrónico:</label></div>
-                    <div className={styles.campo}><input className={styles.entrada} type="email" id="correo" value = {email}></input></div>
+                    <div className={styles.campo}><input className={styles.entrada} type="email" id="correo" value = {user.email}></input></div>
                 </div>
                 <div>
                     <div className={styles.etiqueta}><label for="telefono">Teléfono:</label></div>
-                    <div className={styles.campo}><input type="text" id="telefono" className={styles.entrada}className={styles.entrada} value ={phone}></input></div>
+                    <div className={styles.campo}><input type="text" id="telefono" className={styles.entrada}className={styles.entrada} value ={user.number}></input></div>
                 </div>
                 <div>
                     <div className={styles.etiqueta}><label for="residencia">Lugar de residencia:</label></div>
@@ -60,7 +62,7 @@ const PerfilPaciente = () => {
                 </div>
                 <div>
                     <div className={`${styles.etiqueta} ${styles.lineagruesa}`}><label for="biografia">Biografía:</label></div>
-                    <div className={`${styles.campo} ${styles.lineagruesa}`}><textarea className={styles.entrada} id="biografia">{biography}</textarea></div>
+                    <div className={`${styles.campo} ${styles.lineagruesa}`}><textarea className={styles.entrada} id="biografia">{user.description}</textarea></div>
                 </div>
                 <div className= {styles.subtitulo}>
                     <label>Especialidades</label>
