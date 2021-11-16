@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { UserContext } from "../../context/UserContext"
 import React, { useState, useEffect } from 'react';
 import styles from "./PerfilPaciente.module.css";
 import { db } from '../../utils/firebaseConfig';
@@ -10,16 +12,18 @@ const PerfilPaciente = () => {
     const [phone, setPhone] = useState("");    
     const [home, setHome] = useState("");    
     const [biography, setBiography] = useState("");    
-
-    let id = 'Vgp4rqia8sW1W1VLzJHU'
+    const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+    let id ='';
+    
     const haddleOnChange =(e)=>{
         setBirthday(e.target.value);
         
     }
     useEffect(() => {
-        db.collection('users').doc(id).get().then(user => {
+     
+        db.collection('users').doc(user.id).get().then(user => {
             let datos = user.data()
-            console.log(datos.description)
+           
                     setName(datos.name+ " " + datos.lastName )
                     setBiography(datos.description)
                     // setBirthday("2014-02-03");
@@ -33,10 +37,23 @@ const PerfilPaciente = () => {
             })
         })
 
+        const handleOnClick = (event) => {
+          console.log('####################################')
+          console.log(biography)
+          console.log(user.id)
+          let res = db.collection("users").doc(user.id).update(
+            {
+              'name': name,                     
+              'description': biography
+            }
+          )
+          console.log('************************************')
+          console.log(res);
+        };
     return (
       <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
         <div className={styles.titulo}>Mi perfil</div>
-        <form>
+        <form submit = "false">
           <div>
             <div className={styles.etiqueta}>
               <label for="NombreCompleto">Nombre Completo:</label>
@@ -195,8 +212,9 @@ const PerfilPaciente = () => {
           </div>
           <div className={styles.submit}>
             <input
-              type="submit"
+              type="button"
               className={styles.boton}
+              onClick = {handleOnClick}
               value="Guardar cambios"
             ></input>
           </div>

@@ -132,7 +132,7 @@ const NavBar = () => {
       {user && isOpenLog ? (
         <ul className={styles.menuLog}>
           <li onClick={handdleMenu1}>
-            <Link to="/" className={styles.linkMobile}>
+            <Link to="/perfil" className={styles.linkMobile}>
               Mi Pefil
             </Link>
           </li>
