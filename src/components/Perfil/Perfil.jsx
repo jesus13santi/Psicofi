@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { Redirect } from "react-router";
 import { useEffect } from "react/cjs/react.development"
 import { UserContext } from "../../context/UserContext"
+import PerfilEspecialista from "../PerfilEspecialista/PerfilEspecialista";
+import PerfilPaciente from "../PerfilPaciente/PerfilPaciente";
 
 const Perfil = () => {
 
@@ -11,9 +13,9 @@ const Perfil = () => {
     })
     
     if(user != null && user.role == 'Psicologo')
-        return (<Redirect to = "/perfilEspecialista"></Redirect>)
+        return (<PerfilEspecialista />)
     else if(user != null && user.role == 'Paciente')
-    return (<Redirect to = "/perfilPaciente"></Redirect>)
+    return (<PerfilPaciente />)
     else
         return (
             <div>Hola mundo</div>

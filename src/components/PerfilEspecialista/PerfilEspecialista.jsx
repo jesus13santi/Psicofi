@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styles from "./PerfilEspecialista.module.css";
 import { UserContext } from '../../context/UserContext';
 
-const PerfilPaciente = () => {
+const PerfilEspecialista = () => {
     const [name, setName] = useState("");    
     const [birthday, setBirthday] = useState("");    
     const [imagenurl, setImagenurl] = useState("");    
@@ -89,4 +89,4 @@ const PerfilPaciente = () => {
     );
 }
 
-export default PerfilPaciente
+export default PerfilEspecialista
