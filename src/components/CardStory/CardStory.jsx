@@ -11,7 +11,7 @@ function CardStory({name, date}) {
           <img src={img} alt="" />
         </picture>
         <div className={styles.boxInfo}>
-          <Link className={styles.link}>
+          <Link to ="/" className={styles.link}>
             <h2 className={styles.title}>{name}</h2>
           </Link>
           <p>{date}</p>

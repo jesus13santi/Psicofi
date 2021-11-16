@@ -36,7 +36,7 @@ function Tablero() {
         />
         ))}
 
-        {user.role =='paciente' && 
+        {user.role =='Paciente' && 
           <Link to ="/" className={styles.link}>
           <button className={styles.addButton}>+</button>
           </Link>
@@ -45,11 +45,12 @@ function Tablero() {
         </div>
         <div className={styles.sort}>
         <h1 className={styles.boxTitle}>
-          {user.role =='paciente'? 'Historial de consultas:' : 'Historial de pacientes'}
+          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes'}
           
         </h1>
-
-        <button className={styles.sortText}>Filtrar</button>
+        <Link to ='/'>
+        <button className={styles.sortText}>Ver más</button>
+        </Link>
         </div>
         {user.history.map((history) => (
         <CardStory
