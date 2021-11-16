@@ -1,7 +1,17 @@
 import React from 'react'
-import Tablero from '../components/Tablero/Tablero'
+import EspecialistaTab from '../components/Tableros/TableroEspecialista/EspecialistaTab'
+import PacienteTab from '../components/Tableros/TableroPaciente/PacienteTab'
+
 
 const TableroPage = () =>{
-   return (<Tablero />)
+    /*
+    if (activeUser.role == "especialista"){
+        return <EspecialistaTab/>
+    }else if (activeUser.role == "paciente"){
+        return<PacienteTab />>
+    }
+    return(<EspecialistaProf />)
+    */
+   return (<PacienteTab />)
 }
 export default TableroPage

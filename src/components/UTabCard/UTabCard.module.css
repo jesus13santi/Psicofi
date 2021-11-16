@@ -3,6 +3,7 @@
     border: 0.063rem solid #763D80;
     box-sizing: border-box;
     border-radius: 1.875rem;
+    height: 16.25rem;
     padding: 1.25rem;
     margin-right: 1.875rem;
     margin-bottom: 1.25rem;
@@ -20,7 +21,7 @@
 
 .profileText {
     font-style: normal;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 1.5rem;
     color: #522B59;
 }
@@ -35,43 +36,7 @@
 
 /*Media Query*/
 /*Tablet*/
-@media(max-width:48rem){
-    .container{
-        background: #FFFFFF;
-        border: 0.063rem solid #763D80;
-        box-sizing: border-box;
-        border-radius: 1.875rem;
-        padding: 1.25rem;
-        margin-right: 1.25rem;
-        margin-bottom: 1.875rem;
-    }
-    
-    .profile{
-        display: flex;
-    }
-    
-    .profile img{
-        width: 3.75rem;
-        height: 3.75rem;
-        margin-right: 0.625rem;
-    }
-    
-    .profileText {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.313rem;
-    
-        color: #522B59;
-    }
-    
-    .appointmentInfo{
-        margin-top: 1.25rem;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1.313rem;
-        color: #522B59;
-    }
-}
+
 /*Mobile*/
 @media(max-width:26.75rem){
     .container{
@@ -80,6 +45,7 @@
         box-sizing: border-box;
         border-radius: 1.875rem;
         /*width: 15.625rem;*/
+        height: 11.563rem;
         padding: 0.625rem;
         margin-right: 1.25rem;
         margin-bottom: 1.875rem;
@@ -97,7 +63,7 @@
     
     .profileText {
         font-style: normal;
-        font-weight: 600;
+        font-weight: bold;
         font-size: 1rem;
     
         color: #522B59;
