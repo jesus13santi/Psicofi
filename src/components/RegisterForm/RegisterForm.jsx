@@ -29,14 +29,14 @@ function RegisterForm() {
 
     const handleGoogleLogin = async () =>{
         await auth.signInWithPopup(googleProvider);
-        /* console.log(user) */
+        console.log(user)
         await history.push("/election");
         
     };
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        /* console.log({inputName, value }); */
+        console.log({inputName, value });
         setValues({...values,[inputName]: value})
 
     };
@@ -94,33 +94,12 @@ function RegisterForm() {
 
               },
               response.user.uid)
-              /* console.log(response.user.uid), */
-              history.push("/election")           
+              console.log(response.user.uid)
+              history.push("/election")     
+                  
         }
-
-        e.preventDefault();
-
-        const response = await auth.createUserWithEmailAndPassword(
-            values.email, 
-            values.password,
-        );
-
-        await createUser(
-            {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            number: "",
-            role: "",
-
-            },response.user.uid)
-                      
-        console.log(response.user.uid)
-        history.push("/election"); 
-        
+        e.preventDefault()
     };
-    console.log(user)
-   
 
     return (
       

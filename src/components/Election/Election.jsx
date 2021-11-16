@@ -28,7 +28,7 @@ function Election(){
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        /* console.log({inputName, value }); */
+        console.log({inputName, value });
         setValues({...values,[inputName]: value})
 
     };
@@ -36,7 +36,7 @@ function Election(){
     const cambioRole = async(a) =>{
 
         const d = await getUserByEmail(user.email)
-        /* console.log(d.id) */
+        console.log(d.id)
 
         setRole(a.target.value)
         const usersReference = db.collection("users");
@@ -44,7 +44,7 @@ function Election(){
             role:(a.target.value)
         });
         const updateUser = await getUserByEmail(user.email);
-        /* console.log({updateUser}) */
+        console.log({updateUser})
         setUser(updateUser);
     }
 
@@ -63,7 +63,7 @@ function Election(){
                 number:(values.number)
             });
             const updateUser = await getUserByEmail(user.email);
-            /* console.log({updateUser}) */
+            console.log({updateUser})
             setUser(updateUser);
            
             if(user.role == "Psicologo"){
