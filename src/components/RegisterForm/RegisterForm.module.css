@@ -15,7 +15,7 @@
 
 .container{    
     width: 900px;
-    height: 750px;
+    height: 850px;
     top: 126px;
     margin-top: 50px;
 
@@ -145,3 +145,7 @@
     color: white;
 }
 
+.alert{
+    font-size: 18px;
+    color: red;
+}

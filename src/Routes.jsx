@@ -9,6 +9,8 @@ import TableroPage from './pages/TableroPage';
 import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
 import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 import ElectionPage from "./pages/ElectionPage";
+import UploadPage from "./pages/UploadPage"
+
 function Routes() {
   return (
     <Switch>
@@ -19,7 +21,9 @@ function Routes() {
       <Route exact path="/precio" component={PreciosPage}></Route>
       <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
       <Route exact path="/perfilEspecialista" component={PerfilEspecialista}></Route>
+      
       <Route exact path="/deck" component={TableroPage}></Route>
+      <Route exact path="/upload" component={UploadPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
