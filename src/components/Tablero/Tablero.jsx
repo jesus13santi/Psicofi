@@ -25,7 +25,17 @@ function Tablero() {
 
         <div className={styles.citasProximas}>
 
-        {UTabCard(user.nextAppointments.appKey)}
+        {user.nextAppointments.map((app) => (
+        <UTabCard
+          appName={app.name}
+          date={app.date}
+          startTime={app.startTime}
+          endTime={app.endTime}
+          subject={app.subject}
+          
+        />
+        ))}
+
         {user.role =='paciente' && 
           <Link to ="/" className={styles.link}>
           <button className={styles.addButton}>+</button>
@@ -38,9 +48,15 @@ function Tablero() {
           {user.role =='paciente'? 'Historial de consultas:' : 'Historial de pacientes'}
           
         </h1>
-        <h1 className={styles.sortText}>Filtrar</h1>
+
+        <button className={styles.sortText}>Filtrar</button>
         </div>
-        {CardStory(user.history.historyKey)}
+        {user.history.map((history) => (
+        <CardStory
+          name={history.name}
+          date={history.date}
+        />
+      ))}
     </div>
     <Footer />    
     </div>

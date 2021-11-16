@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./CardStory.module.css";
 import img from "../../img/photo.png";
 import { Link } from "react-router-dom";
-function CardStory(params) {
+function CardStory({name, date}) {
+
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
@@ -11,9 +12,9 @@ function CardStory(params) {
         </picture>
         <div className={styles.boxInfo}>
           <Link className={styles.link}>
-            <h2 className={styles.title}>{params.name}</h2>
+            <h2 className={styles.title}>{name}</h2>
           </Link>
-          <p>{params.date}</p>
+          <p>{date}</p>
         </div>
       </div>
       <Link to ='/' className={styles.link} >
