@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
-import { Link } from "react-router-dom";
+
 
 
 function RegisterForm() {
@@ -29,14 +29,14 @@ function RegisterForm() {
 
     const handleGoogleLogin = async () =>{
         await auth.signInWithPopup(googleProvider);
-        /* console.log(user) */
+        console.log(user)
         await history.push("/election");
         
     };
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        /* console.log({inputName, value }); */
+        console.log({inputName, value });
         setValues({...values,[inputName]: value})
 
     };
@@ -49,60 +49,63 @@ function RegisterForm() {
         let isValid = true
 
         if(size(values.name) < 3) {
-            setErrorName("Debe ingresar un nombre de al menos tres carácteres")
+            setErrorName("Debes ingresar un nombre de al menos tres carácteres.")
             isValid = false
         }
 
         if(!validateEmail(values.email)) {
-            setErrorEmail("Debe de ingresar un email válido")
+            setErrorEmail("Debes de ingresar un email válido.")
             isValid = false
         }
 
         if(size(values.password) < 8) {
-            setErrorPassword("Debe ingresar una contraseña de al menos ocho carácteres")
+            setErrorPassword("Debes ingresar una contraseña de al menos ocho carácteres.")
+            isValid = false
+        }
+
+        if(size(values.passwordB) < 8) {
+            setErrorPasswordB("Debes ingresar una confirmación de contraseña de al menos ocho carácteres.")
             isValid = false
         }
 
         if(values.password !== values.passwordB) {
-            setErrorPasswordB("Asegurese que la contraseñas coincidan")
+            setErrorPassword("Asegure que la contraseñas coincidan.")
+            setErrorPasswordB("Asegure que la contraseñas coincidan.")
             isValid = false
+            console.log("no ta iguales")
         }
 
         return isValid
     }
-
     
     const handleSubmit = async (e) => {
-        e.preventDefault();
 
         if (!validateData()){
-
-        } else{
-          // e.preventDefault();
-
-          const response = await auth.createUserWithEmailAndPassword(
-              values.email, 
-              values.password,
-          );
-
-          await createUser(
-              {
-              name: values.name,
-              email: values.email,
-              password: values.password,
-              number: "",
-              role: "",
-
-              },
-              response.user.uid)
-              history.push("/election")           
+            return
         }
 
-        
- 
+        e.preventDefault();
+
+        const response = await auth.createUserWithEmailAndPassword(
+            values.email, 
+            values.password,
+        );
+
+        await createUser(
+            {
+            name: values.name,
+            email: values.email,
+            password: values.password,
+            number: "",
+            role: "",
+
+            },
+            response.user.uid,
+            console.log(response.user.uid),
+            history.push("/election")           
+        );
         
     };
-    // console.log(user)
    
 
     return (
@@ -138,8 +141,6 @@ function RegisterForm() {
                   value={values.name}
                   onChange={handleOnChange}
                 />  
-                
-                <h1 className={styles.alert}> {errorName} </h1>
 
               <input className={styles.formRegis}
                   name="email"
@@ -148,9 +149,8 @@ function RegisterForm() {
                   placeholder="Enter your email"
                   value={values.email}
                   onChange={handleOnChange}
+                  errorMessage={errorEmail}
                 />
-
-                <h2 className={styles.alert}> {errorEmail} </h2>
 
                 <input className={styles.formRegis}
                   name="password"
@@ -159,9 +159,8 @@ function RegisterForm() {
                   placeholder="Enter your password"
                   value={values.password}
                   onChange={handleOnChange}
+                  errorMessage={errorPassword}
                 />
-
-                <h3 className={styles.alert}> {errorPassword} </h3>
 
                 <input className={styles.formRegis}
                   name="passwordB"
@@ -170,17 +169,14 @@ function RegisterForm() {
                   placeholder="Confirm your password"
                   value={values.passwordB}
                   onChange={handleOnChange}
+                  errorMessage={errorPasswordB}
                 />
-
-                <h4 className={styles.alert}> {errorPasswordB} </h4>
 
             </div>
            
             <div className={styles.submit}>
-              <button className={styles.continue} type="submit" onClick={handleSubmit} > Continuar </button>
-              <p id={styles.loginNext} className={styles.nextText}> 
-              ¿Ya tiene una cuenta? <Link to="/login"><u>Iniciar sesion</u></Link>
-              </p>
+              <button className={styles.continue} type="submit" onClick={handleSubmit}> Continuar </button>
+              <p id={styles.loginNext} className={styles.nextText}> ¿Ya tiene una cuenta? <u>Iniciar sesion</u></p>
             </div>           
           </form> 
         </div>
