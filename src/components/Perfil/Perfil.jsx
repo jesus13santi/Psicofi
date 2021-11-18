@@ -8,17 +8,25 @@ import PerfilPaciente from "../PerfilPaciente/PerfilPaciente";
 const Perfil = () => {
 
     const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+    /*
     useEffect(() => {        
         console.log(user)
-    })
-    
-    if(user != null && user.role == 'Psicologo')
-        return <PerfilEspecialista />
-    else if(user != null && user.role == 'Paciente')
-    return <PerfilPaciente />
-    else
-        return (
-            <div>Hola mundo</div>
-        )
-}
+    })*/
+    return (
+        <>
+        {!!user ?(
+        <div>
+        {user.role == 'Psicologo' && (
+            <PerfilEspecialista />)}
+
+        {user.role == 'Paciente' && (
+            <PerfilPaciente />)}
+        </div>
+        ):(
+            <div><h1>Loading...</h1></div>
+        )}
+
+            </>
+    );
+};
 export default Perfil
