@@ -13,9 +13,9 @@ const Perfil = () => {
     })
     
     if(user != null && user.role == 'Psicologo')
-        return (<PerfilEspecialista />)
+        return <PerfilEspecialista />
     else if(user != null && user.role == 'Paciente')
-    return (<PerfilPaciente />)
+    return <PerfilPaciente />
     else
         return (
             <div>Hola mundo</div>
