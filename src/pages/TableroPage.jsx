@@ -1,6 +1,5 @@
 import React from 'react'
-import EspecialistaTab from '../components/Tableros/TableroEspecialista/EspecialistaTab'
-import PacienteTab from '../components/Tableros/TableroPaciente/PacienteTab'
+import Tablero from '../components/Tablero/Tablero'
 
 
 const TableroPage = () =>{
@@ -12,6 +11,6 @@ const TableroPage = () =>{
     }
     return(<EspecialistaProf />)
     */
-   return (<PacienteTab />)
+   return (<Tablero />)
 }
 export default TableroPage

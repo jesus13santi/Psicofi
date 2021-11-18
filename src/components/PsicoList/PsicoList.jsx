@@ -14,9 +14,9 @@ const PsicoList = ({ psicologos }) => {
   const searchingTerm = (value) => {
     return function (x) {
       return (
-        x.name.toLowerCase().includes(value) ||
-        x.lastName.toLowerCase().includes(value) ||
-        x.pais.toLowerCase().includes(value)
+        x.name.toLowerCase().includes(value)
+        // x.lastName.toLowerCase().includes(value) ||
+        // x.pais.toLowerCase().includes(value)
       );
     };
   };
