@@ -73,11 +73,12 @@ function RegisterForm() {
 
     
     const handleSubmit = async (e) => {
+        e.preventDefault();
 
         if (!validateData()){
 
         } else{
-          e.preventDefault();
+          // e.preventDefault();
 
           const response = await auth.createUserWithEmailAndPassword(
               values.email, 
