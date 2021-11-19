@@ -151,7 +151,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/precio" className={styles.linkMobile}>
+            <Link to="/history" className={styles.linkMobile}>
               Historial de Consultas
             </Link>
           </li>
@@ -180,7 +180,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/precio" className={styles.linkMobile}>
+            <Link to="/history" className={styles.linkMobile}>
               Historial de Consultas
             </Link>
           </li>
