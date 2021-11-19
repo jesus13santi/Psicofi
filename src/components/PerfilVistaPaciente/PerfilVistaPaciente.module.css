@@ -15,7 +15,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 39px 62px 10px 35px;
+    padding: 39px 62px 63px 35px;
     
 }
 .firstBox{
@@ -100,4 +100,9 @@
 .button:hover{
     background-color: #522B59;
     cursor: pointer;
+}
+.textAdvert{
+    font-size: 16px;
+    margin-top: 28px;
+    
 }

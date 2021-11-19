@@ -1,21 +1,19 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import { auth, googleProvider } from "../../utils/firebaseConfig";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LoginForm.module.css";
-import { validateEmail } from "../../utils/helpers.js";
-import { size } from "lodash";
+
+
 
 function LoginForm() {
   const history = useHistory();
-  const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
-  const [errorName, setErrorName] = useState("");
-  const [errorLastName, setErrorLastName] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorPasswordB, setErrorPasswordB] = useState("");
-  const [errorNumber, setErrorNumber] = useState("");
+  
+  const [error, setError] = useState("");
+  
+  
 
   const [role, setRole] = useState("");
   const cambioRole = (a) => {
@@ -30,8 +28,16 @@ function LoginForm() {
   });
 
   const handleGoogleLogin = async () => {
-    await auth.signInWithPopup(googleProvider);
-    history.push("/deck");
+    try{
+      await auth.signInWithPopup(googleProvider);
+
+    }catch(e){
+      setError("Tiempo de espera agotado, vuelva a intentarlo.")
+    }
+    
+    // history.push("/deck");
+    
+    
     
   };
 
@@ -41,67 +47,21 @@ function LoginForm() {
     setValues({ ...values, [inputName]: value });
   };
 
-  const validateData = () => {
-    setErrorName("");
-    setErrorLastName("");
-    setErrorPasswordB("");
-    setErrorEmail("");
-    setErrorPassword("");
-    setErrorNumber("");
-    let isValid = true;
-
-    if (size(values.name) < 3) {
-      setErrorName("Debes ingresar un nombre de al menos tres carácteres.");
-      isValid = false;
-    }
-
-    if (size(values.lastname) < 3) {
-      setErrorLastName(
-        "Debes ingresar una contraseña de al menos tres carácteres."
-      );
-      isValid = false;
-    }
-
-    if (!validateEmail(values.email)) {
-      setErrorEmail("Debes de ingresar un email válido.");
-      isValid = false;
-    }
-
-    if (size(values.password) < 8) {
-      setErrorPassword(
-        "Debes ingresar una contraseña de al menos ocho carácteres."
-      );
-      isValid = false;
-    }
-
-    if (size(values.passwordB) < 8) {
-      setErrorPasswordB(
-        "Debes ingresar una confirmación de contraseña de al menos ocho carácteres."
-      );
-      isValid = false;
-    }
-
-    if (values.password !== values.passwordB) {
-      setErrorPassword("Asegure que la contraseñas coincidan.");
-      setErrorPasswordB("Asegure que la contraseñas coincidan.");
-      isValid = false;
-      console.log("no ta iguales");
-    }
-
-    if (size(values.number) < 1) {
-      setErrorName("Ingrese un numero de telefono valido");
-      isValid = false;
-    }
-
-    return isValid;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await auth.signInWithEmailAndPassword(values.email, values.password);
-    history.push("/deck");
-    console.log("LOGIN_PASSWOROD");
+    try{
+      await auth.signInWithEmailAndPassword(values.email, values.password);
+      history.push("/deck");
+      console.log("LOGIN_PASSWOROD");
+
+    }catch(e){
+      console.log(e.code)
+      setError("Usuario o Contraseña invalido, por favor verifique e intente de nuevo.")
+    }
+    
   };
+  
 
   return (
     <section className={styles.registerSecc}>
@@ -138,7 +98,6 @@ function LoginForm() {
         </div>
 
         <form onSubmit={handleSubmit}>
-
           <div className={styles.input2}>
             <input
               className={styles.formRegis}
@@ -148,7 +107,6 @@ function LoginForm() {
               placeholder="Enter your email"
               value={values.email}
               onChange={handleOnChange}
-              errorMessage={errorEmail}
             />
 
             <input
@@ -159,13 +117,13 @@ function LoginForm() {
               placeholder="Enter your password"
               value={values.password}
               onChange={handleOnChange}
-              errorMessage={errorPassword}
             />
-
-            
+            {!!error ? (
+              <div className={styles.error}>{error}</div>
+            ) : (
+              <span></span>
+            )}
           </div>
-
-          
 
           <div className={styles.submit}>
             <button
@@ -180,6 +138,10 @@ function LoginForm() {
               {" "}
               ¿No tienes una cuenta? <Link to="/register">Registrate</Link>
             </p>
+
+            {!!user && <>{user.role === "" ?(
+              history.push("/election")
+            ):(history.push("/deck"))}</>}
           </div>
         </form>
       </div>

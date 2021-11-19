@@ -48,10 +48,19 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo}) => {
               <p>Autoestima</p>
             </div>
           </div>
-          <button className={styles.button} onClick={handdleAppointment}
-          type="button">
+          <button
+            className={styles.button}
+            onClick={handdleAppointment}
+            type="button"
+          >
             Solicitar consulta
           </button>
+          <p className={styles.textAdvert}>
+            Cada cita posee una duración de una (1) hora, y tiene un valor de
+            $29.99 USD. Debe agendar su cita con al menos 24 horas de
+            antelación, en un bloque de horario que el psicólogo tenga a
+            disposición.
+          </p>
         </div>
       </div>
     );
