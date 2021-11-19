@@ -7,6 +7,9 @@ import { useState, useContext } from "react";
 import menuVector from "../../img/menuVector.png";
 import { UserContext } from "../../context/UserContext";
 import { auth } from "../../utils/firebaseConfig";
+import flechaArriba from "../../img/flecha-arriba.png"
+import flechaAbajo from "../../img/flecha-abajo.png";
+
 // import { auth } from "firebase";
 const NavBar = () => {
   const {user, setUser} = useContext(UserContext)
@@ -46,13 +49,12 @@ const NavBar = () => {
         <img src={Logo} alt="" className={styles.img} onClick={handdleHome} />
 
         {!!user ? (
-          <div className={styles.rightSize}>
-            <img
-              src={menuVector}
-              alt=""
-              className={styles.menuVecto}
-              onClick={handdleMenu1}
-            />
+          <div className={styles.rightSize} onClick={handdleMenu1}>
+            <picture className={styles.boxImg}>
+              <img src={user.photo} alt="" className={styles.menuVecto} />
+            </picture>
+            <p>{user.name}</p>
+            {isOpenLog?(<img src={flechaAbajo} alt="" /> ):(<img src={flechaArriba} alt="" /> )}
           </div>
         ) : (
           <>
@@ -133,63 +135,63 @@ const NavBar = () => {
       {/* Usuario Logueado */}
       {user && isOpenLog ? (
         <ul className={styles.menuLog}>
-          {user.role == "Paciente"&&(
+          {user.role == "Paciente" && (
             <>
-          <li onClick={handdleMenu1}>
-            <Link to="/perfil" className={styles.linkMobile}>
-              Mi Pefil
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
-              Buscar Especialistas
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
-              Chats
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/precio" className={styles.linkMobile}>
-              Historial de Consultas
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <button className={styles.buttonMobile} onClick={handdleLogOut}>
-              Cerrar Sesión
-            </button>
-          </li>
-          </>
+              <li onClick={handdleMenu1}>
+                <Link to="/perfil" className={styles.linkMobile}>
+                  Mi Pefil
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/psicologos" className={styles.linkMobile}>
+                  Buscar Especialistas
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/psicologos" className={styles.linkMobile}>
+                  Chats
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/precio" className={styles.linkMobile}>
+                  Historial de Consultas
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <button className={styles.buttonMobile} onClick={handdleLogOut}>
+                  Cerrar Sesión
+                </button>
+              </li>
+            </>
           )}
-        {user.role == "Psicologo"&&(
+          {user.role == "Psicologo" && (
             <>
-          <li onClick={handdleMenu1}>
-            <Link to="/perfil" className={styles.linkMobile}>
-              Mi Pefil
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
-              Citas Agendadas
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
-              Chats
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <Link to="/precio" className={styles.linkMobile}>
-              Historial de Consultas
-            </Link>
-          </li>
-          <li onClick={handdleMenu1}>
-            <button className={styles.buttonMobile} onClick={handdleLogOut}>
-              Cerrar Sesión
-            </button>
-          </li>
-          </>
+              <li onClick={handdleMenu1}>
+                <Link to="/perfil" className={styles.linkMobile}>
+                  Mi Pefil
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/psicologos" className={styles.linkMobile}>
+                  Citas Agendadas
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/psicologos" className={styles.linkMobile}>
+                  Chats
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <Link to="/precio" className={styles.linkMobile}>
+                  Historial de Pacientes
+                </Link>
+              </li>
+              <li onClick={handdleMenu1}>
+                <button className={styles.buttonMobile} onClick={handdleLogOut}>
+                  Cerrar Sesión
+                </button>
+              </li>
+            </>
           )}
         </ul>
       ) : (
