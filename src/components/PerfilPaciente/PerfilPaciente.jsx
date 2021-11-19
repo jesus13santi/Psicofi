@@ -24,7 +24,7 @@ const PerfilPaciente = () => {
         db.collection('users').doc(user.id).get().then(user => {
             let datos = user.data()
            
-                    setName(datos.name+ " " + datos.lastName )
+                    setName(datos.name)
                     setBiography(datos.description)
                     // setBirthday("2014-02-03");
                     setImagenurl(datos.photo)
@@ -60,7 +60,7 @@ const PerfilPaciente = () => {
             </div>
             <div className={styles.campo}>
               {" "}
-              <label id="NombreCompleto">{name}</label>
+              <label id="NombreCompleto">{user.name}</label>
             </div>
           </div>
           <div>
@@ -84,7 +84,7 @@ const PerfilPaciente = () => {
             <div
               className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
             >
-              <img src={imagenurl} className={styles.fotoperfil}></img>
+              <img src={user.photo} className={styles.fotoperfil}></img>
               <a href="#" className={styles.boton}>
                 Cambiar
               </a>
@@ -102,7 +102,7 @@ const PerfilPaciente = () => {
                 className={styles.entrada}
                 type="email"
                 id="correo"
-                value={email}
+                value={user.email}
               ></input>
             </div>
           </div>
@@ -115,7 +115,7 @@ const PerfilPaciente = () => {
                 className={styles.entrada}
                 type="text"
                 id="telefono"
-                value={phone}
+                value={user.number}
               ></input>
             </div>
           </div>
@@ -128,7 +128,7 @@ const PerfilPaciente = () => {
                 type="text"
                 className={styles.entrada}
                 id="residencia"
-                value={home}
+                value={user.pais}
               ></input>
             </div>
           </div>
@@ -140,7 +140,7 @@ const PerfilPaciente = () => {
               <textarea
                 className={styles.entrada}
                 id="biografia"
-                value={biography}
+                value={user.description}
               />
             </div>
           </div>

@@ -29,10 +29,12 @@ const NavBar = () => {
     console.log(isOpen)
   };
   const handdleLogOut = async () => {
-      handdleMenu1()
+    history.push("/")  
+    handdleMenu1()
       await auth.signOut();
-      setUser(null);
-      await history.push("/")
+    
+    setUser(null);
+      
       
   };
 
@@ -137,7 +139,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/" className={styles.linkMobile}>
+            <Link to="/psicologos" className={styles.linkMobile}>
               Buscar Especialistas
             </Link>
           </li>

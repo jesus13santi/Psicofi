@@ -3,7 +3,7 @@ import styles from "./UTabCard.module.css";
 import img from "../../img/photo.png";
 
 
-const UTabCard = () => {
+function UTabCard({appName, startTime, date, subject, endTime}) {
   return (
     <div className={styles.container}>
 
@@ -11,16 +11,15 @@ const UTabCard = () => {
 
       <img src={img} alt="" />
       <div className={styles.profileText}>
-        <p>Asunto</p>
-        <p>Nombre Apellido</p>
+        <p>{subject}</p>
+        <p>{appName}</p>
       </div> 
       
     </div>
     
     <div className={styles.appointmentInfo}>
-      <p>DD/MM/AAAA</p> 
-      <p>HH:MM - HH:MM</p> 
-      <p>Sesión #N</p> 
+      <p>{date}</p> 
+      <p>{startTime} - {endTime}</p> 
     </div>  
 
   </div>

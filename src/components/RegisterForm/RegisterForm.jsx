@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
-
+import { Link } from "react-router-dom";
 
 
 function RegisterForm() {
@@ -49,64 +49,62 @@ function RegisterForm() {
         let isValid = true
 
         if(size(values.name) < 3) {
-            setErrorName("Debes ingresar un nombre de al menos tres carácteres.")
+            setErrorName("Debe ingresar un nombre de al menos tres carácteres")
             isValid = false
         }
 
         if(!validateEmail(values.email)) {
-            setErrorEmail("Debes de ingresar un email válido.")
+            setErrorEmail("Debe de ingresar un email válido")
             isValid = false
         }
 
         if(size(values.password) < 8) {
-            setErrorPassword("Debes ingresar una contraseña de al menos ocho carácteres.")
-            isValid = false
-        }
-
-        if(size(values.passwordB) < 8) {
-            setErrorPasswordB("Debes ingresar una confirmación de contraseña de al menos ocho carácteres.")
+            setErrorPassword("Debe ingresar una contraseña de al menos ocho carácteres")
             isValid = false
         }
 
         if(values.password !== values.passwordB) {
-            setErrorPassword("Asegure que la contraseñas coincidan.")
-            setErrorPasswordB("Asegure que la contraseñas coincidan.")
+            setErrorPasswordB("Asegurese que la contraseñas coincidan")
             isValid = false
-            console.log("no ta iguales")
         }
 
         return isValid
     }
+
     
     const handleSubmit = async (e) => {
 
         if (!validateData()){
-            return
+
+        } else{
+          e.preventDefault();
+
+          const response = await auth.createUserWithEmailAndPassword(
+              values.email, 
+              values.password,
+          );
+
+          await createUser(
+              {
+              name: values.name,
+              email: values.email,
+              password: values.password,
+              number: "",
+              role: "",
+              nextAppointments: [],
+              pais: "España",
+              history: [],
+              photo: 'https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6',
+              description: "Loren ipsum largo"
+              
+              },
+              response.user.uid)
+              console.log(response.user.uid)
+              history.push("/election")     
+                  
         }
-
-        e.preventDefault();
-
-        const response = await auth.createUserWithEmailAndPassword(
-            values.email, 
-            values.password,
-        );
-
-        await createUser(
-            {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            number: "",
-            role: "",
-
-            },response.user.uid)
-                      
-        console.log(response.user.uid)
-        history.push("/election"); 
-        
+        e.preventDefault()
     };
-    console.log(user)
-   
 
     return (
       
@@ -141,6 +139,8 @@ function RegisterForm() {
                   value={values.name}
                   onChange={handleOnChange}
                 />  
+                
+                <h1 className={styles.alert}> {errorName} </h1>
 
               <input className={styles.formRegis}
                   name="email"
@@ -149,8 +149,9 @@ function RegisterForm() {
                   placeholder="Enter your email"
                   value={values.email}
                   onChange={handleOnChange}
-                  errorMessage={errorEmail}
                 />
+
+                <h2 className={styles.alert}> {errorEmail} </h2>
 
                 <input className={styles.formRegis}
                   name="password"
@@ -159,8 +160,9 @@ function RegisterForm() {
                   placeholder="Enter your password"
                   value={values.password}
                   onChange={handleOnChange}
-                  errorMessage={errorPassword}
                 />
+
+                <h3 className={styles.alert}> {errorPassword} </h3>
 
                 <input className={styles.formRegis}
                   name="passwordB"
@@ -169,14 +171,17 @@ function RegisterForm() {
                   placeholder="Confirm your password"
                   value={values.passwordB}
                   onChange={handleOnChange}
-                  errorMessage={errorPasswordB}
                 />
+
+                <h4 className={styles.alert}> {errorPasswordB} </h4>
 
             </div>
            
             <div className={styles.submit}>
-              <button className={styles.continue} type="submit" onClick={handleSubmit}> Continuar </button>
-              <p id={styles.loginNext} className={styles.nextText}> ¿Ya tiene una cuenta? <u>Iniciar sesion</u></p>
+              <button className={styles.continue} type="submit" onClick={handleSubmit} > Continuar </button>
+              <p id={styles.loginNext} className={styles.nextText}> 
+              ¿Ya tiene una cuenta? <Link to="/login"><u>Iniciar sesion</u></Link>
+              </p>
             </div>           
           </form> 
         </div>

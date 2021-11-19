@@ -1,0 +1,76 @@
+import React from "react";
+import styles from "./Tablero.module.css";
+import UTabCard from "../UTabCard/UTabCard";
+import CardStory from "../CardStory/CardStory";
+import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
+
+
+function Tablero() {
+    const {user, setUser}= useContext(UserContext);
+    console.log(user)
+    return (
+    <>
+    {!!user?(
+    <div className={styles.container}>
+    <h1 className={styles.title}>Bienvenido, {user.name}</h1>
+    <div className={styles.box}>
+        
+        <h1 className={styles.boxTitle}>
+          Citas próximas: 
+        </h1>
+
+        <div className={styles.citasProximas}>
+        {console.log(user.nextAppointments)}
+        {user.nextAppointments.length > 0 ?(
+        user.nextAppointments.map((app) => (
+        <UTabCard
+          appName={app.name}
+          date={app.date}
+          startTime={app.startTime}
+          endTime={app.endTime}
+          subject={app.subject}
+        />
+        ))):(
+          <p className = {styles.emptyText}>No tienes citas agendadas próximamente</p>
+        )}
+        
+       
+        {user.role =='Paciente' && 
+          <Link to ="/" className={styles.link}>
+          <button className={styles.addButton}>+</button>
+          </Link>
+        }
+
+        </div>
+        <div className={styles.sort}>
+        <h1 className={styles.boxTitle}>
+          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
+          
+        </h1>
+        <Link to ='/'>
+        <button className={styles.sortText}>Ver más</button>
+        </Link>
+        </div>
+        {user.history.length > 0 ?( 
+        user.history.map((history) => (
+        <CardStory
+          name={history.name}
+          date={history.date}
+        />
+      ))):(
+        <p className = {styles.emptyText}>El historial está vacío</p>
+      )}
+    </div>
+    <Footer />    
+    </div>
+    ): (
+      <h1>Loading...</h1>
+    )}
+    </>
+  );
+};
+export default Tablero;
