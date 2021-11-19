@@ -133,6 +133,8 @@ const NavBar = () => {
       {/* Usuario Logueado */}
       {user && isOpenLog ? (
         <ul className={styles.menuLog}>
+          {user.role == "Paciente"&&(
+            <>
           <li onClick={handdleMenu1}>
             <Link to="/perfil" className={styles.linkMobile}>
               Mi Pefil
@@ -158,6 +160,37 @@ const NavBar = () => {
               Cerrar Sesión
             </button>
           </li>
+          </>
+          )}
+        {user.role == "Psicologo"&&(
+            <>
+          <li onClick={handdleMenu1}>
+            <Link to="/perfil" className={styles.linkMobile}>
+              Mi Pefil
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/psicologos" className={styles.linkMobile}>
+              Citas Agendadas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/psicologos" className={styles.linkMobile}>
+              Chats
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/precio" className={styles.linkMobile}>
+              Historial de Consultas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <button className={styles.buttonMobile} onClick={handdleLogOut}>
+              Cerrar Sesión
+            </button>
+          </li>
+          </>
+          )}
         </ul>
       ) : (
         <span></span>
