@@ -1,0 +1,103 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #522B59;
+    align-items: colum;
+    font-size: 24px;
+}
+.box {
+    background-color: #F7E8F9;
+    width: 90%;
+    border-radius: 70px;
+    margin-top: 68px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 39px 62px 10px 35px;
+    
+}
+.firstBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.boxImg {
+
+    display: inline-block;
+    position: relative;
+    width: 418px;
+    height: 470px;
+    overflow: hidden;
+    border-radius: 30px;
+    
+    background-size: cover;
+}
+
+.boxImg img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.name{
+    font-size: 48px;
+    font-weight: bolder;
+    margin-bottom: 12px;
+}
+.boxAtribute{
+    display: flex;
+    flex-direction: column;
+    
+}
+.atribute{
+    display: grid;
+    grid-template-columns: 270px .5fr;
+    gap: 1rem;
+}
+.title{
+    text-align: right; 
+    font-size: 24px;
+}
+.atribute p{
+    margin-left: 15px;
+    width: 300px;
+}
+.especialidades{
+    
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 30px;
+    
+}
+.especialidad{
+    background-color: #763D80;
+   
+    height: 82px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 70px;
+    
+}
+.button{
+    background-color: #763D80;
+    font-size: 36px;
+    width: 100%;
+    height: 82px;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    margin-top: 69px;
+}
+.button:hover{
+    background-color: #522B59;
+    cursor: pointer;
+}
