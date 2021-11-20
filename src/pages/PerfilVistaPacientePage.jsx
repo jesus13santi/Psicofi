@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { db } from "../utils/firebaseConfig";
 import { UserContext } from "../context/UserContext";
+import Loading from "../components/Loading/Loading";
 const PerfilVistaPacientePage = () => {
   const params = useParams();
   const {user}= useContext(UserContext)
@@ -31,16 +32,16 @@ const PerfilVistaPacientePage = () => {
   return (
     <>
       {!!psicologo ? (
-          <PerfilVistaPaciente
-            id={params.uid}
-            name={psicologo.name}
-            birthday={psicologo.birthday}
-            pais={psicologo.pais}
-            description={psicologo.description}
-            photo={psicologo.photo}
-          />
+        <PerfilVistaPaciente
+          id={params.uid}
+          name={psicologo.name}
+          birthday={psicologo.birthday}
+          pais={psicologo.pais}
+          description={psicologo.description}
+          photo={psicologo.photo}
+        />
       ) : (
-        <h1>Is Loading...</h1>
+        <Loading />
       )}
     </>
   );

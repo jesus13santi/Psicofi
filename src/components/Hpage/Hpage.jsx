@@ -10,7 +10,7 @@ import logoTwitter from "../../img/icons_twitter.png";
 import logoMail from "../../img/icons_mail.png";
 import logoWhat from "../../img/icons_whatsapp.png";
 import photo from "../../img/photo.png";
-
+import Loading from "../Loading/Loading"
 import { useHistory } from "react-router-dom";
 import BigLogo from "../../img/Group.png";
 import Fondo from "../../img/shutterstock_1739543105.jpg";
@@ -181,7 +181,12 @@ const Hpage = () => {
 
               <p>1 hora de videollamada</p>
             </div>
-            <img src={ArrowSmall} alt="" onClick={handdlePrecio} className={styles.arrowSmall}/>
+            <img
+              src={ArrowSmall}
+              alt=""
+              onClick={handdlePrecio}
+              className={styles.arrowSmall}
+            />
           </div>
 
           <button
@@ -198,7 +203,7 @@ const Hpage = () => {
           <h2 className={styles.title}>Nuestros Psicólogos</h2>
           <div className={styles.withArrow}>
             <div className={styles.psicologo}>
-              {!!psicologo && (
+              {!!psicologo ? (
                 <>
                   <picture className={styles.boxPhoto}>
                     <img src={psicologo.photo} alt="" />
@@ -218,6 +223,8 @@ const Hpage = () => {
                     </button>
                   </div>
                 </>
+              ) : (
+                <h3>Cargando...</h3>
               )}
             </div>
             <img
@@ -240,7 +247,7 @@ const Hpage = () => {
                 antes y me pareció una experiencia genial.”
               </p>
             </div>
-            <img src={ArrowSmall} alt="" className={styles.arrowSmall}/>
+            <img src={ArrowSmall} alt="" className={styles.arrowSmall} />
           </div>
           <button
             type="button"

@@ -3,13 +3,14 @@ import { UserContext } from "../../context/UserContext";
 import { auth, googleProvider } from "../../utils/firebaseConfig";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LoginForm.module.css";
+import Loading from "../Loading/Loading";
 
 
 
 function LoginForm() {
   const history = useHistory();
   const { user, setUser } = useContext(UserContext);
-
+  const [loading, setLoading]= useState(false)
   
   const [error, setError] = useState("");
   
@@ -50,14 +51,18 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try{
       await auth.signInWithEmailAndPassword(values.email, values.password);
+      setLoading(false);
       history.push("/deck");
       console.log("LOGIN_PASSWOROD");
+      
 
     }catch(e){
       console.log(e.code)
       setError("Usuario o Contraseña invalido, por favor verifique e intente de nuevo.")
+      setLoading(false);
     }
     
   };
@@ -65,86 +70,94 @@ function LoginForm() {
 
   return (
     <section className={styles.registerSecc}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.tittle}> Que bueno tenerte </h2>
-          <p className={styles.nextText}> Continua con... </p>
-          <div className={styles.socialButtons}>
-            <button
-              className={styles.img1}
-              type="button"
-              onClick={handleGoogleLogin}
-            >
-              {" "}
-            </button>
+      {Loading===true ? (
+        <Loading />
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <h2 className={styles.tittle}> Que bueno tenerte </h2>
+            <p className={styles.nextText}> Continua con... </p>
+            <div className={styles.socialButtons}>
+              <button
+                className={styles.img1}
+                type="button"
+                onClick={handleGoogleLogin}
+              >
+                {" "}
+              </button>
 
-            <button
-              className={styles.img2}
-              type="button"
-              onClick={handleGoogleLogin}
-            >
-              {" "}
-            </button>
+              <button
+                className={styles.img2}
+                type="button"
+                onClick={handleGoogleLogin}
+              >
+                {" "}
+              </button>
 
-            <button
-              className={styles.img3}
-              type="button"
-              onClick={handleGoogleLogin}
-            >
-              {" "}
-            </button>
+              <button
+                className={styles.img3}
+                type="button"
+                onClick={handleGoogleLogin}
+              >
+                {" "}
+              </button>
+            </div>
+            <p className={styles.nextText}> o correo electronico: </p>
           </div>
-          <p className={styles.nextText}> o correo electronico: </p>
+
+          <form onSubmit={handleSubmit}>
+            <div className={styles.input2}>
+              <input
+                className={styles.formRegis}
+                name="email"
+                id={styles.email}
+                type="email"
+                placeholder="Enter your email"
+                value={values.email}
+                onChange={handleOnChange}
+              />
+
+              <input
+                className={styles.formRegis}
+                name="password"
+                id={styles.password}
+                type="password"
+                placeholder="Enter your password"
+                value={values.password}
+                onChange={handleOnChange}
+              />
+              {!!error ? (
+                <div className={styles.error}>{error}</div>
+              ) : (
+                <span></span>
+              )}
+            </div>
+
+            <div className={styles.submit}>
+              <button
+                className={styles.continue}
+                type="submit"
+                onClick={handleSubmit}
+              >
+                {" "}
+                Continuar{" "}
+              </button>
+              <p id={styles.loginNext} className={styles.nextText}>
+                {" "}
+                ¿No tienes una cuenta? <Link to="/register">Registrate</Link>
+              </p>
+
+              {!!user && (
+                <>
+                  {user.role === ""
+                    ? history.push("/election")
+                    : history.push("/deck")}
+                </>
+              )}
+            </div>
+          </form>
         </div>
-
-        <form onSubmit={handleSubmit}>
-          <div className={styles.input2}>
-            <input
-              className={styles.formRegis}
-              name="email"
-              id={styles.email}
-              type="email"
-              placeholder="Enter your email"
-              value={values.email}
-              onChange={handleOnChange}
-            />
-
-            <input
-              className={styles.formRegis}
-              name="password"
-              id={styles.password}
-              type="password"
-              placeholder="Enter your password"
-              value={values.password}
-              onChange={handleOnChange}
-            />
-            {!!error ? (
-              <div className={styles.error}>{error}</div>
-            ) : (
-              <span></span>
-            )}
-          </div>
-
-          <div className={styles.submit}>
-            <button
-              className={styles.continue}
-              type="submit"
-              onClick={handleSubmit}
-            >
-              {" "}
-              Continuar{" "}
-            </button>
-            <p id={styles.loginNext} className={styles.nextText}>
-              {" "}
-              ¿No tienes una cuenta? <Link to="/register">Registrate</Link>
-            </p>
-
-            {!!user && <>{user.role === "" ?(
-              history.push("/election")
-            ):(history.push("/deck"))}</>}
-          </div>
-        </form>
-      </div>
+      )}
     </section>
   );
 }
