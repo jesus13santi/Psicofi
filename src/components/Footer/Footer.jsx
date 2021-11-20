@@ -14,13 +14,21 @@ const Footer = () => {
             los derechos reservados.
           </p>
           <div className={styles.logoSocialNetwork}>
-            <a href="https://www.facebook.com/psicofi.therapy">
+            <a href="https://www.facebook.com/psicofi.therapy" target="_blank">
               <img src={logoFacebook} alt="" />
             </a>
-            <img src={logoInstagram} alt="" />
-            <img src={logoMail} alt="" />
-            <img src={logoWhat} alt="" />
-            <img src={logoTwitter} alt="" />
+            <a href="https://instagram.com/psicofi?utm_medium=copy_link" target="_blank">
+              <img src={logoInstagram} alt="" />
+            </a>
+            <a href="mailto:psicofi.therapy@gmail.com" target="_blank">
+              <img src={logoMail} alt="" />
+            </a>
+            <a href="sms:+58412-825-7833" target="_blank">
+              <img src={logoWhat} alt="" />
+            </a>
+            <a href="https://twitter.com/psico_fi?s=21" target="_blank">
+              <img src={logoTwitter} alt="" />
+            </a>
           </div>
         </footer>
     )
