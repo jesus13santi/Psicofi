@@ -611,6 +611,9 @@
         height: 690px;
         /* justify-content: center; */
     }
+    .areaPage{
+        height: 600px;
+    }
     .principalPage {
         justify-content:space-around;
         align-items: flex-start;
@@ -693,6 +696,7 @@
         grid-template-columns: 1fr 1fr;
         margin-top: 10px;
         grid-gap: 1.2rem;
+        
     }
 
     .area {
@@ -719,11 +723,12 @@
         margin-top: 2px;
         padding-left: 5px;
         
+        width: 100%;
         flex-direction: column;
     }
 
     .paso {  
-        width: 280px;
+        width: 100%;
         font-size: 16px;
         margin-top: 7px;
         flex-direction: row;
@@ -732,7 +737,7 @@
     
 
     .paso1 {
-        width: 280px;
+        width: 100%;
         margin-top: 10px;
        
     }
@@ -918,7 +923,6 @@
 
     .logoSocialNetwork img {
         margin-left: 5px;
-        
         height: 20px;
         width: 20px;
     }

@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { UserContext } from "../../context/UserContext"
 import React, { useState, useEffect } from 'react';
 import styles from "./PerfilPaciente.module.css";
 import { db } from '../../utils/firebaseConfig';
@@ -10,17 +12,19 @@ const PerfilPaciente = () => {
     const [phone, setPhone] = useState("");    
     const [home, setHome] = useState("");    
     const [biography, setBiography] = useState("");    
-
-    let id = 'Vgp4rqia8sW1W1VLzJHU'
+    const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+    let id ='';
+    
     const haddleOnChange =(e)=>{
         setBirthday(e.target.value);
         
     }
     useEffect(() => {
-        db.collection('users').doc(id).get().then(user => {
+     
+        db.collection('users').doc(user.id).get().then(user => {
             let datos = user.data()
-            console.log(datos.description)
-                    setName(datos.name+ " " + datos.lastName )
+           
+                    setName(datos.name)
                     setBiography(datos.description)
                     // setBirthday("2014-02-03");
                     setImagenurl(datos.photo)
@@ -33,17 +37,30 @@ const PerfilPaciente = () => {
             })
         })
 
+        const handleOnClick = (event) => {
+          console.log('####################################')
+          console.log(biography)
+          console.log(user.id)
+          let res = db.collection("users").doc(user.id).update(
+            {
+              'name': name,                     
+              'description': biography
+            }
+          )
+          console.log('************************************')
+          console.log(res);
+        };
     return (
       <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
         <div className={styles.titulo}>Mi perfil</div>
-        <form>
+        <form submit = "false">
           <div>
             <div className={styles.etiqueta}>
               <label for="NombreCompleto">Nombre Completo:</label>
             </div>
             <div className={styles.campo}>
               {" "}
-              <label id="NombreCompleto">{name}</label>
+              <label id="NombreCompleto">{user.name}</label>
             </div>
           </div>
           <div>
@@ -67,7 +84,7 @@ const PerfilPaciente = () => {
             <div
               className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
             >
-              <img src={imagenurl} className={styles.fotoperfil}></img>
+              <img src={user.photo} className={styles.fotoperfil}></img>
               <a href="#" className={styles.boton}>
                 Cambiar
               </a>
@@ -85,7 +102,7 @@ const PerfilPaciente = () => {
                 className={styles.entrada}
                 type="email"
                 id="correo"
-                value={email}
+                value={user.email}
               ></input>
             </div>
           </div>
@@ -98,7 +115,7 @@ const PerfilPaciente = () => {
                 className={styles.entrada}
                 type="text"
                 id="telefono"
-                value={phone}
+                value={user.number}
               ></input>
             </div>
           </div>
@@ -111,7 +128,7 @@ const PerfilPaciente = () => {
                 type="text"
                 className={styles.entrada}
                 id="residencia"
-                value={home}
+                value={user.pais}
               ></input>
             </div>
           </div>
@@ -123,7 +140,7 @@ const PerfilPaciente = () => {
               <textarea
                 className={styles.entrada}
                 id="biografia"
-                value={biography}
+                value={user.description}
               />
             </div>
           </div>
@@ -195,8 +212,9 @@ const PerfilPaciente = () => {
           </div>
           <div className={styles.submit}>
             <input
-              type="submit"
+              type="button"
               className={styles.boton}
+              onClick = {handleOnClick}
               value="Guardar cambios"
             ></input>
           </div>

@@ -71,7 +71,7 @@ function Election(){
             }
             
             if(user.role == "Paciente"){
-                /* history.push("/perfil") */
+                history.push("/deck") 
             } 
         }
         b.preventDefault();

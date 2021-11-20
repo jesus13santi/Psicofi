@@ -9,7 +9,11 @@ import TableroPage from './pages/TableroPage';
 import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
 import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 import ElectionPage from "./pages/ElectionPage";
-import UploadPage from "./pages/UploadPage"
+import UploadPage from "./pages/UploadPage";
+import PerfilPage from "./pages/PerfilPage";
+import PerfilVistaPacientePage from "./pages/PerfilVistaPacientePage";
+import PerfilVistaPsicoPage from "./pages/PerfilVistaPsicoPage";
+import HistoriaPage from "./pages/HistoriaPage";
 
 function Routes() {
   return (
@@ -21,9 +25,12 @@ function Routes() {
       <Route exact path="/precio" component={PreciosPage}></Route>
       <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
       <Route exact path="/perfilEspecialista" component={PerfilEspecialista}></Route>
-      
+      <Route exact path="/profile/:uid" component={PerfilVistaPacientePage}></Route>
+      <Route exact path="/profilePsico/:uid" component={PerfilVistaPsicoPage}></Route>
+      <Route exact path="/perfil" component={PerfilPage}></Route>
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/upload" component={UploadPage}></Route>
+      <Route exact path="/history" component={HistoriaPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>

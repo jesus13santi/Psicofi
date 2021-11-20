@@ -14,7 +14,9 @@ const Footer = () => {
             los derechos reservados.
           </p>
           <div className={styles.logoSocialNetwork}>
-            <img src={logoFacebook} alt="" />
+            <a href="https://www.facebook.com/psicofi.therapy">
+              <img src={logoFacebook} alt="" />
+            </a>
             <img src={logoInstagram} alt="" />
             <img src={logoMail} alt="" />
             <img src={logoWhat} alt="" />

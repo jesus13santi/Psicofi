@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "./CardPsico.module.css";
 import img from "../../img/photo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
+  const history = useHistory();
+  const handdleInfo = () => {
+    history.push(`/profile/${id}`);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
@@ -10,16 +15,13 @@ const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
           <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
-          <Link to="" className={styles.link}>
-            <h2 className={styles.title}>
-              {" "}
-              {name} {lastName}
-            </h2>
+          <Link to={`/profile/${id}`} className={styles.link}>
+            <h2 className={styles.title}>{name}</h2>
           </Link>
           <p>{pais}</p>
           <p className={styles.description}>{description}</p>
         </div>
-        <button type="button" className={styles.button}>
+        <button type="button" className={styles.button} onClick={handdleInfo}>
           Mas info.
         </button>
       </div>

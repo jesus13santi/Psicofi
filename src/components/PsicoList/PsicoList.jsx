@@ -15,8 +15,6 @@ const PsicoList = ({ psicologos }) => {
     return function (x) {
       return (
         x.name.toLowerCase().includes(value)
-        // x.lastName.toLowerCase().includes(value) ||
-        // x.pais.toLowerCase().includes(value)
       );
     };
   };

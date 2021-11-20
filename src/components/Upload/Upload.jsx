@@ -3,17 +3,20 @@ import firebase from "firebase";
 import { useState } from "react"
 import { storage } from "firebase";
 import styles from "./Upload.module.css"
+import { useHistory } from "react-router";
 
 function Upload() {
 
     const [pdf , setPdf] = useState('');
     const [success, setSuccess] = useState("")
     const storageRef = firebase.storage().ref(`/Psicologos/${pdf.name}`);
+    const history = useHistory();
 
     const upload = ()=>{
         if(pdf == null)
             return;
         storageRef.put(pdf);
+        history.push('/deck')
     }
       
         return (

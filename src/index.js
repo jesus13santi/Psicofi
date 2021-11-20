@@ -2,15 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-<<<<<<< HEAD
-
-import "./utils/firebaseConfig";
-
-ReactDOM.render(<App />,document.getElementById('root'));
-
-=======
 import reportWebVitals from './reportWebVitals';
->>>>>>> parent of fea507b (First Commit)
 
 ReactDOM.render(
   <React.StrictMode>
