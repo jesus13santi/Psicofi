@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./CardStory.module.css";
 import img from "../../img/photo.png";
 import { Link } from "react-router-dom";
-function CardStory({name, date}) {
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
+function CardStory({name, date}) {
+  const {user, setUser}= useContext(UserContext);
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
@@ -17,9 +20,16 @@ function CardStory({name, date}) {
           <p>{date}</p>
         </div>
       </div>
-      <Link to ='/' className={styles.link} >
-      <button type="button" className={styles.button}>Ver Historia</button>
+      {user.role =="Paciente" ?(
+      <Link to ='/'>
+      <button type="button" className={styles.button}>Ver Chat</button>
       </Link>
+      ):(
+        <Link to ='/'>
+        <button type="button" className={styles.button}>Ver Historia</button>
+        </Link>
+      )}
+
     </div>
   );
 };

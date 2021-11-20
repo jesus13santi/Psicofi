@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import Loading from "../Loading/Loading";
 
 
 
@@ -68,7 +69,8 @@ function Tablero() {
     <Footer />    
     </div>
     ): (
-      <h1>Loading...</h1>
+      
+      <Loading />
     )}
     </>
   );

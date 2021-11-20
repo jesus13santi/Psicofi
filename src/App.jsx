@@ -8,7 +8,7 @@ function App() {
     <UserContextProvider>
       <Router>
         <NavBar />
-        <div className="container">
+        <div className="App">
           <Routes />
         </div>
       </Router>
