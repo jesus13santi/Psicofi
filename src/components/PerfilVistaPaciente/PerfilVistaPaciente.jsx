@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styles from "./PerfilVistaPaciente.module.css"
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -34,18 +34,22 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo}) => {
               <img src={photo} alt="" />
             </picture>
           </div>
-          <div className={styles.especialidades}>
-            <div className={styles.especialidad}>
-              <p>Sexualidad</p>
-            </div>
-            <div className={styles.especialidad}>
-              <p>Ansiedad</p>
-            </div>
-            <div className={styles.especialidad}>
-              <p>Estrés</p>
-            </div>
-            <div className={styles.especialidad}>
-              <p>Autoestima</p>
+
+          <div className={styles.boxEspecialidades}>
+            <h3>Especialidades:</h3>
+            <div className={styles.especialidades}>
+              <div className={styles.especialidad}>
+                <p>Sexualidad</p>
+              </div>
+              <div className={styles.especialidad}>
+                <p>Ansiedad</p>
+              </div>
+              <div className={styles.especialidad}>
+                <p>Estrés</p>
+              </div>
+              <div className={styles.especialidad}>
+                <p>Autoestima</p>
+              </div>
             </div>
           </div>
           <button

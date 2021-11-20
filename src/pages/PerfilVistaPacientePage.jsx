@@ -1,11 +1,12 @@
 import React from "react";
 import PerfilVistaPaciente from "../components/PerfilVistaPaciente/PerfilVistaPaciente";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { db } from "../utils/firebaseConfig";
-import PsicologosPage from "./PsicologosPage";
-const PerfilVistaPage = () => {
+import { UserContext } from "../context/UserContext";
+const PerfilVistaPacientePage = () => {
   const params = useParams();
+  const {user}= useContext(UserContext)
   const [psicologo, setPsicologo] = useState(null);
   const [isLoading, setLoading] = useState(true);
   
@@ -30,7 +31,14 @@ const PerfilVistaPage = () => {
   return (
     <>
       {!!psicologo ? (
-        <PerfilVistaPaciente id={params.uid} name={psicologo.name} birthday={psicologo.birthday} pais={psicologo.pais} description={psicologo.description} photo={psicologo.photo} />
+          <PerfilVistaPaciente
+            id={params.uid}
+            name={psicologo.name}
+            birthday={psicologo.birthday}
+            pais={psicologo.pais}
+            description={psicologo.description}
+            photo={psicologo.photo}
+          />
       ) : (
         <h1>Is Loading...</h1>
       )}
@@ -38,4 +46,4 @@ const PerfilVistaPage = () => {
   );
 };
 
-export default PerfilVistaPage;
+export default PerfilVistaPacientePage;
