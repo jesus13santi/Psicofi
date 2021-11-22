@@ -2,6 +2,47 @@
     margin-bottom: 120px;
 }
 
+.chatHeader{
+    display:flex;
+    padding: 10px 30px;
+    width: 100%;
+    background: #F7E8F9;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.heatherPic{
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+.heatherData{
+    display: flex;
+    align-items: center;
+}
+.heatherName{
+    font-size: 24px;
+    font-weight: 600;
+    color: #522B59;
+}
+
+.endButton{
+    height: 50px;
+    width: 10%;
+    background-color: #522B59 ;
+    color: #FFFF;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 30px;
+}
+
+.endButton:hover{
+    background-color: #763D80;
+}
+
 .inputForm{
 
     height: 90px;
@@ -15,10 +56,19 @@
     background: #F7E8F9;
 
 }
+.emptyText{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #522B59;
+    opacity: 60%;
+}
 
 .messageInput{
     width: 95%;
-    height: 45px;
+    height: 50px;
     background: #FFFFFF;
     
     border: 1px solid #763D80;
@@ -28,9 +78,17 @@
     padding: 15px;
     position: sticky;
     bottom: 0;
+    margin-right: 30px;
 }
 
 .inputButton{
     background: none;
     border: none;
+    
+}
+
+.inputButtonImg{
+    height: 40px;
+    width: 40px;
+    
 }

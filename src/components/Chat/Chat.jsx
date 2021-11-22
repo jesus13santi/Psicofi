@@ -10,8 +10,11 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import SentMessage from '../SentMessage/SentMessage';
 import Message from '../Message/Message';
+import ScrollableFeed from 'react-scrollable-feed'
+import sendIcon from "../../img/sendIcon.svg";
 
-const Chat = () => {
+
+function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6"}) {
 
     const scroll = useRef
     const id = "ljoTUjxwvKhVGeYjxVbD"
@@ -23,13 +26,6 @@ const Chat = () => {
 
     useEffect(()=> {
         if (db){
-            /*
-            const unsub = onSnapshot(doc(db, "chats", "ljoTUjxwvKhVGeYjxVbD"), (doc) => {
-                const data = doc.data()
-                setMessages(data.msjs)
-                setActive(data.active)
-            })
-            */
             
             db.collection("chats").doc(id).onSnapshot((doc)=> {
                     const data = doc.data()
@@ -48,15 +44,13 @@ const Chat = () => {
     async function  sendMessage({scroll}) {
         if(db){
             const aux = [...messages]
-            console.log("LLEGA")
             const mensaje = {
                 name: user.name,
                 msj: newMessage,
                 photo: user.photo,
                 time: "time"
             }
-            console.log("AUX", aux)
-            console.log("Nuevo", mensaje)
+
             aux.push(mensaje)
              await db.collection("chats").doc(id).update({
                 msjs: aux
@@ -66,10 +60,16 @@ const Chat = () => {
         }
     }
 
-    const handleOnSubmit =  e =>{
-        console.log("LLEGA")
+    function handleClick(e) {
         e.preventDefault();
-        console.log("LLEGA")
+        db.collection("chats").doc(id).update({
+            active: 'no'
+        })
+      }
+
+    const handleOnSubmit =  e =>{
+
+        e.preventDefault();
         sendMessage(scroll)
     }
 
@@ -78,7 +78,18 @@ const Chat = () => {
     <>
         {!!user ?(
         <div className={styles.bigBox}>
-        <div>
+        <div className={styles.chatHeader}>
+            <div className={styles.heatherData}>
+            <picture >
+                <img src={img} alt="" className={styles.heatherPic}></img>
+            </picture>
+            <div className={styles.heatherName}>{name}</div>
+            </div>
+            {user.role=="Psicologo" && active=='yes' &&(
+            <button className={styles.endButton} onClick={handleClick} >Terminar Cita</button>
+             )}
+        </div>
+        <ScrollableFeed>
             {messages.length > 0 ?(
              messages.map((m) => (
                 <Message 
@@ -90,9 +101,9 @@ const Chat = () => {
             ))):(
             <p className = {styles.emptyText}>Para activar el chat debes enviar el primer mensaje</p>
             )}
-        </div>
+        </ScrollableFeed>
 
-        <div>
+            {active=="yes" &&(
                 <form onSubmit={handleOnSubmit} className={styles.inputForm}>
                     <input  className={styles.messageInput} 
                             type='text'
@@ -101,11 +112,11 @@ const Chat = () => {
                             placeholder="Escribe un mensaje aquí..."
                     />
                 <button type= 'submit' disabled={!newMessage} className={styles.inputButton}>
-                    Enviar
+                    <img className={styles.inputButtonImg} src={sendIcon} alt=""/>
+                    
                 </button>
                 </form>
-
-        </div>
+            )}
 
 
         </div>       

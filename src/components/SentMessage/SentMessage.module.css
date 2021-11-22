@@ -1,11 +1,13 @@
 .msjBox{
     margin-top: 30px;
     margin-left: 35%;
-    background: #F7E8F9;
+    display: flex;
+    background: #B05CBF;
     max-width: 60%;
     min-width: 30%;
     padding: 15px;
     border-radius: 15px;
+    justify-content: space-between;
 
 }
 
@@ -35,20 +37,20 @@
  }
  .msjName{
     font-size: 18px;
-    color: #522B59;
+    color: #FFFF;
     font-weight: 600;
     margin-right: 50px;
  }
 
  .message{
     font-size: 18px;
-    color: #522B59;
+    color: #FFFF;
     font-weight: 400;
     margin: 10px;
  }
 
  .time{
-     color: #522B59;
+     color: #FFFF;
      opacity: 50%;
 
 

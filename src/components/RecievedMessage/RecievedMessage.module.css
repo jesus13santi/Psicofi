@@ -1,8 +1,8 @@
 .msjBox{
     margin-top: 30px;
     display: flex;
+    justify-content: space-between;
     margin-left: 5%;
-    background: #F7E8F9;
     max-width: 60%;
     min-width: 30%;
     padding: 15px;
@@ -50,6 +50,7 @@
  .time{
      color: #522B59;
      opacity: 50%;
+     
 
 
  }
