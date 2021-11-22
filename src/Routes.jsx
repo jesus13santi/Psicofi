@@ -7,6 +7,7 @@ import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
 import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
+import Perfil from './components/Perfil/Perfil'
 import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 import ElectionPage from "./pages/ElectionPage";
 import UploadPage from "./pages/UploadPage";
@@ -14,6 +15,7 @@ import PerfilPage from "./pages/PerfilPage";
 import PerfilVistaPacientePage from "./pages/PerfilVistaPacientePage";
 import PerfilVistaPsicoPage from "./pages/PerfilVistaPsicoPage";
 import HistoriaPage from "./pages/HistoriaPage";
+import ReservarCita from "./components/ReservarCita/ReservarCita";
 
 function Routes() {
   return (
@@ -31,6 +33,7 @@ function Routes() {
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/upload" component={UploadPage}></Route>
       <Route exact path="/history" component={HistoriaPage}></Route>
+      <Route exact path="/ReservarCita" component={ReservarCita}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>

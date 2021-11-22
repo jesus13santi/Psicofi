@@ -1,65 +1,87 @@
 import { useContext } from "react"
+import { useHistory } from "react-router-dom"
 import { UserContext } from "../../context/UserContext"
 import React, { useState, useEffect } from 'react';
 import styles from "./PerfilPaciente.module.css";
 import { db } from '../../utils/firebaseConfig';
+import $ from 'jquery';
 
 const PerfilPaciente = () => {
-    const [name, setName] = useState("");    
-    const [birthday, setBirthday] = useState("25/05/99");    
-    const [imagenurl, setImagenurl] = useState("2014-02-03");    
-    const [email, setEmail] = useState("");    
-    const [phone, setPhone] = useState("");    
-    const [home, setHome] = useState("");    
+    const [birthday, setBirthday] = useState("");    
     const [biography, setBiography] = useState("");    
-    const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
-    let id ='';
+    const { user, setUser } = useContext(UserContext);
+    const history = useHistory();
     
-    const haddleOnChange =(e)=>{
-        setBirthday(e.target.value);
-        
-    }
     useEffect(() => {
-     
-        db.collection('users').doc(user.id).get().then(user => {
-            let datos = user.data()
-           
-                    setName(datos.name)
-                    setBiography(datos.description)
-                    // setBirthday("2014-02-03");
-                    setImagenurl(datos.photo)
-                    setEmail(datos.email)
-                    setPhone(datos.phone)
-                    setHome(datos.pais)
-                   
-
-            
-            })
+      console.log('####################################')
+            if(user.problemas != undefined){
+              console.log(user.problemas)
+              $.each(user.problemas,function(index,value){
+                $("#"+value).prop('checked', true);
+              })
+            }        
         })
 
-        const handleOnClick = (event) => {
-          console.log('####################################')
-          console.log(biography)
-          console.log(user.id)
-          let res = db.collection("users").doc(user.id).update(
+        const validar_campos=()=>{
+          let valido = true;
+          // si fecha de nacimiento no es valido
+          // valido = false
+          // si correo no es valido
+          // valido = false
+          // si telefono no es valido
+          // valido = false
+          // si residencia no es valido
+          // valido = false
+          // si condiciones es vacio
+          // valido = false
+          
+          return valido;
+        }
+        const handleOnClick = async(event) => {
+          if(validar_campos()){
+            console.log(biography)
+            console.log(user.id)          
+            let problemas = []
+            $.each(['ansiedad', 'autoestima', 'sexualidad', 'estres', 'amorosos', 'desarrollo'], function(index, value){
+              if($("#"+value).prop("checked")){
+                problemas.push(value)
+              }
+            })
+            console.log(problemas)
+            user.problemas = problemas
+            await db.collection("users").doc(user.id).update(
+              {
+                "number": user.number,
+                "pais": user.pais,
+                "description": user.description,
+                "problemas": problemas
+              })
+            history.push("/deck")
+          }
+        }
+
+         const actualizarUsuario = async() =>{
+           console.log(user)
+            await db.collection("users").doc(user.id).update(
             {
-              'name': name,                     
-              'description': biography
+              "number": user.number,
+              "pais": user.pais
             }
           )
-          console.log('************************************')
-          console.log(res);
+          setUser(user)
+          console.log('************************************')          
+          console.log(user)
+          return true;
         };
     return (
       <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
         <div className={styles.titulo}>Mi perfil</div>
-        <form submit = "false">
+        <form>
           <div>
             <div className={styles.etiqueta}>
               <label for="NombreCompleto">Nombre Completo:</label>
             </div>
-            <div className={styles.campo}>
-              {" "}
+            <div className={styles.campo}>             
               <label id="NombreCompleto">{user.name}</label>
             </div>
           </div>
@@ -69,11 +91,12 @@ const PerfilPaciente = () => {
             </div>
             <div className={styles.campo}>
               <input
+                name = "FechaNacimiento"
                 className={styles.entrada}
                 type="date"
-                id="fecha de nacimiento"
-                value={birthday}
-                onChange={haddleOnChange}
+                id="FechaNacimiento"
+                defaultValue={birthday} 
+                onChange = {e => user.birthday = e.target.value}              
               ></input>
             </div>
           </div>
@@ -95,14 +118,16 @@ const PerfilPaciente = () => {
           </div>
           <div>
             <div className={styles.etiqueta}>
-              <label for="Correo">Correo electrónico:</label>
+              <label for="correo">Correo electrónico:</label>
             </div>
             <div className={styles.campo}>
               <input
+                name = "correo"
                 className={styles.entrada}
                 type="email"
                 id="correo"
-                value={user.email}
+                defaultValue={user.email}
+                onChange = {e => user.email = e.target.value}
               ></input>
             </div>
           </div>
@@ -112,35 +137,40 @@ const PerfilPaciente = () => {
             </div>
             <div className={styles.campo}>
               <input
+                name = "telefono"
                 className={styles.entrada}
                 type="text"
                 id="telefono"
-                value={user.number}
+                defaultValue={user.number}
+                onChange = {e => user.number = e.target.value}
               ></input>
             </div>
           </div>
           <div>
             <div className={styles.etiqueta}>
-              <label for="residencia">Lugar de residencia:</label>
+              <label for="pais">Lugar de residencia:</label>
             </div>
             <div className={styles.campo}>
               <input
                 type="text"
+                name = "pais"
                 className={styles.entrada}
-                id="residencia"
-                value={user.pais}
+                id="pais"
+                defaultValue={user.pais}
+                onChange = {e => user.pais = e.target.value}
               ></input>
             </div>
           </div>
           <div>
             <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
-              <label for="biografia">Biografía:</label>
+              <label for="description">Biografía:</label>
             </div>
             <div className={`${styles.campo} ${styles.lineagruesa}`}>
               <textarea
                 className={styles.entrada}
-                id="biografia"
-                value={user.description}
+                id="description"
+                defaultValue={user.description}
+                onChange = {e => user.description = e.target.value}
               />
             </div>
           </div>
@@ -156,7 +186,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Ansiedad"
+              name="ansiedad"
+              value="ansiedad"
               id="ansiedad"
             />
             <label className={styles.checklabel} for="ansiedad">
@@ -165,7 +196,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Autoestima"
+              name="autoestima"
+              value="autoestima"
               id="autoestima"
             />
             <label className={styles.checklabel} for="autoestima">
@@ -174,7 +206,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Sexualidad"
+              name="sexualidad"
+              value="sexualidad"
               id="sexualidad"
             />
             <label className={styles.checklabel} for="sexualidad">
@@ -185,7 +218,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Estres"
+              name="estres"
+              value="estres"
               id="estres"
             />
             <label className={styles.checklabel} for="estres">
@@ -194,7 +228,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Amorosos"
+              name="amorosos"
+              value="amorosos"
               id="amorosos"
             />
             <label className={styles.checklabel} for="amorosos">
@@ -203,7 +238,8 @@ const PerfilPaciente = () => {
             <input
               className={styles.checkbox}
               type="checkbox"
-              value="Desarrollo"
+              name="desarrollo"
+              value="desarrollo"
               id="desarrollo"
             />
             <label className={styles.checklabel} for="desarrollo">
@@ -213,9 +249,9 @@ const PerfilPaciente = () => {
           <div className={styles.submit}>
             <input
               type="button"
-              className={styles.boton}
-              onClick = {handleOnClick}
+              className={styles.boton}              
               value="Guardar cambios"
+              onClick = {handleOnClick}
             ></input>
           </div>
         </form>
