@@ -1,0 +1,131 @@
+.bordecontenedor{
+ border-radius: 60px;
+ width: 90%;
+ margin: 5%;
+ padding-top: 60px;
+ padding-bottom: 80px;
+ padding-left: 5%;
+ padding-right: 5%;
+}
+.fondorosa {
+    background-color: rgb(247, 232, 249);
+}
+
+
+
+
+.boton{
+    text-decoration: none;
+    background-color: #522B59;
+    color: white;
+    margin: 0.5em;
+    border-radius: 2em;
+    padding: 1em 45em;
+    cursor: pointer; 
+    
+   
+}
+
+
+
+.titulo{
+    color: #522B59;
+    font-size: 300%;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+.etiqueta{
+    width: 20%;
+    float: left;
+    text-align: right;
+    margin-right: 5%;
+    height: 3em;
+}
+.etiqueta label{
+    color:#522B59;
+    font-weight: normal;
+    font-size: 150%;
+    text-align: right;
+    margin-right: 2%;
+    float: left;
+    
+    
+    
+}
+.campo{
+    text-align: left;
+    float:right;
+    width: 70%;
+    height: 3em;
+    margin-left: 5%;
+    font-size: medium;
+}
+.lineagruesa{
+    height: 10em!important;
+    margin-bottom: 2em;
+}
+.entrada{
+    border-radius: 25px;
+    display:inline-block;
+    padding:5px 10px;
+    border-width: 2px;
+    line-height:140%;
+    width: 30em;
+    border-color: #522B59;
+}
+
+.entrada1{
+    border-radius: 25px;
+    display:inline-block;
+    padding:5px 10px;
+    border-width: 2px;
+    line-height:140%;
+    width: 60em;
+    border-color: #522B59;
+}
+
+.entrada2{
+    border-radius: 25px;
+    display:inline-block;
+    padding:5px 10px;
+    border-width: 2px;
+    line-height:140%;
+    width: 25em;
+    border-color: #522B59;
+}
+
+
+.lineagruesa a{
+    margin-left: 2em;
+}
+
+.lineagruesa textarea{
+    height: 10em;
+}
+
+
+
+.subtitulo label{
+    color: #522B59;
+    font-size: larger;
+    font-weight: bold;
+}
+.subtitulo{
+    margin-bottom: 15px;
+}
+.texto{
+    margin-bottom: 30px;
+}
+.texto label{
+    color: #522B59;
+    font-size: medium;
+}
+
+
+
+
+.submit input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
