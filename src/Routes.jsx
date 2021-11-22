@@ -12,6 +12,7 @@ import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialis
 import ElectionPage from "./pages/ElectionPage";
 import UploadPage from "./pages/UploadPage"
 import PerfilPage from "./pages/PerfilPage";
+import ReservarCita from "./components/ReservarCita/ReservarCita";
 
 function Routes() {
   return (
@@ -26,6 +27,7 @@ function Routes() {
       <Route exact path="/perfil" component={PerfilPage}></Route>
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/upload" component={UploadPage}></Route>
+      <Route exact path="/ReservarCita" component={ReservarCita}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
