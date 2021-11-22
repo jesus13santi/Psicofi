@@ -8,14 +8,16 @@ import Loading from '../Loading/Loading';
 import CardChat from '../CardChat/CardChat';
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import SentMessage from '../SentMessage/SentMessage';
 import Message from '../Message/Message';
 import ScrollableFeed from 'react-scrollable-feed'
 import sendIcon from "../../img/sendIcon.svg";
+import dayjs, { Dayjs } from 'dayjs'
 
 
 function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6"}) {
 
+    var now = dayjs()
+    var time = now.format('DD/MM hh:mmA')
     const scroll = useRef
     const id = "ljoTUjxwvKhVGeYjxVbD"
     const [messages, setMessages] = useState([])
@@ -48,7 +50,7 @@ function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450
                 name: user.name,
                 msj: newMessage,
                 photo: user.photo,
-                time: "time"
+                time: time
             }
 
             aux.push(mensaje)
@@ -94,7 +96,7 @@ function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450
              messages.map((m) => (
                 <Message 
                 name={m.name}
-                time="time"
+                time= {m.time}
                 photo={m.photo}
                 msj={m.msj}
                 />
