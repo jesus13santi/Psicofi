@@ -1,0 +1,36 @@
+.bigBox{
+    margin-bottom: 120px;
+}
+
+.inputForm{
+
+    height: 90px;
+    bottom: 0px;
+    padding: 15px;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    background: #F7E8F9;
+
+}
+
+.messageInput{
+    width: 95%;
+    height: 45px;
+    background: #FFFFFF;
+    
+    border: 1px solid #763D80;
+    box-sizing: border-box;
+    border-radius: 70px;
+    font-size: 18px;
+    padding: 15px;
+    position: sticky;
+    bottom: 0;
+}
+
+.inputButton{
+    background: none;
+    border: none;
+}
