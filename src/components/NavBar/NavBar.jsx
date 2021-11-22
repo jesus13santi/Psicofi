@@ -146,7 +146,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
+            <Link to="/chats" className={styles.linkMobile}>
               Chats
             </Link>
           </li>
@@ -175,7 +175,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
+            <Link to="/chats" className={styles.linkMobile}>
               Chats
             </Link>
           </li>
