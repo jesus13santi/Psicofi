@@ -6,6 +6,7 @@ import Loading from '../Loading/Loading';
 import Footer from '../Footer/Footer';
 import CardChat from '../CardChat/CardChat';
 import { useState, useEffect } from "react";
+import { app } from 'firebase';
 
 const ChatView = () => {
     const {user, setUser}= useContext(UserContext);
@@ -22,7 +23,8 @@ const ChatView = () => {
         user.nextAppointments.map((app) => (
         <CardChat
         name={app.name}
-        date={app.date} 
+        date={app.date}
+        chatId={app.chatId} 
         />
       ))):(
         <p className = {styles.emptyText}>El historial está vacío</p>
@@ -32,7 +34,8 @@ const ChatView = () => {
         user.history.map((history) => (
         <CardChat
         name={history.name}
-        date={history.date} 
+        date={history.date}
+        chatId={history.chatId}
         />
       ))):(
         <p className = {styles.emptyText}>El historial está vacío</p>

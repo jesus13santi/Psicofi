@@ -12,21 +12,23 @@ import dayjs, { Dayjs } from 'dayjs'
 import { useParams } from 'react-router-dom';
 
 
-function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6"}) {
+function Chat({name}) {
 
     var now = dayjs()
     var time = now.format('DD/MM hh:mma')
 
-    const params = useParams()
     const scroll = useRef()
 
-
-    //const params = useParams();
-    const id = 'ljoTUjxwvKhVGeYjxVbD'
+    const [status, setStatus]=useState(0)
+    const params = useParams();
+    const id = params.chatId
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
     const [active, setActive]= useState("no")
     const {user, setUser}= useContext(UserContext);
+    const [users, setUsers] = useState([])
+
+
 
 
     useEffect(()=> {
@@ -34,16 +36,19 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
             console.log('docs')
             db.collection("chats").doc(id).onSnapshot((doc)=> {
                     const data = doc.data()
+                    console.log('DATA', data.users)
+                    
                     setMessages(data.msjs)
                     setActive(data.active)
-                })     
+                    setUsers(data.users)
+                    setStatus(data.status)
+                })
         } 
     },[db]
     )
 
     function scrollDown(){
         if (scroll.current){
-            console.log('SCROLL ENTRA')
             scroll.current.scrollIntoView({
                 behavior: "smooth",
                 block: "nearest",
@@ -79,7 +84,15 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
     function handleClick(e) {
         e.preventDefault();
         db.collection("chats").doc(id).update({
-            active: 'no'
+            active: 'no',
+            status: 0
+        })
+      }
+
+      function activateChat(e) {
+        e.preventDefault();
+        db.collection("chats").doc(id).update({
+            active: 'yes'
         })
       }
 
@@ -95,15 +108,32 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
         {!!user ?(
         <div className={styles.bigBox}>
         <div className={styles.chatHeader}>
-            <div className={styles.heatherData}>
-            <picture >
-                <img src={img} alt="" className={styles.heatherPic}></img>
-            </picture>
-            <div className={styles.heatherName}>{name}</div>
-            </div>
+
+            
+            {users.length >0 &&(
+                users.map((u)=>(
+                    <>
+                    {u.name != user.name &&(
+                    <div className={styles.heatherData}>
+                    <picture >
+                        <img src={u.img} alt="" className={styles.heatherPic}></img>
+                    </picture>
+            
+                    <div className={styles.heatherName}>{u.name}</div>
+                    </div>
+                    )}
+                    </>
+                ))
+            )}
+            <>
             {user.role=="Psicologo" && active=='yes' &&(
             <button className={styles.endButton} onClick={handleClick} >Terminar Cita</button>
              )}
+             {user.role == 'Psicologo' && active =='no' && status ==1 &&(
+                <button className={styles.endButton} onClick={activateChat} >Iniciar Chat</button>
+                
+            )}
+            </>
         </div>
 
             {messages.length > 0 ?(
@@ -116,7 +146,15 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
                 />
 
             ))):(
-            <p className = {styles.emptyText}>Para activar el chat debes enviar el primer mensaje</p>
+                <>
+            
+            {user.role =='Paciente' && active =='no' &&(
+                
+                <p className = {styles.emptyText}>Debes esperar a que el especialista inice el chat</p>
+            )
+            }
+            
+            </>
             )}
             
 

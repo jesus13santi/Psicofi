@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
-function CardChat({name, date}) {
+
+function CardChat({name, date, chatId}) {
   const {user, setUser}= useContext(UserContext);
   return (
     <div className={styles.container}>
@@ -21,12 +22,15 @@ function CardChat({name, date}) {
         </div>
       </div>
       {user.role =="Paciente" ?(
-      <Link to ='/'>
+
+      <Link to ={`/chat/${chatId}`}>
       <button type="button" className={styles.button}>Paciente</button>
       </Link>
+
+
       ):(
-        <Link to ='/'>
-        <button type="button" className={styles.button}>Especialista</button>
+        <Link to ={`/chat/${chatId}`}>
+        <button type="button" className={styles.button}>Ver Chat</button>
         </Link>
       )}
 
