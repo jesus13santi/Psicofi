@@ -14,6 +14,9 @@ import PerfilPage from "./pages/PerfilPage";
 import PerfilVistaPacientePage from "./pages/PerfilVistaPacientePage";
 import PerfilVistaPsicoPage from "./pages/PerfilVistaPsicoPage";
 import HistoriaPage from "./pages/HistoriaPage";
+import ChatsPage from "./pages/ChatsPage";
+
+import Chat from "./components/Chat/Chat";
 
 function Routes() {
   return (
@@ -31,6 +34,8 @@ function Routes() {
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/upload" component={UploadPage}></Route>
       <Route exact path="/history" component={HistoriaPage}></Route>
+      <Route exact path="/chats" component={ChatsPage}></Route>
+      <Route exact path="/chat" component={Chat}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>

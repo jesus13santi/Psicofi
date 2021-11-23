@@ -23,9 +23,9 @@ function Tablero() {
         <h1 className={styles.boxTitle}>
           Citas próximas: 
         </h1>
-
+        {"Next App",console.log(user.nextAppointments)}
         <div className={styles.citasProximas}>
-        {console.log(user.nextAppointments)}
+        
         {user.nextAppointments.length > 0 ?(
         user.nextAppointments.map((app) => (
         <UTabCard

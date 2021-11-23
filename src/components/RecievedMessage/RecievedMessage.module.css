@@ -1,0 +1,57 @@
+.msjBox{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    max-width: 60%;
+    min-width: 30%;
+    padding: 15px;
+    border-radius: 15px;
+    background: #FFFFFF;
+    border: 1px solid #763D80;
+    z-index: -1;
+
+}
+
+.boxImg {
+    
+    display: inline-block;
+     width: 50px;
+     height: 50px;
+     overflow: hidden;
+     border-radius: 100%;
+     border: 1px solid #763D80;
+     margin-right: 15px;
+     background-size: cover;
+     float: left;
+     
+ }
+
+
+
+ .header{
+     display: flex;
+     align-items: center;
+     
+ }
+ .msjName{
+    font-size: 18px;
+    color: #522B59;
+    font-weight: 600;
+    float: left;
+ }
+
+ .message{
+    font-size: 18px;
+    color: #522B59;
+    font-weight: 400;
+    margin: 10px;
+ }
+
+ .time{
+     color: #522B59;
+     opacity: 50%;
+     
+
+
+ }
