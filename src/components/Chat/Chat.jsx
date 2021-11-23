@@ -22,6 +22,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
 
     const scroll = useRef()
 
+
     //const params = useParams();
     const id = 'ljoTUjxwvKhVGeYjxVbD'
     const [messages, setMessages] = useState([])
@@ -32,28 +33,32 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
 
     useEffect(()=> {
         if (db){
-            
+            console.log('docs')
             db.collection("chats").doc(id).onSnapshot((doc)=> {
                     const data = doc.data()
                     setMessages(data.msjs)
                     setActive(data.active)
                 })     
-        }
+        } 
+    },[db]
+    )
+
+    function scrollDown(){
         if (scroll.current){
+            console.log('SCROLL ENTRA')
             scroll.current.scrollIntoView({
                 behavior: "smooth",
                 block: "nearest",
                 inline: "start"
               })
         }
-    },[db]
-    )
+    }
     
     const handdleOnChange = e => {
         setNewMessage(e.target.value);
     };
 
-    async function  sendMessage({scroll}) {
+    async function  sendMessage() {
         if(db){
             const aux = [...messages]
             const mensaje = {
@@ -68,6 +73,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
                 msjs: aux
             })
             setNewMessage("")
+            scrollDown()
             
         }
     }
@@ -114,7 +120,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
             ))):(
             <p className = {styles.emptyText}>Para activar el chat debes enviar el primer mensaje</p>
             )}
-            <div ref={scroll}></div>
+            
 
             {active=="yes" &&(
                 <form onSubmit={handleOnSubmit} className={styles.inputForm}>
@@ -131,7 +137,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
                 </form>
             )}
 
-
+            <div ref={scroll} className={styles.scrollDiv}></div>
         </div>       
 ): (
       
