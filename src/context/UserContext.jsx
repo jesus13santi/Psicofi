@@ -44,6 +44,8 @@ export default function UserContextProvider({ children }){
               description: "Loren ipsum largo",
               gender: "",
               birthday: "",
+              problemas: [],
+              appointments: []
 
             };
             await createUser(newProfile, loggedUser.uid);

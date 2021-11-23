@@ -10,14 +10,18 @@ function Upload() {
     const [pdf , setPdf] = useState('');
     const [success, setSuccess] = useState("")
 
-    const storageRef = firebase.storage().ref(`/Psicologos/${pdf.name}`);
-    const history = useHistory();
+    const history = useHistory(); 
 
-    const upload = ()=>{
+    const upload = async()=>{
+
         if(pdf == null)
             return;
-        storageRef.put(pdf);
-        history.push('/deck')
+
+        const storage = firebase.storage();    
+        const snapshot = await storage.ref(`/Psicologos/${pdf.name}`).put(pdf)
+        const url = await snapshot.ref.getDownloadURL() 
+        console.log(url)
+        /* history.push('/deck') */
     }
       
         return (
