@@ -11,6 +11,7 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
+    
 }
 
 .heatherPic{
@@ -37,6 +38,7 @@
     font-size: 18px;
     font-weight: 600;
     border-radius: 30px;
+    z-index: 1;
 }
 
 .endButton:hover{

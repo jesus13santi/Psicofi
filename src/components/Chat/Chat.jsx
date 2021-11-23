@@ -3,7 +3,6 @@ import firebase from 'firebase'
 import React, {useState, useEffect, useRef} from 'react'
 import { db } from '../../utils/firebaseConfig'
 import { doc, onSnapshot } from "firebase/firestore";
-import { getArrayCollection, getFirstElementArrayCollection } from '../../utils/parser'
 import Loading from '../Loading/Loading';
 import CardChat from '../CardChat/CardChat';
 import { useContext } from "react";
@@ -12,14 +11,19 @@ import Message from '../Message/Message';
 import ScrollableFeed from 'react-scrollable-feed'
 import sendIcon from "../../img/sendIcon.svg";
 import dayjs, { Dayjs } from 'dayjs'
+import { useParams } from 'react-router-dom';
 
 
-function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6"}) {
+function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6"}) {
 
     var now = dayjs()
-    var time = now.format('DD/MM hh:mmA')
-    const scroll = useRef
-    const id = "ljoTUjxwvKhVGeYjxVbD"
+    var time = now.format('DD/MM hh:mma')
+
+
+    const scroll = useRef()
+
+    //const params = useParams();
+    const id = 'ljoTUjxwvKhVGeYjxVbD'
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
     const [active, setActive]= useState("no")
@@ -33,8 +37,14 @@ function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450
                     const data = doc.data()
                     setMessages(data.msjs)
                     setActive(data.active)
-                })
-            
+                })     
+        }
+        if (scroll.current){
+            scroll.current.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "start"
+              })
         }
     },[db]
     )
@@ -91,7 +101,7 @@ function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450
             <button className={styles.endButton} onClick={handleClick} >Terminar Cita</button>
              )}
         </div>
-        <ScrollableFeed>
+
             {messages.length > 0 ?(
              messages.map((m) => (
                 <Message 
@@ -100,10 +110,11 @@ function Chat({role= "Rol",name= "Nombre Apellido",img="https://us.123rf.com/450
                 photo={m.photo}
                 msj={m.msj}
                 />
+
             ))):(
             <p className = {styles.emptyText}>Para activar el chat debes enviar el primer mensaje</p>
             )}
-        </ScrollableFeed>
+            <div ref={scroll}></div>
 
             {active=="yes" &&(
                 <form onSubmit={handleOnSubmit} className={styles.inputForm}>
