@@ -4,11 +4,9 @@ import React, {useState, useEffect, useRef} from 'react'
 import { db } from '../../utils/firebaseConfig'
 import { doc, onSnapshot } from "firebase/firestore";
 import Loading from '../Loading/Loading';
-import CardChat from '../CardChat/CardChat';
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Message from '../Message/Message';
-import ScrollableFeed from 'react-scrollable-feed'
 import sendIcon from "../../img/sendIcon.svg";
 import dayjs, { Dayjs } from 'dayjs'
 import { useParams } from 'react-router-dom';
@@ -19,7 +17,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
     var now = dayjs()
     var time = now.format('DD/MM hh:mma')
 
-
+    const params = useParams()
     const scroll = useRef()
 
 
@@ -88,7 +86,7 @@ function Chat({name= "Nombre Apellido",img="https://us.123rf.com/450wm/thesomeda
     const handleOnSubmit =  e =>{
 
         e.preventDefault();
-        sendMessage(scroll)
+        sendMessage()
     }
 
     
