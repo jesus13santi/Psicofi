@@ -9,6 +9,7 @@ function Upload() {
 
     const [pdf , setPdf] = useState('');
     const [success, setSuccess] = useState("")
+
     const storageRef = firebase.storage().ref(`/Psicologos/${pdf.name}`);
     const history = useHistory();
 

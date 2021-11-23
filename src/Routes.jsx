@@ -11,6 +11,9 @@ import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialis
 import ElectionPage from "./pages/ElectionPage";
 import UploadPage from "./pages/UploadPage"
 import PerfilPage from "./pages/PerfilPage";
+import AlertRechazadoPage from "./pages/AlertRechazadoPage";
+import AlertPendientePage from "./pages/AlertPendientePage"
+import AdminPage from "./pages/AdminPage";
 
 function Routes() {
   return (
@@ -26,6 +29,9 @@ function Routes() {
       <Route exact path="/deck" component={TableroPage}></Route>
       <Route exact path="/upload" component={UploadPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
+      <Route exact path="/rechazado" component={AlertRechazadoPage}></Route>
+      <Route exact path="/pendiente" component={AlertPendientePage}></Route>
+      <Route exact path="/admin" component={AdminPage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
       </Route>

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider } from "../../utils/firebaseConfig";
+import { auth, googleProvider, facebookProvider } from "../../utils/firebaseConfig";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import { validateEmail } from "../../utils/helpers.js";
@@ -31,6 +31,12 @@ function LoginForm() {
 
   const handleGoogleLogin = async () => {
     await auth.signInWithPopup(googleProvider);
+    history.push("/deck");
+    
+  };
+
+  const handleFacebookLogin = async () =>{
+    await auth.signInWithPopup(facebookProvider);
     history.push("/deck");
     
   };
@@ -121,7 +127,7 @@ function LoginForm() {
             <button
               className={styles.img2}
               type="button"
-              onClick={handleGoogleLogin}
+              onClick={handleFacebookLogin}
             >
               {" "}
             </button>

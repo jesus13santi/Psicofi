@@ -11,15 +11,50 @@ function Election(){
     const {getUserByEmail} = useContext(UserContext)
     const history = useHistory();
     const [role, setRole] = useState("")
-    const [values, setValues] = useState("")
+    const [gender, setGender] = useState("")
+    const [values, setValues] = useState({
+        number: "",
+        country: "",
+        birthday: "",
+    })
     const [errorNumber, setErrorNumber] = useState("")
+    const [errorRole, setErrorRole] = useState("")
+    const [errorCountry, setErrorCountry] = useState("")
+    const [errorBirthday, setErrorBirthday] = useState("")
+    const [errorGender, setErrorGender] = useState("")
 
     const validateData = () =>{
+
         setErrorNumber("")
+        setErrorRole("")
+        setErrorCountry("")
+        setErrorBirthday("")
+        setErrorGender("")
+
         let isValid = true;
 
         if(size(values.number) < 1) {
             setErrorNumber("Debe ingresar un numero valido")
+            isValid = false
+        }
+
+        if(role == "") {
+            setErrorRole("Debe seleccionar un rol")
+            isValid = false
+        }
+
+        if(size(values.country) < 1) {
+            setErrorCountry("Debe ingresar una dirección valida")
+            isValid = false
+        }
+
+        if(values.birthday == "") {
+            setErrorBirthday("Debe seleccionar un fecha de nacimiento")
+            isValid = false
+        }
+
+        if(gender == "") {
+            setErrorGender("Debe seleccionar un genero")
             isValid = false
         }
 
@@ -41,14 +76,37 @@ function Election(){
         setRole(a.target.value)
         const usersReference = db.collection("users");
         await usersReference.doc(d.id).update({
-            role:(a.target.value)
+            role:(a.target.value),
+            number:(values.number),
+            country:(values.country),
+            birthday:(values.birthday)
         });
         const updateUser = await getUserByEmail(user.email);
         console.log({updateUser})
         setUser(updateUser);
     }
 
-    const setPhone = async(b) =>{
+    const cambioGender = async(c) =>{
+
+        const u = await getUserByEmail(user.email)
+        console.log(u.id)
+
+        setGender(c.target.value)
+        const usersReference = db.collection("users");
+        await usersReference.doc(u.id).update({
+            gender:(c.target.value),
+            number:(values.number),
+            country:(values.country),
+            birthday:(values.birthday)
+        });
+        const updateUser = await getUserByEmail(user.email);
+        console.log({updateUser})
+        setUser(updateUser);
+    }
+
+    const setNewData = async(b) =>{
+
+        console.log(user)
         
         if (!validateData()){
             
@@ -58,15 +116,21 @@ function Election(){
             /* console.log(e.id) */
 
             setValues(values.number)
+            setValues(values.country)
+            setValues(values.birthday)
+
             const usersReference = db.collection("users");
             await usersReference.doc(e.id).update({
-                number:(values.number)
+                number:(values.number),
+                country:(values.country),
+                birthday:(values.birthday)
+                
             });
             const updateUser = await getUserByEmail(user.email);
             console.log({updateUser})
             setUser(updateUser);
            
-            if(user.role == "Psicologo"){
+            if(user.role == "Pendiente"){
                 history.push("/upload")
             }
             
@@ -102,29 +166,95 @@ function Election(){
                         
                         <input class={styles.boxRol} 
                         type="radio" 
-                        value="Psicologo" 
+                        value="Pendiente" 
                         id="Role2" 
-                        checked={role == "Psicologo" ? true:false}
+                        checked={role == "Pendiente" ? true:false}
                         onChange={cambioRole}>                    
                         </input>
                         <label class={styles.labelRol} for="Role2">Psicologo</label>
 
                     </form>            
                 </div>
-  
-                <div className={styles.input}>
-                    <input className={styles.formRegis}
-                    name="number"
-                    type="text"
-                    onChange={handleOnChange}
-                    placeholder="Enter your phone"
-                    />
+
+                <h1 className={styles.alert} id={styles.errorR}> {errorRole} </h1>
+
+                <div className={styles.data}> 
+
+                    <div className={styles.input}>
+                        <input className={styles.formRegis}
+                        name="number"
+                        type="text"
+                        onChange={handleOnChange}
+                        placeholder="Enter your phone"
+                        /> 
+                    </div>
+
+                    <h1 className={styles.alert}> {errorNumber} </h1>
+
+                    <div class={styles.input}>
+                        <input className={styles.formRegis}
+                        name="country"
+                        type="text"
+                        onChange={handleOnChange}
+                        placeholder="Enter your address"
+                        />           
+                    </div>
+
+                    <h2 className={styles.alert}> {errorCountry} </h2>
+
+                    <div class={styles.input}>
+                        <input className={styles.formRegis}
+                        name="birthday"
+                        type="date"
+                        onChange={handleOnChange}
+                        />           
+                    </div>
+
+                    <h3 className={styles.alert}> {errorBirthday} </h3>
+
                 </div>
 
-                <h1 className={styles.alert}> {errorNumber} </h1>
+                <div className={styles.genderElection}>
+
+                    <form class={styles.formPersonal2}>
+                                                
+                        <input class={styles.boxGender} 
+                        type="radio" 
+                        value="Mujer" 
+                        id="gender1" 
+                        checked={gender == "Mujer" ? true:false}
+                        onChange={cambioGender}>
+                        </input>
+                        
+                        <label class={styles.labelGender} for="gender1">Mujer</label>
+                        
+                        <input class={styles.boxGender} 
+                        type="radio" 
+                        value="Hombre" 
+                        id="gender2" 
+                        checked={gender == "Hombre" ? true:false}
+                        onChange={cambioGender}>                    
+                        </input>
+                        <label class={styles.labelGender} for="gender2">Hombre</label>
+
+                        <input class={styles.boxGender} 
+                        type="radio" 
+                        value="Otro" 
+                        id="gender3" 
+                        checked={gender == "Otro" ? true:false}
+                        onChange={cambioGender}>                    
+                        </input>
+                        <label class={styles.labelGender} for="gender3">Otro</label>
+
+                        <h1 className={styles.alert} id={styles.errorG}> {errorGender} </h1>
+
+                    </form>  
+                </div>
+
+                
 
                 <div className={styles.input}>
-                    <button className={styles.continue} type="submit" onClick={setPhone}> Continuar </button>
+                    <button className={styles.continue} type="submit" onClick={setNewData}> Continuar </button>
                 </div>    
 
             </div>
