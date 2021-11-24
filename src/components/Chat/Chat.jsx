@@ -12,7 +12,7 @@ import dayjs, { Dayjs } from 'dayjs'
 import { useParams } from 'react-router-dom';
 
 
-function Chat({name}) {
+function Chat() {
 
     var now = dayjs()
     var time = now.format('DD/MM hh:mma')
@@ -36,8 +36,6 @@ function Chat({name}) {
             console.log('docs')
             db.collection("chats").doc(id).onSnapshot((doc)=> {
                     const data = doc.data()
-                    console.log('DATA', data.users)
-                    
                     setMessages(data.msjs)
                     setActive(data.active)
                     setUsers(data.users)

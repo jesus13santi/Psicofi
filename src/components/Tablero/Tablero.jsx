@@ -26,14 +26,18 @@ function Tablero() {
         {"Next App",console.log(user.nextAppointments)}
         <div className={styles.citasProximas}>
         
-        {user.nextAppointments.length > 0 ?(
-        user.nextAppointments.map((app) => (
-        <UTabCard
-          appName={app.name}
-          date={app.date}
-          startTime={app.startTime}
-          endTime={app.endTime}
-        />
+        {user.appointments.length > 0 ?(
+        user.appointments.map((app) => (
+          <>
+          {app.status== 0 &&(
+            <UTabCard
+            appName={app.name}
+            date={app.date}
+            hour={app.hour}
+            />
+          )}
+          </>
+
         ))):(
           <p className = {styles.emptyText}>No tienes citas agendadas próximamente</p>
         )}
@@ -51,19 +55,28 @@ function Tablero() {
           {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
           
         </h1>
+        
         <Link to ='/history'>
         <button className={styles.sortText}>Ver más</button>
         </Link>
         </div>
-        {user.history.length > 0 ?( 
-        user.history.map((history) => (
-        <CardStory
+        
+        {user.appointments.length > 0 ?( 
+        user.appointments.map((history) => (
+        <>
+        {history.status== 0 &&(
+          <CardStory
           name={history.name}
           date={history.date}
-        />
+          chatId={history.id}
+          />
+        )}
+        </>
+        
       ))):(
         <p className = {styles.emptyText}>El historial está vacío</p>
       )}
+
     </div>
     <Footer />    
     </div>

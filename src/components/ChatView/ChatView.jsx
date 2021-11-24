@@ -19,27 +19,38 @@ const ChatView = () => {
         
         <h1 className={styles.boxTitle}>Chats</h1>
         <p className={styles.boxSubtitle}>Próximos:</p>
-        {user.nextAppointments.length > 0 ?( 
-        user.nextAppointments.map((app) => (
-        <CardChat
-        name={app.name}
-        date={app.date}
-        chatId={app.chatId} 
-        />
-      ))):(
-        <p className = {styles.emptyText}>El historial está vacío</p>
-      )}
+        {user.appointments.length > 0 ?(
+        user.appointments.map((app) => (
+          <>
+          {app.status== 1 &&(
+            <CardChat
+            name={app.name}
+            date={app.date}
+            chatId={app.id}
+            />
+          )}
+          </>
+
+        ))):(
+          <p className = {styles.emptyText}>No tienes citas agendadas próximamente</p>
+        )}
       <p className={styles.boxSubtitle}>Historial:</p>
-      {user.history.length > 0 ?( 
-        user.history.map((history) => (
-        <CardChat
-        name={history.name}
-        date={history.date}
-        chatId={history.chatId}
-        />
-      ))):(
-        <p className = {styles.emptyText}>El historial está vacío</p>
-      )}
+
+      {user.appointments.length > 0 ?(
+        user.appointments.map((app) => (
+          <>
+          {app.status== 0 &&(
+            <CardChat
+            name={app.name}
+            date={app.date}
+            chatId={app.id}
+            />
+          )}
+          </>
+
+        ))):(
+          <p className = {styles.emptyText}>El historial de chats está vacío</p>
+        )}
     </div>
     
     <Footer />    
