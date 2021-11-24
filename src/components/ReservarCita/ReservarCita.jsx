@@ -40,8 +40,35 @@ const ReservarCita = ({ psicologo }) => {
   const handdleSelect = (e) => {
     setCita(e.target.value);
   };
-  
-  
+  const ordenarHour=(lista)=>{
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const hourA = a.hour;
+      const hourB = b.hour;
+      if (hourA < hourB) {
+        return -1;
+      }
+      if (hourA > hourB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  }
+  const ordenar = (lista) => {
+    const listaOrdenada = ordenarHour(lista).slice().sort((a, b) => {
+      const fechaA = a.date;
+      const fehchaB = b.date;
+      
+      if (fechaA < fehchaB) {
+        return -1;
+      }
+      if (fechaA > fehchaB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
 
   const handdleAppointment = async () => {
     if (cita !== ""){
@@ -124,7 +151,7 @@ const ReservarCita = ({ psicologo }) => {
               >
                 <option value="">Seleccione una cita</option>
                 {psicologo.appointments.length > 0 &&
-                  psicologo.appointments.map((cita) => (
+                  ordenar(psicologo.appointments).map((cita) => (
                     <>
                       {cita.status === 2 && (
                         <option value={cita.id}key={cita.id}>
