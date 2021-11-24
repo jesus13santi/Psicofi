@@ -18,7 +18,7 @@
     list-style: none;
     color: white;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 600;
     align-items: center;
 }
 
@@ -88,7 +88,7 @@
 .linkMobile {
     text-decoration: none;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     height: 100%;
     width: 100%;
     display: flex;
@@ -218,7 +218,7 @@
    .linkMobile{
        text-decoration: none;
        color: white;
-       font-weight: 500;
+       font-weight: 600;
        height: 100%;
        width: 100%;
        display: flex;
