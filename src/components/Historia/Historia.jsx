@@ -16,16 +16,20 @@ const Historia = () => {
   };
     const {user, setUser}= useContext(UserContext);
     console.log(user)
+
+
     const handleSelect = (e) => {
         setOrden(e.target.value);
         if (e.target.value === "ordenAlfabetico") {
-          console.log(user.history)  
+          console.log("Historia", user.history)  
           setListaOrdenada(ordenarNombres(user.history));
           console.log(listaOrdenada)
         } else {
           setListaOrdenada(user.history);
         }
       };
+
+
     const ordenarNombres = (lista) => {
     const listaOrdenada = lista.slice().sort((a, b) => {
       const nameA = a.name.toLowerCase();
