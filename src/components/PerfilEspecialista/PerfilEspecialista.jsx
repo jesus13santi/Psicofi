@@ -13,7 +13,9 @@ const PerfilEspecialista = () => {
   const [birthday, setBirthday] = useState("");
   const [biography, setBiography] = useState("");
   const { user, setUser, getUserByEmail } = useContext(UserContext);
-  
+  // const [TodayCompare, setTodayCompare]=useState("")
+  // const [Date1Compare, setDate1Compare]=useState("")
+  const [error, setError] = useState("");
   const [values, setValues] = useState({
     hour: "",
     date: "",
@@ -108,30 +110,91 @@ const PerfilEspecialista = () => {
     };
     // console.log(values.date.toLocaleDateString('es-Es',option))
   };
-  
+  const ordenarHour = (lista) => {
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const hourA = a.hour;
+      const hourB = b.hour;
+      if (hourA < hourB) {
+        return -1;
+      }
+      if (hourA > hourB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
+  const ordenar = (lista) => {
+    const listaOrdenada = ordenarHour(lista).slice().sort((a, b) => {
+      const fechaA = a.date;
+      const fehchaB = b.date;
+      if (fechaA < fehchaB) {
+        return -1;
+      }
+      if (fechaA > fehchaB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
+
   const agregarCita = async () => {
-    if (values.date !== "" && values.hour !== "") {
-      await db
-        .collection("users")
-        .doc(user.id)
-        .update({
-          appointment: [
-            ...user.appointment,
-            { date: values.date, hour: values.hour, id: uniqid(), status:2 ,name:"",incidencias: [] },
-          ],
-        });
-      const updateUser = await getUserByEmail(user.email);
-      setUser(updateUser);
-      alert("Cita Agregada");
-    } else {
-      alert("No se pudo agregar la cita");
-    }
+    
+    const citaRepetida = user.appointments.find((element) => element.date === values.date && element.hour === values.hour);
+    const Today = new Date().setHours(0,0,0,0);
+    
+    
+    const Date1 = new Date(values.date).setHours(0,0,0,0);
+    
+  
+    
+    
+      
+      if (!citaRepetida) {
+        if (values.date !== "" && values.hour !== "") {
+          if (Today <= Date1) {
+            await db
+              .collection("users")
+              .doc(user.id)
+              .update({
+                appointments: [
+                  ...user.appointments,
+                  {
+                    date: values.date,
+                    hour: values.hour,
+                    id: uniqid(),
+                    status: 2,
+                    name: "",
+                    incidencias: [],
+                  },
+                ],
+              });
+            const updateUser = await getUserByEmail(user.email);
+            setUser(updateUser);
+            alert("Cita Agregada");
+            setError("");
+          } else {
+            setError("La fecha seleccionada ya paso, por favor verifique he intente de nuevo")
+          }
+        } else {
+          setError("Debe completar todos los campos");
+        }
+      } else {
+        setError("Ya ingreso una cita con esa fecha y hora");
+      }
+      
+    
+    
+    
+    
+    
   };
   const deleteAppointment = async (id) => {
-    const newArray = user.appointment.filter((item) => item.id !== id);
+    const newArray = user.appointments.filter((item) => item.id !== id);
     
     await db.collection("users").doc(user.id).update({
-       appointment: newArray
+       appointments: newArray
      })
     const updateUser = await getUserByEmail(user.email);
     setUser(updateUser);
@@ -141,6 +204,17 @@ const PerfilEspecialista = () => {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
       weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const result = date1.toLocaleDateString("es-Es", options);
+    // console.log(date1.toLocaleDateString("es-MX", options));
+    return result;
+  }
+  function diaBirthday(x) {
+    const date1 = new Date(x.replace(/-+/g, "/"));
+    const options = {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -167,14 +241,7 @@ const PerfilEspecialista = () => {
             <label for="FechaNacimiento">Fecha de nacimiento:</label>
           </div>
           <div className={styles.campo}>
-            <input
-              name="FechaNacimiento"
-              className={styles.entrada}
-              type="date"
-              id="FechaNacimiento"
-              defaultValue={birthday}
-              onChange={(e) => (user.birthday = e.target.value)}
-            ></input>
+            <label name="FechaNacimiento">{diaBirthday(user.birthday)}</label>
           </div>
         </div>
         <div>
@@ -307,7 +374,7 @@ const PerfilEspecialista = () => {
             className={styles.checkbox}
             type="checkbox"
             name="amorosos"
-            value="amorosos"
+            value="Problemsa amorosos"
             id="amorosos"
           />
           <label className={styles.checklabel} for="amorosos">
@@ -345,6 +412,7 @@ const PerfilEspecialista = () => {
           <input
             name="hour"
             type="time"
+            value={values.hour}
             onChange={handleOnChange}
             disabled={values.date === ""}
             className={styles.picker}
@@ -363,6 +431,7 @@ const PerfilEspecialista = () => {
             onClick={agregarCita}
             className={styles.button}
           />
+          {error !== "" && <span className={styles.error}>{error}</span>}
         </div>
         <div className={styles.rightSize}>
           <h1 className={styles.title}>Citas Disponibles</h1>
@@ -374,7 +443,7 @@ const PerfilEspecialista = () => {
                   <h3>Hora:</h3>
                 </div>
 
-                {user.appointment.map((m) => (
+                {ordenar(user.appointments).map((m) => (
                   <>
                     {m.status === 2 && (
                       <div key={m.id} className={styles.cita}>

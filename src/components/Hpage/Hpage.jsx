@@ -213,7 +213,7 @@ const Hpage = () => {
                   <div className={styles.infoPsico}>
                     <h2 className={styles.name}>{psicologo.name}</h2>
                     <div className={styles.valoracion}>
-                      <p>Valoracion:</p>
+                      <p>Valoracion: 5</p>
                     </div>
                     <p>Especialidades: {psicologo.especialidades}</p>
                     <p>Lugar de Residencia: {psicologo.pais}</p>

@@ -62,9 +62,11 @@
 .menuLog {
     width: 193px;
     right: 0;
+    float: right;
     position: absolute;
+    
     z-index: 1;
-    margin-right: 100px;
+    margin-right: 107px;
 }
 .menuLog button:hover{
     cursor: pointer;
@@ -262,6 +264,7 @@
        height: 100%;
        position: relative;
    }
+   
    
 
    

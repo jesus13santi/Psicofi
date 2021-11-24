@@ -39,6 +39,7 @@ const PerfilVistaPacientePage = () => {
           pais={psicologo.pais}
           description={psicologo.description}
           photo={psicologo.photo}
+          problemas={psicologo.problemas}
         />
       ) : (
         <Loading />
