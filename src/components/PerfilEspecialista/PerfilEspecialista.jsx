@@ -115,8 +115,8 @@ const PerfilEspecialista = () => {
         .collection("users")
         .doc(user.id)
         .update({
-          appointment: [
-            ...user.appointment,
+          appointments: [
+            ...user.appointments,
             { date: values.date, hour: values.hour, id: uniqid(), status:2 ,name:"",incidencias: [] },
           ],
         });
@@ -128,10 +128,10 @@ const PerfilEspecialista = () => {
     }
   };
   const deleteAppointment = async (id) => {
-    const newArray = user.appointment.filter((item) => item.id !== id);
+    const newArray = user.appointments.filter((item) => item.id !== id);
     
     await db.collection("users").doc(user.id).update({
-       appointment: newArray
+       appointments: newArray
      })
     const updateUser = await getUserByEmail(user.email);
     setUser(updateUser);
@@ -367,14 +367,14 @@ const PerfilEspecialista = () => {
         <div className={styles.rightSize}>
           <h1 className={styles.title}>Citas Disponibles</h1>
           <div className={styles.citas}>
-            {user.appointment.length !== 0 ? (
+            {user.appointments.length !== 0 ? (
               <>
                 <div className={styles.titleList}>
                   <h3>Fecha:</h3>
                   <h3>Hora:</h3>
                 </div>
 
-                {user.appointment.map((m) => (
+                {user.appointments.map((m) => (
                   <>
                     {m.status === 2 && (
                       <div key={m.id} className={styles.cita}>
