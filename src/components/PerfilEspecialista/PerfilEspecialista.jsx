@@ -5,13 +5,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./PerfilEspecialista.module.css";
 import { db } from "../../utils/firebaseConfig";
 import $ from "jquery";
-import DatePicker, { registerLocale } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import es from "date-fns/locale/es";
+//import es from "date-fns/locale/es";
 import uniqid from "uniqid";
 
 const PerfilEspecialista = () => {
-  registerLocale("es", es);
   const [date, setDate] = useState(new Date());
   const [birthday, setBirthday] = useState("");
   const [biography, setBiography] = useState("");
