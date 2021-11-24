@@ -41,7 +41,7 @@ function Tablero() {
         
        
         {user.role =='Paciente' && 
-          <Link to ="/" className={styles.link}>
+          <Link to ="/psicologos" className={styles.link}>
           <button className={styles.addButton}>+</button>
           </Link>
         }
