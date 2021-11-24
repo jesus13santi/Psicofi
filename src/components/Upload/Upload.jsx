@@ -21,7 +21,8 @@ function Upload() {
         const snapshot = await storage.ref(`/Psicologos/${pdf.name}`).put(pdf)
         const url = await snapshot.ref.getDownloadURL() 
         console.log(url)
-        /* history.push('/deck') */
+        
+        history.push('/deck')
     }
       
         return (

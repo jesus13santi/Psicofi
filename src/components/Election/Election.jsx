@@ -14,12 +14,12 @@ function Election(){
     const [gender, setGender] = useState("")
     const [values, setValues] = useState({
         number: "",
-        country: "",
+        pais: "",
         birthday: "",
     })
     const [errorNumber, setErrorNumber] = useState("")
     const [errorRole, setErrorRole] = useState("")
-    const [errorCountry, setErrorCountry] = useState("")
+    const [errorPais, setErrorPais] = useState("")
     const [errorBirthday, setErrorBirthday] = useState("")
     const [errorGender, setErrorGender] = useState("")
 
@@ -27,7 +27,7 @@ function Election(){
 
         setErrorNumber("")
         setErrorRole("")
-        setErrorCountry("")
+        setErrorPais("")
         setErrorBirthday("")
         setErrorGender("")
 
@@ -43,8 +43,8 @@ function Election(){
             isValid = false
         }
 
-        if(size(values.country) < 1) {
-            setErrorCountry("Debe ingresar una dirección valida")
+        if(size(values.pais) < 1) {
+            setErrorPais("Debe ingresar una dirección valida")
             isValid = false
         }
 
@@ -78,7 +78,7 @@ function Election(){
         await usersReference.doc(d.id).update({
             role:(a.target.value),
             number:(values.number),
-            country:(values.country),
+            pais:(values.pais),
             birthday:(values.birthday)
         });
         const updateUser = await getUserByEmail(user.email);
@@ -96,7 +96,7 @@ function Election(){
         await usersReference.doc(u.id).update({
             gender:(c.target.value),
             number:(values.number),
-            country:(values.country),
+            pais:(values.pais),
             birthday:(values.birthday)
         });
         const updateUser = await getUserByEmail(user.email);
@@ -116,13 +116,13 @@ function Election(){
             /* console.log(e.id) */
 
             setValues(values.number)
-            setValues(values.country)
+            setValues(values.pais)
             setValues(values.birthday)
 
             const usersReference = db.collection("users");
             await usersReference.doc(e.id).update({
                 number:(values.number),
-                country:(values.country),
+                pais:(values.pais),
                 birthday:(values.birthday)
                 
             });
@@ -193,14 +193,14 @@ function Election(){
 
                     <div class={styles.input}>
                         <input className={styles.formRegis}
-                        name="country"
+                        name="pais"
                         type="text"
                         onChange={handleOnChange}
                         placeholder="Enter your address"
                         />           
                     </div>
 
-                    <h2 className={styles.alert}> {errorCountry} </h2>
+                    <h2 className={styles.alert}> {errorPais} </h2>
 
                     <div class={styles.input}>
                         <input className={styles.formRegis}

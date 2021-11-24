@@ -25,7 +25,7 @@ const Admin = ({ pendientes, rechazados }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.boxPsico}>
+      <div className={styles.boxAdmin}>
         <div className={styles.firstText}>
           <div className={styles.boxTitle}>
             <h1 className={styles.title}>Pendientes</h1>
@@ -46,13 +46,13 @@ const Admin = ({ pendientes, rechazados }) => {
                     key={pendiente.id}
                     id={pendiente.id}
                     name={pendiente.name}
-                    country={pendiente.country}
+                    pais={pendiente.pais}
                     photo={pendiente.photo}
                   />
                 ))}
         </div>
       </div>
-      <div className={styles.boxPsico}>
+      <div className={styles.boxAdmin}>
         <div className={styles.firstText}>
           <div className={styles.boxTitle}>
             <h1 className={styles.title}>Rechazados</h1>
@@ -73,7 +73,7 @@ const Admin = ({ pendientes, rechazados }) => {
                     key={rechazado.id}
                     id={rechazado.id}
                     name={rechazado.name}
-                    country={rechazado.country}
+                    pais={rechazado.pais}
                     photo={rechazado.photo}
                   />
                 ))}

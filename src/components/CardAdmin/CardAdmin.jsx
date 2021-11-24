@@ -3,7 +3,7 @@ import styles from "./CardAdmin.module.css";
 import img from "../../img/photo.png";
 import { db } from "../../utils/firebaseConfig"
 
-const CardAdmin = ({ id, name, country, photo }) => {
+const CardAdmin = ({ id, name, pais, photo }) => {
  
   const handdleAceptar = async() => {
 
@@ -34,7 +34,7 @@ const CardAdmin = ({ id, name, country, photo }) => {
         </picture>
         <div className={styles.boxInfo}>
             <h2 className={styles.title}>{name}</h2>
-          <p>{country}</p>
+          <p>{pais}</p>
         </div>
       </div>
       <div className={styles.buttonBox}>
