@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import CardPsico from "../CardPsico/CardPsico";
-import styles from "./PsicoList.module.css";
+import CardPatient from "../CardPatient/CardPatient";
+import styles from "./PatientList.module.css";
 
-const PsicoList = ({ psicologos }) => {
+import Footer from "../Footer/Footer"
+
+const PatientList = ({ patients }) => {
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
@@ -15,7 +17,6 @@ const PsicoList = ({ psicologos }) => {
     return function (x) {
       return (
         x.name.toLowerCase().includes(value)
-
       );
     };
   };
@@ -23,41 +24,36 @@ const PsicoList = ({ psicologos }) => {
     const listaOrdenada = lista.slice().sort((a, b) => {
       const nameA = a.name.toLowerCase();
       const nameB = b.name.toLowerCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
       return 0;
     });
     return listaOrdenada;
   };
-  const haddleSelect = (e) => {
+  const handleSelect = (e) => {
     setOrden(e.target.value);
     if (e.target.value === "ordenAlfabetico") {
-      setListaOrdenada(ordenarNombres(psicologos));
+      setListaOrdenada(ordenarNombres(patients));
     } else {
-      setListaOrdenada(psicologos);
+      setListaOrdenada(patients);
     }
   };
   const cambiarLista = async () => {
     if (orden === "ordenAlfabetico") {
-      setListaOrdenada(psicologos);
+      setListaOrdenada(patients);
     }
   };
 
-  console.log(orden);
-
   return (
+    <>
     <div className={styles.container}>
       <div className={styles.boxPsico}>
         <div className={styles.firstText}>
           <div className={styles.boxTitle}>
-            <h1 className={styles.title}>Especialistas</h1>
+            <h2 className={styles.title}>Historia de pacientes</h2>
             <input
               name="search"
-              className={styles.input}
+              className={styles.search}
               type="text"
               placeholder="Buscar..."
               onChange={handleOnchange}
@@ -65,21 +61,14 @@ const PsicoList = ({ psicologos }) => {
           </div>
           <div className={styles.listEspecial}>
             <div className={styles.boxList}>
-              <select name="especialidades" id="" className={styles.select}>
-                <option value="todos"> Todos</option>
-                <option value="ansiedad">Ansiedad</option>
-                <option value="estres">Estres</option>
-                <option value="depresion">Depresion</option>
-              </select>
               <select
                 name="especialidades"
                 id=""
                 className={styles.select}
-                onChange={haddleSelect}
+                onChange={handleSelect}
               >
-                <option value>Selecciona una opcion</option>
+                <option value="recientes">Recientes</option>
                 <option value="ordenAlfabetico"> Orden Alfabetico</option>
-                <option value="ranking">Ranking</option>
               </select>
             </div>
           </div>
@@ -89,34 +78,34 @@ const PsicoList = ({ psicologos }) => {
           {!!listaOrdenada
             ? listaOrdenada
                 .filter(searchingTerm(value))
-                .map((psicologo) => (
-                  <CardPsico
-                    key={psicologo.id}
-                    id={psicologo.id}
-                    name={psicologo.name}
-                    pais={psicologo.pais}
-                    lastName={psicologo.lastName}
-                    photo={psicologo.photo}
-                    description={psicologo.description}
+                .map((patient) => (
+                  <CardPatient
+                    key={patient.id}
+                    id={patient.id}
+                    name={patient.name}
+                    pais={patient.pais}
+                    photo={patient.photo}
                   />
                 ))
-            : psicologos
+            : patients
                 .filter(searchingTerm(value))
-                .map((psicologo) => (
-                  <CardPsico
-                    key={psicologo.id}
-                    id={psicologo.id}
-                    name={psicologo.name}
-                    pais={psicologo.pais}
-                    lastName={psicologo.lastName}
-                    photo={psicologo.photo}
-                    description={psicologo.description}
+                .map((patient) => (
+                  <CardPatient
+                    key={patient.id}
+                    id={patient.id}
+                    name={patient.name}
+                    pais={patient.pais}
+                    photo={patient.photo}
                   />
                 ))}
         </div>
       </div>
     </div>
+    <div>
+      <Footer />
+    </div>
+    </>
   );
 };
 
-export default PsicoList;
+export default PatientList;
