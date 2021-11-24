@@ -6,6 +6,7 @@
     padding-bottom: 60px;
     padding-left: 10%;
     padding-right: 10%;
+    color: #522B59;
    }
    .fondorosa {
        background-color: rgb(247, 232, 249);
@@ -21,7 +22,7 @@
    
    .boton{
        text-decoration: none;
-       background-color: purple;
+       background-color: #763D80;
        color: white;
        margin: 0.5em;
        border-radius: 2em;
@@ -34,7 +35,7 @@
    }
    
    .titulo{
-       color: purple;
+       color: #522B59;
        font-size: xx-large;
        font-weight: bold;
        margin-bottom: 1em;
@@ -47,7 +48,7 @@
        height: 3em;
    }
    .etiqueta label{
-       color: purple;
+       color: #522B59;
        font-weight: bold;
    }
    .campo{
@@ -69,7 +70,7 @@
        border-width: 1px;
        line-height:140%;
        width: 35em;
-       border-color: purple;
+       border-color: #522B59;
    }
    
    .campofoto {
@@ -89,9 +90,9 @@
        opacity: 0;
    }
    .checklabel{
-       border: 2px solid purple;
+       border: 2px solid #522B59;
        background-color: white;
-       color: purple;   
+       color: #522B59;   
        font-weight: bold;
        font-size: large;
        display: inline-block;
@@ -112,13 +113,13 @@
    }
    
    input[type="checkbox"]:checked + label {
-       border: 2px solid purple;
-       background-color: purple;
+       border: 2px solid #763D80;
+       background-color: #763D80;
        color: white;
    }
    
    .subtitulo label{
-       color: purple;
+       color: #522B59;
        font-size: larger;
        font-weight: bold;
    }
@@ -129,7 +130,7 @@
        margin-bottom: 30px;
    }
    .texto label{
-       color: purple;
+       color: #522B59;
        font-size: medium;
    }
    
@@ -146,4 +147,78 @@
        display: block;
        margin-left: auto;
        margin-right: auto;
+       border: none;
+        outline: none;
+        
+   }
+   .boxAgregarCita {
+       display: flex;
+       margin-top: 50px;
+       justify-content: space-around;
+       border: 1px solid #522B59;
+       padding: 30px;
+       border-radius: 10px;
+       
+   }
+   .title{
+       margin-bottom: 10px;
+   }
+   .boxInputAgregarCita {
+       display: flex;
+       flex-direction: column;
+       
+       
+   }
+   .picker{
+       
+       margin-bottom: 20px;
+       height: 60px;
+       border: 1px solid #522B59;
+       outline: none;
+       padding: 0px 20px;
+       border-radius: 10px;
+   }
+   .picker:disabled{
+       background-color: grey;
+   }
+   .button{
+       background-color: #763D80;
+       border: none;
+       color: white;
+       padding: 20px;
+       border-radius: 10px;
+   }
+   .button:hover{
+       background-color: #522B59;
+   }
+  
+   .citas{
+       display: grid;
+       grid-template-columns: 1fr;  
+       gap: 1rem; 
+   }
+   .cita{
+       display: grid;
+       grid-template-columns: 1fr 150px;
+       gap: 1rem;
+
+   }
+   .titleList{
+       display: grid;
+       grid-template-columns: 1fr 150px;
+       gap: 1rem;
+   }
+   .btnDelete{
+       background-color: red;
+       border: none;
+       outline: none;
+       padding: 10px;
+       border-radius: 10px;
+       color: white;  
+   }
+   .grid{
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       
    }
