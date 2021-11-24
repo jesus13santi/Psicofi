@@ -17,6 +17,8 @@ import HistoriaPage from "./pages/HistoriaPage";
 import PatientsHistoryPage from "./pages/PatientsHistoryPage";
 import IndividualPatientPage from "./pages/IndividualPatientPage";
 import PageNotFound from "./pages/PageNotFound";
+import ChatsPage from "./pages/ChatsPage";
+import ChatPage from "./pages/ChatPage";
 
 function Routes() {
   return (
@@ -36,6 +38,8 @@ function Routes() {
       <Route exact path="/history" component={HistoriaPage}></Route>
       <Route exact path="/historiaPacientes" component={PatientsHistoryPage}></Route>
       <Route exact path="/historiaPacienteIndividual/:uid" component={IndividualPatientPage}></Route>
+      <Route exact path="/chats" component={ChatsPage}></Route>
+      <Route exact path="/chat/:chatId" component={ChatPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="*" component={PageNotFound}></Route>
     </Switch>

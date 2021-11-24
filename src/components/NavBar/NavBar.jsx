@@ -137,61 +137,61 @@ const NavBar = () => {
         <ul className={styles.menuLog}>
           {user.role == "Paciente" && (
             <>
-              <li onClick={handdleMenu1}>
-                <Link to="/perfil" className={styles.linkMobile}>
-                  Mi Perfil
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/psicologos" className={styles.linkMobile}>
-                  Buscar Especialistas
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/psicologos" className={styles.linkMobile}>
-                  Chats
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/precio" className={styles.linkMobile}>
-                  Historial de Consultas
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <button className={styles.buttonMobile} onClick={handdleLogOut}>
-                  Cerrar Sesión
-                </button>
-              </li>
-            </>
+          <li onClick={handdleMenu1}>
+            <Link to="/perfil" className={styles.linkMobile}>
+              Mi Pefil
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/psicologos" className={styles.linkMobile}>
+              Buscar Especialistas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/chats" className={styles.linkMobile}>
+              Chats
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/history" className={styles.linkMobile}>
+              Historial de Consultas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <button className={styles.buttonMobile} onClick={handdleLogOut}>
+              Cerrar Sesión
+            </button>
+          </li>
+          </>
           )}
           {user.role == "Psicologo" && (
             <>
-              <li onClick={handdleMenu1}>
-                <Link to="/perfil" className={styles.linkMobile}>
-                  Mi Perfil
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/psicologos" className={styles.linkMobile}>
-                  Citas Agendadas
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/psicologos" className={styles.linkMobile}>
-                  Chats
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <Link to="/historiaPacientes" className={styles.linkMobile}>
-                  Historia de Pacientes
-                </Link>
-              </li>
-              <li onClick={handdleMenu1}>
-                <button className={styles.buttonMobile} onClick={handdleLogOut}>
-                  Cerrar Sesión
-                </button>
-              </li>
-            </>
+          <li onClick={handdleMenu1}>
+            <Link to="/perfil" className={styles.linkMobile}>
+              Mi Pefil
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/psicologos" className={styles.linkMobile}>
+              Citas Agendadas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/chats" className={styles.linkMobile}>
+              Chats
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <Link to="/history" className={styles.linkMobile}>
+              Historial de Consultas
+            </Link>
+          </li>
+          <li onClick={handdleMenu1}>
+            <button className={styles.buttonMobile} onClick={handdleLogOut}>
+              Cerrar Sesión
+            </button>
+          </li>
+          </>
           )}
         </ul>
       ) : (
