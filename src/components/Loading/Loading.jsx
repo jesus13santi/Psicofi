@@ -6,7 +6,7 @@ const Loading = () => {
     return (
         <div className= {styles.loading}>
             <div className= {styles.text}>Cargando</div>
-            <PulseLoader color={"#763D80"} loading={true} size={25} css={styles.loading} />
+            {<PulseLoader color={"#763D80"} loading={true} size={25} css={styles.loading} />}
         </div>
     )
 }

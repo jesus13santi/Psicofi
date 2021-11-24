@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider } from "../../utils/firebaseConfig";
+import { auth, googleProvider, facebookProvider } from "../../utils/firebaseConfig";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import Loading from "../Loading/Loading";
@@ -39,6 +39,12 @@ function LoginForm() {
     // history.push("/deck");
     
     
+    
+  };
+
+  const handleFacebookLogin = async () =>{
+    await auth.signInWithPopup(facebookProvider);
+    history.push("/deck");
     
   };
 

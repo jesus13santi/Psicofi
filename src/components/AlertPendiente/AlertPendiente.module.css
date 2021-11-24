@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  *:focus {
+    outline: none;
+  }
+  
+  body {
+    width: 100%;
+    position: relative;
+  }
+
+.body{  
+    display: flex;
+    justify-content: center;
+}
+
+.container{    
+    width: 900px;
+    height: 425px;
+    top: 126px;
+    margin-top: 175px;
+
+    background: #F7E8F9;
+    border-radius: 35px;
+}
+
+.text{
+    font-size: 18px;
+    font-weight: 600;
+    color: #522B59;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 15px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 85px;
+}

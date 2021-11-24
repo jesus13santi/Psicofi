@@ -52,8 +52,9 @@ function Tablero() {
           {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
           
         </h1>
-
-        <button className={styles.sortText}>Filtrar</button>
+        <Link to ='/history'>
+        <button className={styles.sortText}>Ver más</button>
+        </Link>
         </div>
         {user.history.length > 0 ?( 
         user.history.map((history) => (
