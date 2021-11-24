@@ -3,7 +3,7 @@ import firebase from "firebase";
 import { useState } from "react"
 import { storage } from "firebase";
 import styles from "./Upload.module.css"
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function Upload() {
 

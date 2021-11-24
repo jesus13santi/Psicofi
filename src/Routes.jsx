@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
@@ -27,7 +27,7 @@ import AdminPage from "./pages/AdminPage";
 
 function Routes() {
   return (
-    <Routes>
+    <Switch>
       <Route exact path="/psicologos" component={PsicologosPage}></Route>
       <Route exact path="/register" component={RegisterPage}></Route>
       <Route exact path="/election" component={ElectionPage}></Route>
@@ -63,7 +63,7 @@ function Routes() {
       <Route exact path="/pendiente" component={AlertPendientePage}></Route>
       <Route exact path="/admin" component={AdminPage}></Route>
       <Route exact path="*" component={PageNotFound}></Route>
-    </Routes>
+    </Switch>
   );
 }
 
