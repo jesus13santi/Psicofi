@@ -181,7 +181,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li onClick={handdleMenu1}>
-            <Link to="/psicologos" className={styles.linkMobile}>
+            <Link to="/" className={styles.linkMobile}>
               Citas Agendadas
             </Link>
           </li>

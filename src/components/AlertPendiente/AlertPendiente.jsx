@@ -9,7 +9,7 @@ function AlertPendiente(){
                     <h1 className={styles.text}>
                     Le informamos que la verificación de su cuenta a esta actualmente en proceso de revision. </h1>
                 
-                    <h1 className={styles.text}> Nuestros sistemas no son perfectos y, si la verificación de su cuenta ha tardo mas de lo usual, comuníquese con soporte.</h1>
+                    <h1 className={styles.text}> Nuestros sistemas no son perfectos y, si la verificación de su cuenta ha tardado mas de lo usual, comuníquese con soporte.</h1>
                     <h1 className={styles.text}>  Agradecemos su comprensión.</h1>
                     <h1 className={styles.text}> Saludos</h1>
                     <h1 className={styles.text}> Equipo de PsicoFi</h1>

@@ -52,7 +52,7 @@ function Tablero() {
           {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
           
         </h1>
-        <Link to ='/'>
+        <Link to ='/history'>
         <button className={styles.sortText}>Ver más</button>
         </Link>
         </div>
