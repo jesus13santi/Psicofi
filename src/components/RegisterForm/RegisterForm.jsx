@@ -155,7 +155,7 @@ function RegisterForm() {
                   name="name"
                   id={styles.name}
                   type="text"
-                  placeholder="Enter your fullname"
+                  placeholder="Nombre completo"
                   value={values.name}
                   onChange={handleOnChange}
                 />  
@@ -166,7 +166,7 @@ function RegisterForm() {
                   name="email"
                   id={styles.email}
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Correo electrónico"
                   value={values.email}
                   onChange={handleOnChange}
                 />
@@ -177,7 +177,7 @@ function RegisterForm() {
                   name="password"
                   id={styles.password}
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Contraseña"
                   value={values.password}
                   onChange={handleOnChange}
                 />
@@ -188,7 +188,7 @@ function RegisterForm() {
                   name="passwordB"
                   id={styles.passwordB}
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder="Confirmar contraseña"
                   value={values.passwordB}
                   onChange={handleOnChange}
                 />
@@ -200,7 +200,7 @@ function RegisterForm() {
             <div className={styles.submit}>
               <button className={styles.continue} type="submit" onClick={handleSubmit} > Continuar </button>
               <p id={styles.loginNext} className={styles.nextText}> 
-              ¿Ya tiene una cuenta? <Link to="/login"><u>Iniciar sesion</u></Link>
+              ¿Ya tiene una cuenta? <Link to="/login"><u>Iniciar sesión</u></Link>
               </p>
             </div>           
           </form> 

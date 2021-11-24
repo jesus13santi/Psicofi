@@ -81,7 +81,7 @@ function LoginForm() {
       ) : (
         <div className={styles.container}>
           <div className={styles.header}>
-            <h2 className={styles.tittle}> Que bueno tenerte </h2>
+            <h2 className={styles.tittle}> Bienvenido de vuelta </h2>
             <p className={styles.nextText}> Continua con... </p>
             <div className={styles.socialButtons}>
               <button
@@ -118,7 +118,7 @@ function LoginForm() {
                 name="email"
                 id={styles.email}
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Correo electrónico"
                 value={values.email}
                 onChange={handleOnChange}
               />
@@ -128,7 +128,7 @@ function LoginForm() {
                 name="password"
                 id={styles.password}
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Contraseña"
                 value={values.password}
                 onChange={handleOnChange}
               />
@@ -150,7 +150,7 @@ function LoginForm() {
               </button>
               <p id={styles.loginNext} className={styles.nextText}>
                 {" "}
-                ¿No tienes una cuenta? <Link to="/register">Registrate</Link>
+                ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
               </p>
 
               {!!user && (
