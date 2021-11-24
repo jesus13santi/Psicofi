@@ -30,13 +30,7 @@ const ReservarCita = ({ psicologo }) => {
       console.log(e);
     }
   };
-  const AddData = async (appointment, uid) => {
-    try {
-      console.log(appointment);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  
   const handdleSelect = (e) => {
     setCita(e.target.value);
   };
@@ -75,14 +69,16 @@ const ReservarCita = ({ psicologo }) => {
       const cita1 = psicologo.appointments.find(
         (element) => element.id === cita
       );
+      
+      
       createChat(
         {
           active: "no",
           msjs: [],
           status: 1,
           users: [
-            { img: user.photo, name: user.name },
-            { img: psicologo.photo, name: psicologo.name },
+            { img: user.photo, name: user.name, id:user.id },
+            { img: psicologo.photo, name: psicologo.name, id:params.uid },
           ],
         },
         cita
