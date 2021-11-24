@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider } from "../../utils/firebaseConfig"
+import { auth, googleProvider, facebookProvider,twitterProvider } from "../../utils/firebaseConfig"
 import { useHistory } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
@@ -32,6 +32,20 @@ function RegisterForm() {
         console.log(user)
         await history.push("/election");
         
+    };
+
+    const handleFacebookLogin = async () =>{
+      await auth.signInWithPopup(facebookProvider);
+      console.log(user)
+      await history.push("/election");
+      
+    };
+
+    const handleTwitterLogin = async () =>{
+      await auth.signInWithPopup(googleProvider);
+      console.log(user)
+      await history.push("/election");
+      
     };
 
     const handleOnChange = (event) => {
@@ -93,10 +107,15 @@ function RegisterForm() {
               number: "",
               role: "",
               nextAppointments: [],
-              pais: "España",
+              pais: "",
               history: [],
               photo: 'https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6',
-              description: "Loren ipsum largo"
+              description: "Loren ipsum largo",
+              gender: "",
+              birthday: "",
+              problemas: [],
+              appointments: []
+          
               
               },
               response.user.uid)
@@ -119,9 +138,9 @@ function RegisterForm() {
 
             <button className={styles.img1} type="button" onClick={handleGoogleLogin}> </button>
 
-            <button className={styles.img2} type="button" onClick={handleGoogleLogin}> </button>
+            <button className={styles.img2} type="button" onClick={handleFacebookLogin}> </button>
 
-            <button className={styles.img3} type="button" onClick={handleGoogleLogin}> </button>
+            <button className={styles.img3} type="button" onClick={handleTwitterLogin}> </button>
                         
             </div>
             <p className={styles.nextText}> o correo electronico: </p>

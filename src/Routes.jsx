@@ -18,6 +18,9 @@ import HistoriaPage from "./pages/HistoriaPage";
 import ChatsPage from "./pages/ChatsPage";
 import ChatPage from "./pages/ChatPage";
 import ReservarCitaPage from "./pages/ReservarCitaPage";
+import AlertRechazadoPage from "./pages/AlertRechazadoPage";
+import AlertPendientePage from "./pages/AlertPendientePage"
+import AdminPage from "./pages/AdminPage";
 
 function Routes() {
   return (
@@ -51,6 +54,9 @@ function Routes() {
       <Route exact path="/chat/:chatId" component={ChatPage}></Route>
       <Route exact path="/reservarCita/:uid" component={ReservarCitaPage}></Route>
       <Route exact path="/" component={HomePage}></Route>
+      <Route exact path="/rechazado" component={AlertRechazadoPage}></Route>
+      <Route exact path="/pendiente" component={AlertPendientePage}></Route>
+      <Route exact path="/admin" component={AdminPage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
       </Route>
