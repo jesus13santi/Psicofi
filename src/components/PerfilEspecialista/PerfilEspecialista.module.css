@@ -83,6 +83,7 @@
    
    .lineagruesa textarea{
        height: 10em;
+       resize: none;
    }
    .checkbox{
        position: absolute;
@@ -168,6 +169,7 @@
        flex-direction: column;
        
        
+       
    }
    .picker{
        
@@ -177,6 +179,8 @@
        outline: none;
        padding: 0px 20px;
        border-radius: 10px;
+       width: 100%;
+       background-color: white;
    }
    .picker:disabled{
        background-color: grey;
@@ -221,4 +225,14 @@
        justify-content: space-between;
        align-items: center;
        
+   }
+   .error{
+       background-color: rgba(255, 0, 0, 0.294);
+       width: 300px;
+       align-self: center;
+       text-align: center;
+       border: 1px solid red;
+       color: red;
+       margin-top: 10px;
+       padding: 5px;
    }
