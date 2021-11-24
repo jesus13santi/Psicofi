@@ -60,9 +60,9 @@ const NavBar = () => {
             </picture>
             <p>{user.name}</p>
             {isOpenLog ? (
-              <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
-            ) : (
               <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+            ) : (
+              <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
             )}
           </div>
         ) : (
@@ -148,7 +148,7 @@ const NavBar = () => {
             <>
           <li onClick={handdleMenu1}>
             <Link to="/perfil" className={styles.linkMobile}>
-              Mi Pefil
+              Mi Perfil
             </Link>
           </li>
           <li onClick={handdleMenu1}>
@@ -177,7 +177,7 @@ const NavBar = () => {
             <>
           <li onClick={handdleMenu1}>
             <Link to="/perfil" className={styles.linkMobile}>
-              Mi Pefil
+              Mi Perfil
             </Link>
           </li>
           <li onClick={handdleMenu1}>

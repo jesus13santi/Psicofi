@@ -24,7 +24,7 @@ function CardChat({name, date, chatId}) {
       {user.role =="Paciente" ?(
 
       <Link to ={`/chat/${chatId}`}>
-      <button type="button" className={styles.button}>Paciente</button>
+      <button type="button" className={styles.button}>Ver Chat</button>
       </Link>
 
 
