@@ -33,7 +33,6 @@ function Tablero() {
           date={app.date}
           startTime={app.startTime}
           endTime={app.endTime}
-          subject={app.subject}
         />
         ))):(
           <p className = {styles.emptyText}>No tienes citas agendadas próximamente</p>

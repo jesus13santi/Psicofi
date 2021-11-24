@@ -103,6 +103,11 @@
     border: none;
     outline: none;
     font-size: 21px;
+    font-weight: 600;
+}
+
+.buttonMobile:hover {
+    color: red;
 }
 .boxImg {
 
