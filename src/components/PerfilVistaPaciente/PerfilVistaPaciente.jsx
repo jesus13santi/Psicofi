@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./PerfilVistaPaciente.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,}) => {
+const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas}) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
   const handdleAppointment = () => {
@@ -20,7 +20,7 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,}) => {
               <p className={styles.text}>{birthday}</p>
 
               <h3 className={styles.title}>Valoracion: </h3>
-              <p className={styles.text}></p>
+              <p className={styles.text}>5</p>
 
               <h3 className={styles.title}>Lugar de residencia: </h3>
               <p className={styles.text}>{pais}</p>
@@ -38,10 +38,14 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,}) => {
         <div className={styles.boxEspecialidades}>
           <h3>Especialidades:</h3>
           <div className={styles.especialidades}>
-            <div className={styles.especialidad}>
-              <p>Sexualidad</p>
-            </div>
-            <div className={styles.especialidad}>
+            {!!problemas &&
+              problemas.map((pro) => (
+                <div className={styles.especialidad}>
+                  <p>{pro.toUpperCase()}</p>
+                </div>
+              ))}
+
+            {/* <div className={styles.especialidad}>
               <p>Ansiedad</p>
             </div>
             <div className={styles.especialidad}>
@@ -49,7 +53,7 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,}) => {
             </div>
             <div className={styles.especialidad}>
               <p>Autoestima</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <button
