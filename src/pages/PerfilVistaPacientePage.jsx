@@ -10,7 +10,7 @@ const PerfilVistaPacientePage = () => {
   const {user}= useContext(UserContext)
   const [psicologo, setPsicologo] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  
+  console.log("Hola")
  
 
   const fetchPsico = async () => {

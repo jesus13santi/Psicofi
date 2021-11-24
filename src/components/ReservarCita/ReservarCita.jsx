@@ -3,73 +3,64 @@ import styles from "./ReservarCita.module.css";
 import Footer from "../Footer/Footer";
 
 
-const ReservarCita = () => {
+const ReservarCita = ({psicologo}) => {
+    console.log(psicologo)
+    function diaSemana(x) {
+      const date1 = new Date(x.replace(/-+/g, "/"));
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const result = date1.toLocaleDateString("es-Es", options);
+      // console.log(date1.toLocaleDateString("es-MX", options));
+      return result;
+    }
     return (
-        <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
-          <div className={styles.titulo}>Reservar una Cita </div>
-          <form submit = "false">
-            <div>
-              <div className={styles.etiqueta}>
-                <label for="PsicologoEscogido">Psicólogo escogido:</label>
+      <div className={styles.container}>
+        {!!psicologo ? (
+          <div className={styles.boxContainer}>
+            <h1 className={styles.title}>Reservar una Cita</h1>
+            <div className={styles.boxInput}>
+              <div className={styles.inputAndTitle}>
+                <h3 className={styles.subTitle}>Psicólogo escogido: </h3>
+                <p>{psicologo.name}</p>
               </div>
-              <div className={styles.campo}>
-                {" "}
-                <label id="PsicologoEscogido"></label>
+              <div className={styles.inputAndTitle}>
+                <h3>Fechas disponibles: </h3>
+                <select name="" id="" className={styles.select}>
+                  <option value="">Seleccione una cita</option>
+                  {psicologo.appointment.length > 0 &&
+                    psicologo.appointment.map((cita) => (
+                      <option value="">
+                        {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
+                      </option>
+                    ))}
+                </select>
               </div>
-            </div>
-            <div>
-              <div className={styles.etiqueta}>
-                <label for="FechaDisponible">Fechas Disponibles:</label>
-              </div>
-              <div className={styles.campo}>
-                <input
-                  className={styles.entrada}
-                  type="date"
-                  id="FechaDisponible"
-             
-                ></input>
-                <input
-                  className={styles.entrada}
-                  type="text"
-                  id="HoraDisponible"
-             
-                ></input>
-                
-                
-              </div>
-              
-              
-            </div>
-           
-            <div>
-              <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
-                <label for="Descripcion">Breve Descripción:</label>
-              </div>
-              <div className={`${styles.campo} ${styles.lineagruesa}`}>
-                <textarea
-                  className={styles.entrada1}
-                  id="Descripcion"
-                  placeholder="Razones por las cuales se necesita una consulta, e.j. problemas amorosos"
-                />
+              <div className={styles.inputAndTitle}>
+                <h3>Breve descripcion:</h3>
+                <div className={styles.textAreaBox}>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="Razones por las cuales se necesita una consulta, e. j. problemas amorosos"
+                    className={styles.textArea}
+                  ></textarea>
+                  <p>máx. 400 caracteres</p>
+                </div>
               </div>
             </div>
-            
-            
-          
-            <div className={styles.submit}>
-              <input
-                type="button"
-                className={styles.boton}
-                value="Continuar al pago"
-              ></input>
-            </div>
-          </form>
-        </div>
-        
-        
-      );
-      
-    
+            <button className={styles.button}>Continuar al Pago</button>
+          </div>
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </div>
+    );
       
 }
 

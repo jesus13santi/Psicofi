@@ -40,7 +40,9 @@ const NavBar = () => {
       
       
   };
-
+  const historyDeck=()=>{
+    history.push("/deck")
+  }
 
 
   return (
@@ -49,16 +51,23 @@ const NavBar = () => {
         <img src={Logo} alt="" className={styles.img} onClick={handdleHome} />
 
         {!!user ? (
-          <div className={styles.rightSize} onClick={handdleMenu1}>
-            <picture className={styles.boxImg}>
+          <div
+            className={`${styles.rightSize1} ${styles.rightSize}`}
+            onClick={historyDeck}
+          >
+            <picture className={styles.boxImg} onClick={historyDeck}>
               <img src={user.photo} alt="" className={styles.menuVecto} />
             </picture>
             <p>{user.name}</p>
-            {isOpenLog?(<img src={flechaAbajo} alt="" /> ):(<img src={flechaArriba} alt="" /> )}
+            {isOpenLog ? (
+              <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
+            ) : (
+              <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+            )}
           </div>
         ) : (
           <>
-            <ul className={styles.rightSize}>
+            <ul className={`${styles.rightSize}`}>
               <li>
                 <Link to="/" className={styles.link}>
                   Contacto

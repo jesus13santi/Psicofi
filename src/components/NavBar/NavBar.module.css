@@ -142,6 +142,11 @@
         width: 85%;
         margin-right: 0px;
         
+        margin-right: 20px;  
+    }
+    .rightSize1{
+        justify-content: flex-end;
+        
     }
 
     .link {

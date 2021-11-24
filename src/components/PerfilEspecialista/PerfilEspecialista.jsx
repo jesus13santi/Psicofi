@@ -39,7 +39,7 @@ const PerfilEspecialista = () => {
   const OnChange = (event) => {
     setDate(event);
   };
-
+  
   const validar_campos = () => {
     let valido = true;
     // si fecha de nacimiento no es valido
@@ -128,6 +128,16 @@ const PerfilEspecialista = () => {
       alert("No se pudo agregar la cita");
     }
   };
+  const deleteAppointment = async (id) => {
+    const newArray = user.appointment.filter((item) => item.id !== id);
+    
+    await db.collection("users").doc(user.id).update({
+       appointment: newArray
+     })
+    const updateUser = await getUserByEmail(user.email);
+    setUser(updateUser);
+    alert("Cita Eliminada");
+  };
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -136,7 +146,7 @@ const PerfilEspecialista = () => {
       month: "long",
       day: "numeric",
     };
-    const result = date1.toLocaleDateString("es-MX", options);
+    const result = date1.toLocaleDateString("es-Es", options);
     // console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
@@ -362,17 +372,21 @@ const PerfilEspecialista = () => {
               <>
                 <div className={styles.titleList}>
                   <h3>Fecha:</h3>
-                <h3>Hora:</h3>
-
+                  <h3>Hora:</h3>
                 </div>
-                
+
                 {user.appointment.map((m) => (
                   <>
                     <div key={m.id} className={styles.cita}>
                       <p className={styles.grid}>{diaSemana(m.date)}</p>
                       <p className={styles.grid}>
                         {m.hour}
-                        <button className={styles.btnDelete}>Borrar</button>
+                        <button
+                          className={styles.btnDelete}
+                          onClick={()=> deleteAppointment(m.id)}
+                        >
+                          Borrar
+                        </button>
                       </p>
                     </div>
                   </>
