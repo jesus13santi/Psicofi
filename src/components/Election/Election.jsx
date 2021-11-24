@@ -185,7 +185,7 @@ function Election(){
                         name="number"
                         type="text"
                         onChange={handleOnChange}
-                        placeholder="Enter your phone"
+                        placeholder="Teléfono"
                         /> 
                     </div>
 
@@ -196,7 +196,7 @@ function Election(){
                         name="pais"
                         type="text"
                         onChange={handleOnChange}
-                        placeholder="Enter your address"
+                        placeholder="País de residencia"
                         />           
                     </div>
 

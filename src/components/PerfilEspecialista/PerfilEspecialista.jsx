@@ -13,12 +13,13 @@ const PerfilEspecialista = () => {
   const [birthday, setBirthday] = useState("");
   const [biography, setBiography] = useState("");
   const { user, setUser, getUserByEmail } = useContext(UserContext);
+  
   const [values, setValues] = useState({
     hour: "",
     date: "",
   });
   const history = useHistory();
-
+  
   useEffect(() => {
     console.log("####################################");
     if (user.problemas != undefined) {
@@ -107,6 +108,7 @@ const PerfilEspecialista = () => {
     };
     // console.log(values.date.toLocaleDateString('es-Es',option))
   };
+  
   const agregarCita = async () => {
     if (values.date !== "" && values.hour !== "") {
       await db
@@ -115,7 +117,7 @@ const PerfilEspecialista = () => {
         .update({
           appointment: [
             ...user.appointment,
-            { date: values.date, hour: values.hour, id: uniqid() },
+            { date: values.date, hour: values.hour, id: uniqid(), status:2 ,name:"",incidencias: [] },
           ],
         });
       const updateUser = await getUserByEmail(user.email);
@@ -365,7 +367,7 @@ const PerfilEspecialista = () => {
         <div className={styles.rightSize}>
           <h1 className={styles.title}>Citas Disponibles</h1>
           <div className={styles.citas}>
-            {user.appointment.length !== 0 ? (
+            {user.appointments.length !== 0 ? (
               <>
                 <div className={styles.titleList}>
                   <h3>Fecha:</h3>
@@ -374,18 +376,20 @@ const PerfilEspecialista = () => {
 
                 {user.appointment.map((m) => (
                   <>
-                    <div key={m.id} className={styles.cita}>
-                      <p className={styles.grid}>{diaSemana(m.date)}</p>
-                      <p className={styles.grid}>
-                        {m.hour}
-                        <button
-                          className={styles.btnDelete}
-                          onClick={()=> deleteAppointment(m.id)}
-                        >
-                          Borrar
-                        </button>
-                      </p>
-                    </div>
+                    {m.status === 2 && (
+                      <div key={m.id} className={styles.cita}>
+                        <p className={styles.grid}>{diaSemana(m.date)}</p>
+                        <p className={styles.grid}>
+                          {m.hour}
+                          <button
+                            className={styles.btnDelete}
+                            onClick={() => deleteAppointment(m.id)}
+                          >
+                            Borrar
+                          </button>
+                        </p>
+                      </div>
+                    )}
                   </>
                 ))}
               </>

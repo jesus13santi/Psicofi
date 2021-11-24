@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../../context/UserContext";
 import { auth, googleProvider, facebookProvider,twitterProvider } from "../../utils/firebaseConfig"
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
@@ -111,11 +111,9 @@ function RegisterForm() {
               password: values.password,
               number: "",
               role: "",
-              nextAppointments: [],
               pais: "",
-              history: [],
               photo: 'https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6',
-              description: "Loren ipsum largo",
+              description: "",
               gender: "",
               birthday: "",
               problemas: [],
@@ -160,7 +158,7 @@ function RegisterForm() {
                   name="name"
                   id={styles.name}
                   type="text"
-                  placeholder="Enter your fullname"
+                  placeholder="Nombre completo"
                   value={values.name}
                   onChange={handleOnChange}
                 />  
@@ -169,7 +167,7 @@ function RegisterForm() {
                   name="email"
                   id={styles.email}
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Correo electrónico"
                   value={values.email}
                   onChange={handleOnChange}
                   errorMessage={errorEmail}
@@ -179,7 +177,7 @@ function RegisterForm() {
                   name="password"
                   id={styles.password}
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Contraseña"
                   value={values.password}
                   onChange={handleOnChange}
                   errorMessage={errorPassword}
@@ -189,7 +187,7 @@ function RegisterForm() {
                   name="passwordB"
                   id={styles.passwordB}
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder="Confirmar contraseña"
                   value={values.passwordB}
                   onChange={handleOnChange}
                   errorMessage={errorPasswordB}
@@ -198,8 +196,10 @@ function RegisterForm() {
             </div>
            
             <div className={styles.submit}>
-              <button className={styles.continue} type="submit" onClick={handleSubmit}> Continuar </button>
-              <p id={styles.loginNext} className={styles.nextText}> ¿Ya tiene una cuenta? <u>Iniciar sesion</u></p>
+              <button className={styles.continue} type="submit" onClick={handleSubmit} > Continuar </button>
+              <p id={styles.loginNext} className={styles.nextText}> 
+              ¿Ya tiene una cuenta? <Link to="/login"><u>Iniciar sesión</u></Link>
+              </p>
             </div>           
           </form> 
         </div>

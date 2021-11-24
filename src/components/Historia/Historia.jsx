@@ -16,16 +16,20 @@ const Historia = () => {
   };
     const {user, setUser}= useContext(UserContext);
     console.log(user)
+
+
     const handleSelect = (e) => {
         setOrden(e.target.value);
         if (e.target.value === "ordenAlfabetico") {
-          console.log(user.history)  
+          console.log("Historia", user.history)  
           setListaOrdenada(ordenarNombres(user.history));
           console.log(listaOrdenada)
         } else {
           setListaOrdenada(user.history);
         }
       };
+
+
     const ordenarNombres = (lista) => {
     const listaOrdenada = lista.slice().sort((a, b) => {
       const nameA = a.name.toLowerCase();
@@ -60,16 +64,23 @@ const Historia = () => {
                 <option value="ordenAlfabetico"> Orden Alfabetico</option>
                 <option value="date">Fecha</option>
               </select>
-
-        {user.history.length > 0 ?( 
-        user.history.map((history) => (
-        <CardStory
-        name={history.name}
-        date={history.date} 
-        />
+        <div>
+        {user.appointments.length > 0 ?( 
+        user.appointments.map((history) => (
+        <>
+        {history.status== 0 &&(
+          <CardStory
+          name={history.name}
+          date={history.date}
+          chatId={history.id}
+          />
+        )}
+        </>
+        
       ))):(
         <p className = {styles.emptyText}>El historial está vacío</p>
       )}
+      </div>
     </div>
     <Footer />    
     </div>
