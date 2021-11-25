@@ -37,6 +37,7 @@ const IndividualPatientPage = () => {
                 pais={patient.pais}
                 number={patient.number}
                 photo={patient.photo}
+                incidencias={patient.incidencias}
                 />
             ) : (
                 <Loading />

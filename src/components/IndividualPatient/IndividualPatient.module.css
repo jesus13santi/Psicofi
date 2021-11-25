@@ -70,7 +70,7 @@
 
 .atribute {
     display: grid;
-    grid-template-columns: 270px .5fr;
+    grid-template-columns: 280px .5fr;
     gap: 1rem;
 }
 
