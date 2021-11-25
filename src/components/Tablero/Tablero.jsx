@@ -29,7 +29,7 @@ function Tablero() {
         {user.appointments.length > 0 ?(
         user.appointments.map((app) => (
           <>
-          {app.status== 0 &&(
+          {app.status== 1 &&(
             <UTabCard
             appName={app.name}
             date={app.date}

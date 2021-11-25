@@ -118,7 +118,7 @@ function Chat() {
         const secondUid = users[1].id
         const secondName = users[0].name
         console.log(secondUid)
-        
+
         // usuario
         await db
             .collection("users")
@@ -147,7 +147,6 @@ function Chat() {
               date: cita.date,
               hour: cita.hour,
               id: cita.id,
-              status: 0,
               name: secondName,
               incidencias: [],
               status: 0,
