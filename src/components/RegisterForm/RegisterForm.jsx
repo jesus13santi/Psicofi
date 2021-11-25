@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider, facebookProvider,twitterProvider } from "../../utils/firebaseConfig"
+import { auth, googleProvider, facebookProvider, twitterProvider } from "../../utils/firebaseConfig"
 import { useHistory, Link } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
@@ -42,7 +42,7 @@ function RegisterForm() {
     };
 
     const handleTwitterLogin = async () =>{
-      await auth.signInWithPopup(googleProvider);
+      await auth.signInWithPopup(twitterProvider);
       console.log(user)
       await history.push("/election");
       
@@ -86,7 +86,6 @@ function RegisterForm() {
             setErrorPassword("Asegure que la contraseñas coincidan.")
             setErrorPasswordB("Asegure que la contraseñas coincidan.")
             isValid = false
-            console.log("no ta iguales")
         }
 
         return isValid
@@ -165,6 +164,8 @@ function RegisterForm() {
                   onChange={handleOnChange}
                 />  
 
+              <h1 className={styles.alert} id={styles.alert}> {errorName} </h1> 
+
               <input className={styles.formRegis}
                   name="email"
                   id={styles.email}
@@ -172,8 +173,9 @@ function RegisterForm() {
                   placeholder="Correo electrónico"
                   value={values.email}
                   onChange={handleOnChange}
-                  errorMessage={errorEmail}
                 />
+
+                <h1 className={styles.alert} id={styles.alert}> {errorEmail} </h1>
 
                 <input className={styles.formRegis}
                   name="password"
@@ -182,8 +184,9 @@ function RegisterForm() {
                   placeholder="Contraseña"
                   value={values.password}
                   onChange={handleOnChange}
-                  errorMessage={errorPassword}
                 />
+
+                <h1 className={styles.alert} id={styles.alert}> {errorPassword} </h1>
 
                 <input className={styles.formRegis}
                   name="passwordB"
@@ -192,8 +195,9 @@ function RegisterForm() {
                   placeholder="Confirmar contraseña"
                   value={values.passwordB}
                   onChange={handleOnChange}
-                  errorMessage={errorPasswordB}
                 />
+
+                <h1 className={styles.alert} id={styles.alert}> {errorPasswordB} </h1>
 
             </div>
            
