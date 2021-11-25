@@ -52,7 +52,7 @@ function Tablero() {
         </div>
         <div className={styles.sort}>
         <h1 className={styles.boxTitle}>
-          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
+          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de citas:'}
           
         </h1>
         

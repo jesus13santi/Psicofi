@@ -46,6 +46,7 @@
     border-radius: 1.875rem;
     font-weight: 600;
     font-size: 1.125rem;
+    margin-left: 1.25rem;
 }
 .button .link{
     color:white
@@ -110,6 +111,7 @@
         border-radius: 1.875rem;
         font-weight: 600;
         font-size: 0.875rem;
+        margin-left: 1.25rem;
 
     }
     .button .link{
@@ -171,11 +173,12 @@
         background-color: #763D80;
         border: none;
         color: white;
-        width: 5rem;
+        width: 4rem;
         height: 2.5rem;
         border-radius: 1.875rem;
         font-weight: 600;
         font-size: 0.625rem;
+        margin-left: 0.25rem;
 
     }
     .button .link{

@@ -6,6 +6,7 @@ import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 
 function RegisterForm() {
@@ -130,7 +131,7 @@ function RegisterForm() {
         <div className={styles.container}>
           <div className={styles.header}>
 
-            <h2 className={styles.tittle}> Que bueno tenerte </h2>
+            <h2 className={styles.tittle}> Bienvenido </h2>
             <p className={styles.nextText}> Continua con... </p>
             <div className={styles.socialButtons}> 
 
@@ -203,9 +204,10 @@ function RegisterForm() {
             </div>           
           </form> 
         </div>
+        
       </section>
-       
-    );    
+    ); 
+      
    
 };
 

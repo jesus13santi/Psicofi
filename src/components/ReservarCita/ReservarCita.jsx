@@ -102,6 +102,7 @@ const ReservarCita = ({ psicologo }) => {
             },
           ],
         });
+        
       // Update Usuario logueado
       await db
         .collection("users")

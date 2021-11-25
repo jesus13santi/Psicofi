@@ -27,6 +27,7 @@ function Chat() {
     const [active, setActive]= useState("no")
     const {user, setUser}= useContext(UserContext);
     const [users, setUsers] = useState([])
+    const [newArray, setNewArray]= useState([])
 
 
 
@@ -85,6 +86,7 @@ function Chat() {
             active: 'no',
             status: 0
         })
+        endAppointment(users)
       }
 
       function activateChat(e) {
@@ -100,6 +102,61 @@ function Chat() {
         sendMessage()
     }
 
+    async function endAppointment(users){
+        const cita = user.appointments.find(
+            (element) => element.id == id
+          );
+        const aux = (user.appointments.filter((item) => item.id !== id))
+        console.log('cita',cita)
+        console.log('aux',aux)
+        console.log('USERS', users)
+
+        const firstUid = users[0].id
+        console.log(firstUid)
+        const firstName = users[1].name
+        
+        const secondUid = users[1].id
+        const secondName = users[0].name
+        console.log(secondUid)
+        
+        // usuario
+        await db
+            .collection("users")
+            .doc(firstUid)
+            .update({
+          appointments: [
+            ...aux,
+            {
+              date: cita.date,
+              hour: cita.hour,
+              id: cita.id,
+              status: 0,
+              name: firstName,
+              incidencias: [],
+            },
+          ],
+        })
+        //especialista
+        await db
+            .collection("users")
+            .doc(secondUid)
+            .update({
+          appointments: [
+            ...aux,
+            {
+              date: cita.date,
+              hour: cita.hour,
+              id: cita.id,
+              status: 0,
+              name: secondName,
+              incidencias: [],
+              status: 0,
+            },
+          ],
+        })
+
+        
+    }
     
     return (
     <>
