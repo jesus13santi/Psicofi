@@ -133,6 +133,7 @@ function Chat() {
               status: 0,
               name: firstName,
               incidencias: [],
+              uid: secondUid
             },
           ],
         })
@@ -150,6 +151,8 @@ function Chat() {
               name: secondName,
               incidencias: [],
               status: 0,
+              uid: firstUid
+              
             },
           ],
         })

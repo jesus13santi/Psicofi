@@ -57,10 +57,10 @@ function checkHistory(a, aux){
         <>
         {history.status== 0 &&(
           <CardStory
-          id={params.uid}
           name={history.name}
           date={history.date}
           chatId={history.id}
+          uid={history.uid}
           />
         )}
         </>
