@@ -26,7 +26,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
     function createIncidencia(e) {
         e.preventDefault();
         db.collection("users").doc(id).update({
-            //incidencias: incidencias.push("test"),
+            //
         })
         setIsAddingIncidenciaActive(false);
         setDoIncidenciasExist(true);

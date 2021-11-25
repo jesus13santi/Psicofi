@@ -28,7 +28,7 @@ function checkHistory(a, aux){
       checkHistory(a, aux)
     ))
     setLista(aux)
-
+    
   }
 
   

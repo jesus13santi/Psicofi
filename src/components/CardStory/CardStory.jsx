@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./CardStory.module.css";
 import img from "../../img/photo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 function CardStory({id, name, date, chatId}) {
   const {user, setUser}= useContext(UserContext);
+  const history = useHistory();
   const handlePatientHistory = () => {
-    history.push(`/historiaPacienteIndividual/${id}`);
+    history.push(`/historiaPacienteIndividual/${chatId}`);
   };
   return (
     <div className={styles.container}>
@@ -30,9 +31,7 @@ function CardStory({id, name, date, chatId}) {
       ):(
         <>
         <div>
-        <Link to ={"/historiaPacienteIndividual"}>
         <button type="button" className={styles.button} onClick={handlePatientHistory}>Ver historia</button>
-        </Link>
         <Link to ={`/chat/${chatId}`}>
         <button type="button" className={styles.button}>Ver Chat</button>
         </Link>
