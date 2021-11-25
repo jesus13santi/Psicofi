@@ -4,9 +4,11 @@ import Footer from "../Footer/Footer";
 import { useState, useContext } from "react";
 import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
+import { useParams } from "react-router-dom";
 
 const ReservarCita = ({ psicologo }) => {
-  const { user, setUser } = useContext(UserContext);
+  const params = useParams()
+  const { user, setUser, getUserByEmail } = useContext(UserContext);
   const [cita, setCita] = useState();
   const handdleOnChange = () => {};
   function diaSemana(x) {
@@ -28,48 +30,102 @@ const ReservarCita = ({ psicologo }) => {
       console.log(e);
     }
   };
-  const AddData = async (appointment, uid) => {
-    try {
-      console.log(appointment);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  
   const handdleSelect = (e) => {
     setCita(e.target.value);
   };
-  
+  const ordenarHour=(lista)=>{
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const hourA = a.hour;
+      const hourB = b.hour;
+      if (hourA < hourB) {
+        return -1;
+      }
+      if (hourA > hourB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  }
+  const ordenar = (lista) => {
+    const listaOrdenada = ordenarHour(lista).slice().sort((a, b) => {
+      const fechaA = a.date;
+      const fehchaB = b.date;
+      
+      if (fechaA < fehchaB) {
+        return -1;
+      }
+      if (fechaA > fehchaB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
 
   const handdleAppointment = async () => {
-    createChat(
-      {
-        active: "no",
-        msjs: [],
-        status: 1,
-        users: [
-          { img: user.photo, name: user.name },
-          { img: psicologo.photo, name: psicologo.name },
-        ],
-      },
-      cita
-    );
-    // await db
-    //   .collection("users")
-    //   .doc(user.id)
-    //   .update({
-    //     appointment: [
-    //       ...user.appointment,
-    //       {
-    //         date: "Hola",
-    //         hour: "Hola",
-    //         id: "sfsadsadas",
-    //         status: 1,
-    //         name: "",
-    //         incidencias: [],
-    //       },
-    //     ],
-    //   });
-    alert("usuario Creado");
+    if (cita !== ""){
+      const cita1 = psicologo.appointments.find(
+        (element) => element.id === cita
+      );
+      
+      
+      createChat(
+        {
+          active: "no",
+          msjs: [],
+          status: 1,
+          users: [
+            { img: user.photo, name: user.name, id:user.id },
+            { img: psicologo.photo, name: psicologo.name, id:params.uid },
+          ],
+        },
+        cita
+      );
+      const newArray = psicologo.appointments.filter((item) => item.id !== cita);
+
+      // Update cita del psicologo
+      await db
+        .collection("users")
+        .doc(params.uid)
+        .update({
+          appointments: [
+            ...newArray,
+            {
+              date: cita1.date,
+              hour: cita1.hour,
+              id: cita1.id,
+              status: 1,
+              name: user.name,
+              incidencias: [],
+            },
+          ],
+        });
+      // Update Usuario logueado
+      await db
+        .collection("users")
+        .doc(user.id)
+        .update({
+          appointments: [
+            ...user.appointments,
+            {
+              date: cita1.date,
+              hour: cita1.hour,
+              id: cita1.id,
+              status: 1,
+              name: psicologo.name,
+              incidencias: [],
+            },
+          ],
+        });
+
+      console.log("cita Creada");
+
+    }else{
+      console.log("No se selecciono ninguna cita")
+    }
+    
   };
   return (
     <div className={styles.container}>
@@ -90,11 +146,11 @@ const ReservarCita = ({ psicologo }) => {
                 onChange={handdleSelect}
               >
                 <option value="">Seleccione una cita</option>
-                {psicologo.appointment.length > 0 &&
-                  psicologo.appointment.map((cita) => (
+                {psicologo.appointments.length > 0 &&
+                  ordenar(psicologo.appointments).map((cita) => (
                     <>
                       {cita.status === 2 && (
-                        <option value={cita.id}>
+                        <option value={cita.id}key={cita.id}>
                           {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
                         </option>
                       )}
