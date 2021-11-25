@@ -151,18 +151,18 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                     </div>
                                 </div>
             
-                                <div className={styles.boxAtribute}>
-                                    <button
-                                    className={styles.button}
-                                    onClick={crearIncidencia}
-                                    type="button">
-                                    Listo
-                                    </button>
+                                <div className={styles.buttonPair}>
                                     <button
                                     className={styles.button}
                                     onClick={cancelIncidencia}
                                     type="button">
                                     Cancelar
+                                    </button>
+                                    <button
+                                    className={styles.button}
+                                    onClick={crearIncidencia}
+                                    type="button">
+                                    Guardar
                                     </button>
                                 </div>
                             </>
