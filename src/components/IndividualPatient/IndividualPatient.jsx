@@ -5,7 +5,9 @@ import { UserContext } from '../../context/UserContext';
 import Footer from '../Footer/Footer';
 import { db } from "../../utils/firebaseConfig";
 import dayjs from "dayjs";
+import swal from 'sweetalert';
 import Sweetalert from '../Sweetalert/Sweetalert';
+import uniqid from "uniqid";
 
 const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }) => {
 
@@ -15,6 +17,8 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
     const [ isAddingIncidenciaActive, setIsAddingIncidenciaActive ] = useState(false);
     const [ doIncidenciasExist, setDoIncidenciasExist ] = useState(false);
     const [ incidencies, setIncidencies ] = useState([]);
+    const [ title, setTitle ] = useState("");
+    const [ desc, setDesc ] = useState("");
 
     const history = useHistory();
     const { user } = useContext(UserContext);
@@ -45,6 +49,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
         if(db){
             const aux = [...incidencies]
             const inc = {
+                id: uniqid(),
                 date: today,
                 uid: user.id,
                 title: values.title,
@@ -166,15 +171,15 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                     incidencies.map((inc) => (
                                         <div className={styles.innerContainer}>
                                             <p className={styles.text}>{inc.title}</p>
-                                            <button type="button" className={styles.button} onClick={showIncidencia}>
+                                            <button type="button" className={styles.button} onClick={() => {
+                                                swal(inc.title, "Agregado el " + today + ".\n" + inc.description);
+                                            }}>
                                                 Revisar 
                                             </button>
                                         </div>
                                     ))
                                 )
                             )}
-
-
                 </div>
             </div>
             <Footer />
