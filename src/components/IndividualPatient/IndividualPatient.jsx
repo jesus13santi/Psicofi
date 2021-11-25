@@ -102,16 +102,6 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                     </div>
 
                     <div className={styles.incidencias}>
-                        <h3 className={styles.tag}>Próxima consulta:</h3>
-                    </div>
-                    <div className={styles.innerContainer}>
-                        <p className={styles.text}>11/11/2022 10:00am</p>
-                        <button type="button" className={styles.button}>
-                            Ver chat 
-                        </button>
-                    </div>
-
-                    <div className={styles.incidencias}>
                         <h3 className={styles.tag}>Incidencias:</h3>
                         <button
                         className={styles.button}
