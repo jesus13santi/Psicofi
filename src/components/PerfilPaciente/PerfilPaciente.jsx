@@ -113,14 +113,15 @@ const PerfilPaciente = () => {
               <label for="FechaNacimiento">Fecha de nacimiento:</label>
             </div>
             <div className={styles.campo}>
-              <input
+              {/* <input
                 name = "FechaNacimiento"
                 className={styles.entrada}
                 type="date"
                 id="FechaNacimiento"
                 defaultValue={birthday} 
                 onChange = {e => user.birthday = e.target.value}              
-              ></input>
+              ></input> */}
+              <label>{user.birthday}</label>
             </div>
           </div>
           <div>
