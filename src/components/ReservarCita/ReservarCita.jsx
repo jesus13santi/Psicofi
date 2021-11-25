@@ -5,12 +5,13 @@ import { useState, useContext } from "react";
 import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
 import { useParams } from "react-router-dom";
-
+import UltimoPaso from "../UltimoPaso/UltimoPaso"
 const ReservarCita = ({ psicologo }) => {
   const params = useParams()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
   const [cita, setCita] = useState();
   const handdleOnChange = () => {};
+  const [ultimoPaso, setUltimoPaso]= useState(false)
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -130,53 +131,56 @@ const ReservarCita = ({ psicologo }) => {
   return (
     <div className={styles.container}>
       {!!psicologo ? (
-        <div className={styles.boxContainer}>
-          <h1 className={styles.title}>Reservar una Cita</h1>
-          <div className={styles.boxInput}>
-            <div className={styles.inputAndTitle}>
-              <h3 className={styles.subTitle}>Psicólogo escogido: </h3>
-              <p>{psicologo.name}</p>
-            </div>
-            <div className={styles.inputAndTitle}>
-              <h3>Fechas disponibles: </h3>
-              <select
-                name=""
-                id=""
-                className={styles.select}
-                onChange={handdleSelect}
-              >
-                <option value="">Seleccione una cita</option>
-                {psicologo.appointments.length > 0 &&
-                  ordenar(psicologo.appointments).map((cita) => (
-                    <>
-                      {cita.status === 2 && (
-                        <option value={cita.id}key={cita.id}>
-                          {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
-                        </option>
-                      )}
-                    </>
-                  ))}
-              </select>
-            </div>
-            <div className={styles.inputAndTitle}>
-              <h3>Breve descripcion:</h3>
-              <div className={styles.textAreaBox}>
-                <textarea
+        <>
+          <div className={styles.boxContainer}>
+            <h1 className={styles.title}>Reservar una Cita</h1>
+            <div className={styles.boxInput}>
+              <div className={styles.inputAndTitle}>
+                <h3 className={styles.subTitle}>Psicólogo escogido: </h3>
+                <p>{psicologo.name}</p>
+              </div>
+              <div className={styles.inputAndTitle}>
+                <h3>Fechas disponibles: </h3>
+                <select
                   name=""
                   id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Razones por las cuales se necesita una consulta, e. j. problemas amorosos"
-                  className={styles.textArea}
-                ></textarea>
-                <p>máx. 400 caracteres</p>
+                  className={styles.select}
+                  onChange={handdleSelect}
+                >
+                  <option value="">Seleccione una cita</option>
+                  {psicologo.appointments.length > 0 &&
+                    ordenar(psicologo.appointments).map((cita) => (
+                      <>
+                        {cita.status === 2 && (
+                          <option value={cita.id} key={cita.id}>
+                            {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
+                          </option>
+                        )}
+                      </>
+                    ))}
+                </select>
+              </div>
+              <div className={styles.inputAndTitle}>
+                <h3>Breve descripcion:</h3>
+                <div className={styles.textAreaBox}>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="Razones por las cuales se necesita una consulta, e. j. problemas amorosos"
+                    className={styles.textArea}
+                  ></textarea>
+                  <p>máx. 400 caracteres</p>
+                </div>
               </div>
             </div>
+            <button className={styles.button} onClick={handdleAppointment}>
+              Continuar al Pago
+            </button>
+            {ultimoPaso === true && <UltimoPaso />}
           </div>
-          <button className={styles.button} onClick={handdleAppointment}>
-            Continuar al Pago
-          </button>
-        </div>
+        </>
       ) : (
         <h1>Loading...</h1>
       )}
