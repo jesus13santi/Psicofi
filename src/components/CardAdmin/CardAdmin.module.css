@@ -38,12 +38,6 @@
     margin-right: 15px;
     background-size: cover;
 }
-.description {
-    height: 60px;
-   
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-}
 
 .boxImg img {
     width: 100%;
@@ -68,52 +62,44 @@
 }
 .button:hover{
     cursor: pointer;
-    background-color: #522B59;
+    background-color: #9e79a5;
 }
 
 .buttonBox{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-right: 30px;
+    padding-right: 50px;
 
 }
 
-/* @media (max-width:540px) {
-    .container{
-        padding: 0px;
-    }
-    .boxImg{
-        height: 40px;
-        width: 40px;
-        margin-top: 10px;
-        margin-left: 20px;
-    }
-    .pend {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .pend{
-        font-size: 12px;
-    }
-    .container{
-        border-radius: 30px;
-    }
-    .button{
-        width: 80px;
-        height: 40px;
-        
-        font-size: 12px;
-        margin-right: 10px;
-    }
-    .link {
-         font-size: 12px;
-    }
-    .description {
-        height: 40px;
-        width: 160px;
-        
-    }
-    
-} */
+.img1{
+    background-image: url(../../img/check.png);
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+
+.img2{
+    background-image: url(../../img/close.png);
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.img3{
+    background-image: url(../../img/paper.png);
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}

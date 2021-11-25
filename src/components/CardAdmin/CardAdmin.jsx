@@ -3,7 +3,7 @@ import styles from "./CardAdmin.module.css";
 import img from "../../img/photo.png";
 import { db } from "../../utils/firebaseConfig"
 
-const CardAdmin = ({ id, name, pais, photo }) => {
+const CardAdmin = ({ id, name, pais, photo, pdf }) => {
  
   const handdleAceptar = async() => {
 
@@ -26,6 +26,10 @@ const CardAdmin = ({ id, name, pais, photo }) => {
     window.location.reload();  
   };
 
+  const openPDF = () =>{
+    window.open(pdf)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.pend}>
@@ -39,16 +43,13 @@ const CardAdmin = ({ id, name, pais, photo }) => {
       </div>
       <div className={styles.buttonBox}>
 
-          <button type="button" className={styles.button} onClick={handdleAceptar}>
-            Aceptar
+          <button type="button" className={styles.img1} onClick={handdleAceptar}>
           </button>
 
-          <button type="button" className={styles.button} onClick={handdleRechazar}>
-            Rechazar
+          <button type="button" id={styles.img2R} className={styles.img2} onClick={handdleRechazar}>
           </button>
 
-          <button type="button" className={styles.button} onClick={handdleRechazar}>
-            Ver PDF
+          <button type="button" className={styles.img3} onClick={openPDF}>
           </button>
           
         </div>
