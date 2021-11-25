@@ -18,11 +18,7 @@ const Precios = () => {
 
             <p>1 hora de videollamada</p>
           </div>
-          <div className={styles.boxCosto}>
-            <p className={styles.individual}>Cita Doble</p>
-            <h1>$49.99 USD</h1>
-            <p>1 hora de videollamada</p>
-          </div>
+          
         </div>
 
         <button

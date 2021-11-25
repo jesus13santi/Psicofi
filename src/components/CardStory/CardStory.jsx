@@ -13,9 +13,8 @@ function CardStory({name, date, chatId, photo}) {
           <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
-          <Link to ="/" className={styles.link}>
-            <h2 className={styles.title}>{name}</h2>
-          </Link>
+
+          <h2 className={styles.title}>{name}</h2>
           <p>{date}</p>
         </div>
       </div>

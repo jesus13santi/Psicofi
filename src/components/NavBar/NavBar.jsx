@@ -16,14 +16,19 @@ const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenLog, setOpenLog] = useState(false);
   const history = useHistory();
+
   const handdleHome = () => {
+    if(!!user){
     if(user.role==="Pendiente" || user.role==="Admin" || user.role=="Rechazado"){
         handdleLogOut()
     }else{
       history.push("/");
       setOpen(false);
     }
-    
+  }else{
+    history.push("/");
+    setOpen(false);
+  }
   };
   const handdleLogin = () => {
     history.push("/login");
