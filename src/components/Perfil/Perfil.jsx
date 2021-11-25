@@ -4,6 +4,7 @@ import { useEffect } from "react/cjs/react.development"
 import { UserContext } from "../../context/UserContext"
 import PerfilEspecialista from "../PerfilEspecialista/PerfilEspecialista";
 import PerfilPaciente from "../PerfilPaciente/PerfilPaciente";
+import Loading from "../Loading/Loading";
 
 const Perfil = () => {
 
@@ -23,7 +24,7 @@ const Perfil = () => {
             <PerfilPaciente />)}
         </div>
         ):(
-            <div><h1>Loading...</h1></div>
+            <div><Loading /></div>
         )}
 
             </>

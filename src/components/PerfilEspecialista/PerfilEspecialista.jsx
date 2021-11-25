@@ -8,6 +8,7 @@ import $ from "jquery";
 import firebase from "firebase";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
+import Loading from "../Loading/Loading";
 
 const PerfilEspecialista = () => {
   const [date, setDate] = useState(new Date());

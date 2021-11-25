@@ -17,6 +17,7 @@ import Fondo from "../../img/shutterstock_1739543105.jpg";
 import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig";
 import Footer from "../Footer/Footer";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Hpage = () => {
   const [psicologos, setPsicologos] = useState([]);
@@ -228,7 +229,7 @@ const Hpage = () => {
                   </div>
                 </>
               ) : (
-                <h3>Cargando...</h3>
+                <PulseLoader color={"#763D80"} loading={true} size={20} css={styles.loading} />
               )}
             </div>
             <img
