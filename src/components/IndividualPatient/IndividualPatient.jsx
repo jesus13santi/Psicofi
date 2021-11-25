@@ -26,30 +26,14 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
     function createIncidencia(e) {
         e.preventDefault();
         db.collection("users").doc(id).update({
-            //
+            "appointments.incidencias": {
+                title: values.title,
+                description: values.description
+            }
         })
         setIsAddingIncidenciaActive(false);
         setDoIncidenciasExist(true);
       }
-
-    const createIncidencia2 = async () => {
-
-        await db
-              .collection("users")
-              .doc(user.id)
-              .update({
-                appointments: [
-                  ...user.appointments.incidencias,
-                  {
-                    title: values.title,
-                    description: values.description
-                    },
-                ],
-              });
-        
-        setIsAddingIncidenciaActive(false);
-        setDoIncidenciasExist(true);
-    }
 
     const handleIncidencia = () => {
         setIsAddingIncidenciaActive(true);
@@ -170,11 +154,3 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
 }
 
 export default IndividualPatient;
-
-/*
-                                <Incidencia
-                                    name={history.name}
-                                    date="44/44/4444"
-                                    id={history.id}
-                                    />
-*/
