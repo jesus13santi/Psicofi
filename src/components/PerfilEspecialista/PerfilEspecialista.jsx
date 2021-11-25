@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./PerfilEspecialista.module.css";
 import { db } from "../../utils/firebaseConfig";
 import $ from "jquery";
+import firebase from "firebase";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
 
@@ -139,6 +140,17 @@ const PerfilEspecialista = () => {
     return listaOrdenada;
   };
 
+  const handleDeletePhoto= async()=>{
+    await db.collection("users").doc(user.id).update({
+      photo:
+        "https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6",
+    });
+    const updateUser = await getUserByEmail(user.email);
+    setUser(updateUser);
+    
+    
+}
+
   const agregarCita = async () => {
     
     const citaRepetida = user.appointments.find((element) => element.date === values.date && element.hour === values.hour);
@@ -224,6 +236,26 @@ const PerfilEspecialista = () => {
     return result;
   }
 
+  const upload = async(img)=>{
+
+    if(img == null)
+        return;
+
+
+    const storage = firebase.storage();    
+    const snapshot = await storage.ref(`/pfp/${img.name}`).put(img)
+    const url = await snapshot.ref.getDownloadURL() 
+
+    const u = await getUserByEmail(user.email)
+    const usersReference = db.collection("users");
+    await usersReference.doc(u.id).update({
+        photo:(url)
+    });
+    const updateUser = await getUserByEmail(user.email);
+    console.log({updateUser})
+    setUser(updateUser);
+  }
+
   return (
     <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
       <div className={styles.titulo}>Mi perfil</div>
@@ -252,12 +284,13 @@ const PerfilEspecialista = () => {
             className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
           >
             <img src={user.photo} className={styles.fotoperfil}></img>
-            <a href="#" className={styles.boton}>
-              Cambiar
-            </a>
-            <a href="#" className={`${styles.boton} ${styles.eliminar}`}>
-              Eliminar
-            </a>
+            <label for="upload" class={styles.boton}>
+                  Cambiar
+              </label>
+              <input id="upload" className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
+              <button type="button" className={`${styles.boton} ${styles.eliminar}`} onClick={handleDeletePhoto}>
+                Eliminar
+              </button>
           </div>
         </div>
         <div>

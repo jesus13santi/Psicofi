@@ -6,6 +6,8 @@ import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
 import { useParams } from "react-router-dom";
 import UltimoPaso from "../UltimoPaso/UltimoPaso"
+import Loading from "../Loading/Loading";
+
 const ReservarCita = ({ psicologo }) => {
   const params = useParams()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
@@ -161,7 +163,7 @@ const ReservarCita = ({ psicologo }) => {
                     ))}
                 </select>
               </div>
-              <div className={styles.inputAndTitle}>
+              {/* <div className={styles.inputAndTitle}>
                 <h3>Breve descripcion:</h3>
                 <div className={styles.textAreaBox}>
                   <textarea
@@ -174,7 +176,7 @@ const ReservarCita = ({ psicologo }) => {
                   ></textarea>
                   <p>máx. 400 caracteres</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <button className={styles.button} onClick={handdleAppointment}>
               Continuar al Pago
@@ -183,7 +185,7 @@ const ReservarCita = ({ psicologo }) => {
           </div>
         </>
       ) : (
-        <h1>Loading...</h1>
+        <Loading />
       )}
     </div>
   );

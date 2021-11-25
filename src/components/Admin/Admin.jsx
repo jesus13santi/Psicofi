@@ -48,6 +48,7 @@ const Admin = ({ pendientes, rechazados }) => {
                     name={pendiente.name}
                     pais={pendiente.pais}
                     photo={pendiente.photo}
+                    pdf={pendiente.pdf}
                   />
                 ))}
         </div>
@@ -75,6 +76,7 @@ const Admin = ({ pendientes, rechazados }) => {
                     name={rechazado.name}
                     pais={rechazado.pais}
                     photo={rechazado.photo}
+                    pdf={rechazado.pdf}
                   />
                 ))}
         </div>

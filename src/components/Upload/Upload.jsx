@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UserContext } from "../../context/UserContext";
+import { db } from "../../utils/firebaseConfig"
 import { storage } from "firebase";
 import styles from "./Upload.module.css"
 import { useHistory } from "react-router-dom";
 
 function Upload() {
 
+    const { user, setUser} = useContext(UserContext);
+    const {getUserByEmail} = useContext(UserContext)
     const [pdf , setPdf] = useState('');
-    const [success, setSuccess] = useState("")
 
     const history = useHistory(); 
 
@@ -20,10 +23,19 @@ function Upload() {
         const storage = firebase.storage();    
         const snapshot = await storage.ref(`/Psicologos/${pdf.name}`).put(pdf)
         const url = await snapshot.ref.getDownloadURL() 
-        console.log(url)
-        
-        history.push('/deck')
+
+        const u = await getUserByEmail(user.email)
+        const usersReference = db.collection("users");
+        await usersReference.doc(u.id).update({
+            pdf:(url)
+        });
+        const updateUser = await getUserByEmail(user.email);
+        console.log({updateUser})
+        setUser(updateUser);
+
+        /* history.push('/deck') */
     }
+            
       
         return (
             <section className={styles.registerSecc}>
@@ -36,11 +48,7 @@ function Upload() {
                         <p className={styles.nextText}> Para registrarte como especialista, necesitamos conocer tus credenciales</p>
                         
                         <div className={styles.container2}>
-
-                        <label for="upload" class={styles.customfileupload}>
-                            Cargar archivo
-                        </label>
-                            <input id="upload" className={styles.nextText} type="file" onChange={(e)=>{setPdf(e.target.files[0])}}/>
+                            <input id="upload" className={styles.boxUpload} type="file" onChange={(e)=>{setPdf(e.target.files[0])}}/>
                         </div>
 
                         <p className={styles.nextText2}> Nuestro equipo tomará unos días para revisar tu currículum, al ser aprobado le enviaremos un correo.</p>
