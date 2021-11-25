@@ -37,6 +37,14 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
         setValues({...values,[inputName]: value})
         };
 
+    const resetIncidencia = () => {
+        setIsAddingIncidenciaActive(false);
+        setValues({
+            title: "",
+            description: ""
+        })
+    }
+
     async function crearIncidencia() {
 
         if(db){
@@ -52,18 +60,13 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
             aux.push(inc)
              await db.collection("users").doc(id).update({
                 incidencias: aux
-            })
-            setIsAddingIncidenciaActive(false);
-        }
-
-        setValues({
-            title: "",
-            description: ""
-        })
+                })
+            }
+        resetIncidencia();
         }
 
     const cancelIncidencia = () => {
-        setIsAddingIncidenciaActive(false);
+        resetIncidencia();
     }
 
     const handleIncidencia = () => {
