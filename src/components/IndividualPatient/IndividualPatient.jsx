@@ -23,6 +23,26 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
         setValues({...values,[inputName]: value})
         };
 
+    async function sendMessage() {
+        if(db){
+            const aux = [...messages]
+            const mensaje = {
+                name: user.name,
+                msj: newMessage,
+                photo: user.photo,
+                time: time
+            }
+
+            aux.push(mensaje)
+             await db.collection("chats").doc(id).update({
+                msjs: aux
+            })
+            setNewMessage("")
+            scrollDown()
+            
+        }
+    }
+
     function createIncidencia(e) {
         e.preventDefault();
         db.collection("users").doc(id).update({
