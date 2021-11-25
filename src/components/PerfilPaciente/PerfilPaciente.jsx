@@ -9,7 +9,7 @@ import $ from 'jquery';
 const PerfilPaciente = () => {
     const [birthday, setBirthday] = useState("");    
     const [biography, setBiography] = useState("");    
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser,getUserByEmail } = useContext(UserContext);
     const history = useHistory();
     
     useEffect(() => {
@@ -37,10 +37,20 @@ const PerfilPaciente = () => {
           
           return valido;
         }
+        const handleDeletePhoto= async()=>{
+            await db.collection("users").doc(user.id).update({
+              photo:
+                "https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilu.jpg?ver=6",
+            });
+            const updateUser = await getUserByEmail(user.email);
+            setUser(updateUser);
+            
+            
+        }
         const handleOnClick = async(event) => {
           if(validar_campos()){
-            console.log(biography)
-            console.log(user.id)          
+            // console.log(biography)
+            // console.log(user.id)          
             let problemas = []
             $.each(['ansiedad', 'autoestima', 'sexualidad', 'estres', 'amorosos', 'desarrollo'], function(index, value){
               if($("#"+value).prop("checked")){
@@ -56,6 +66,8 @@ const PerfilPaciente = () => {
                 "description": user.description,
                 "problemas": problemas
               })
+            const updateUser = await getUserByEmail(user.email);
+            setUser(updateUser);
             history.push("/deck")
           }
         }
@@ -81,7 +93,7 @@ const PerfilPaciente = () => {
             <div className={styles.etiqueta}>
               <label for="NombreCompleto">Nombre Completo:</label>
             </div>
-            <div className={styles.campo}>             
+            <div className={styles.campo}>
               <label id="NombreCompleto">{user.name}</label>
             </div>
           </div>
@@ -90,14 +102,7 @@ const PerfilPaciente = () => {
               <label for="FechaNacimiento">Fecha de nacimiento:</label>
             </div>
             <div className={styles.campo}>
-              <input
-                name = "FechaNacimiento"
-                className={styles.entrada}
-                type="date"
-                id="FechaNacimiento"
-                defaultValue={birthday} 
-                onChange = {e => user.birthday = e.target.value}              
-              ></input>
+              <label >{user.birthday}</label>
             </div>
           </div>
           <div>
@@ -108,12 +113,12 @@ const PerfilPaciente = () => {
               className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
             >
               <img src={user.photo} className={styles.fotoperfil}></img>
-              <a href="#" className={styles.boton}>
+              <button type="button" className={styles.boton}>
                 Cambiar
-              </a>
-              <a href="#" className={`${styles.boton} ${styles.eliminar}`}>
+              </button>
+              <button type="button" className={`${styles.boton} ${styles.eliminar}`} onClick={handleDeletePhoto}>
                 Eliminar
-              </a>
+              </button>
             </div>
           </div>
           <div>
@@ -122,12 +127,12 @@ const PerfilPaciente = () => {
             </div>
             <div className={styles.campo}>
               <input
-                name = "correo"
+                name="correo"
                 className={styles.entrada}
                 type="email"
                 id="correo"
                 defaultValue={user.email}
-                onChange = {e => user.email = e.target.value}
+                onChange={(e) => (user.email = e.target.value)}
               ></input>
             </div>
           </div>
@@ -137,12 +142,12 @@ const PerfilPaciente = () => {
             </div>
             <div className={styles.campo}>
               <input
-                name = "telefono"
+                name="telefono"
                 className={styles.entrada}
                 type="text"
                 id="telefono"
                 defaultValue={user.number}
-                onChange = {e => user.number = e.target.value}
+                onChange={(e) => (user.number = e.target.value)}
               ></input>
             </div>
           </div>
@@ -153,11 +158,11 @@ const PerfilPaciente = () => {
             <div className={styles.campo}>
               <input
                 type="text"
-                name = "pais"
+                name="pais"
                 className={styles.entrada}
                 id="pais"
                 defaultValue={user.pais}
-                onChange = {e => user.pais = e.target.value}
+                onChange={(e) => (user.pais = e.target.value)}
               ></input>
             </div>
           </div>
@@ -170,7 +175,7 @@ const PerfilPaciente = () => {
                 className={styles.entrada}
                 id="description"
                 defaultValue={user.description}
-                onChange = {e => user.description = e.target.value}
+                onChange={(e) => (user.description = e.target.value)}
               />
             </div>
           </div>
@@ -249,9 +254,9 @@ const PerfilPaciente = () => {
           <div className={styles.submit}>
             <input
               type="button"
-              className={styles.boton}              
+              className={styles.boton}
               value="Guardar cambios"
-              onClick = {handleOnClick}
+              onClick={handleOnClick}
             ></input>
           </div>
         </form>
