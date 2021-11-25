@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider, facebookProvider,twitterProvider } from "../../utils/firebaseConfig"
+import { auth, googleProvider, facebookProvider, twitterProvider } from "../../utils/firebaseConfig"
 import { useHistory, Link } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
@@ -42,7 +42,7 @@ function RegisterForm() {
     };
 
     const handleTwitterLogin = async () =>{
-      await auth.signInWithPopup(googleProvider);
+      await auth.signInWithPopup(twitterProvider);
       console.log(user)
       await history.push("/election");
       
