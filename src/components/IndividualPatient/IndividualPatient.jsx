@@ -92,7 +92,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                 <img src={photo} alt="" />
                             </picture>
                             <div className={styles.boxAtribute}>
-                                <h2 className={styles.text}>{name}</h2>
+                                <h2 className={styles.tag}>{name}</h2>
                                 <p className={styles.text}>{pais}</p>
                             </div>
                         </div>
