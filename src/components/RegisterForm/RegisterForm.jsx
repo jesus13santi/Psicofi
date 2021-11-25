@@ -5,7 +5,6 @@ import { useHistory, Link } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
-import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 

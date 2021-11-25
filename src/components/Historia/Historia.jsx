@@ -6,6 +6,7 @@ import Loading from '../Loading/Loading';
 import Footer from '../Footer/Footer';
 import CardStory from '../CardStory/CardStory';
 import { useState, useEffect } from "react";
+import PatientList from '../PatientList/PatientList';
 
 const Historia = () => {
   const [value, setValue] = useState("");

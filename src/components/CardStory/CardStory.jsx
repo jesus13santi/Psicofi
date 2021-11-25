@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
-function CardStory({name, date, chatId}) {
+function CardStory({id, name, date, chatId}) {
   const {user, setUser}= useContext(UserContext);
+  const handlePatientHistory = () => {
+    history.push(`/historiaPacienteIndividual/${id}`);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
@@ -27,8 +30,8 @@ function CardStory({name, date, chatId}) {
       ):(
         <>
         <div>
-        <Link to ={`/history`}>
-        <button type="button" className={styles.button}>Ver historia</button>
+        <Link to ={"/historiaPacienteIndividual"}>
+        <button type="button" className={styles.button} onClick={handlePatientHistory}>Ver historia</button>
         </Link>
         <Link to ={`/chat/${chatId}`}>
         <button type="button" className={styles.button}>Ver Chat</button>
