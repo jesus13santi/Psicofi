@@ -61,7 +61,6 @@ function LoginForm() {
     try{
       await auth.signInWithEmailAndPassword(values.email, values.password);
       setLoading(false);
-      history.push("/deck");
       console.log("LOGIN_PASSWOROD");
       
 
@@ -155,9 +154,15 @@ function LoginForm() {
 
               {!!user && (
                 <>
-                  {user.role === ""
-                    ? history.push("/election")
-                    : history.push("/deck")}
+                  {user.role === "" &&(
+                     history.push("/election")
+                  )}
+                  {user.role === "Admin" ?(
+                    history.push("/admin")
+                  ):(
+                    history.push("/deck")
+                  )}
+                  
                 </>
               )}
             </div>

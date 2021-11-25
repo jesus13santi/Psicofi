@@ -33,7 +33,7 @@ function Upload() {
         console.log({updateUser})
         setUser(updateUser);
 
-        /* history.push('/deck') */
+        history.push('/pendiente')
     }
             
       

@@ -1,17 +1,16 @@
 import React from "react";
 import styles from "./CardStory.module.css";
-import img from "../../img/photo.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
-function CardStory({name, date, chatId}) {
+function CardStory({name, date, chatId, photo}) {
   const {user, setUser}= useContext(UserContext);
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
         <picture className={styles.boxImg}>
-          <img src={img} alt="" />
+          <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
           <Link to ="/" className={styles.link}>
