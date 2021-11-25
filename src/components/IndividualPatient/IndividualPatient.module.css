@@ -184,3 +184,9 @@
     color: #522B59;
     border-radius: 20px;
 }
+
+.iAtribute {
+    display: grid;
+    grid-template-columns: 270px 50% 50%;
+    gap: 1rem;
+}

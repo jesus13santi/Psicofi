@@ -90,7 +90,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                     <div className={styles.innerContainer}>
                         <p className={styles.text}>11/11/2022 10:00am</p>
                         <button type="button" className={styles.button}>
-                            Revisar 
+                            Ver chat 
                         </button>
                     </div>
 
@@ -108,9 +108,10 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                             <>
                                 <div className={styles.addIncidencia}>
 
-                                    <div className={styles.atribute}>
+                                    <div className={styles.iAtribute}>
                                         <h3 className={styles.tag}>Fecha:</h3>
                                         <p className={styles.text}>55/55/5555</p>
+                                        <p></p>
                                         <h3 className={styles.tag}>Título:</h3>
 
                                         <input
@@ -121,6 +122,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                                             onChange={handleOnChange}
                                             ></input>
 
+                                        <p></p>
                                         <h3 className={styles.tag}>Descripción:</h3>
                                         <div className={styles.textAreaBox}>
 
@@ -150,12 +152,11 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                             ) : doIncidenciasExist ? (
                                 <>
                                     <div className={styles.innerContainer}>
-                                        <p className={styles.text}>Sesión #5: Liberación</p>
+                                        <p className={styles.text}>Titulo 0</p>
                                         <button type="button" className={styles.button}>
                                             Revisar 
                                         </button>
                                     </div>
-                                <p>Si hay incidencias.</p>
                                 </>
                             ) : (
                                 <p>No hay incidencias aún.</p>
