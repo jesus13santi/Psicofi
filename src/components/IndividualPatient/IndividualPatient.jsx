@@ -3,20 +3,56 @@ import styles from "./IndividualPatient.module.css";
 import { useState, useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import Footer from '../Footer/Footer';
+import { db } from "../../utils/firebaseConfig";
 
 const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
 
-    const [ toggleIncidencia, setToggleIncidencia ] = useState(false);
-    const [ addIncidencia, setAddIncidencia ] = useState(false);
+    const [ isAddingIncidenciaActive, setIsAddingIncidenciaActive ] = useState(false);
+    const [ doIncidenciasExist, setDoIncidenciasExist ] = useState(false);
+
     const history = useHistory();
     const { user } = useContext(UserContext);
+    const [values, setValues] = useState({
+      title: "",
+      description: "",
+    });
 
-    const createIncidencia = () => {
-        setToggleIncidencia(false);
+    const handleOnChange = (event) => {
+        const {value, name: inputName} = event.target;
+        console.log({inputName, value });
+        setValues({...values,[inputName]: value})
+        };
+
+    function createIncidencia(e) {
+        e.preventDefault();
+        db.collection("users").doc(id).update({
+            incidencias: incidencias.push("test"),
+        })
+        setIsAddingIncidenciaActive(false);
+        setDoIncidenciasExist(true);
+      }
+
+    const createIncidencia2 = async () => {
+
+        await db
+              .collection("users")
+              .doc(user.id)
+              .update({
+                appointments: [
+                  ...user.appointments.incidencias,
+                  {
+                    title: values.title,
+                    description: values.description
+                    },
+                ],
+              });
+        
+        setIsAddingIncidenciaActive(false);
+        setDoIncidenciasExist(true);
     }
 
     const handleIncidencia = () => {
-        setToggleIncidencia(true);
+        setIsAddingIncidenciaActive(true);
     };
 
     return (
@@ -49,14 +85,14 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                     </div>
 
                     <div className={styles.incidencias}>
-                        <h3 className={styles.tag}>Próximas consultas:</h3>
+                        <h3 className={styles.tag}>Próxima consulta:</h3>
                     </div>
                     <div className={styles.innerContainer}>
-                            <p className={styles.text}>Sesión #4: Progreso</p>
-                            <button type="button" className={styles.button}>
-                                Revisar 
-                            </button>
-                        </div>
+                        <p className={styles.text}>11/11/2022 10:00am</p>
+                        <button type="button" className={styles.button}>
+                            Revisar 
+                        </button>
+                    </div>
 
                     <div className={styles.incidencias}>
                         <h3 className={styles.tag}>Incidencias:</h3>
@@ -68,27 +104,62 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
                         </button>
                     </div>
 
-                    { toggleIncidencia ? (
-                        <>
-                        <div className={styles.innerContainer}>
-                            <input className={styles.input} placeholder="Titulo"></input>
-                            <button type="button" className={styles.button}>
-                                Guardar 
-                            </button>
-                        </div>
+                    { isAddingIncidenciaActive ? (
+                            <>
+                                <div className={styles.addIncidencia}>
 
-                        <div className={styles.boxAtribute}>
-                            <button
-                            className={styles.button}
-                            onClick={createIncidencia}
-                            type="button">
-                            Listo
-                            </button>
-                        </div>
-                        </>
-                    ) : (
-                        <p>No hay incidencias aún.</p>
-                    )}
+                                    <div className={styles.atribute}>
+                                        <h3 className={styles.tag}>Fecha:</h3>
+                                        <p className={styles.text}>55/55/5555</p>
+                                        <h3 className={styles.tag}>Título:</h3>
+
+                                        <input
+                                            name="title"
+                                            value={values.title}
+                                            className={styles.titleInput}
+                                            placeholder=""
+                                            onChange={handleOnChange}
+                                            ></input>
+
+                                        <h3 className={styles.tag}>Descripción:</h3>
+                                        <div className={styles.textAreaBox}>
+
+                                            <textarea
+                                              name="description"
+                                              value={values.description}
+                                              cols="30"
+                                              rows="10"
+                                              placeholder=""
+                                              className={styles.textArea}
+                                              onChange={handleOnChange}
+                                            ></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div className={styles.boxAtribute}>
+                                    <button
+                                    className={styles.button}
+                                    onClick={createIncidencia}
+                                    type="button">
+                                    Listo
+                                    </button>
+                                </div>
+                            </>
+                            ) : doIncidenciasExist ? (
+                                <>
+                                    <div className={styles.innerContainer}>
+                                        <p className={styles.text}>Sesión #5: Liberación</p>
+                                        <button type="button" className={styles.button}>
+                                            Revisar 
+                                        </button>
+                                    </div>
+                                <p>Si hay incidencias.</p>
+                                </>
+                            ) : (
+                                <p>No hay incidencias aún.</p>
+                            )}
 
                 </div>
             </div>
@@ -98,3 +169,11 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
 }
 
 export default IndividualPatient;
+
+/*
+                                <Incidencia
+                                    name={history.name}
+                                    date="44/44/4444"
+                                    id={history.id}
+                                    />
+*/

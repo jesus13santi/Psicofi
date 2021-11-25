@@ -1,3 +1,4 @@
+
 .container {
     display: flex;
     justify-content: center;
@@ -70,7 +71,7 @@
 
 .atribute {
     display: grid;
-    grid-template-columns: 270px .5fr;
+    grid-template-columns: 270px 500px;
     gap: 1rem;
 }
 
@@ -154,15 +155,6 @@
 
 .input {
     border: none;
-}
-
-.addIncidencia {
-    display: flex;
-    width: 100%;
-    padding: 20px;
-    flex-direction: column;
-    justify-content: start;
-    gap: 20px;
 }
 
 .titleInput{
