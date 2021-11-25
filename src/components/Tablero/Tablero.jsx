@@ -29,7 +29,7 @@ function Tablero() {
         {user.appointments.length > 0 ?(
         user.appointments.map((app) => (
           <>
-          {app.status== 0 &&(
+          {app.status== 1 &&(
             <UTabCard
             appName={app.name}
             date={app.date}
@@ -52,7 +52,7 @@ function Tablero() {
         </div>
         <div className={styles.sort}>
         <h1 className={styles.boxTitle}>
-          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de pacientes:'}
+          {user.role =='Paciente'? 'Historial de consultas:' : 'Historial de citas:'}
           
         </h1>
         

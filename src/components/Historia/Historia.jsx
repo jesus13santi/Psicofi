@@ -11,39 +11,25 @@ const Historia = () => {
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
-  const handleOnchange = (event) => {
-    setValue(event.target.value.toLowerCase());
-  };
-    const {user, setUser}= useContext(UserContext);
-    console.log(user)
+  const [lista, setLista] = useState(null)
+  const {user, setUser}= useContext(UserContext);
+  
+function checkHistory(a, aux){
+  if(a.state == 0){
+    aux.push(a)
+  }
+}
 
+  const history = ({user})=> {
+    const app = user.appointments
+    const aux = []
+    app.map((a) =>(
+      checkHistory(a, aux)
+    ))
+    setLista(aux)
 
-    const handleSelect = (e) => {
-        setOrden(e.target.value);
-        if (e.target.value === "ordenAlfabetico") {
-          console.log("Historia", user.history)  
-          setListaOrdenada(ordenarNombres(user.history));
-          console.log(listaOrdenada)
-        } else {
-          setListaOrdenada(user.history);
-        }
-      };
+  }
 
-
-    const ordenarNombres = (lista) => {
-    const listaOrdenada = lista.slice().sort((a, b) => {
-      const nameA = a.name.toLowerCase();
-      const nameB = b.name.toLowerCase();
-      if (nameA < nameB) {
-         return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
-    return listaOrdenada;
-  };
   
     return (
     <>
@@ -58,11 +44,11 @@ const Historia = () => {
                 name="especialidades"
                 id=""
                 className={styles.sortText}
-                onChange={handleSelect}
+                // onChange={}
               >
                 <option value>Ordenar por</option>
                 <option value="ordenAlfabetico"> Orden Alfabetico</option>
-                <option value="date">Fecha</option>
+                {/*<option value="date">Fecha</option>*/}
               </select>
         <div>
         {user.appointments.length > 0 ?( 
