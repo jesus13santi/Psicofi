@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import styles from "./IndividualPatient.module.css";
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -6,7 +5,6 @@ import Footer from '../Footer/Footer';
 import { db } from "../../utils/firebaseConfig";
 import dayjs from "dayjs";
 import swal from 'sweetalert';
-import Sweetalert from '../Sweetalert/Sweetalert';
 import uniqid from "uniqid";
 
 const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }) => {
@@ -15,12 +13,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
     var today = rn.format('DD/MM/YYYY')
 
     const [ isAddingIncidenciaActive, setIsAddingIncidenciaActive ] = useState(false);
-    const [ doIncidenciasExist, setDoIncidenciasExist ] = useState(false);
     const [ incidencies, setIncidencies ] = useState([]);
-    const [ title, setTitle ] = useState("");
-    const [ desc, setDesc ] = useState("");
-
-    const history = useHistory();
     const { user } = useContext(UserContext);
     const [values, setValues] = useState({
       title: "",
@@ -61,16 +54,27 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                 incidencias: aux
             })
             setIsAddingIncidenciaActive(false);
-            setDoIncidenciasExist(true);
         }
+
+        setValues({
+            title: "",
+            description: ""
+        })
+        }
+
+    const cancelIncidencia = () => {
+        setIsAddingIncidenciaActive(false);
     }
 
     const handleIncidencia = () => {
         setIsAddingIncidenciaActive(true);
     };
 
-    function showIncidencia() {
-    }
+    const handleSubmit = (event) => {
+        const {value, name: inputName} = event.target;
+        console.log({ inputName, value });
+        setValues({...values,[inputName]: value})
+        };
 
     return (
         <>
@@ -153,6 +157,12 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                     onClick={crearIncidencia}
                                     type="button">
                                     Listo
+                                    </button>
+                                    <button
+                                    className={styles.button}
+                                    onClick={cancelIncidencia}
+                                    type="button">
+                                    Cancelar
                                     </button>
                                 </div>
                             </>
