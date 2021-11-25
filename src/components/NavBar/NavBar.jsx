@@ -17,8 +17,13 @@ const NavBar = () => {
   const [isOpenLog, setOpenLog] = useState(false);
   const history = useHistory();
   const handdleHome = () => {
-    history.push("/");
-    setOpen(false)
+    if(user.role==="Pendiente" || user.role==="Admin" || user.role=="Rechazado"){
+        handdleLogOut()
+    }else{
+      history.push("/");
+      setOpen(false);
+    }
+    
   };
   const handdleLogin = () => {
     history.push("/login");
@@ -52,19 +57,31 @@ const NavBar = () => {
 
         {!!user ? (
           <div className={`${styles.rightSize1} ${styles.rightSize}`}>
-            <picture className={styles.boxImg} onClick={historyDeck}>
-              <img
-                src={user.photo}
-                alt=""
-                className={styles.menuVecto}
-                onClick={historyDeck}
-              />
-            </picture>
-            <p onClick={historyDeck}>{user.name}</p>
-            {isOpenLog ? (
-              <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+            {user.role === "Pendiente" ||
+            user.role === "Admin" ||
+            user.role === "Rechazado" ? (
+              <>
+                <button className={styles.button} onClick={handdleLogOut}>
+                  Cerrar sesión
+                </button>
+              </>
             ) : (
-              <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
+              <>
+                <picture className={styles.boxImg} onClick={historyDeck}>
+                  <img
+                    src={user.photo}
+                    alt=""
+                    className={styles.menuVecto}
+                    onClick={historyDeck}
+                  />
+                </picture>
+                <p onClick={historyDeck}>{user.name}</p>
+                {isOpenLog ? (
+                  <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+                ) : (
+                  <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
+                )}
+              </>
             )}
           </div>
         ) : (
