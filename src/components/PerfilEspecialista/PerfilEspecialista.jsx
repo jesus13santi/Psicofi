@@ -287,7 +287,7 @@ const PerfilEspecialista = () => {
             <label for="upload" class={styles.boton}>
                   Cambiar
               </label>
-              <input id="upload" className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
+              <input id={styles.upload} className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
               <button type="button" className={`${styles.boton} ${styles.eliminar}`} onClick={handleDeletePhoto}>
                 Eliminar
               </button>

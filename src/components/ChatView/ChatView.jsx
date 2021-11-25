@@ -27,6 +27,7 @@ const ChatView = () => {
             name={app.name}
             date={app.date}
             chatId={app.id}
+            photo={app.photo}
             />
           )}
           </>
@@ -44,6 +45,7 @@ const ChatView = () => {
             name={app.name}
             date={app.date}
             chatId={app.id}
+            photo={app.photo}
             />
           )}
           </>

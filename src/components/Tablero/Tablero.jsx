@@ -13,8 +13,10 @@ import Loading from "../Loading/Loading";
 function Tablero() {
     const {user, setUser}= useContext(UserContext);
     console.log(user)
+    
     return (
     <>
+    
     {!!user?(
     <div className={styles.container}>
     <h1 className={styles.title}>Bienvenido, {user.name}</h1>
@@ -34,6 +36,7 @@ function Tablero() {
             appName={app.name}
             date={app.date}
             hour={app.hour}
+            photo={app.photo}
             />
           )}
           </>
@@ -69,6 +72,7 @@ function Tablero() {
           name={history.name}
           date={history.date}
           chatId={history.id}
+          photo={history.photo}
           />
         )}
         </>

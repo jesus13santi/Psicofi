@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./CardStory.module.css";
-import img from "../../img/photo.png";
 import { Link, useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
-function CardStory({id, name, date, chatId}) {
-
+function CardStory({id, name, date, chatId, photo}) {
   const {user, setUser}= useContext(UserContext);
   const history = useHistory();
   const handlePatientHistory = () => {
@@ -16,7 +14,7 @@ function CardStory({id, name, date, chatId}) {
     <div className={styles.container}>
       <div className={styles.psico}>
         <picture className={styles.boxImg}>
-          <img src={img} alt="" />
+          <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
           <Link className={styles.link}>
