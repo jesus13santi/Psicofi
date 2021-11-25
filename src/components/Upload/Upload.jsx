@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext";
 import { db } from "../../utils/firebaseConfig"
 import { storage } from "firebase";
 import styles from "./Upload.module.css"
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function Upload() {
 

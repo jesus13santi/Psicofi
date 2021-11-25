@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Redirect } from "react-router";
+//import { Redirect } from "react-router";
 import { useEffect } from "react/cjs/react.development"
 import { UserContext } from "../../context/UserContext"
 import PerfilEspecialista from "../PerfilEspecialista/PerfilEspecialista";

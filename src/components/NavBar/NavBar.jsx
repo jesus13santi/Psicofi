@@ -1,8 +1,6 @@
-import React from "react";
 import styles from "./NavBar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Logo from "../../img/Logo.png";
-import { useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import menuVector from "../../img/menuVector.png";
 import { UserContext } from "../../context/UserContext";

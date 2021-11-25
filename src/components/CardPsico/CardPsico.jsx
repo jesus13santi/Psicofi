@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 
 const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
   const history = useHistory();
-  const handdleInfo = () => {
+  const handlePatientHistory = () => {
     history.push(`/profile/${id}`);
   };
   return (
@@ -20,7 +20,7 @@ const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
           <p>{pais}</p>
           <p className={styles.description}>{description}</p>
         </div>
-        <button type="button" className={styles.button} onClick={handdleInfo}>
+        <button type="button" className={styles.button} onClick={handlePatientHistory}>
           Mas info.
         </button>
       </div>

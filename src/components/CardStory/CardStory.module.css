@@ -10,7 +10,6 @@
     justify-content: space-between;
     padding: 0 0.625rem;
     background-color: white;
-    margin-bottom: 1.875rem;
     
    
 }
@@ -33,6 +32,7 @@
     position: relative;
     border-radius: 100%;
 
+    /* background-color: aqua; */
 }
 .link{
     text-decoration: none;
@@ -144,7 +144,6 @@
         justify-content: space-between;
         padding: 0 0.625rem;
         background-color: white;
-        margin-bottom: 1.25rem;
         
        
     }
@@ -194,6 +193,5 @@
     }
     .title{
         font-size: 0.75rem; 
-        font-weight: 600;
     }
 }

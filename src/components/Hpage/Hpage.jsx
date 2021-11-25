@@ -16,6 +16,8 @@ import BigLogo from "../../img/Group.png";
 import Fondo from "../../img/shutterstock_1739543105.jpg";
 import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig";
+import Footer from "../Footer/Footer";
+
 const Hpage = () => {
   const [psicologos, setPsicologos] = useState([]);
   const [psicologo, setPsicologo] = useState(null);
@@ -273,19 +275,9 @@ const Hpage = () => {
             Aplicar
           </button>
         </div>
-        <footer className={styles.footer}>
-          <p>
-            Aviso de privacidad | Términos y Condiciones © 2021 PsicoFi. Todos
-            los derechos reservados.
-          </p>
-          <div className={styles.logoSocialNetwork}>
-            <img src={logoFacebook} alt="" />
-            <img src={logoInstagram} alt="" />
-            <img src={logoMail} alt="" />
-            <img src={logoWhat} alt="" />
-            <img src={logoTwitter} alt="" />
-          </div>
-        </footer>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
