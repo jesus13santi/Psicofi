@@ -100,9 +100,23 @@
     color: white;
 }
 
-input[type="file"] {
-    display: none;
+.boxUpload{
+    font-size: 16px;
+    background: white;
+    color: #522B59;
+    border-radius: 24px;
+    width: 350px;
+    outline: none;
 }
+::-webkit-file-upload-button{
+    color: white;
+    background: #763D80;
+    height: 50px;
+    border: none; 
+    border-radius: 24px;
+    cursor: pointer;
+}
+
 
 .customfileupload {
     border-radius: 24px;

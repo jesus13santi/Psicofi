@@ -112,7 +112,8 @@ function RegisterForm() {
               gender: "",
               birthday: "",
               problemas: [],
-              appointments: []
+              appointments: [],
+              pdf: ""
           
               
               },

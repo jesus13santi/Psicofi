@@ -148,3 +148,6 @@ input[type="checkbox"]:checked + label {
     margin-right: auto;
 }
 
+input[type="file"]{
+    display: none;
+}
