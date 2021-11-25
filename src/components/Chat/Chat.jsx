@@ -132,7 +132,8 @@ function Chat() {
               id: cita.id,
               status: 0,
               name: firstName,
-              uid: secondUid
+              uid: secondUid,
+              photo: cita.photo
             },
           ],
         })
@@ -149,7 +150,8 @@ function Chat() {
               id: cita.id,
               name: secondName,
               status: 0,
-              uid: firstUid
+              uid: firstUid,
+              photo: user.photo
               
             },
           ],
