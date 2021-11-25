@@ -13,6 +13,9 @@ function AlertPendiente(){
                     <h1 className={styles.text}>  Agradecemos su comprensión.</h1>
                     <h1 className={styles.text}> Saludos</h1>
                     <h1 className={styles.text}> Equipo de PsicoFi</h1>
+                    <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
+                  Click aquí para contactarte con nosotros
+                    </a>
                     
                 </div>
             </div>

@@ -4,11 +4,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
-function CardStory({id, name, date, chatId, photo}) {
+function CardStory({uid, name, date, chatId, photo}) {
   const {user, setUser}= useContext(UserContext);
   const history = useHistory();
   const handlePatientHistory = () => {
-    history.push(`/historiaPacienteIndividual/${id}`);
+    history.push(`/historiaPacienteIndividual/${uid}`);
   };
   return (
     <div className={styles.container}>
@@ -17,10 +17,9 @@ function CardStory({id, name, date, chatId, photo}) {
           <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
-          <Link className={styles.link}>
-            <h2 className={styles.title}>Nombre Apellido</h2>
-          </Link>
-          <p>DD/HH/AAAA</p>
+
+          <h2 className={styles.title}>{name}</h2>
+          <p>{date}</p>
         </div>
       </div>
       {user.role =="Paciente" ?(

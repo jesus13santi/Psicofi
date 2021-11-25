@@ -14,14 +14,19 @@ const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenLog, setOpenLog] = useState(false);
   const history = useHistory();
+
   const handdleHome = () => {
+    if(!!user){
     if(user.role==="Pendiente" || user.role==="Admin" || user.role=="Rechazado"){
         handdleLogOut()
     }else{
       history.push("/");
       setOpen(false);
     }
-    
+  }else{
+    history.push("/");
+    setOpen(false);
+  }
   };
   const handdleLogin = () => {
     history.push("/login");
@@ -86,9 +91,9 @@ const NavBar = () => {
           <>
             <ul className={`${styles.rightSize}`}>
               <li>
-                <Link to="/" className={styles.link}>
+                <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
                   Contacto
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/" className={styles.link}>
@@ -132,9 +137,9 @@ const NavBar = () => {
       {isOpen && !user && (
         <ul className={styles.menuMobile}>
           <li onClick={handdleMenu}>
-            <Link to="/" className={styles.linkMobile}>
-              Contacto
-            </Link>
+            <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
+                  Contacto
+                </a>
           </li>
           <li onClick={handdleMenu}>
             <Link to="/" className={styles.linkMobile}>

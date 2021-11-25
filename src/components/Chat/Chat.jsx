@@ -132,7 +132,7 @@ function Chat() {
               id: cita.id,
               status: 0,
               name: firstName,
-              incidencias: [],
+              uid: secondUid
             },
           ],
         })
@@ -148,8 +148,9 @@ function Chat() {
               hour: cita.hour,
               id: cita.id,
               name: secondName,
-              incidencias: [],
               status: 0,
+              uid: firstUid
+              
             },
           ],
         })

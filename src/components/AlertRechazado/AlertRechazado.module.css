@@ -16,13 +16,13 @@
 .body{  
     display: flex;
     justify-content: center;
+    align-content: center;
 }
 
-.container{    
-    width: 900px;
-    height: 425px;
-    top: 126px;
-    margin-top: 175px;
+.container{
+    padding: 50px;
+    width: 70%;
+    margin-top: 5%; 
 
     background: #F7E8F9;
     border-radius: 35px;
@@ -32,8 +32,7 @@
     font-size: 18px;
     font-weight: 600;
     color: #522B59;
-    margin-left: 50px;
-    margin-right: 50px;
+
     margin-bottom: 15px;
 }
 
@@ -42,5 +41,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 75px;
+}
+.link{
+  font-size: 18px;
+    font-weight: 400;
+    color: #522B59;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 15px;
+    text-decoration: underline;
 }

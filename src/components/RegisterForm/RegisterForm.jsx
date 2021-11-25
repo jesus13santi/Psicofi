@@ -118,6 +118,7 @@ function RegisterForm() {
               birthday: "",
               problemas: [],
               appointments: [],
+              incidencias: [],
               pdf: ""
           
               
