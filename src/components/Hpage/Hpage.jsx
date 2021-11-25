@@ -169,26 +169,28 @@ const Hpage = () => {
           <h2 className={styles.title}>¿Cuenta cuesta una sesion?</h2>
           <div className={styles.withArrow}>
             <div className={styles.boxCosto}>
-              {precio === "0" ? (
-                <>
-                  <p className={styles.individual}>Cita Individual</p>
-                  <h1>$29.99 USD</h1>
-                </>
-              ) : (
-                <>
-                  <p className={styles.individual}>Cita Doble</p>
-                  <h1>$49.99 USD</h1>
-                </>
-              )}
-
+              {/* {precio === "0" ? (
+              //   <>
+              //     <p className={styles.individual}>Cita Individual</p>
+              //     <h1>$29.99 USD</h1>
+              //   </>
+              // ) : (
+              //   <>
+              //     <p className={styles.individual}>Cita Doble</p>
+              //     <h1>$49.99 USD</h1>
+              //   </>
+              // )} */}
+              <p className={styles.individual}>Cita Individual</p>
+               <h1>$29.99 USD</h1>
               <p>1 hora de videollamada</p>
+
             </div>
-            <img
+            {/* <img
               src={ArrowSmall}
               alt=""
               onClick={handdlePrecio}
               className={styles.arrowSmall}
-            />
+            /> */}
           </div>
 
           <button
