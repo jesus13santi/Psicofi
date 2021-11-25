@@ -157,10 +157,20 @@ function LoginForm() {
                   {user.role === "" &&(
                      history.push("/election")
                   )}
-                  {user.role === "Admin" ?(
-                    history.push("/admin")
-                  ):(
-                    history.push("/deck")
+                  {user.role === "Admin" &&(
+                     history.push("/admin")
+                  )}
+                  {user.role === "Rechazado" &&(
+                     history.push("/rechazado")
+                  )}
+                  {user.role === "Pendiente" &&(
+                     history.push("/pendiente")
+                  )}
+                  {user.role === "Psicologo" &&(
+                     history.push("/deck")
+                  )}
+                  {user.role === "Paciente" &&(
+                     history.push("/deck")
                   )}
                   
                 </>
