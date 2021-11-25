@@ -19,7 +19,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo }) => {
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        console.log({inputName, value });
+        console.log({ inputName, value });
         setValues({...values,[inputName]: value})
         };
 

@@ -6,10 +6,11 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 function CardStory({id, name, date, chatId}) {
+
   const {user, setUser}= useContext(UserContext);
   const history = useHistory();
   const handlePatientHistory = () => {
-    history.push(`/historiaPacienteIndividual/${chatId}`);
+    history.push(`/historiaPacienteIndividual/${id}`);
   };
   return (
     <div className={styles.container}>

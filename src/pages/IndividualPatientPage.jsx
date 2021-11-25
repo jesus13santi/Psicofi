@@ -9,12 +9,12 @@ import Loading from "../components/Loading/Loading";
 const IndividualPatientPage = () => {
 
     const params = useParams();
-    const {user}= useContext(UserContext)
+    const {user}= useContext(UserContext);
     const [patient, setPatient] = useState(null);
     const [isLoading, setLoading] = useState(true);
   
     const fetchPatient = async () => {
-    const listaPsico= db.collection("users")
+    const listaPatients = db.collection("users")
         .doc(params.uid)
         .get()
         .then((user) => {
