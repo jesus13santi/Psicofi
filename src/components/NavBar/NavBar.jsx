@@ -93,9 +93,9 @@ const NavBar = () => {
           <>
             <ul className={`${styles.rightSize}`}>
               <li>
-                <Link to="/" className={styles.link}>
+                <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
                   Contacto
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/" className={styles.link}>
@@ -139,9 +139,9 @@ const NavBar = () => {
       {isOpen && !user && (
         <ul className={styles.menuMobile}>
           <li onClick={handdleMenu}>
-            <Link to="/" className={styles.linkMobile}>
-              Contacto
-            </Link>
+            <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
+                  Contacto
+                </a>
           </li>
           <li onClick={handdleMenu}>
             <Link to="/" className={styles.linkMobile}>

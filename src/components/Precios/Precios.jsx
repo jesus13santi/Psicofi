@@ -19,7 +19,7 @@ const Precios = () => {
             <p>1 hora de videollamada</p>
           </div>
           
-        </div>
+       
 
         <button
           type="button"
@@ -28,7 +28,8 @@ const Precios = () => {
         >
           Comenzar
         </button>
-      
+        
+        </div>
     </div>
   );
 };
