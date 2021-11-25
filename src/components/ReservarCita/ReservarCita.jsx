@@ -102,7 +102,6 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: user.name,
-              incidencias: [],
               photo: user.photo,
               uid: user.id
             },
@@ -122,7 +121,6 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: psicologo.name,
-              incidencias: [],
               photo: psicologo.photo,
               uid: params.uid
             },

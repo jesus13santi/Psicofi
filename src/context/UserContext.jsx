@@ -44,6 +44,7 @@ export default function UserContextProvider({ children }){
               birthday: "",
               problemas: [],
               appointments: [],
+              incidencias: [],
               pdf:""
 
             };
