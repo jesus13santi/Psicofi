@@ -6,6 +6,7 @@
  padding-bottom: 60px;
  padding-left: 10%;
  padding-right: 10%;
+
 }
 .fondorosa {
     background-color: rgb(247, 232, 249);
@@ -152,6 +153,7 @@ input[type="checkbox"]:checked + label {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 
@@ -161,6 +163,7 @@ input[type="checkbox"]:checked + label {
     margin-right: auto;
 }
 
-input[type="file"]{
+#upload{
     display: none;
+    background-color: black;
 }

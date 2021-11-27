@@ -8,6 +8,7 @@ import $ from "jquery";
 import firebase from "firebase";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
+import Loading from "../Loading/Loading";
 
 const PerfilEspecialista = () => {
   const [date, setDate] = useState(new Date());
@@ -284,10 +285,10 @@ const PerfilEspecialista = () => {
             className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
           >
             <img src={user.photo} className={styles.fotoperfil}></img>
-            <label for="upload" class={styles.boton}>
+            <label for={styles.upload} class={styles.boton}>
                   Cambiar
               </label>
-              <input id="upload" className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
+              <input id={styles.upload} className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
               <button type="button" className={`${styles.boton} ${styles.eliminar}`} onClick={handleDeletePhoto}>
                 Eliminar
               </button>

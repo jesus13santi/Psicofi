@@ -4,12 +4,13 @@ import Footer from "../Footer/Footer";
 import { useState, useContext } from "react";
 import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import UltimoPaso from "../UltimoPaso/UltimoPaso"
 import Loading from "../Loading/Loading";
 
 const ReservarCita = ({ psicologo }) => {
   const params = useParams()
+  const history = useHistory()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
   const [cita, setCita] = useState();
   const handdleOnChange = () => {};
@@ -101,7 +102,8 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: user.name,
-              incidencias: [],
+              photo: user.photo,
+              uid: user.id
             },
           ],
         });
@@ -119,12 +121,16 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: psicologo.name,
-              incidencias: [],
+              photo: psicologo.photo,
+              uid: params.uid
             },
           ],
         });
 
       console.log("cita Creada");
+      const updateUser = await getUserByEmail(user.email);
+      setUser(updateUser);
+      history.push('/deck')
 
     }else{
       console.log("No se selecciono ninguna cita")

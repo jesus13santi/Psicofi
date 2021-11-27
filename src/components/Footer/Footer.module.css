@@ -1,5 +1,5 @@
 .footer{
-    margin-top: 7.5rem;
+    margin-top: 4rem;
     height: 5.625rem;
     width: 100%;
     font-size: 1.125rem;
@@ -27,12 +27,12 @@
 
 /*MEDIA QUERY*/
 /*Tablet*/
-@media (max-width:48rem){
+@media (max-width:1024px){
     .footer{
         margin-top: 7.5rem;
         height: 5.625rem;
         width: 100%;
-        font-size: 0.75rem;
+        font-size: 1.125rem;
         display: flex;
         flex-direction:  row;
         align-items: flex-end;
@@ -40,18 +40,16 @@
     }
     
     .footer p{
-        width: 18.438rem;
-        margin-left: 1.25rem;
-        margin-bottom: 0.75rem;
+        width: 25.938rem;
+        margin-left: 1.875rem;
+        margin-bottom: 2.5rem;
     }
     .logoSocialNetwork{
-        margin-right: 1.25rem;
+        margin-right: 1.688rem;
     }
     .logoSocialNetwork img{
         margin-left: 1.25rem;
-        margin-bottom: 0.75rem;
-        height: 2.5rem;
-        width: 2.5rem;
+        margin-bottom: 2.5rem;
 }
 }
 
@@ -69,7 +67,7 @@
     }
     
     .footer p{
-        width: 8rem;
+        width: 11.5rem;
         margin-left: 0.75rem;
         margin-bottom: 1.375rem;
         font-size: 0.5rem;

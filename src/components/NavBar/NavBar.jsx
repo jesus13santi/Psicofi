@@ -1,8 +1,6 @@
-import React from "react";
 import styles from "./NavBar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Logo from "../../img/Logo.png";
-import { useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import menuVector from "../../img/menuVector.png";
 import { UserContext } from "../../context/UserContext";
@@ -16,9 +14,19 @@ const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [isOpenLog, setOpenLog] = useState(false);
   const history = useHistory();
+
   const handdleHome = () => {
+    if(!!user){
+    if(user.role==="Pendiente" || user.role==="Admin" || user.role=="Rechazado"){
+        handdleLogOut()
+    }else{
+      history.push("/");
+      setOpen(false);
+    }
+  }else{
     history.push("/");
-    setOpen(false)
+    setOpen(false);
+  }
   };
   const handdleLogin = () => {
     history.push("/login");
@@ -52,28 +60,40 @@ const NavBar = () => {
 
         {!!user ? (
           <div className={`${styles.rightSize1} ${styles.rightSize}`}>
-            <picture className={styles.boxImg} onClick={historyDeck}>
-              <img
-                src={user.photo}
-                alt=""
-                className={styles.menuVecto}
-                onClick={historyDeck}
-              />
-            </picture>
-            <p onClick={historyDeck}>{user.name}</p>
-            {isOpenLog ? (
-              <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+            {user.role === "Pendiente" ||
+            user.role === "Admin" ||
+            user.role === "Rechazado" ? (
+              <>
+                <button className={styles.button} onClick={handdleLogOut}>
+                  Cerrar sesión
+                </button>
+              </>
             ) : (
-              <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
+              <>
+                <picture className={styles.boxImg} onClick={historyDeck}>
+                  <img
+                    src={user.photo}
+                    alt=""
+                    className={styles.menuVecto}
+                    onClick={historyDeck}
+                  />
+                </picture>
+                <p onClick={historyDeck}>{user.name}</p>
+                {isOpenLog ? (
+                  <img src={flechaArriba} alt="" onClick={handdleMenu1} />
+                ) : (
+                  <img src={flechaAbajo} alt="" onClick={handdleMenu1} />
+                )}
+              </>
             )}
           </div>
         ) : (
           <>
             <ul className={`${styles.rightSize}`}>
               <li>
-                <Link to="/" className={styles.link}>
+                <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
                   Contacto
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/" className={styles.link}>
@@ -117,9 +137,9 @@ const NavBar = () => {
       {isOpen && !user && (
         <ul className={styles.menuMobile}>
           <li onClick={handdleMenu}>
-            <Link to="/" className={styles.linkMobile}>
-              Contacto
-            </Link>
+            <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
+                  Contacto
+                </a>
           </li>
           <li onClick={handdleMenu}>
             <Link to="/" className={styles.linkMobile}>

@@ -16,6 +16,9 @@ import BigLogo from "../../img/Group.png";
 import Fondo from "../../img/shutterstock_1739543105.jpg";
 import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig";
+import Footer from "../Footer/Footer";
+import PulseLoader from "react-spinners/PulseLoader";
+
 const Hpage = () => {
   const [psicologos, setPsicologos] = useState([]);
   const [psicologo, setPsicologo] = useState(null);
@@ -167,26 +170,28 @@ const Hpage = () => {
           <h2 className={styles.title}>¿Cuenta cuesta una sesion?</h2>
           <div className={styles.withArrow}>
             <div className={styles.boxCosto}>
-              {precio === "0" ? (
-                <>
-                  <p className={styles.individual}>Cita Individual</p>
-                  <h1>$29.99 USD</h1>
-                </>
-              ) : (
-                <>
-                  <p className={styles.individual}>Cita Doble</p>
-                  <h1>$49.99 USD</h1>
-                </>
-              )}
-
+              {/* {precio === "0" ? (
+              //   <>
+              //     <p className={styles.individual}>Cita Individual</p>
+              //     <h1>$29.99 USD</h1>
+              //   </>
+              // ) : (
+              //   <>
+              //     <p className={styles.individual}>Cita Doble</p>
+              //     <h1>$49.99 USD</h1>
+              //   </>
+              // )} */}
+              <p className={styles.individual}>Cita Individual</p>
+               <h1>$29.99 USD</h1>
               <p>1 hora de videollamada</p>
+
             </div>
-            <img
+            {/* <img
               src={ArrowSmall}
               alt=""
               onClick={handdlePrecio}
               className={styles.arrowSmall}
-            />
+            /> */}
           </div>
 
           <button
@@ -224,7 +229,7 @@ const Hpage = () => {
                   </div>
                 </>
               ) : (
-                <h3>Cargando...</h3>
+                <PulseLoader color={"#763D80"} loading={true} size={20} css={styles.loading} />
               )}
             </div>
             <img
@@ -273,19 +278,9 @@ const Hpage = () => {
             Aplicar
           </button>
         </div>
-        <footer className={styles.footer}>
-          <p>
-            Aviso de privacidad | Términos y Condiciones © 2021 PsicoFi. Todos
-            los derechos reservados.
-          </p>
-          <div className={styles.logoSocialNetwork}>
-            <img src={logoFacebook} alt="" />
-            <img src={logoInstagram} alt="" />
-            <img src={logoMail} alt="" />
-            <img src={logoWhat} alt="" />
-            <img src={logoTwitter} alt="" />
-          </div>
-        </footer>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

@@ -1,11 +1,10 @@
 import { useState, useContext } from "react"
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider, facebookProvider,twitterProvider } from "../../utils/firebaseConfig"
-import { useHistory } from "react-router-dom";
+import { auth, googleProvider, facebookProvider, twitterProvider } from "../../utils/firebaseConfig"
+import { useHistory, Link } from "react-router-dom";
 import styles from "./RegisterForm.module.css"
 import {validateEmail} from "../../utils/helpers.js"
 import { size } from "lodash"
-import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 
@@ -43,7 +42,7 @@ function RegisterForm() {
     };
 
     const handleTwitterLogin = async () =>{
-      await auth.signInWithPopup(googleProvider);
+      await auth.signInWithPopup(twitterProvider);
       console.log(user)
       await history.push("/election");
       
@@ -64,36 +63,40 @@ function RegisterForm() {
         let isValid = true
 
         if(size(values.name) < 3) {
-            setErrorName("Debe ingresar un nombre de al menos tres carácteres")
+            setErrorName("Debes ingresar un nombre de al menos tres carácteres.")
             isValid = false
         }
 
         if(!validateEmail(values.email)) {
-            setErrorEmail("Debe de ingresar un email válido")
+            setErrorEmail("Debes de ingresar un email válido.")
             isValid = false
         }
 
         if(size(values.password) < 8) {
-            setErrorPassword("Debe ingresar una contraseña de al menos ocho carácteres")
+            setErrorPassword("Debes ingresar una contraseña de al menos ocho carácteres.")
+            isValid = false
+        }
+
+        if(size(values.passwordB) < 8) {
+            setErrorPasswordB("Debes ingresar una confirmación de contraseña de al menos ocho carácteres.")
             isValid = false
         }
 
         if(values.password !== values.passwordB) {
-            setErrorPasswordB("Asegurese que la contraseñas coincidan")
+            setErrorPassword("Asegure que la contraseñas coincidan.")
+            setErrorPasswordB("Asegure que la contraseñas coincidan.")
             isValid = false
         }
 
         return isValid
     }
-
     
     const handleSubmit = async (e) => {
-        e.preventDefault();
 
         if (!validateData()){
 
         } else{
-          // e.preventDefault();
+          e.preventDefault();
 
           const response = await auth.createUserWithEmailAndPassword(
               values.email, 
@@ -114,6 +117,7 @@ function RegisterForm() {
               birthday: "",
               problemas: [],
               appointments: [],
+              incidencias: [],
               pdf: ""
           
               
@@ -159,8 +163,8 @@ function RegisterForm() {
                   value={values.name}
                   onChange={handleOnChange}
                 />  
-                
-                <h1 className={styles.alert}> {errorName} </h1>
+
+              <h1 className={styles.alert} id={styles.alert}> {errorName} </h1> 
 
               <input className={styles.formRegis}
                   name="email"
@@ -171,7 +175,7 @@ function RegisterForm() {
                   onChange={handleOnChange}
                 />
 
-                <h2 className={styles.alert}> {errorEmail} </h2>
+                <h1 className={styles.alert} id={styles.alert}> {errorEmail} </h1>
 
                 <input className={styles.formRegis}
                   name="password"
@@ -182,7 +186,7 @@ function RegisterForm() {
                   onChange={handleOnChange}
                 />
 
-                <h3 className={styles.alert}> {errorPassword} </h3>
+                <h1 className={styles.alert} id={styles.alert}> {errorPassword} </h1>
 
                 <input className={styles.formRegis}
                   name="passwordB"
@@ -193,7 +197,7 @@ function RegisterForm() {
                   onChange={handleOnChange}
                 />
 
-                <h4 className={styles.alert}> {errorPasswordB} </h4>
+                <h1 className={styles.alert} id={styles.alert}> {errorPasswordB} </h1>
 
             </div>
            

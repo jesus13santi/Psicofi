@@ -6,19 +6,17 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 
-function CardChat({name, date, chatId}) {
+function CardChat({name, date, chatId, photo}) {
   const {user, setUser}= useContext(UserContext);
   console.log(chatId)
   return (
     <div className={styles.container}>
       <div className={styles.psico}>
         <picture className={styles.boxImg}>
-          <img src={img} alt="" />
+          <img src={photo} alt="" />
         </picture>
         <div className={styles.boxInfo}>
-          <Link to ='/' className={styles.link}>
             <h2 className={styles.title}>{name}</h2>
-          </Link>
           <p>{date}</p>
         </div>
       </div>
