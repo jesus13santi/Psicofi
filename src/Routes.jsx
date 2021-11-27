@@ -21,6 +21,7 @@ import ReservarCitaPage from "./pages/ReservarCitaPage";
 import AlertRechazadoPage from "./pages/AlertRechazadoPage";
 import AlertPendientePage from "./pages/AlertPendientePage"
 import AdminPage from "./pages/AdminPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function Routes() {
   return (
@@ -57,6 +58,7 @@ function Routes() {
       <Route exact path="/rechazado" component={AlertRechazadoPage}></Route>
       <Route exact path="/pendiente" component={AlertPendientePage}></Route>
       <Route exact path="/admin" component={AdminPage}></Route>
+      <Route exact path="/checkout" component={CheckoutPage}></Route>
       <Route exact path="*">
         <h1>"404: Page not found"</h1>
       </Route>
