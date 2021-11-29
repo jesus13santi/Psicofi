@@ -6,6 +6,7 @@ import styles from "./PerfilEspecialista.module.css";
 import { db } from "../../utils/firebaseConfig";
 import $ from "jquery";
 import firebase from "firebase";
+import Footer from "../Footer/Footer";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
 import Loading from "../Loading/Loading";
@@ -258,6 +259,7 @@ const PerfilEspecialista = () => {
   }
 
   return (
+    <>
     <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
       <div className={styles.titulo}>Mi perfil</div>
       <form>
@@ -503,6 +505,8 @@ const PerfilEspecialista = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -51,11 +51,13 @@
 .boxAtribute{
     display: flex;
     flex-direction: column;
+    width: 80%;
+    
     
 }
 .atribute{
     display: grid;
-    grid-template-columns: 270px .5fr;
+    grid-template-columns: 150px .8fr;
     gap: 1rem;
 }
 .title{
@@ -64,7 +66,8 @@
 }
 .atribute p{
     margin-left: 15px;
-    width: 300px;
+    width: 100%;
+    
 }
 .boxEspecialidades{
     width: 100%;
@@ -109,15 +112,29 @@
     margin-top: 28px;
     
 }
+@media (max-width:820px) {
+    .atribute {
+
+        grid-template-columns: 1fr;
+        
+    }
+    .title {
+        text-align: left;
+        font-size: 24px;
+    }
+    .especialidad{
+        padding: 10px;
+    }
+    
+}
 @media (max-width:540px) {
     .container{
         font-size: 16px;
+        
     }
     .box{
         padding: 30px;
-        
-        
-        
+        margin-top: 30px;
     }
     .name{
         font-size: 21px;
@@ -134,7 +151,8 @@
     }
     .firstBox {
         flex-direction: column-reverse;
-        align-items: center;    
+        align-items: center;
+        
     }
     .atribute {
         
@@ -163,10 +181,6 @@
         margin-top: 10px;
     }
 
-
-    
-
-
-
-
 }
+
+

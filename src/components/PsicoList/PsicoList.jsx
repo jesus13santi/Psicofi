@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import Footer from "../Footer/Footer";
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";
 
@@ -50,72 +50,75 @@ const PsicoList = ({ psicologos }) => {
   console.log(orden);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.boxPsico}>
-        <div className={styles.firstText}>
-          <div className={styles.boxTitle}>
-            <h1 className={styles.title}>Especialistas</h1>
-            <input
-              name="search"
-              className={styles.input}
-              type="text"
-              placeholder="Buscar..."
-              onChange={handleOnchange}
-            />
-          </div>
-          <div className={styles.listEspecial}>
-            <div className={styles.boxList}>
-              <select name="especialidades" id="" className={styles.select}>
-                <option value="todos"> Todos</option>
-                <option value="ansiedad">Ansiedad</option>
-                <option value="estres">Estres</option>
-                <option value="depresion">Depresion</option>
-              </select>
-              <select
-                name="especialidades"
-                id=""
-                className={styles.select}
-                onChange={haddleSelect}
-              >
-                <option value>Selecciona una opcion</option>
-                <option value="ordenAlfabetico"> Orden Alfabetico</option>
-                <option value="ranking">Ranking</option>
-              </select>
+    <>
+      <div className={styles.container}>
+        <div className={styles.boxPsico}>
+          <div className={styles.firstText}>
+            <div className={styles.boxTitle}>
+              <h1 className={styles.title}>Especialistas</h1>
+              <input
+                name="search"
+                className={styles.input}
+                type="text"
+                placeholder="Buscar..."
+                onChange={handleOnchange}
+              />
+            </div>
+            <div className={styles.listEspecial}>
+              <div className={styles.boxList}>
+                <select name="especialidades" id="" className={styles.select}>
+                  <option value="todos"> Todos</option>
+                  <option value="ansiedad">Ansiedad</option>
+                  <option value="estres">Estres</option>
+                  <option value="depresion">Depresion</option>
+                </select>
+                <select
+                  name="especialidades"
+                  id=""
+                  className={styles.select}
+                  onChange={haddleSelect}
+                >
+                  <option value>Selecciona una opcion</option>
+                  <option value="ordenAlfabetico"> Orden Alfabetico</option>
+                  <option value="ranking">Ranking</option>
+                </select>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={styles.list}>
-          {!!listaOrdenada
-            ? listaOrdenada
-                .filter(searchingTerm(value))
-                .map((psicologo) => (
-                  <CardPsico
-                    key={psicologo.id}
-                    id={psicologo.id}
-                    name={psicologo.name}
-                    pais={psicologo.pais}
-                    lastName={psicologo.lastName}
-                    photo={psicologo.photo}
-                    description={psicologo.description}
-                  />
-                ))
-            : psicologos
-                .filter(searchingTerm(value))
-                .map((psicologo) => (
-                  <CardPsico
-                    key={psicologo.id}
-                    id={psicologo.id}
-                    name={psicologo.name}
-                    pais={psicologo.pais}
-                    lastName={psicologo.lastName}
-                    photo={psicologo.photo}
-                    description={psicologo.description}
-                  />
-                ))}
+          <div className={styles.list}>
+            {!!listaOrdenada
+              ? listaOrdenada
+                  .filter(searchingTerm(value))
+                  .map((psicologo) => (
+                    <CardPsico
+                      key={psicologo.id}
+                      id={psicologo.id}
+                      name={psicologo.name}
+                      pais={psicologo.pais}
+                      lastName={psicologo.lastName}
+                      photo={psicologo.photo}
+                      description={psicologo.description}
+                    />
+                  ))
+              : psicologos
+                  .filter(searchingTerm(value))
+                  .map((psicologo) => (
+                    <CardPsico
+                      key={psicologo.id}
+                      id={psicologo.id}
+                      name={psicologo.name}
+                      pais={psicologo.pais}
+                      lastName={psicologo.lastName}
+                      photo={psicologo.photo}
+                      description={psicologo.description}
+                    />
+                  ))}
+          </div>
         </div>
       </div>
-    </div>
+      <Footer/>
+    </>
   );
 };
 

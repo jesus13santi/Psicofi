@@ -189,6 +189,7 @@ const ReservarCita = ({ psicologo }) => {
             </button>
             {ultimoPaso === true && <UltimoPaso />}
           </div>
+          <Footer/>
         </>
       ) : (
         <Loading />
