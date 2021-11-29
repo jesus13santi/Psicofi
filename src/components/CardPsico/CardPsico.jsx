@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CardPsico.module.css";
 import { Link, useHistory } from "react-router-dom";
 
-const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
+const CardPsico = ({ id, name, pais, photo, description,problemas }) => {
   const history = useHistory();
   const handlePatientHistory = () => {
     history.push(`/profile/${id}`);
@@ -22,6 +22,9 @@ const CardPsico = ({ id, name, pais, lastName, photo, description }) => {
               <p>País:</p>
               <p>{pais}</p>
             </div>
+            {problemas.length>0 && (
+              <p>Especialidades: {problemas.toString().replace(/,/g, ", ")}</p>
+            )}
 
             <p className={styles.description}>{description}</p>
           </div>

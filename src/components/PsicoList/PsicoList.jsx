@@ -8,6 +8,7 @@ const PsicoList = ({ psicologos }) => {
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
+  const [esp,setEsp]=useState("");
   const handleOnchange = (event) => {
     setValue(event.target.value.toLowerCase());
   };
@@ -41,6 +42,9 @@ const PsicoList = ({ psicologos }) => {
       setListaOrdenada(psicologos);
     }
   };
+  const handdleEsp=(e)=>{
+    setEsp(e.target.value)
+  }
   const cambiarLista = async () => {
     if (orden === "ordenAlfabetico") {
       setListaOrdenada(psicologos);
@@ -66,8 +70,13 @@ const PsicoList = ({ psicologos }) => {
             </div>
             <div className={styles.listEspecial}>
               <div className={styles.boxList}>
-                <select name="especialidades" id="" className={styles.select}>
-                  <option value="todos"> Todos</option>
+                <select
+                  name="especialidades"
+                  id=""
+                  className={styles.select}
+                  onChange={handdleEsp}
+                >
+                  <option value=""> Todos</option>
                   <option value="ansiedad">Ansiedad</option>
                   <option value="estres">Estres</option>
                   <option value="depresion">Depresion</option>
@@ -91,33 +100,73 @@ const PsicoList = ({ psicologos }) => {
               ? listaOrdenada
                   .filter(searchingTerm(value))
                   .map((psicologo) => (
-                    <CardPsico
-                      key={psicologo.id}
-                      id={psicologo.id}
-                      name={psicologo.name}
-                      pais={psicologo.pais}
-                      lastName={psicologo.lastName}
-                      photo={psicologo.photo}
-                      description={psicologo.description}
-                    />
+                    <>
+                      {esp === "" ? (
+                        <CardPsico
+                          key={psicologo.id}
+                          id={psicologo.id}
+                          name={psicologo.name}
+                          pais={psicologo.pais}
+                          photo={psicologo.photo}
+                          description={psicologo.description}
+                          problemas={psicologo.problemas}
+                        />
+                      ) : (
+                        psicologo.problemas.map((problema) => (
+                          <>
+                            {problema === esp && (
+                              <CardPsico
+                                key={psicologo.id}
+                                id={psicologo.id}
+                                name={psicologo.name}
+                                pais={psicologo.pais}
+                                photo={psicologo.photo}
+                                description={psicologo.description}
+                                problemas={psicologo.problemas}
+                              />
+                            )}
+                          </>
+                        ))
+                      )}
+                    </>
                   ))
               : psicologos
                   .filter(searchingTerm(value))
                   .map((psicologo) => (
-                    <CardPsico
-                      key={psicologo.id}
-                      id={psicologo.id}
-                      name={psicologo.name}
-                      pais={psicologo.pais}
-                      lastName={psicologo.lastName}
-                      photo={psicologo.photo}
-                      description={psicologo.description}
-                    />
+                    <>
+                      {esp === "" ? (
+                        <CardPsico
+                          key={psicologo.id}
+                          id={psicologo.id}
+                          name={psicologo.name}
+                          pais={psicologo.pais}
+                          photo={psicologo.photo}
+                          description={psicologo.description}
+                          problemas={psicologo.problemas}
+                        />
+                      ) : (
+                        psicologo.problemas.map((problema) => (
+                          <>
+                            {problema === esp && (
+                              <CardPsico
+                                key={psicologo.id}
+                                id={psicologo.id}
+                                name={psicologo.name}
+                                pais={psicologo.pais}
+                                photo={psicologo.photo}
+                                description={psicologo.description}
+                                problemas={psicologo.problemas}
+                              />
+                            )}
+                          </>
+                        ))
+                      )}
+                    </>
                   ))}
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
