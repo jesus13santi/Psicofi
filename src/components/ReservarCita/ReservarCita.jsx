@@ -13,7 +13,7 @@ const ReservarCita = ({ psicologo }) => {
   const history = useHistory()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
   const [cita, setCita] = useState();
-  const handdleOnChange = () => {};
+  const [today,setToday]=useState(new Date())
   const [ultimoPaso, setUltimoPaso]= useState(false)
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
@@ -141,6 +141,7 @@ const ReservarCita = ({ psicologo }) => {
     <div className={styles.container}>
       {!!psicologo ? (
         <>
+          
           <div className={styles.boxContainer}>
             <h1 className={styles.title}>Reservar una Cita</h1>
             <div className={styles.boxInput}>
@@ -160,7 +161,7 @@ const ReservarCita = ({ psicologo }) => {
                   {psicologo.appointments.length > 0 &&
                     ordenar(psicologo.appointments).map((cita) => (
                       <>
-                        {cita.status === 2 && (
+                        {cita.status === 2 && today< new Date(cita.date) && (
                           <option value={cita.id} key={cita.id}>
                             {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
                           </option>

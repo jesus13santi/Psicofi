@@ -41,7 +41,7 @@
     color: white;
     align-items: flex-start;
     position: relative;
-
+    height: 900px;
     
 }
 .principalPage::before{

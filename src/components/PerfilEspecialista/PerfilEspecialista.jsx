@@ -197,11 +197,6 @@ const PerfilEspecialista = () => {
       } else {
         setError("Ya ingreso una cita con esa fecha y hora");
       }
-      
-    
-    
-    
-    
     
   };
   const deleteAppointment = async (id) => {
@@ -214,6 +209,7 @@ const PerfilEspecialista = () => {
     setUser(updateUser);
     alert("Cita Eliminada");
   };
+// Funcion para mostrar la fecha de la cita
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -226,6 +222,7 @@ const PerfilEspecialista = () => {
     // console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
+  // Funcion para mostrar la fecha de su cumpleaños
   function diaBirthday(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -481,7 +478,8 @@ const PerfilEspecialista = () => {
 
                 {ordenar(user.appointments).map((m) => (
                   <>
-                    {m.status === 2 && (
+                    {console.log(user.appointments.date)}
+                    {m.status === 2 && date < new Date(m.date)  && (
                       <div key={m.id} className={styles.cita}>
                         <p className={styles.grid}>{diaSemana(m.date)}</p>
                         <p className={styles.grid}>
