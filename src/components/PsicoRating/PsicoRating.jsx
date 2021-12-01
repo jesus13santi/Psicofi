@@ -4,6 +4,7 @@ import styles from "./PsicoRating.module.css";
 import { UserContext } from "../../context/UserContext";
 import { Rating } from 'react-simple-star-rating';
 import { db } from "../../utils/firebaseConfig";
+import swal from 'sweetalert';
 
 const PsicoRating = () => {
 
@@ -41,6 +42,7 @@ const PsicoRating = () => {
     }
 
     const closeRating = () => {
+        swal("Muchas gracias!", "Tu opinión es muy importante para nosotros", "success");
         setCanRate(false);
     }
 

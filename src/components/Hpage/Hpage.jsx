@@ -115,10 +115,10 @@ const Hpage = () => {
         </div>
 
         <div className={`${styles.boxArea} ${styles.box}`}>
-          <h2 className={styles.title}>Areas de atencion</h2>
+          <h2 className={styles.title}>Areas de atención</h2>
           <div className={styles.areas}>
             <div className={styles.area}>Ansiedad</div>
-            <div className={styles.area}>Estres</div>
+            <div className={styles.area}>Estrés</div>
             <div className={styles.area}>Autoestima</div>
             <div className={styles.area}>Problemas Amorosos</div>
             <div className={styles.area}>Sexualidad</div>
