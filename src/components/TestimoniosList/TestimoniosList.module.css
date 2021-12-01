@@ -21,3 +21,9 @@
 .by{
     margin-left: 1%;
 }
+
+@media (max-width:48rem) {
+    .testimony {
+        margin-top: 8px;
+    }
+}
