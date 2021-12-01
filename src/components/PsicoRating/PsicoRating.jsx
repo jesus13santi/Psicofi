@@ -37,12 +37,12 @@ const PsicoRating = () => {
                     ratings: aux
                 }
             )
-            closeRating();
+            closeRating();  
+            swal("Muchas gracias!", "Tu opinión es muy importante para nosotros", "success");
         }
     }
 
     const closeRating = () => {
-        swal("Muchas gracias!", "Tu opinión es muy importante para nosotros", "success");
         setCanRate(false);
     }
 
