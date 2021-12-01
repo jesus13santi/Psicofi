@@ -24,12 +24,12 @@ function CardStory({name, date, chatId, photo}) {
       </Link>
       ):(
         <>
-        <div>
+        <div className={styles.buttons}>
         <Link to ={`/history`}>
-        <button type="button" className={styles.button}>Ver historia</button>
+        <button type="button" className={styles.button}>Historia</button>
         </Link>
         <Link to ={`/chat/${chatId}`}>
-        <button type="button" className={styles.button}>Ver Chat</button>
+        <button type="button" className={styles.button}>Chat</button>
         </Link>
         </div>
         </>

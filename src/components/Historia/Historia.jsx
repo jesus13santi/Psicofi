@@ -11,30 +11,81 @@ const Historia = () => {
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
-  const [lista, setLista] = useState(null)
+  const [lista, setLista] = useState([])
   const {user, setUser}= useContext(UserContext);
   
 function checkHistory(a, aux){
-  if(a.state == 0){
+  if(a.status == 0){
     aux.push(a)
   }
 }
 
-  const history = ({user})=> {
+  function history(){
     const app = user.appointments
+    console.log('APP',app)
     const aux = []
     app.map((a) =>(
       checkHistory(a, aux)
     ))
     setLista(aux)
+    console.log(aux)
+    if (!!lista){
+      setListaOrdenada(ordenarNombres(user.appointments))
+      console.log('Sirve', listaOrdenada)
+    }
+    
 
   }
 
   
+  function ordenarNombres(lista) {
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
+
+  function ordenarFecha(lista) {
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const nameA = a.date;
+      const nameB = b.date;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
+
+  const handleSelect = (e) => {
+    setOrden(e.target.value);
+    if (e.target.value === "ordenAlfabetico") {
+      setListaOrdenada(ordenarNombres(user.appointments));
+    } else if (e.target.value === "date"){
+      setListaOrdenada(ordenarFecha(user.appointments));
+    } else{
+      setListaOrdenada(user.appointments);
+    }
+  };
+
+
+
     return (
     <>
     {!!user?(
     <div className={styles.container}>
+      {/* {setLista(user.appointments)} */}
     <div className={styles.box}>
         
         <h1 className={styles.boxTitle}>
@@ -45,25 +96,49 @@ function checkHistory(a, aux){
                 id=""
                 className={styles.sortText}
                 // onChange={}
+                onChange={handleSelect}
               >
                 <option value>Ordenar por</option>
-                <option value="ordenAlfabetico"> Orden Alfabetico</option>
-                {/*<option value="date">Fecha</option>*/}
+                <option value="ordenAlfabetico"
+                > 
+                 Orden Alfabetico
+                 </option>
+                <option value="date">Fecha</option>
               </select>
         <div>
         {user.appointments.length > 0 ?( 
-        user.appointments.map((history) => (
-        <>
-        {history.status== 0 &&(
-          <CardStory
-          name={history.name}
-          date={history.date}
-          chatId={history.id}
-          />
-        )}
-        </>
         
-      ))):(
+        <>
+        {!!listaOrdenada ?(
+          listaOrdenada.map((history) =>(
+          <>
+          {history.status== 0 &&(
+            <CardStory
+            name={history.name}
+            date={history.date}
+            chatId={history.id}
+            />
+          )}
+          </>
+          )
+        )):(
+          user.appointments.map((history) => (
+            <>
+            {history.status== 0 &&(
+              <CardStory
+              name={history.name}
+              date={history.date}
+              chatId={history.id}
+              />
+            )}
+            </>
+
+        )))}
+        
+        </>
+
+
+      ):(
         <p className = {styles.emptyText}>El historial está vacío</p>
       )}
       </div>
