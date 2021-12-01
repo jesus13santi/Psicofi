@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container h2{
+    font-size: 40px;
+    text-align: left;
+    color: #522B59;
+    margin-left: 3%;
+}
+
+.boxTestimonios {
+    background-color: #F7E8F9;
+    width: 90%;
+    border-radius: 70px;
+    margin-top: 68px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.button{
+    background-color: #763D80;
+    height: 60px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #522B59;
+}
