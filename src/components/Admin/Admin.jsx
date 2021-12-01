@@ -8,7 +8,7 @@ import styles from "./Admin.module.css";
 
 const Admin = ({ pendientes, rechazados }) => {
   const [value, setValue] = useState("");
-  
+  const [especialidades, setEspecialidades] = useState([]);
   
 
   const handleOnchange = (event) => {
