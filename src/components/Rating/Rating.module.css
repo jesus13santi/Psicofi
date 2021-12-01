@@ -6,4 +6,10 @@
     justify-content: center;
     align-items: center;
     padding: 30px;
+    color: #522B59;
+}
+
+.img {
+    height: 40px;
+    padding: 2%;
 }

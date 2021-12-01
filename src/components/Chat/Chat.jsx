@@ -30,8 +30,6 @@ function Chat() {
     const [newArray, setNewArray]= useState([])
     
 
-
-
     useEffect(()=> {
         if (db){
             console.log('docs')
