@@ -25,6 +25,8 @@ import AlertRechazadoPage from "./pages/AlertRechazadoPage";
 import AlertPendientePage from "./pages/AlertPendientePage"
 import AdminPage from "./pages/AdminPage";
 import PrivateRoute from "./components/protectedRoute/PrivateRoute"
+import CheckoutPage from "./pages/CheckoutPage";
+
 function Routes() {
   return (
     <Switch>
@@ -62,6 +64,8 @@ function Routes() {
       <PrivateRoute exact path="/rechazado" component={AlertRechazadoPage}></PrivateRoute>
       <PrivateRoute exact path="/pendiente" component={AlertPendientePage}></PrivateRoute>
       <PrivateRoute exact path="/admin" component={AdminPage}></PrivateRoute>
+     
+      <Route exact path="/checkout" component={CheckoutPage}></Route>
       <Route exact path="*" component={PageNotFound}></Route>
     </Switch>
   );

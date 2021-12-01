@@ -39,17 +39,25 @@
 }
 
 .titulo{
+
+    margin-bottom: 1.25rem;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 72px;
     color: #522B59;
-    font-size: xx-large;
-    font-weight: bold;
-    margin-bottom: 1em;
+
+
 }
 .etiqueta{
-    width: 20%;
-    float: left;
-    text-align: right;
-    margin-right: 5%;
-    height: 3em;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    text-align: left;
+    color: #522B59;
+    margin-bottom: 1.875rem;
+    
 }
 .etiqueta label{
     color: #522B59;
@@ -58,10 +66,11 @@
 .campo{
     text-align: left;
     float:right;
-    width: 70%;
+    width: 60%;
     height: 3em;
     margin-left: 5%;
     font-size: medium;
+    
 }
 .lineagruesa{
     height: 7em!important;
