@@ -63,6 +63,7 @@ function Routes() {
       <Route exact path="/rechazado" component={AlertRechazadoPage}></Route>
       <Route exact path="/pendiente" component={AlertPendientePage}></Route>
       <Route exact path="/admin" component={AdminPage}></Route>
+      <Route exact path="/checkout" component={CheckoutPage}></Route>
       <Route exact path="*" component={PageNotFound}></Route>
     </Switch>
   );
