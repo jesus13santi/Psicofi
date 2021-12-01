@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PsicoRating.module.css";
 import { UserContext } from "../../context/UserContext";
@@ -8,7 +8,7 @@ import { db } from "../../utils/firebaseConfig";
 const PsicoRating = () => {
 
     const [ ratingValue, setRatingValue ] = useState(0);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [ canRate, setCanRate ] = useState(true);
     const params = useParams();
     const id = params.chatId;
