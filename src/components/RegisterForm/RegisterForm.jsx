@@ -119,7 +119,7 @@ function RegisterForm() {
               appointments: [],
               incidencias: [],
               pdf: "",
-              rating: 0
+              ratings: []
               },
               response.user.uid)
               console.log(response.user.uid)

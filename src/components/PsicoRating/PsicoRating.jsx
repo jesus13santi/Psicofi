@@ -15,14 +15,6 @@ const PsicoRating = () => {
     const params = useParams();
     const id = params.chatId;
 
-    const getPsy = (psy) => {
-        console.log('docs!')
-        db.collection("users").doc(psy).update((doc)=> {
-                const data = doc.data()
-                setRatings(data.rating)
-            })
-        }
-
     const handleRating = (rate) => {
         setRatingValue(rate/20);
         console.log(ratingValue);
@@ -38,14 +30,14 @@ const PsicoRating = () => {
             const newRating = ratingValue;
             const temp = await db.collection("users").doc(psy).get();
             const p = temp.data();
-            const q = p.rating;
+            const q = p.ratings;
             const aux = [...q];
             console.log(aux);
             aux.push(newRating);
             console.log(aux);
             await db.collection("users").doc(psy).update(
                 {
-                    rating: aux
+                    ratings: aux
                 }
             )
             closeRating();
