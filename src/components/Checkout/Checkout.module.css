@@ -1,174 +1,19 @@
-.linea{
-    display: block;
+
+.boxcontenedor{
+    background-color: #F7E8F9;
+    width: 90%;
+    color: #522B59;
+    border-radius: 30px;
+    padding: 30px;
 }
-.botonPaypal{
-    width: 100%;
-    text-align: center;
-    margin: auto;
-    
-    
-}
-.labeltotales{
-    color: purple !important;
-    font-weight: bold;
+.firstBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
 }
 .totales{
-    margin-top: 20px;
-    margin-bottom: 120px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
 }
-.bordecontenedor{
-    border-radius: 60px;
-    width: 80%;
-    margin-top: 5%;
-    margin-left: 10%;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    padding-left: 10%;
-    padding-right: 10%;
-   }
-   .fondorosa {
-       background-color: rgb(247, 232, 249);
-   }
-   
-   
-   
-   .fotoperfil{
-       border-radius: 50%;
-       width: 7em;
-       height: 7em;
-   }
-   
-   .boton{
-       text-decoration: none;
-       background-color: #522B59;
-       color: white;
-       margin: 0.5em;
-       border-radius: 2em;
-       padding: 0.5em 2em;
-       cursor: pointer; 
-   }
-   
-
-   
-   .titulo{
-       color: #522B59;
-       font-size: xx-large;
-       font-weight: bold;
-       margin-bottom: 1em;
-   }
-   .etiqueta{
-       width: 30%;
-       float: left;
-       text-align: left;
-       margin-right: 5%;
-       margin-left: 15%;
-       height: 3em;
-   }
-   .etiqueta label{
-       color:black;
-       font-size: medium;       
-   }
-   .campo{    
-       text-align: right;
-       float:right;
-       width: 30%;
-       height: 3em;
-       margin-left: 5%;
-       margin-right: 15%;
-       font-size: medium;
-       vertical-align: center;
-   }
-
-   .items{
-       margin-bottom: 100px;
-   }
-   
-   .lineagruesa{
-       height: 7em!important;
-       margin-bottom: 2em;
-   }
-   .entrada{
-       border-radius: 25px;
-       display:inline-block;
-       padding:5px 10px;
-       border-width: 1px;
-       line-height:140%;
-       width: 35em;
-       border-color: #522B59;
-   }
-   
-   .campofoto {
-       display: flex;
-       align-items: center ;
-   }
-   .lineagruesa a{
-       margin-left: 2em;
-   }
-   
-   .lineagruesa textarea{
-       height: 10em;
-   }
-   .checkbox{
-       position: absolute;
-       display: absolute;
-       opacity: 0;
-   }
-   .checklabel{
-       border: 2px solid #522B59;
-       background-color: white;
-       color: #522B59;   
-       font-weight: bold;
-       font-size: large;
-       display: inline-block;
-       width: 180px;
-       justify-content: center;
-       align-items: center;
-       
-       padding: 5px;
-       border-radius: 25px;
-       cursor: pointer;
-       -webkit-touch-callout: none;
-       -webkit-user-select: none;
-       -moz-user-select: none;
-       -ms-user-select: none;
-       user-select: none;
-       margin: 30px;
-       text-align: center;
-   }
-   
-   input[type="checkbox"]:checked + label {
-       border: 2px solid #522B59;
-       background-color: #522B59;
-       color: white;
-   }
-   
-   .subtitulo label{
-       color: #522B59;
-       font-size: larger;
-       font-weight: bold;
-   }
-   .subtitulo{
-       margin-bottom: 15px;
-   }
-   .texto{
-       margin-bottom: 30px;
-   }
-   .texto label{
-       color: #522B59;
-       font-size: medium;
-   }
-   
-   .seleccion{
-       
-       margin-bottom: 10px;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-   }
-   
-   
-   .submit input{
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-   }
