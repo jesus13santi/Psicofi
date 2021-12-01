@@ -137,9 +137,9 @@ const NavBar = () => {
       {isOpen && !user && (
         <ul className={styles.menuMobile}>
           <li onClick={handdleMenu}>
-            <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.link}>
+            <a href="mailto:psicofi.therapy@gmail.com" target="_blank" className={styles.linkMobile}>
                   Contacto
-                </a>
+            </a>
           </li>
           <li onClick={handdleMenu}>
             <Link to="/" className={styles.linkMobile}>

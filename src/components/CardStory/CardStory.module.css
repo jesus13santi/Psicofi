@@ -30,6 +30,7 @@
 .boxImg img {
     width: 100%;
     height: 100%;
+    position: relative;
     border-radius: 100%;
 
     /* background-color: aqua; */
@@ -136,7 +137,6 @@
         border: solid 0.063rem #522B59;
         display: flex;
         color: #522B59;
-        height: 3.75rem;
         width: 100%;
         border-radius: 4.375rem;
         flex-direction: row;
@@ -169,12 +169,15 @@
         text-decoration: none;
         color: #522B59;
     }
+    .buttons{
+        display:flex;
+    }
     .button{
         background-color: #763D80;
         border: none;
         color: white;
-        width: 4rem;
-        height: 2.5rem;
+        width: 3rem;
+        height: 3rem;
         border-radius: 1.875rem;
         font-weight: 600;
         font-size: 0.625rem;
@@ -193,5 +196,7 @@
     }
     .title{
         font-size: 0.75rem; 
+        font-weight: 600;
+        position:relative;
     }
 }
