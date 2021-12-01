@@ -161,7 +161,7 @@ function LoginForm() {
                 {" "}
                 Continuar{" "}
               </button>
-              <p id={styles.loginNext} className={styles.nextText}>
+              <p className={styles.nextText}>
                 {" "}
                 ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
               </p>

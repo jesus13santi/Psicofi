@@ -25,6 +25,8 @@ import ReservarCitaPage from "./pages/ReservarCitaPage";
 import AlertRechazadoPage from "./pages/AlertRechazadoPage";
 import AlertPendientePage from "./pages/AlertPendientePage"
 import AdminPage from "./pages/AdminPage";
+import PrivateRoute from "./components/protectedRoute/PrivateRoute"
+import CheckoutPage from "./pages/CheckoutPage";
 
 function Routes() {
   return (
@@ -32,10 +34,10 @@ function Routes() {
       <Route exact path="/testimonios" component={TestimoniosPage}></Route>
       <Route exact path="/psicologos" component={PsicologosPage}></Route>
       <Route exact path="/register" component={RegisterPage}></Route>
-      <Route exact path="/election" component={ElectionPage}></Route>
+      <PrivateRoute exact path="/election" component={ElectionPage}></PrivateRoute>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
-      <Route exact path="/perfilPaciente" component={PerfilPaciente}></Route>
+      {/* <exact path="/perfilPaciente" component={PerfilPaciente}></exact> */}
       <Route
         exact
         path="/perfilEspecialista"
@@ -51,19 +53,21 @@ function Routes() {
         path="/profilePsico/:uid"
         component={PerfilVistaPsicoPage}
       ></Route>
-      <Route exact path="/perfil" component={PerfilPage}></Route>
-      <Route exact path="/deck" component={TableroPage}></Route>
-      <Route exact path="/upload" component={UploadPage}></Route>
-      <Route exact path="/history" component={HistoriaPage}></Route>
-      <Route exact path="/historiaPacientes" component={PatientsHistoryPage}></Route>
+      <PrivateRoute exact path="/perfil" component={PerfilPage}></PrivateRoute>
+      <PrivateRoute exact path="/deck" component={TableroPage}></PrivateRoute>
+      <PrivateRoute exact path="/upload" component={UploadPage}></PrivateRoute>
+      <PrivateRoute exact path="/history" component={HistoriaPage}></PrivateRoute>
+      <PrivateRoute exact path="/historiaPacientes" component={PatientsHistoryPage}></PrivateRoute>
       <Route exact path="/historiaPacienteIndividual/:uid" component={IndividualPatientPage}></Route>
-      <Route exact path="/chats" component={ChatsPage}></Route>
-      <Route exact path="/chat/:chatId" component={ChatPage}></Route>
-      <Route exact path="/reservarCita/:uid" component={ReservarCitaPage}></Route>
+      <PrivateRoute exact path="/chats" component={ChatsPage}></PrivateRoute>
+      <PrivateRoute exact path="/chat/:chatId" component={ChatPage}></PrivateRoute>
+      <PrivateRoute exact path="/reservarCita/:uid" component={ReservarCitaPage}></PrivateRoute>
       <Route exact path="/" component={HomePage}></Route>
-      <Route exact path="/rechazado" component={AlertRechazadoPage}></Route>
-      <Route exact path="/pendiente" component={AlertPendientePage}></Route>
-      <Route exact path="/admin" component={AdminPage}></Route>
+      <PrivateRoute exact path="/rechazado" component={AlertRechazadoPage}></PrivateRoute>
+      <PrivateRoute exact path="/pendiente" component={AlertPendientePage}></PrivateRoute>
+      <PrivateRoute exact path="/admin" component={AdminPage}></PrivateRoute>
+     
+      <Route exact path="/checkout" component={CheckoutPage}></Route>
       <Route exact path="*" component={PageNotFound}></Route>
     </Switch>
   );

@@ -7,13 +7,15 @@ import { UserContext } from "../../context/UserContext";
 import { useParams, useHistory } from "react-router-dom";
 import UltimoPaso from "../UltimoPaso/UltimoPaso"
 import Loading from "../Loading/Loading";
+import Checkout from "../Checkout/Checkout";
+
 
 const ReservarCita = ({ psicologo }) => {
   const params = useParams()
   const history = useHistory()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
-  const [cita, setCita] = useState();
-  const handdleOnChange = () => {};
+  const [cita, setCita] = useState("Hola");
+  const [today,setToday]=useState(new Date())
   const [ultimoPaso, setUltimoPaso]= useState(false)
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
@@ -38,6 +40,7 @@ const ReservarCita = ({ psicologo }) => {
   const handdleSelect = (e) => {
     setCita(e.target.value);
   };
+  
   const ordenarHour=(lista)=>{
     const listaOrdenada = lista.slice().sort((a, b) => {
       const hourA = a.hour;
@@ -69,78 +72,80 @@ const ReservarCita = ({ psicologo }) => {
   };
 
   const handdleAppointment = async () => {
-    if (cita !== ""){
-      const cita1 = psicologo.appointments.find(
-        (element) => element.id === cita
-      );
+    setUltimoPaso(true)
+    // if (cita !== ""){
+    //   const cita1 = psicologo.appointments.find(
+    //     (element) => element.id === cita
+    //   );
       
       
-      createChat(
-        {
-          active: "no",
-          msjs: [],
-          status: 1,
-          users: [
-            { img: user.photo, name: user.name, id:user.id },
-            { img: psicologo.photo, name: psicologo.name, id:params.uid },
-          ],
-        },
-        cita
-      );
-      const newArray = psicologo.appointments.filter((item) => item.id !== cita);
+    //   createChat(
+    //     {
+    //       active: "no",
+    //       msjs: [],
+    //       status: 1,
+    //       users: [
+    //         { img: user.photo, name: user.name, id:user.id },
+    //         { img: psicologo.photo, name: psicologo.name, id:params.uid },
+    //       ],
+    //     },
+    //     cita
+    //   );
+    //   const newArray = psicologo.appointments.filter((item) => item.id !== cita);
 
-      // Update cita del psicologo
-      await db
-        .collection("users")
-        .doc(params.uid)
-        .update({
-          appointments: [
-            ...newArray,
-            {
-              date: cita1.date,
-              hour: cita1.hour,
-              id: cita1.id,
-              status: 1,
-              name: user.name,
-              photo: user.photo,
-              uid: user.id
-            },
-          ],
-        });
+    //   // Update cita del psicologo
+    //   await db
+    //     .collection("users")
+    //     .doc(params.uid)
+    //     .update({
+    //       appointments: [
+    //         ...newArray,
+    //         {
+    //           date: cita1.date,
+    //           hour: cita1.hour,
+    //           id: cita1.id,
+    //           status: 1,
+    //           name: user.name,
+    //           photo: user.photo,
+    //           uid: user.id
+    //         },
+    //       ],
+    //     });
         
-      // Update Usuario logueado
-      await db
-        .collection("users")
-        .doc(user.id)
-        .update({
-          appointments: [
-            ...user.appointments,
-            {
-              date: cita1.date,
-              hour: cita1.hour,
-              id: cita1.id,
-              status: 1,
-              name: psicologo.name,
-              photo: psicologo.photo,
-              uid: params.uid
-            },
-          ],
-        });
+    //   // Update Usuario logueado
+    //   await db
+    //     .collection("users")
+    //     .doc(user.id)
+    //     .update({
+    //       appointments: [
+    //         ...user.appointments,
+    //         {
+    //           date: cita1.date,
+    //           hour: cita1.hour,
+    //           id: cita1.id,
+    //           status: 1,
+    //           name: psicologo.name,
+    //           photo: psicologo.photo,
+    //           uid: params.uid
+    //         },
+    //       ],
+    //     });
 
-      console.log("cita Creada");
-      const updateUser = await getUserByEmail(user.email);
-      setUser(updateUser);
-      history.push('/deck')
+    //   console.log("cita Creada");
+    //   const updateUser = await getUserByEmail(user.email);
+    //   setUser(updateUser);
+    //   history.push('/deck')
 
-    }else{
-      console.log("No se selecciono ninguna cita")
-    }
+    // }else{
+    //   console.log("No se selecciono ninguna cita")
+    // }
     
   };
   return (
     <div className={styles.container}>
       {!!psicologo ? (
         <>
+          
           <div className={styles.boxContainer}>
             <h1 className={styles.title}>Reservar una Cita</h1>
             <div className={styles.boxInput}>
@@ -160,7 +165,7 @@ const ReservarCita = ({ psicologo }) => {
                   {psicologo.appointments.length > 0 &&
                     ordenar(psicologo.appointments).map((cita) => (
                       <>
-                        {cita.status === 2 && (
+                        {cita.status === 2 && today< new Date(cita.date) && (
                           <option value={cita.id} key={cita.id}>
                             {diaSemana(cita.date)} - Hora: {cita.hour}{" "}
                           </option>
@@ -187,8 +192,9 @@ const ReservarCita = ({ psicologo }) => {
             <button className={styles.button} onClick={handdleAppointment}>
               Continuar al Pago
             </button>
-            {ultimoPaso === true && <UltimoPaso />}
+            {ultimoPaso === true && cita && <Checkout psicologo={psicologo} cita={cita} />}
           </div>
+          <Footer/>
         </>
       ) : (
         <Loading />

@@ -47,10 +47,13 @@ const Hpage = () => {
     const listaPsico = getElementArrayCollection(snapshot);
     setPsicologos(listaPsico);
     setPsicologo(listaPsico[0])
+    
+    
   };
 
   useEffect(() => {
-    fetchPsico();
+    fetchPsico(); 
+    
   }, []);
   
 
@@ -218,7 +221,7 @@ const Hpage = () => {
                     <div className={styles.valoracion}>
                       <p>Valoracion: 5</p>
                     </div>
-                    <p>Especialidades: {psicologo.especialidades}</p>
+                    <p className={styles.especialidaesExtra}>Especialidades: {psicologo.problemas.toString().replace(/,/g,", ")}</p>
                     <p>Lugar de Residencia: {psicologo.pais}</p>
                     <button
                       className={styles.button}
@@ -256,7 +259,7 @@ const Hpage = () => {
           </div>
           <button
             type="button"
-            className={styles.button}
+            className={`${styles.button} ${styles.btnQuiero}`}
             onClick={handdleLoginOrRegister}
           >
             Quiero formar parte

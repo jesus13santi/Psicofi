@@ -165,6 +165,9 @@
    .title{
        margin-bottom: 10px;
    }
+
+
+
    .boxInputAgregarCita {
        display: flex;
        flex-direction: column;
@@ -201,17 +204,20 @@
        display: grid;
        grid-template-columns: 1fr;  
        gap: 1rem; 
+       
+       margin-left: 10px;
    }
    .cita{
        display: grid;
        grid-template-columns: 1fr 150px;
        gap: 1rem;
-
+       
    }
    .titleList{
        display: grid;
        grid-template-columns: 1fr 150px;
        gap: 1rem;
+       
    }
    .btnDelete{
        background-color: red;
@@ -225,6 +231,7 @@
        display: flex;
        justify-content: space-between;
        align-items: center;
+       
        
    }
    .error{
@@ -241,4 +248,28 @@
    #upload{
     display: none;
     background-color: black;
+}
+@media (max-width:768px) {
+    .title{
+        font-size: 24px;
+    }
+    .titleList{
+        grid-template-columns: 1fr 120px;
+    }
+    .cita {
+        display: grid;
+        grid-template-columns: 1fr 120px;
+        gap: 1rem;
+    }
+    
+    
+}
+@media (max-width:380px) {
+    .boxAgregarCita{
+        flex-direction: column;
+        padding: 10px;
+    }
+    .button{
+        margin-bottom: 20px;
+    }
 }
