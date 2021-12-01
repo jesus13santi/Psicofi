@@ -8,16 +8,13 @@ import { db } from "../../utils/firebaseConfig";
 const PsicoRating = () => {
 
     const [ ratingValue, setRatingValue ] = useState(0);
-    const [ ratings, setRatings ] = useState([]);
     const { user, setUser } = useContext(UserContext);
-    const [ psico, setPsico ] = useState();
     const [ canRate, setCanRate ] = useState(true);
     const params = useParams();
     const id = params.chatId;
 
     const handleRating = (rate) => {
         setRatingValue(rate/20);
-        console.log(ratingValue);
       }
 
     const submitRating = async () => {
@@ -31,10 +28,9 @@ const PsicoRating = () => {
             const temp = await db.collection("users").doc(psy).get();
             const p = temp.data();
             const q = p.ratings;
-            const aux = [...q];
-            console.log(aux);
+            var aux = [];
+            if (!!q) { aux = [...q]; }
             aux.push(newRating);
-            console.log(aux);
             await db.collection("users").doc(psy).update(
                 {
                     ratings: aux
@@ -64,12 +60,16 @@ const PsicoRating = () => {
                         />
                     </div>
                     <button
+                    type="button"
                     className={styles.button}
                     onClick={submitRating}
                     type="button">
                     Calificar
                     </button>
-                    <button type="button" className={styles.close} onClick={closeRating}>
+                    <button
+                    type="button"
+                    className={styles.close}
+                    onClick={closeRating}>
                     </button>
                 </div>
             ) : (
