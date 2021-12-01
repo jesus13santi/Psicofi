@@ -19,6 +19,7 @@ const Checkout = ({psicologo,cita}) =>  {
         sandbox:     "AazrcZrjAQ-QojuUC2UM1OnwjMTG63n_Ymsk-Ue4BF0FjKk5FCmACHCKxeBSEQ6XPDeX-yLMU_juZbrV",
         production: 'YOUR-PRODUCTION-APP-ID'}); 
         const [committedFieldsToAdd, setCommittedFieldsToAdd] = React.useState({tipo: 'Cita 1 Hora', especialista: psicologo.name, precio: 29});
+      const [error, setError]=useState(null)
      
         useEffect(() => {
           calcularTotales();
@@ -36,6 +37,7 @@ const Checkout = ({psicologo,cita}) =>  {
 
    
   const onError = (err) =>{
+    setError("Error, por favor verifique y vuelva a intentarlo.")
     console.log(err);
   }
   const onSuccess = (suc) =>{
@@ -44,6 +46,7 @@ const Checkout = ({psicologo,cita}) =>  {
   }
 
   const onCancel = (canc) =>{
+    setError("Se cancelo su operacion.")
     console.log(canc);
   }
   
@@ -140,15 +143,12 @@ const Checkout = ({psicologo,cita}) =>  {
 
       <hr />
       <div className={styles.totales}>
-        
-          <p htmlFor="">Subtotal:</p>
-          <p className={styles.linea}>${subtotal}</p>
-          <p htmlFor="">Impuestos: </p>
-          <p className={styles.linea}>${impuestos}</p>
-          <p>Total</p>
-          <label className={styles.linea}>${amount}</label>
-        
-        
+        <p htmlFor="">Subtotal:</p>
+        <p className={styles.linea}>${subtotal}</p>
+        <p htmlFor="">Impuestos: </p>
+        <p className={styles.linea}>${impuestos}</p>
+        <p>Total</p>
+        <label className={styles.linea}>${amount}</label>
       </div>
       <div className={styles.btnPaypal}>
         <PaypalExpressBtn
@@ -161,20 +161,14 @@ const Checkout = ({psicologo,cita}) =>  {
           onCancel={onCancel}
         />
       </div>
+      {!!error && (
+        <div className={styles.error}>
+          <label>{error}</label>
+        </div>
+      )}
     </div>
   );
 }
 
-const Field = ({value}) => (
-  <div>
-    <div className={styles.etiqueta}>  
-      <label className={styles.linea}>{value.tipo}</label>
-      <label>{value.especialista}</label>
-    </div>
-    <div className={styles.campo}>
-      <label>${value.precio}</label>
-    </div>
-  </div>
-);
 
 export default Checkout;

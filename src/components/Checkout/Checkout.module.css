@@ -17,3 +17,13 @@
     grid-template-columns: 1fr 1fr;
     margin-bottom: 20px;
 }
+.error{
+    background-color: rgba(255, 0, 0, 0.246);
+    color: red;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    border-radius: 10px;
+}
