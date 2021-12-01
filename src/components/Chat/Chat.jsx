@@ -143,7 +143,6 @@ function Chat() {
         })
         })
 
-        
         //especialista
         await db
             .collection("users")
