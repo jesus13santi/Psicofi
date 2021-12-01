@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./PsicoRating.module.css";
-import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Rating } from 'react-simple-star-rating';
 import { db } from "../../utils/firebaseConfig";
@@ -9,17 +9,31 @@ const PsicoRating = () => {
 
     const [ ratingValue, setRatingValue ] = useState(0);
     const { user, setUser } = useContext(UserContext);
+    const [ psico, setPsico ] = useState();
     const [ canRate, setCanRate ] = useState(true);
+    const params = useParams();
+    const id = params.chatId;
 
     const handleRating = (rate) => {
-        setRatingValue(rate);
+        setRatingValue(rate/20);
+        console.log(ratingValue);
       }
 
-    const submitRating = () => {
+    const submitRating = async () => {
+
+        const cita = user.appointments.find(
+            (element) => element.id == id
+        );
+        const psy = cita.uid; // ID del psicologo
         if (ratingValue > 0 && canRate) {
-            alert(user.ratings)
-            user.ratings ++
-            alert(user.ratings)
+            const newRating = ratingValue;
+            user.ratings ++;
+            await db.collection("users").doc(psy).update(
+                {
+                    rating: newRating,
+                    ratings: 999
+                }
+            )
             closeRating();
         }
     }
