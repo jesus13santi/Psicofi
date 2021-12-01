@@ -115,9 +115,11 @@ function checkHistory(a, aux){
           <>
           {history.status== 0 &&(
             <CardStory
+            uid={history.uid}
             name={history.name}
             date={history.date}
             chatId={history.id}
+            photo={history.photo}
             />
           )}
           </>
@@ -127,9 +129,11 @@ function checkHistory(a, aux){
             <>
             {history.status== 0 &&(
               <CardStory
+              uid={history.uid}
               name={history.name}
               date={history.date}
               chatId={history.id}
+              photo={history.photo}
               />
             )}
             </>

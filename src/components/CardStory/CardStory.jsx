@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 function CardStory({uid, name, date, chatId, photo}) {
+  console.log(uid)
   const {user, setUser}= useContext(UserContext);
   const history = useHistory();
   const handlePatientHistory = () => {
@@ -29,7 +30,7 @@ function CardStory({uid, name, date, chatId, photo}) {
       ):(
         <>
         <div className={styles.buttons}>
-        <Link to ={`/history`}>
+        <Link to ={`/history/${uid}`}>
         <button type="button" className={styles.button}>Historia</button>
         </Link>
         <Link to ={`/chat/${chatId}`}>

@@ -114,18 +114,22 @@ function Chat() {
         const firstUid = users[0].id
         console.log(firstUid)
         const firstName = users[1].name
+        const firstPhoto = users[1].img
         
         const secondUid = users[1].id
         const secondName = users[0].name
-        console.log(secondUid)
-
-        // usuario
-        await db
+        const secondPhoto = users[0].img
+        
+        await db.collection('users').doc(firstUid).get().then((doc)=>{
+            const aux2 = doc.data().appointments
+            console.log('Citas de pepito', aux2)
+            // usuario
+            db
             .collection("users")
             .doc(firstUid)
             .update({
           appointments: [
-            ...aux,
+            ...aux2,
             {
               date: cita.date,
               hour: cita.hour,
@@ -133,10 +137,13 @@ function Chat() {
               status: 0,
               name: firstName,
               uid: secondUid,
-              photo: cita.photo
+              photo: firstPhoto
             },
           ],
         })
+        })
+
+        
         //especialista
         await db
             .collection("users")
@@ -151,7 +158,7 @@ function Chat() {
               name: secondName,
               status: 0,
               uid: firstUid,
-              photo: user.photo
+              photo: secondPhoto
               
             },
           ],
