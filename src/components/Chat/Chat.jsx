@@ -10,7 +10,7 @@ import Message from '../Message/Message';
 import sendIcon from "../../img/sendIcon.svg";
 import dayjs, { Dayjs } from 'dayjs'
 import { useParams } from 'react-router-dom';
-import Rating from '../Rating/Rating';
+import PsicoRating from '../PsicoRating/PsicoRating';
 
 function Chat() {
 
@@ -238,7 +238,7 @@ function Chat() {
                 </form>
             ) : (
                 canUserRate() && (
-                    <Rating />
+                    <PsicoRating />
                 )
             )}
 

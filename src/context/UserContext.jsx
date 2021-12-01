@@ -45,8 +45,10 @@ export default function UserContextProvider({ children }){
               problemas: [],
               appointments: [],
               incidencias: [],
-              pdf:""
-
+              pdf:"",
+              rating: 0,
+              ratings: 0
+              
             };
             await createUser(newProfile, loggedUser.uid);
             setUser(newProfile);
