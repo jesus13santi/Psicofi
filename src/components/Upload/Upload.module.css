@@ -19,9 +19,7 @@
 }
 
 .container{    
-    width: 900px;
-    height: 525px;
-    top: 126px;
+    width: 65%;
     margin-top: 125px;
 
     background: #F7E8F9;
@@ -33,7 +31,7 @@
     justify-content: center;
     align-items: center;
     
-    width: 716px;
+    width: 75%;
     height: 188px;
     top: 126px;
 
@@ -43,7 +41,7 @@
     margin-bottom: 20px;
 }
 
-.Up{
+/* .Up{
     border-radius: 24px;
     border-color: #763d80;
     padding-left: 16px;
@@ -52,7 +50,7 @@
     font-size: 18px;
     width: 649px;
     height: 50px;
-}
+} */
 
 .tittle{
     font-size: 48px;
@@ -73,12 +71,16 @@
     font-size: 16px;
     color: #522B59;
     margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .nextText2{
     font-size: 13px;
     color: #522B59;
     margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .input{ 
@@ -92,7 +94,7 @@
     font-size: 18px;
     font-weight: 600;
     border-radius: 24px;
-    width: 215px;
+    width: 25%;
     height: 50px;
     background: #763D80;
     border: none;
@@ -121,4 +123,43 @@
     border: none; 
     border-radius: 24px;
     cursor: pointer;
+}
+
+@media(max-width:770px){
+    .container{
+        width: 90%;
+        padding: 0px;
+    }
+}
+
+@media (max-width:540px) {
+    .container{
+        width: 90%;
+        padding: 0px;
+    }
+
+    .tittle{
+        font-size: 22px;
+    
+    }
+
+    .nextText{
+        font-size: 11px;
+        
+    }
+
+    .nextText2{
+        font-size: 10px;
+        
+    }
+
+    .continue{
+        font-size: 12px;
+
+    }
+
+    .boxUpload{
+        font-size: 12px;
+
+    }
 }

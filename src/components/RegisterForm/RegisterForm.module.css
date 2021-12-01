@@ -14,9 +14,8 @@
   }
 
 .container{    
-    width: 900px;
-    height: 850px;
-    top: 126px;
+    width: 65%;
+    padding: 50px;
     margin-top: 50px;
 
     background: #F7E8F9;
@@ -50,7 +49,7 @@
 }
 
 .socialButtons{
-    width: 336px;
+    width: 50%;
     height: 75px;
     display: flex;
     justify-content: space-evenly;
@@ -58,6 +57,7 @@
 
 .img1{
     background-image: url(../../img/GoogleIcon.png);
+    background-color: #F7E8F9;
     width: 57px;
     height: 58px;
     border: none;
@@ -66,6 +66,7 @@
 
 .img2{
     background-image: url(../../img/FacebookIcon.png);
+    background-color: #F7E8F9;
     width: 66px;
     height: 66px;
     border: none;
@@ -74,6 +75,7 @@
 
 .img3{
     background-image: url(../../img/TwitterIcon.png);
+    background-color: #F7E8F9;
     width: 63px;
     height: 51px;
     border: none;
@@ -88,30 +90,6 @@
     flex-direction: column;
 }
 
-#name{
-    font-size: 18px;
-    width: 649px;
-    height: 50px;
-}
-
-#email{
-    font-size: 18px;
-    width: 649px;
-    height: 50px;
-}
-
-#password{
-    font-size: 18px;
-    width: 649px;
-    height: 50px;
-}
-
-#passwordB{
-    font-size: 18px;
-    width: 649px;
-    height: 50px;
-}
-
 #loginNext{
     font-size: 22px;
 }
@@ -123,6 +101,9 @@
     padding-left: 16px;
     margin-top: 16px;
     margin-bottom: 15px;
+    font-size: 18px;
+    width: 75%;
+    height: 50px;
 }
 
 .submit{
@@ -130,6 +111,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 3%;
 }
 
 .continue{
@@ -137,7 +119,7 @@
     font-size: 18px;
     font-weight: 600;
     border-radius: 24px;
-    width: 215px;
+    width: 25%;
     height: 50px;
     background: #763D80;
     border: none;
@@ -152,4 +134,77 @@
 .alert{
     font-size: 18px;
     color: red;
+}
+
+@media(max-width:770px){
+    .container{
+        width: 90%;
+        padding: 0px;
+        
+    }
+}
+
+@media (max-width:540px) {
+
+    .container{
+        width: 90%;
+        padding: 0px;
+        
+    }
+
+    .tittle{
+        font-size: 24px;
+        color: #522B59;
+    
+    }
+
+    .formRegis{
+        font-size: 12px;
+        height: 35px;
+
+    }
+
+    .nextText{
+        font-size: 12px;
+    }
+
+    #loginNext{
+        font-size: 12px;
+    }
+
+    .continue{
+        font-size: 12px;
+        width: 40%;
+
+    }
+    
+    .socialButtons{
+        width: 100%;
+        height: 50px;
+    }
+
+    .img1{
+        background-image: url(../../img/GoogleIconSmol.png);
+        width: 40px;
+        height: 41px;
+    }
+    
+    .img2{
+        background-image: url(../../img/FacebookIconSmol.png);
+        width: 40px;
+        height: 40px;
+        
+    }
+    
+    .img3{
+        background-image: url(../../img/TwitterIconSmol.png);
+        width: 40px;
+        height: 40px;
+    }
+
+    .alert{
+        width: 80%;
+        font-size: 12px;
+            
+    }
 }
