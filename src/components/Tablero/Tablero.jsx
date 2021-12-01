@@ -73,6 +73,7 @@ function Tablero() {
           date={history.date}
           chatId={history.id}
           photo={history.photo}
+          uid={history.uid}
           />
         )}
         </>

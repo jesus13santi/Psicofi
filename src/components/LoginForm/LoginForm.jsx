@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
-import { auth, googleProvider, facebookProvider } from "../../utils/firebaseConfig";
+import { auth, googleProvider, facebookProvider, twitterProvider } from "../../utils/firebaseConfig";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import Loading from "../Loading/Loading";
@@ -43,8 +43,22 @@ function LoginForm() {
   };
 
   const handleFacebookLogin = async () =>{
-    await auth.signInWithPopup(facebookProvider);
-    history.push("/deck");
+    try{
+      await auth.signInWithPopup(twitterProvider);
+
+    }catch(e){
+      setError("Tiempo de espera agotado, vuelva a intentarlo.")
+    }
+    
+  };
+
+  const handleTwitterLogin = async () =>{
+    try{
+      await auth.signInWithPopup(googleProvider);
+
+    }catch(e){
+      setError("Tiempo de espera agotado, vuelva a intentarlo.")
+    }
     
   };
 
@@ -94,7 +108,7 @@ function LoginForm() {
               <button
                 className={styles.img2}
                 type="button"
-                onClick={handleGoogleLogin}
+                onClick={handleFacebookLogin}
               >
                 {" "}
               </button>
@@ -102,7 +116,7 @@ function LoginForm() {
               <button
                 className={styles.img3}
                 type="button"
-                onClick={handleGoogleLogin}
+                onClick={handleTwitterLogin}
               >
                 {" "}
               </button>

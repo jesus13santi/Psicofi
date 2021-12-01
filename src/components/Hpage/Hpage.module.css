@@ -6,6 +6,15 @@
     color: #522B59;
     flex-direction: column;
 }
+.loading{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    
+}
 .pagesHome {  
     width: 100%;
     height: 900px;

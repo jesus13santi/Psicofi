@@ -1,0 +1,123 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxPsico {
+    background-color: #F7E8F9;
+    width: 90%;
+    border-radius: 70px;
+    margin-top: 68px;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.firstText{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.boxTitle{
+    font-size: 36px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+    margin-left: 20px;
+    align-items: center;
+    color: #522B59;
+}
+
+.input{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    width: 200px;
+    color: #522B59;
+}
+
+.search{
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 20px;
+    width: 200px;
+    color: #522B59;
+}
+
+.input::placeholder{
+    color: #522B59;
+}
+
+.boxList{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-bottom: 35px;
+}
+
+.boxList ul{
+    list-style: none;
+    margin-right: 30px;
+    font-size: 24px;
+}
+
+.list {
+    justify-content: center;
+    align-items: center;
+}
+
+.select{
+    background: none;
+    border: none;
+    outline: none;
+    color: #522B59;
+   margin-right: 20px;  
+}
+
+.select option:target{
+    background-color: red;
+}
+
+@media (max-width:540px) {
+
+    .list{
+        grid-template-columns: 1fr;
+    }
+
+    .boxList ul {
+        list-style: none;
+        margin-right: 30px;
+        font-size: 12px;
+    }
+
+    .boxPsico{
+        border-radius: 30px;
+    }
+
+    .boxTitle {
+        font-size: 12px;
+        font-weight: bolder;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        color: #522B59;
+    }
+
+    .boxTitle .input{
+        margin-top: 10px;
+    }
+
+    .boxTitle .input::placeholder{
+        font-size: 16px;
+    }
+
+}

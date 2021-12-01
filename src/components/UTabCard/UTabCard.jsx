@@ -9,12 +9,15 @@ function UTabCard({appName, hour, date, photo}) {
     <div className={styles.profile}>
 
       <img src={photo} alt="" />
+      
       <div className={styles.profileText}>
         <p>{appName}</p>
         <div className={styles.appointmentInfo}>
         <p>{date}</p> 
         <p>{hour}</p> 
       </div>
+
+
       </div> 
       
     </div>

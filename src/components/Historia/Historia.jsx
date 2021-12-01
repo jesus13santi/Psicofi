@@ -1,13 +1,14 @@
-import React from 'react'
 import styles from './Historia.module.css'
-import { useContext } from "react";
+import { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import Loading from '../Loading/Loading';
 import Footer from '../Footer/Footer';
 import CardStory from '../CardStory/CardStory';
-import { useState, useEffect } from "react";
 
 const Historia = () => {
+
+  const params = useParams();
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);

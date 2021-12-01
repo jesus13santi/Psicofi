@@ -10,6 +10,7 @@
    }
    .fondorosa {
        background-color: rgb(247, 232, 249);
+       
    }
    
    
@@ -239,4 +240,5 @@
 
    #upload{
     display: none;
+    background-color: black;
 }

@@ -4,10 +4,9 @@ import Footer from "../Footer/Footer";
 import { useState, useContext } from "react";
 import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import UltimoPaso from "../UltimoPaso/UltimoPaso"
 import Loading from "../Loading/Loading";
-import { useHistory } from "react-router";
 
 const ReservarCita = ({ psicologo }) => {
   const params = useParams()
@@ -103,8 +102,8 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: user.name,
-              incidencias: [],
-              photo: user.photo
+              photo: user.photo,
+              uid: user.id
             },
           ],
         });
@@ -122,8 +121,8 @@ const ReservarCita = ({ psicologo }) => {
               id: cita1.id,
               status: 1,
               name: psicologo.name,
-              incidencias: [],
-              photo: psicologo.photo
+              photo: psicologo.photo,
+              uid: params.uid
             },
           ],
         });
