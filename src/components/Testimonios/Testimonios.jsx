@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styles from "./Testimonios.module.css";
 import { db } from "../../utils/firebaseConfig";
 import TestimoniosList from "../TestimoniosList/TestimoniosList";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Testimonios = () => {
 
@@ -33,6 +34,7 @@ const Testimonios = () => {
     const getTestimonios = async () => {
         const userReference = db.collection("testimonios");
         const snapshot = await userReference.get();
+        setLoading(false);
         
         if (!snapshot.size) return null;
         const testimoniosList = getElementArrayCollection(snapshot);
@@ -43,7 +45,6 @@ const Testimonios = () => {
     
   useEffect(() => {
       getTestimonios();
-      setLoading(false);
     }, []);
     
 
@@ -53,7 +54,11 @@ const Testimonios = () => {
             <div className={styles.boxTestimonios}>
                 <h2>Testimonios</h2>
                 <div>
-                    { loading ? <h1>Cargando</h1> :
+                    { loading ? (
+                      <div className={styles.pulse}>
+                        <PulseLoader color={"#763D80"} loading={true} size={20} css={styles.loading} />
+                      </div>
+                      ) :
                         <TestimoniosList testimonios={testimonios} />
                         }
                 </div>

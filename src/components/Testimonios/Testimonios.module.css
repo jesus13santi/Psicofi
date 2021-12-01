@@ -37,3 +37,13 @@
     cursor: pointer;
     background-color: #522B59;
 }
+
+.loading {
+    width: 100%;
+}
+
+.pulse {
+    display: flex;
+    justify-content: center;
+    margin: 5% 0px;
+}
