@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import TestimoniosPage from "./pages/TestimoniosPage";
 import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
@@ -28,6 +29,7 @@ import AdminPage from "./pages/AdminPage";
 function Routes() {
   return (
     <Switch>
+      <Route exact path="/testimonios" component={TestimoniosPage}></Route>
       <Route exact path="/psicologos" component={PsicologosPage}></Route>
       <Route exact path="/register" component={RegisterPage}></Route>
       <Route exact path="/election" component={ElectionPage}></Route>

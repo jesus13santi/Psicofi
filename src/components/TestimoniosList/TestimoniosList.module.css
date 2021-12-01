@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimony{
+    margin-top: 1%;
+    width: 100%;
+    padding: 3%;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.text{
+    font-style: italic;
+    font-size: 120%;
+}
+
+.by{
+    margin-left: 1%;
+}
+
+@media (max-width:48rem) {
+    .testimony {
+        margin-top: 8px;
+    }
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect,useContext,createContext } from "react";
 import PsicoList from "../components/PsicoList/PsicoList";
 import { db } from "../utils/firebaseConfig";
+import Footer from "../components/Footer/Footer";
+import Loading from "../components/Loading/Loading";
 
 
 const PsicologosPage = ({children}) => {
@@ -26,6 +28,7 @@ const PsicologosPage = ({children}) => {
   const fetchPsico = async () => {
     const userReference = db.collection("users");
     const snapshot = await userReference.where("role", "==", "Psicologo").get();
+    setLoading(false);
     
     if (!snapshot.size) return null;
     const listaPsico = getElementArrayCollection(snapshot);
@@ -35,13 +38,16 @@ const PsicologosPage = ({children}) => {
 
   useEffect(() => {
     fetchPsico();
-    setLoading(false);
   }, []);
 
   return (
     <div>
-      {isLoading ? <h1>Cargando...</h1> :
-       <PsicoList psicologos={psicologos} />}
+      {isLoading ? <Loading /> :
+      <div> 
+        <PsicoList psicologos={psicologos}/>
+        <Footer />
+      </div>
+      }
     </div>
   );
 };
