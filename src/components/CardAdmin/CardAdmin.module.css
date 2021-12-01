@@ -53,7 +53,7 @@
     font-weight: 500;
     width: 100px;
     height: 50px;
-    border-radius: 30px;
+    border-radius: 100%;
     display: block;
 }
 .button:hover{
@@ -100,8 +100,24 @@
 }
 
 
+@media(max-width:770px){
+
+    .boxImg{
+        height: 100px;
+        width: 100px;
+        margin-right: 10px;
+  
+    }
+
+    .pend{
+        font-size: 70%;
+    }
+    
+  }
+
 @media (max-width:540px) {
     .container{
+        width: 100%;
         padding: 0px;
     }
     .boxImg{
@@ -115,10 +131,7 @@
         margin-right: 5px;
     }
     .pend{
-        font-size: 50%;
-    }
-    .container{
-        border-radius: 30px;
+        font-size: 70%;
     }
 
     .buttonBox{
@@ -137,18 +150,19 @@
         background-image: url(../../img/checkSmol.png);
         width: 20px;
         height: 20px;
-        margin-right: 5px;
+        margin-right: 10px;
     }
     .img2{
         background-image: url(../../img/closeSmol.png);
         width: 20px;
         height: 20px;
-        margin-right: 5px;
+        margin-right: 10px;
     }
     .img3{
         background-image: url(../../img/paperSmol.png);
         width: 20px;
         height: 20px;
+        margin-right: 10px;
     }
     
 }

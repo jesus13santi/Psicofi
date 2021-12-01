@@ -68,7 +68,19 @@
     
 }
 
+@media(max-width:770px){
+    .container{
+        width: 100%;
+        padding: 0px;
+    }
+  }
+
 @media (max-width:540px) {
+
+    .container{
+        padding: 0px;
+    }
+  
     .list{
         grid-template-columns: 1fr;
     }
