@@ -118,9 +118,9 @@ function RegisterForm() {
               problemas: [],
               appointments: [],
               incidencias: [],
-              pdf: ""
-          
-              
+              pdf: "",
+              rating: 0,
+              ratings: 0
               },
               response.user.uid)
               console.log(response.user.uid)

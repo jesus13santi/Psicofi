@@ -10,7 +10,7 @@ import Message from '../Message/Message';
 import sendIcon from "../../img/sendIcon.svg";
 import dayjs, { Dayjs } from 'dayjs'
 import { useParams } from 'react-router-dom';
-
+import Rating from '../Rating/Rating';
 
 function Chat() {
 
@@ -28,7 +28,7 @@ function Chat() {
     const {user, setUser}= useContext(UserContext);
     const [users, setUsers] = useState([])
     const [newArray, setNewArray]= useState([])
-
+    
 
 
 
@@ -156,8 +156,18 @@ function Chat() {
             },
           ],
         })
-
         
+        
+    }
+
+    function canUserRate() {
+        if (user.role == 'Paciente' && active == 'no') {
+            const cita = user.appointments.find((element) => element.id == id);
+            if (cita.status == 0) {
+                return true;
+            }
+        }
+        return false;
     }
     
     return (
@@ -215,7 +225,7 @@ function Chat() {
             )}
             
 
-            {active=="yes" &&(
+            {active=="yes" ? (
                 <form onSubmit={handleOnSubmit} className={styles.inputForm}>
                     <input  className={styles.messageInput} 
                             type='text'
@@ -228,6 +238,10 @@ function Chat() {
                     
                 </button>
                 </form>
+            ) : (
+                canUserRate() && (
+                    <Rating />
+                )
             )}
 
             <div ref={scroll} className={styles.scrollDiv}></div>
