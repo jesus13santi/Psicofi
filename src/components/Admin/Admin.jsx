@@ -1,21 +1,69 @@
-import React from "react";
-import { useState, useContext, useEffect } from "react"
-import { UserContext } from "../../context/UserContext";
+import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig"
-
+import swal from "sweetalert";
 import CardAdmin from "../CardAdmin/CardAdmin";
 import styles from "./Admin.module.css";
+import { size } from "lodash"
 
 const Admin = ({ pendientes, rechazados }) => {
   const [value, setValue] = useState("");
   const [valueB, setValueB] = useState("");
+  const [areas, setAreas]=useState([]);
+  const [isLoading, setLoading] = useState(true);
 
-  const aggEspecialiadad = async(e) =>{
-    const esp = document.getElementById("especialidad").value; 
-    db.collection("especialidades").add({
-      especialidad: esp  
-    })
+  const getArrayCollection = (snapshot) => {
+    const collection = [];
+    snapshot.forEach((element) => {
+      collection.push({
+        id: element.id,
+        ...element.data(),
+      });
+    });
+    return collection;
+  };
+
+  useEffect(() => {
+    fetchEspecialidades();
+    setLoading(false);
+  }, []);
+  
+
+  const aggEspecialidad = async(e) =>{
+
+  
+      const esp = document.getElementById("especialidad").value;
+      
+      if(size(esp) < 1) {
+
+        swal("", "Asegurese de que el campo no este vacio", "error")
+        return
+
+      } else{
+
+        await db.collection("especialidades").add({
+          especialidad: esp  
+        })
+        swal("", "Se ha agregado exitosamente la especialidad", "success");
+
+      }    
   }
+
+  const cargar = () =>{
+    window.location.reload();
+  }
+ 
+  const getElementArrayCollection = (snapshot) => {
+    const collection = getArrayCollection(snapshot);
+    return collection;
+  };
+
+  const fetchEspecialidades = async () => {
+    const userReference = db.collection("especialidades");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaAreas = getElementArrayCollection(snapshot);
+    setAreas(listaAreas);
+  };
 
   const handleOnchange = (event) => {
     setValue(event.target.value.toLowerCase());
@@ -117,10 +165,22 @@ const Admin = ({ pendientes, rechazados }) => {
               placeholder="Especialidad..."
             /> 
 
-            <button className={styles.continue} id="boton" onClick={aggEspecialiadad}> Agregar </button>
+            <button className={styles.continue} id="boton" onClick={aggEspecialidad}> Agregar </button>
+            <button className={styles.continue} id="boton" onClick={cargar}> Cargar </button>
 
-          </div>    
+
+          </div>
         </div>
+        <div className={styles.seleccion}>
+            {!!areas &&
+              areas.map((area) => (
+                <div>
+                  <label className={styles.checklabel}>
+                    {area.especialidad}
+                  </label>
+                </div>
+              ))}
+          </div>
       </div>
         
 
