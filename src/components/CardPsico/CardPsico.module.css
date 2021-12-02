@@ -2,7 +2,7 @@
     border: solid 1px #522B59;
     display: flex;
     color: #522B59;
-    
+    padding: 20px;
     
     border-radius: 70px;
     flex-direction: row;
@@ -11,10 +11,25 @@
     /* padding: 10px; */
     background-color: white;
     width: 100%;
-    height:200px;
+    /* height:200px; */
     overflow-y: hidden;
 
    
+}
+
+.ptitle{
+    font-weight: 600;
+}
+
+.ratingData{
+    display: flex;
+    align-items: center;
+    
+    
+}
+
+.ratingData p{
+    margin-right: 5px;
 }
 .aux{
     
@@ -48,7 +63,7 @@
    
 }
 .pais p{
-    margin-right: 3px;
+    margin-right: 5px;
 }
 .boxImg {
     
@@ -86,13 +101,15 @@
     color: #522B59;
     
 }
+
+
 .button{
     background-color: #763D80;
     border: none;
     color: white;
-    font-weight: 500;
+    font-weight: 600;
     width: 15%;
-    height: 50px;
+    height: 70px;
     border-radius: 30px;
     margin-right: 20px;
     
@@ -110,8 +127,12 @@
 
 @media (max-width:540px) {
     .container{
-        padding: 0px;
+        padding: 5px;
         font-size: 10px;
+    }
+
+    .ratingData img{
+        display: none;
     }
     .boxImg{
         height: 40px;
@@ -120,14 +141,14 @@
         
     }
     .aux{
-        height: 100px;
+        /* height: 100px; */
     }
     .psico{
         font-size: 12px;
     }
     .container{
         border-radius: 30px;
-        height: 120px;
+        /* height: 120px; */
     }
     .button{
         width: 50px;
