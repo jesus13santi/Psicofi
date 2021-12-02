@@ -9,6 +9,7 @@ import firebase from "firebase";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
 import Loading from "../Loading/Loading";
+import swal from "sweetalert";
 
 const PerfilEspecialista = () => {
   const [date, setDate] = useState(new Date());
@@ -185,7 +186,7 @@ const PerfilEspecialista = () => {
               });
             const updateUser = await getUserByEmail(user.email);
             setUser(updateUser);
-            alert("Cita Agregada");
+            swal("Horario Agregado", "Su horario disponible para una cita ha sido guardado exitosamente.", "success");
             setError("");
           } else {
             setError("La fecha seleccionada ya paso, por favor verifique he intente de nuevo")
@@ -211,7 +212,7 @@ const PerfilEspecialista = () => {
      })
     const updateUser = await getUserByEmail(user.email);
     setUser(updateUser);
-    alert("Cita Eliminada");
+    swal("Horario Eliminado", "Su horario disponible para una cita ha sido eliminado exitosamente.", "success");
   };
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));

@@ -45,7 +45,6 @@ const PsicologosPage = ({children}) => {
       {isLoading ? <Loading /> :
       <div> 
         <PsicoList psicologos={psicologos}/>
-        <Footer />
       </div>
       }
     </div>
