@@ -7,6 +7,8 @@ import Footer from "../Footer/Footer"
 const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,incidencias}) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
+  let total = ratings.reduce((a, b) => a + b, 0);
+
   const handdleAppointment = () => {
     !!user ? history.push(`/reservarCita/${id}`): history.push("/register") ;
   };
@@ -23,7 +25,7 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,
                 <p className={styles.text}>{birthday}</p>
 
                 <h3 className={styles.title}>Valoracion: </h3>
-                <p className={styles.text}>5</p>
+                <p className={styles.text}>{total/ratings.length}</p>
 
                 <h3 className={styles.title}>Lugar de residencia: </h3>
                 <p className={styles.text}>{pais}</p>

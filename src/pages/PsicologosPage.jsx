@@ -7,7 +7,7 @@ import Loading from "../components/Loading/Loading";
 
 const PsicologosPage = ({children}) => {
   const [psicologos, setPsicologos] = useState([]);
-  
+  const [areas, setAreas]=useState([])
   
   const [isLoading, setLoading] = useState(true);
   const getArrayCollection = (snapshot) => {
@@ -28,25 +28,29 @@ const PsicologosPage = ({children}) => {
   const fetchPsico = async () => {
     const userReference = db.collection("users");
     const snapshot = await userReference.where("role", "==", "Psicologo").get();
-    setLoading(false);
-    
     if (!snapshot.size) return null;
     const listaPsico = getElementArrayCollection(snapshot);
     setPsicologos(listaPsico);
     
   };
+  const fetchEspecialidades = async () => {
+    const userReference = db.collection("especialidades");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaAreas = getElementArrayCollection(snapshot);
+    setAreas(listaAreas);
+  };
 
   useEffect(() => {
     fetchPsico();
+    fetchEspecialidades();
+    setLoading(false);
   }, []);
-
+ 
   return (
     <div>
       {isLoading ? <Loading /> :
-      <div> 
-        <PsicoList psicologos={psicologos}/>
-      </div>
-      }
+       <PsicoList psicologos={psicologos} areas={areas} />}
     </div>
   );
 };

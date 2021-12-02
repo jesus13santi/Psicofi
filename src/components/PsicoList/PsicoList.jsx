@@ -4,7 +4,8 @@ import Footer from "../Footer/Footer";
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";
 
-const PsicoList = ({ psicologos }) => {
+const PsicoList = ({ psicologos,areas }) => {
+  
   const [value, setValue] = useState("");
   const [orden, setOrden] = useState("ordenAlfabetico");
   const [listaOrdenada, setListaOrdenada] = useState(null);
@@ -34,6 +35,7 @@ const PsicoList = ({ psicologos }) => {
     });
     return listaOrdenada;
   };
+ 
   const haddleSelect = (e) => {
     setOrden(e.target.value);
     if (e.target.value === "ordenAlfabetico") {
@@ -43,7 +45,8 @@ const PsicoList = ({ psicologos }) => {
     }
   };
   const handdleEsp=(e)=>{
-    setEsp(e.target.value)
+    console.log(e.target.value.toLowerCase())
+    setEsp(e.target.value.toLowerCase());
   }
   const cambiarLista = async () => {
     if (orden === "ordenAlfabetico") {
@@ -77,9 +80,14 @@ const PsicoList = ({ psicologos }) => {
                   onChange={handdleEsp}
                 >
                   <option value=""> Todos</option>
-                  <option value="ansiedad">Ansiedad</option>
+                  {!!areas && (
+                    areas.map((area)=>(
+                      <option value={area.especialidad}>{area.especialidad}</option>
+                    ))
+                  )}
+                  {/* <option value="ansiedad">Ansiedad</option>
                   <option value="estres">Estres</option>
-                  <option value="depresion">Depresion</option>
+                  <option value="depresion">Depresion</option> */}
                 </select>
                 <select
                   name="especialidades"
