@@ -95,7 +95,7 @@ const PsicoList = ({ psicologos,areas }) => {
                   className={styles.select}
                   onChange={haddleSelect}
                 >
-                  <option value>Selecciona una opcion</option>
+                  <option value>Selecciona una opción</option>
                   <option value="ordenAlfabetico"> Orden Alfabetico</option>
                   <option value="ranking">Ranking</option>
                 </select>
