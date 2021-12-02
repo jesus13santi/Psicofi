@@ -9,11 +9,11 @@
 }
 .title{
     font-size: 36px;
+    color: #522B59
 }
 .boxAdmin {
     background-color: #F7E8F9;
     width: 90%;
-    /* height: 625px; */
    
     
     border-radius: 70px;
@@ -21,8 +21,6 @@
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    /* padding-top: 44px; */
-    /* overflow-y: scroll; */
   
 }
 
@@ -67,6 +65,44 @@
    
     
 }
+
+.agg{
+    
+    border-radius: 24px;
+    border-color: #763d80;
+    font-size: 18px;
+    width: 30%;
+    height: 50px;
+    padding-left: 10px;
+    margin-right: 16px;
+}
+
+.inputAgg{
+    
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    
+}
+
+.continue{
+    font-size: 18px;
+    border-radius: 24px;
+    width: 25%;
+    height: 50px;
+    background: #763D80;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.text{
+    font-size: 20px;
+    margin-top: 20px;
+    color: #522B59
+}
+
 
 @media(max-width:770px){
     .container{
@@ -119,5 +155,15 @@
         font-size: 14px;
     }
 
+    .agg{
+        font-size: 12px;
+        height: 35px;
+        width: 50%;
+        
+    }
+    .continue{
+        font-size: 12px;
+        height: 35px;
+    }
 
 }
