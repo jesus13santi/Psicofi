@@ -299,7 +299,7 @@ const PerfilEspecialista = ({areas}) => {
                     upload(e.target.files[0]);
                   }}
                 />
-                <button className={`${styles.boton} ${styles.eliminar}`}>
+                <button type='button' onClick={handleDeletePhoto} className={`${styles.boton} ${styles.eliminar}`}>
                   Eliminar
                 </button>
               </div>

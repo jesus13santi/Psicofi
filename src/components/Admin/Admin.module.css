@@ -74,7 +74,7 @@
     width: 30%;
     height: 50px;
     padding-left: 20px;
-    margin-right: 16px;
+    margin-right: 6%;
 }
 
 .inputAgg{
@@ -96,6 +96,11 @@
     border: none;
     cursor: pointer;
     color: white;
+    margin-right: 6%;
+}
+
+.continue:hover {
+    background: #522B59;
 }
 
 .text{
