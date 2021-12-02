@@ -28,7 +28,7 @@
 
 .box {
     width: 90%;
-    overflow-x:scroll;
+    overflow-x:auto;
     background: #F7E8F9;
     border-radius: 4.375rem;
     padding: 1.875rem 5.625rem;
@@ -129,7 +129,7 @@
         background: #F7E8F9;
         border-radius: 2.188rem;
         padding: 1.25rem 2.5rem;
-        overflow-x:scroll;
+        overflow-x:auto;
     
     }
     
@@ -219,7 +219,7 @@
     .box {
         
         width: 90%;
-        overflow-x:scroll;
+        overflow-x:auto;
         background: #F7E8F9;
         border-radius: 2.188rem;
         padding: 1.25rem 1.875rem;
