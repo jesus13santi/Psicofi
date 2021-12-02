@@ -4,7 +4,7 @@ import styles from "./PerfilVistaPaciente.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Footer from "../Footer/Footer"
-const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,incidencias}) => {
+const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,incidencias,ratings}) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
   let total = ratings.reduce((a, b) => a + b, 0);
