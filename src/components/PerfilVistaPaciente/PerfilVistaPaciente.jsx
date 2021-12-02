@@ -4,12 +4,13 @@ import styles from "./PerfilVistaPaciente.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Footer from "../Footer/Footer"
-const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas}) => {
+const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,incidencias}) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
   const handdleAppointment = () => {
     !!user ? history.push(`/reservarCita/${id}`): history.push("/register") ;
   };
+
   return (
     <>
       <div className={styles.container}>
@@ -29,11 +30,7 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas}
 
                 <h3 className={styles.title}>Biografia: </h3>
                 <p className={`${styles.text} ${styles.description}`}>
-                  ¿Qué significa el texto Lorem Ipsum? Si eres diseñador o has
-                  trasteado con programas de diseño, probablemente te hayas
-                  encontrado con un texto conocido como Lorem Ipsum. ... Su
-                  título deriva del latín dolorem ipsum, que significa «el dolor
-                  en sí».
+                  {description}
                 </p>
               </div>
             </div>
@@ -63,6 +60,16 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas}
               <p>Autoestima</p>
             </div> */}
             </div>
+          </div>
+          <div className={styles.feedback}>
+            {!!incidencias && (
+                incidencias.map((inc) => (
+                  <div className={styles.incidencia}>
+                    <p className={styles.quote}>{inc.description}</p>
+                    <p>- {inc.name}</p>
+                  </div>
+                ))
+              )}
           </div>
           <button
             className={styles.button}
