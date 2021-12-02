@@ -53,7 +53,7 @@ function Routes() {
         path="/profilePsico/:uid"
         component={PerfilVistaPsicoPage}
       ></Route>
-      <PrivateRoute exact path="/perfil" component={PerfilPage}></PrivateRoute>
+      <PrivateRoute exact path="/perfil" component={Perfil}></PrivateRoute>
       <PrivateRoute exact path="/deck" component={TableroPage}></PrivateRoute>
       <PrivateRoute exact path="/upload" component={UploadPage}></PrivateRoute>
       <PrivateRoute exact path="/history" component={HistoriaPage}></PrivateRoute>
