@@ -66,8 +66,8 @@ const PerfilEspecialista = ({areas}) => {
       let problemas = [];
       $.each(
         [
-          "ansiedad",
-          "autoestima",
+          "Ansiedad",
+          "Parejas",
           "sexualidad",
           "estres",
           "amorosos",
