@@ -5,14 +5,24 @@ import { UserContext } from "../../context/UserContext";
 import { Rating } from 'react-simple-star-rating';
 import { db } from "../../utils/firebaseConfig";
 import swal from 'sweetalert';
+import { values } from "lodash";
 
 const PsicoRating = () => {
 
     const [ ratingValue, setRatingValue ] = useState(0);
+    const [ values, setValues ] = useState({
+        incidencias: ""
+    });
     const { user } = useContext(UserContext);
     const [ canRate, setCanRate ] = useState(true);
     const params = useParams();
     const id = params.chatId;
+
+    const handleOnChange = (event) => {
+        const { value, name: inputName } = event.target;
+        console.log({ inputName, value });
+        setValues({ ...values, [inputName]: value });
+      };
 
     const handleRating = (rate) => {
         setRatingValue(rate/20);
@@ -61,6 +71,16 @@ const PsicoRating = () => {
                         className={styles.rting}
                         />
                     </div>
+
+                    <input
+                    placeholder="Comentarios adicionales..."
+                    name="incidencias"
+                    id={styles.input}
+                    className={styles.input}
+                    value={values.incidencias}
+                    onChange={handleOnChange}
+                    />
+
                     <button
                     type="button"
                     className={styles.button}
