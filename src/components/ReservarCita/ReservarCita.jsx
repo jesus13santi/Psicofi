@@ -26,14 +26,14 @@ const ReservarCita = ({ psicologo }) => {
       day: "numeric",
     };
     const result = date1.toLocaleDateString("es-Es", options);
-    // console.log(date1.toLocaleDateString("es-MX", options));
+    // //console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
   const createChat = async (user, uid) => {
     try {
       await db.collection("chats").doc(uid).set(user);
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
   };
   
@@ -131,13 +131,13 @@ const ReservarCita = ({ psicologo }) => {
     //       ],
     //     });
 
-    //   console.log("cita Creada");
+    //   //console.log("cita Creada");
     //   const updateUser = await getUserByEmail(user.email);
     //   setUser(updateUser);
     //   history.push('/deck')
 
     // }else{
-    //   console.log("No se selecciono ninguna cita")
+    //   //console.log("No se selecciono ninguna cita")
     // }
     
   };

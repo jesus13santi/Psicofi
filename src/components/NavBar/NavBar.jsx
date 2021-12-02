@@ -37,7 +37,7 @@ const NavBar = () => {
   };
   const handdleMenu1 = () => {
     !isOpenLog ? setOpenLog(true) : setOpenLog(false);
-    console.log(isOpen)
+    //console.log(isOpen)
   };
   const handdleLogOut = async () => {
     history.push("/")  

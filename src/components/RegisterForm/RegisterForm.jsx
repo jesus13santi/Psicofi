@@ -29,28 +29,28 @@ function RegisterForm() {
 
     const handleGoogleLogin = async () =>{
         await auth.signInWithPopup(googleProvider);
-        console.log(user)
+        //console.log(user)
         await history.push("/election");
         
     };
 
     const handleFacebookLogin = async () =>{
       await auth.signInWithPopup(facebookProvider);
-      console.log(user)
+      //console.log(user)
       await history.push("/election");
       
     };
 
     const handleTwitterLogin = async () =>{
       await auth.signInWithPopup(twitterProvider);
-      console.log(user)
+      //console.log(user)
       await history.push("/election");
       
     };
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        console.log({inputName, value });
+        //console.log({inputName, value });
         setValues({...values,[inputName]: value})
 
     };
@@ -122,7 +122,7 @@ function RegisterForm() {
               ratings: []
               },
               response.user.uid)
-              console.log(response.user.uid)
+              //console.log(response.user.uid)
               history.push("/election")     
                   
         }

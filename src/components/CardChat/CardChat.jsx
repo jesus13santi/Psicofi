@@ -8,7 +8,7 @@ import { UserContext } from "../../context/UserContext";
 
 function CardChat({name, date, chatId, photo}) {
   const {user, setUser}= useContext(UserContext);
-  console.log(chatId)
+  //console.log(chatId)
   return (
     <div className={styles.container}>
       <div className={styles.psico}>

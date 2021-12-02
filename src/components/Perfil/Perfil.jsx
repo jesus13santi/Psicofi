@@ -12,7 +12,7 @@ const Perfil = () => {
     const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
     /*
     useEffect(() => {        
-        console.log(user)
+        //console.log(user)
     })*/
     const getArrayCollection = (snapshot) => {
       const collection = [];
@@ -43,7 +43,7 @@ const Perfil = () => {
       fetchEspecialidades();
       
     }, []);
-    console.log(areas)
+    //console.log(areas)
  
     return (
       <>

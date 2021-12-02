@@ -45,7 +45,7 @@ const PsicoList = ({ psicologos,areas }) => {
     }
   };
   const handdleEsp=(e)=>{
-    console.log(e.target.value.toLowerCase())
+    //console.log(e.target.value.toLowerCase())
     setEsp(e.target.value.toLowerCase());
   }
   const cambiarLista = async () => {
@@ -54,7 +54,7 @@ const PsicoList = ({ psicologos,areas }) => {
     }
   };
 
-  console.log(orden);
+  //console.log(orden);
 
   return (
     <>

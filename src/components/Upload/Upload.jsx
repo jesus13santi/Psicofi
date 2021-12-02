@@ -30,7 +30,7 @@ function Upload() {
             pdf:(url)
         });
         const updateUser = await getUserByEmail(user.email);
-        console.log({updateUser})
+        //console.log({updateUser})
         setUser(updateUser);
 
         history.push('/pendiente')

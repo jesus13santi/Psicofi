@@ -27,9 +27,9 @@ const PerfilEspecialista = ({areas}) => {
   const history = useHistory();
   
   useEffect(() => {
-    console.log("####################################");
+    //console.log("####################################");
     if (user.problemas != undefined) {
-      console.log(user.problemas);
+      //console.log(user.problemas);
       $.each(user.problemas, function (index, value) {
         $("#" + value).prop("checked", true);
       });
@@ -61,8 +61,8 @@ const PerfilEspecialista = ({areas}) => {
   };
   const handleOnClick = async (event) => {
     if (validar_campos()) {
-      console.log(biography);
-      console.log(user.id);
+      //console.log(biography);
+      //console.log(user.id);
       let problemas = [];
       $.each(
         [
@@ -79,7 +79,7 @@ const PerfilEspecialista = ({areas}) => {
           }
         }
       );
-      console.log(problemas);
+      //console.log(problemas);
       user.problemas = problemas;
       await db.collection("users").doc(user.id).update({
         number: user.number,
@@ -94,14 +94,14 @@ const PerfilEspecialista = ({areas}) => {
   };
 
   const actualizarUsuario = async () => {
-    console.log(user);
+    //console.log(user);
     await db.collection("users").doc(user.id).update({
       number: user.number,
       pais: user.pais,
     });
     setUser(user);
-    console.log("************************************");
-    console.log(user);
+    //console.log("************************************");
+    //console.log(user);
     return true;
   };
 
@@ -112,7 +112,7 @@ const PerfilEspecialista = ({areas}) => {
       month: "long",
       day: "numeric",
     };
-    // console.log(values.date.toLocaleDateString('es-Es',option))
+    // //console.log(values.date.toLocaleDateString('es-Es',option))
   };
   const ordenarHour = (lista) => {
     const listaOrdenada = lista.slice().sort((a, b) => {
@@ -220,7 +220,7 @@ const PerfilEspecialista = ({areas}) => {
       day: "numeric",
     };
     const result = date1.toLocaleDateString("es-Es", options);
-    // console.log(date1.toLocaleDateString("es-MX", options));
+    // //console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
   // Funcion para mostrar la fecha de su cumpleaños
@@ -232,7 +232,7 @@ const PerfilEspecialista = ({areas}) => {
       day: "numeric",
     };
     const result = date1.toLocaleDateString("es-Es", options);
-    // console.log(date1.toLocaleDateString("es-MX", options));
+    // //console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
 
@@ -252,7 +252,7 @@ const PerfilEspecialista = ({areas}) => {
         photo:(url)
     });
     const updateUser = await getUserByEmail(user.email);
-    console.log({updateUser})
+    //console.log({updateUser})
     setUser(updateUser);
   }
 
@@ -418,7 +418,8 @@ const PerfilEspecialista = ({areas}) => {
 
                   {ordenar(user.appointments).map((m) => (
                     <>
-                      {console.log(user.appointments.date)}
+                      {//console.log(user.appointments.date)
+                      }
                       {m.status === 2 && date < new Date(m.date) && (
                         <div key={m.id} className={styles.cita}>
                           <p className={styles.grid}>{diaSemana(m.date)}</p>

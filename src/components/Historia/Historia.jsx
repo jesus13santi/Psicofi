@@ -23,16 +23,16 @@ function checkHistory(a, aux){
 
   function history(){
     const app = user.appointments
-    console.log('APP',app)
+    //console.log('APP',app)
     const aux = []
     app.map((a) =>(
       checkHistory(a, aux)
     ))
     setLista(aux)
-    console.log(aux)
+    //console.log(aux)
     if (!!lista){
       setListaOrdenada(ordenarNombres(user.appointments))
-      console.log('Sirve', listaOrdenada)
+      //console.log('Sirve', listaOrdenada)
     }
     
 

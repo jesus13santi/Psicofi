@@ -63,7 +63,7 @@ function Election(){
 
     const handleOnChange = (event) => {
         const {value, name: inputName} = event.target;
-        console.log({inputName, value });
+        //console.log({inputName, value });
         setValues({...values,[inputName]: value})
 
     };
@@ -71,7 +71,7 @@ function Election(){
     const cambioRole = async(a) =>{
 
         const d = await getUserByEmail(user.email)
-        console.log(d.id)
+        //console.log(d.id)
 
         setRole(a.target.value)
         const usersReference = db.collection("users");
@@ -82,14 +82,14 @@ function Election(){
             birthday:(values.birthday)
         });
         const updateUser = await getUserByEmail(user.email);
-        console.log({updateUser})
+        //console.log({updateUser})
         setUser(updateUser);
     }
 
     const cambioGender = async(c) =>{
 
         const u = await getUserByEmail(user.email)
-        console.log(u.id)
+        //console.log(u.id)
 
         setGender(c.target.value)
         const usersReference = db.collection("users");
@@ -100,20 +100,20 @@ function Election(){
             birthday:(values.birthday)
         });
         const updateUser = await getUserByEmail(user.email);
-        console.log({updateUser})
+        //console.log({updateUser})
         setUser(updateUser);
     }
 
     const setNewData = async(b) =>{
 
-        console.log(user)
+        //console.log(user)
         
         if (!validateData()){
             
         } else {
             b.preventDefault();
             const e = await getUserByEmail(user.email)
-            /* console.log(e.id) */
+            /* //console.log(e.id) */
 
             setValues(values.number)
             setValues(values.pais)
@@ -127,7 +127,7 @@ function Election(){
                 
             });
             const updateUser = await getUserByEmail(user.email);
-            console.log({updateUser})
+            //console.log({updateUser})
             setUser(updateUser);
            
             if(user.role == "Pendiente"){

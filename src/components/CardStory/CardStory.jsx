@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 function CardStory({uid, name, date, chatId, photo}) {
-  console.log(uid)
+  //console.log(uid)
   const {user, setUser}= useContext(UserContext);
   const history = useHistory();
   const handlePatientHistory = () => {

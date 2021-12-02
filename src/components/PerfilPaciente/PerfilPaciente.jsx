@@ -16,9 +16,9 @@ const PerfilPaciente = ({areas}) => {
     const history = useHistory();
     
     useEffect(() => {
-      console.log('####################################')
+      //console.log('####################################')
             if(user.problemas != undefined){
-              console.log(user.problemas)
+              //console.log(user.problemas)
               $.each(user.problemas,function(index,value){
                 $("#"+value).prop('checked', true);
               })
@@ -42,15 +42,15 @@ const PerfilPaciente = ({areas}) => {
         }
         const handleOnClick = async(event) => {
           if(validar_campos()){
-            console.log(biography)
-            console.log(user.id)          
+            //console.log(biography)
+            //console.log(user.id)          
             let problemas = []
             $.each(['ansiedad', 'autoestima', 'sexualidad', 'estres', 'amorosos', 'desarrollo'], function(index, value){
               if($("#"+value).prop("checked")){
                 problemas.push(value)
               }
             })
-            console.log(problemas)
+            //console.log(problemas)
             user.problemas = problemas
             await db.collection("users").doc(user.id).update(
               {
@@ -64,7 +64,7 @@ const PerfilPaciente = ({areas}) => {
         }
 
          const actualizarUsuario = async() =>{
-           console.log(user)
+           //console.log(user)
             await db.collection("users").doc(user.id).update(
             {
               "number": user.number,
@@ -72,8 +72,8 @@ const PerfilPaciente = ({areas}) => {
             }
           )
           setUser(user)
-          console.log('************************************')          
-          console.log(user)
+          //console.log('************************************')          
+          //console.log(user)
           return true;
         };
         function diaBirthday(x) {
@@ -84,7 +84,7 @@ const PerfilPaciente = ({areas}) => {
             day: "numeric",
           };
           const result = date1.toLocaleDateString("es-Es", options);
-          // console.log(date1.toLocaleDateString("es-MX", options));
+          // //console.log(date1.toLocaleDateString("es-MX", options));
           return result;
         }
         const upload = async(img)=>{
@@ -103,7 +103,7 @@ const PerfilPaciente = ({areas}) => {
               photo:(url)
           });
           const updateUser = await getUserByEmail(user.email);
-          console.log({updateUser})
+          //console.log({updateUser})
           setUser(updateUser);
         }
 
