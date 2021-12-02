@@ -35,18 +35,44 @@ const PsicoList = ({ psicologos,areas }) => {
     });
     return listaOrdenada;
   };
+  // const ordenarRatings = (lista) => {
+  //   const listaOrdenada = lista.slice().sort((a, b) => {
+
+  //     const nameA = a.ratings.reduce((c, d) => c + d, 0) / a.ratings.length;
+      
+  //     const nameB = b.ratings.reduce((c, d) => a + d, 0) / b.length;
+  //     console.log("nameB", nameB);
+  //     if (!nameA && nameB) {
+  //       return -1;
+  //     }
+  //     if (!nameB && nameA) {
+  //       return 1;
+  //     }
+  //     if (nameA < nameB) {
+  //       return -1;
+  //     }
+  //     if (nameA > nameB) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   return listaOrdenada;
+  // };
  
   const haddleSelect = (e) => {
     setOrden(e.target.value);
     if (e.target.value === "ordenAlfabetico") {
       setListaOrdenada(ordenarNombres(psicologos));
+    } else if (e.target.value === "ranking") {
+      console.log("Hola")
     } else {
       setListaOrdenada(psicologos);
     }
   };
+  console.log(listaOrdenada)
   const handdleEsp=(e)=>{
-    console.log(e.target.value.toLowerCase())
-    setEsp(e.target.value.toLowerCase());
+    console.log(e.target.value)
+    setEsp(e.target.value);
   }
   const cambiarLista = async () => {
     if (orden === "ordenAlfabetico") {
@@ -80,11 +106,12 @@ const PsicoList = ({ psicologos,areas }) => {
                   onChange={handdleEsp}
                 >
                   <option value=""> Todos</option>
-                  {!!areas && (
-                    areas.map((area)=>(
-                      <option value={area.especialidad}>{area.especialidad}</option>
-                    ))
-                  )}
+                  {!!areas &&
+                    areas.map((area) => (
+                      <option value={area.especialidad}>
+                        {area.especialidad}
+                      </option>
+                    ))}
                   {/* <option value="ansiedad">Ansiedad</option>
                   <option value="estres">Estres</option>
                   <option value="depresion">Depresion</option> */}
@@ -138,24 +165,24 @@ const PsicoList = ({ psicologos,areas }) => {
                       )}
                     </>
                   ))
-              : psicologos
-                  .filter(searchingTerm(value))
-                  .map((psicologo) => (
-                    <>
-                      {esp === "" ? (
-                        <CardPsico
-                          key={psicologo.id}
-                          id={psicologo.id}
-                          name={psicologo.name}
-                          pais={psicologo.pais}
-                          photo={psicologo.photo}
-                          description={psicologo.description}
-                          problemas={psicologo.problemas}
-                        />
-                      ) : (
-                        psicologo.problemas.map((problema) => (
-                          <>
-                            {problema === esp && (
+              : psicologos.filter(searchingTerm(value)).map((psicologo) => (
+                  <>
+                    {esp === "" ? (
+                      <CardPsico
+                        key={psicologo.id}
+                        id={psicologo.id}
+                        name={psicologo.name}
+                        pais={psicologo.pais}
+                        photo={psicologo.photo}
+                        description={psicologo.description}
+                        problemas={psicologo.problemas}
+                      />
+                    ) : (
+                      psicologo.problemas.map((problema) => (
+                        <>
+                        
+                          {problema === esp && (
+                            <>
                               <CardPsico
                                 key={psicologo.id}
                                 id={psicologo.id}
@@ -165,12 +192,13 @@ const PsicoList = ({ psicologos,areas }) => {
                                 description={psicologo.description}
                                 problemas={psicologo.problemas}
                               />
-                            )}
-                          </>
-                        ))
-                      )}
-                    </>
-                  ))}
+                            </>
+                          )}
+                        </>
+                      ))
+                    )}
+                  </>
+                ))}
           </div>
         </div>
       </div>

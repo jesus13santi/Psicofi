@@ -23,7 +23,10 @@ const Hpage = () => {
   const [psicologos, setPsicologos] = useState([]);
   const [psicologo, setPsicologo] = useState(null);
   const [precio, setPrecio] = useState("0");
+  const [testi, setTesti] =useState(null);
+  const [testis, setTestis]=useState([])
   const history = useHistory();
+  
 
   const getArrayCollection = (snapshot) => {
     const collection = [];
@@ -50,10 +53,19 @@ const Hpage = () => {
     
     
   };
+  
+  const fetchTestimonios = async () => {
+    const userReference = db.collection("testimonios");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaPsico = getElementArrayCollection(snapshot);
+    setTestis(listaPsico);
+    setTesti(listaPsico[0]);
+  };
 
   useEffect(() => {
     fetchPsico(); 
-    
+    fetchTestimonios();
   }, []);
   
 
@@ -81,6 +93,7 @@ const Hpage = () => {
       return precio;
     }
   };
+
 
   return (
     <div className={styles.container}>
@@ -185,9 +198,8 @@ const Hpage = () => {
               //   </>
               // )} */}
               <p className={styles.individual}>Cita Individual</p>
-               <h1>$29.99 USD</h1>
+              <h1>$29.99 USD</h1>
               <p>1 hora de videollamada</p>
-
             </div>
             {/* <img
               src={ArrowSmall}
@@ -219,9 +231,16 @@ const Hpage = () => {
                   <div className={styles.infoPsico}>
                     <h2 className={styles.name}>{psicologo.name}</h2>
                     <div className={styles.valoracion}>
-                      <p>Valoración: 5</p>
+                      <p>
+                        Valoración:{" "}
+                        {psicologo.ratings.reduce((a, b) => a + b, 0) /
+                          psicologo.length}
+                      </p>
                     </div>
-                    <p className={styles.especialidaesExtra}>Especialidades: {psicologo.problemas.toString().replace(/,/g,", ")}</p>
+                    <p className={styles.especialidaesExtra}>
+                      Especialidades:{" "}
+                      {psicologo.problemas.toString().replace(/,/g, ", ")}
+                    </p>
                     <p>Lugar de Residencia: {psicologo.pais}</p>
                     <button
                       className={styles.button}
@@ -232,7 +251,12 @@ const Hpage = () => {
                   </div>
                 </>
               ) : (
-                <PulseLoader color={"#763D80"} loading={true} size={20} css={styles.loading} />
+                <PulseLoader
+                  color={"#763D80"}
+                  loading={true}
+                  size={20}
+                  css={styles.loading}
+                />
               )}
             </div>
             <img
@@ -250,10 +274,20 @@ const Hpage = () => {
           <h2 className={styles.title}>Clientes Satisfechos</h2>
           <div className={styles.withArrow}>
             <div className={styles.mensajeCliente}>
-              <p>
+              {!!testi ? (
+                <p>{testi.testimonio}</p>
+              ) : (
+                <PulseLoader
+                  color={"#763D80"}
+                  loading={true}
+                  size={20}
+                  css={styles.loading}
+                />
+              )}
+              {/* <p>
                 “Muy recomendado el servicio. Nunca había tenido terapia online
                 antes y me pareció una experiencia genial.”
-              </p>
+              </p> */}
             </div>
             <img src={ArrowSmall} alt="" className={styles.arrowSmall} />
           </div>
