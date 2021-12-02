@@ -330,3 +330,6 @@ input[type="checkbox"]:checked+label {
     }
 
 }
+.aux2{
+    display: none;
+}
