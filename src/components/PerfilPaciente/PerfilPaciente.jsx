@@ -14,7 +14,6 @@ const PerfilPaciente = ({areas}) => {
     const {getUserByEmail} = useContext(UserContext) 
     const { user, setUser } = useContext(UserContext);
     const history = useHistory();
-    const aux=[];
     
     useEffect(() => {
       //console.log('####################################')
@@ -41,14 +40,12 @@ const PerfilPaciente = ({areas}) => {
           
           return valido;
         }
-        
-       
         const handleOnClick = async(event) => {
           if(validar_campos()){
             //console.log(biography)
             //console.log(user.id)          
             let problemas = []
-            $.each(aux, function(index, value){
+            $.each(['ansiedad', 'autoestima', 'sexualidad', 'estres', 'amorosos', 'desarrollo'], function(index, value){
               if($("#"+value).prop("checked")){
                 problemas.push(value)
               }
@@ -171,7 +168,9 @@ const PerfilPaciente = ({areas}) => {
 
               <h3 for="correo">Correo electrónico:</h3>
 
-              <label>{user.email}</label>
+              <label
+                
+              >{user.email}</label>
 
               <h3 for="telefono">Teléfono:</h3>
 
@@ -216,12 +215,6 @@ const PerfilPaciente = ({areas}) => {
               {!!areas &&
                 areas.map((area) => (
                   <div>
-                    <div className={styles.aux2}>
-                      {aux.push(area.especialidad)}
-                      
-                    </div>
-                    
-                    
                     <input
                       className={styles.checkbox}
                       type="checkbox"

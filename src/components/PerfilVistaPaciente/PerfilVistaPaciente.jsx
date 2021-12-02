@@ -4,8 +4,6 @@ import styles from "./PerfilVistaPaciente.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Footer from "../Footer/Footer"
-import start from "../../img/start.png"
-
 const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,incidencias,ratings}) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
@@ -27,11 +25,7 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,
                 <p className={styles.text}>{birthday}</p>
 
                 <h3 className={styles.title}>Valoracion: </h3>
-                <div className={styles.estrella}>
-                  <p className={`${styles.text} ${styles.text1}`}>
-                    {total / ratings.length} <img src={start} alt="" />
-                  </p>
-                </div>
+                <p className={styles.text}>{total/ratings.length}</p>
 
                 <h3 className={styles.title}>Lugar de residencia: </h3>
                 <p className={styles.text}>{pais}</p>
