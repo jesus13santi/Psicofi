@@ -86,7 +86,7 @@ function checkHistory(a, aux){
     <>
     {!!user?(
     <div className={styles.container}>
-      {/* {setLista(user.appointments)} */}
+      {setUser(user)}
     <div className={styles.box}>
         
         <h1 className={styles.boxTitle}>
