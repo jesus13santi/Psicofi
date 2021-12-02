@@ -30,7 +30,7 @@ function CardStory({uid, name, date, chatId, photo}) {
       ):(
         <>
         <div className={styles.buttons}>
-        <Link to ={`/history/${uid}`}>
+        <Link to ={`/historiaPacienteIndividual/${uid}`}>
         <button type="button" className={styles.button}>Historia</button>
         </Link>
         <Link to ={`/chat/${chatId}`}>

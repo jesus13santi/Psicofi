@@ -202,11 +202,11 @@ const NavBar = () => {
                   Mi Perfil
                 </Link>
               </li>
-              <li onClick={handdleMenu1}>
+              {/* <li onClick={handdleMenu1}>
                 <Link to="/" className={styles.linkMobile}>
                   Citas Agendadas
                 </Link>
-              </li>
+              </li> */}
               <li onClick={handdleMenu1}>
                 <Link to="/chats" className={styles.linkMobile}>
                   Chats
