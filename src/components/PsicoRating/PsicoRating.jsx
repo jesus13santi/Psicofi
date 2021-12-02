@@ -5,7 +5,6 @@ import { UserContext } from "../../context/UserContext";
 import { Rating } from 'react-simple-star-rating';
 import { db } from "../../utils/firebaseConfig";
 import swal from 'sweetalert';
-import { values } from "lodash";
 
 const PsicoRating = () => {
 
@@ -36,14 +35,23 @@ const PsicoRating = () => {
         const psy = cita.uid; // ID del psicologo
         if (ratingValue > 0 && canRate) {
             const newRating = ratingValue;
+            const newIncidencia = {
+                name: user.name,
+                description: values.incidencias
+            }
             const temp = await db.collection("users").doc(psy).get();
             const p = temp.data();
             const q = p.ratings;
+            const inc = p.incidencias;
             var aux = [];
+            var auxInc = [];
             if (!!q) { aux = [...q]; }
+            if (!!inc) { auxInc = [...inc]; }
             aux.push(newRating);
+            auxInc.push(newIncidencia);
             await db.collection("users").doc(psy).update(
                 {
+                    incidencias: auxInc,
                     ratings: aux
                 }
             )
