@@ -14,7 +14,9 @@ const ChatView = () => {
     return (
     <>
     {!!user?(
+    
     <div className={styles.container}>
+      {setUser(user)}
     <div className={styles.box}>
         
         <h1 className={styles.boxTitle}>Chats</h1>
