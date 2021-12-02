@@ -16,7 +16,7 @@
 .close{
     position: absolute;
     right: 15px;
-    bottom: 172px;
+    bottom: 214px;
     background-image: url(../../img/closeIcon.png);
     background-repeat: no-repeat;
     background-color: aliceblue;
@@ -50,4 +50,5 @@
     padding: 5px;
     border-radius: 10px;
     border-width: 1px;
+    border-color: #522B59;
 }
