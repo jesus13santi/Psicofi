@@ -115,10 +115,10 @@ const Hpage = () => {
         </div>
 
         <div className={`${styles.boxArea} ${styles.box}`}>
-          <h2 className={styles.title}>Areas de atencion</h2>
+          <h2 className={styles.title}>Areas de atención</h2>
           <div className={styles.areas}>
             <div className={styles.area}>Ansiedad</div>
-            <div className={styles.area}>Estres</div>
+            <div className={styles.area}>Estrés</div>
             <div className={styles.area}>Autoestima</div>
             <div className={styles.area}>Problemas Amorosos</div>
             <div className={styles.area}>Sexualidad</div>
@@ -170,7 +170,7 @@ const Hpage = () => {
           </button>
         </div>
         <div className={`${styles.costo} ${styles.box}`} id="boxPrecios">
-          <h2 className={styles.title}>¿Cuenta cuesta una sesion?</h2>
+          <h2 className={styles.title}>¿Cuánto cuesta una sesión?</h2>
           <div className={styles.withArrow}>
             <div className={styles.boxCosto}>
               {/* {precio === "0" ? (
@@ -219,7 +219,7 @@ const Hpage = () => {
                   <div className={styles.infoPsico}>
                     <h2 className={styles.name}>{psicologo.name}</h2>
                     <div className={styles.valoracion}>
-                      <p>Valoracion: 5</p>
+                      <p>Valoración: 5</p>
                     </div>
                     <p className={styles.especialidaesExtra}>Especialidades: {psicologo.problemas.toString().replace(/,/g,", ")}</p>
                     <p>Lugar de Residencia: {psicologo.pais}</p>

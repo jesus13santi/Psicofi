@@ -20,9 +20,8 @@
 }
 
 .container{    
-    width: 900px;
-    height: 850px;
-    top: 126px;
+    width: 65%;
+    padding: 50px;
     margin-top: 40px;
 
     background: #F7E8F9;
@@ -56,7 +55,7 @@
     padding-left: 16px;
     margin-bottom: 15px;
     font-size: 18px;
-    width: 649px;
+    width: 75%;
     height: 50px;
 }
 
@@ -67,7 +66,7 @@
     justify-content: center;
     font-size: 18px;
     border-radius: 24px;
-    width: 215px;
+    width: 25%;
     height: 50px;
     background: #763D80;
     border: none;
@@ -81,8 +80,9 @@
 }
   
 .formPersonal .labelRol{
+
     font-size: 30px;
-    padding: 75px 100px;
+    padding: 12% 75px;
     border-radius: 20px;
     border: 2px solid #ccc;
   
@@ -124,19 +124,6 @@ input[type='radio']:after {
     border: 2px solid white;
 }
 
-input[type='radio']:checked:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #763D80;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
 
 .alert{
     display: flex;
@@ -166,4 +153,67 @@ input[type='radio']:checked:after {
     margin-top: 10px;
 
 }
-  
+
+@media(max-width:770px){
+    .container{
+        width: 90%;
+        padding: 0px;
+        
+    }
+
+    .formPersonal .labelRol{
+        padding: 12% 50px;
+
+    }
+}
+
+@media (max-width:540px) {
+
+    .container{
+        width: 90%;
+        padding: 0%;
+    }
+
+    .tittle{
+        font-size: 24px;
+    
+    }
+
+    .formPersonal .labelRol{
+        font-size: 16px;
+        padding: 12% 40px;
+
+    }
+
+    .formRegis{
+        font-size: 12px;
+        height: 35px;
+
+    }
+
+    .nextText{
+        font-size: 12px;
+    }
+
+    #loginNext{
+        font-size: 12px;
+    }
+
+    .continue{
+        font-size: 12px;
+        width: 40%;
+
+    }
+
+    .alert{
+        width: 100%;
+        font-size: 12px;
+            
+    }
+
+    .formPersonal2 .labelGender{
+
+        font-size: 12px;
+        padding-right: 10px;
+    }
+}

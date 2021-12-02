@@ -12,7 +12,10 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
     var rn = dayjs()
     var today = rn.format('DD/MM/YYYY')
 
-    const [ isAddingIncidenciaActive, setIsAddingIncidenciaActive ] = useState(false);
+    const [ isAddingIncidenciaActive, setIsAddingIncidenciaActive ] = useState(() => {
+        return false;
+    });
+
     const [ incidencies, setIncidencies ] = useState([]);
     const { user } = useContext(UserContext);
     const [values, setValues] = useState({
@@ -23,8 +26,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
     useEffect (() => {
         if (db) {
             db.collection("users").doc(id).onSnapshot((doc)=> {
-                    const data = doc.data();
-                    console.log(data);
+                    const data = doc.data(); // all of the patient data
                     setIncidencies(data.incidencias);
             })
         } 
@@ -72,12 +74,6 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
     const handleIncidencia = () => {
         setIsAddingIncidenciaActive(true);
     };
-
-    const handleSubmit = (event) => {
-        const {value, name: inputName} = event.target;
-        console.log({ inputName, value });
-        setValues({...values,[inputName]: value})
-        };
 
     return (
         <>
@@ -170,7 +166,6 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                 </div>
                             </>
                             ) : (
-                                incidencias.length > 0 && (
                                     incidencies.map((inc) => (
                                         <div className={styles.innerContainer}>
                                             <p className={styles.text}>{inc.title}</p>
@@ -181,7 +176,6 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                             </button>
                                         </div>
                                     ))
-                                )
                             )}
                 </div>
             </div>

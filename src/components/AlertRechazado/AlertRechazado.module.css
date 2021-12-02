@@ -51,3 +51,21 @@
     margin-bottom: 15px;
     text-decoration: underline;
 }
+
+@media(max-width:770px){
+  .container{
+      width: 90%;
+  }
+}
+
+@media (max-width:540px) {
+
+  .text{
+    font-size: 12px;
+  }
+
+  .link{
+    font-size: 12px;
+  }
+
+}
