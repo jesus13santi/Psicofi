@@ -340,11 +340,11 @@ const PerfilEspecialista = ({areas}) => {
               onChange={(e) => (user.description = e.target.value)}
             />
 
-            <h3>Condiciones a tratar</h3>
+            <h3>Especialidades</h3>
           </div>
           <div className={styles.texto}>
             <label>
-              Marque a continuación las opciones que coincidan con sus problemas
+              Marque a continuación las opciones que coincidan con sus especialidades
             </label>
           </div>
           <div className={styles.seleccion}>
