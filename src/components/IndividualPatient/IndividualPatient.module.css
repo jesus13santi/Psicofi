@@ -137,6 +137,10 @@
     gap: 20px;
 }
 
+.incTag {
+    text-align: right;
+}
+
 .innerContainer {
     width: 97%;
     height: 60px;
@@ -253,6 +257,14 @@
     .button {
         font-size: 14px;
         width: 100px;
+    }
+
+    .addIncidencia {
+        padding: 0;
+    }
+
+    .iAtribute {
+        grid-template-columns: 100px 1fr 1px;
     }
 
 }
