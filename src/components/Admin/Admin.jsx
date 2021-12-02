@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig"
 import swal from "sweetalert";
@@ -29,7 +28,7 @@ const Admin = ({ pendientes, rechazados }) => {
   }, []);
   
 
-  const aggEspecialiadad = async(e) =>{
+  const aggEspecialidad = async(e) =>{
 
   
       const esp = document.getElementById("especialidad").value;
@@ -47,6 +46,10 @@ const Admin = ({ pendientes, rechazados }) => {
         swal("", "Se ha agregado exitosamente la especialidad", "success");
 
       }    
+  }
+
+  const cargar = () =>{
+    window.location.reload();
   }
  
   const getElementArrayCollection = (snapshot) => {
@@ -162,7 +165,9 @@ const Admin = ({ pendientes, rechazados }) => {
               placeholder="Especialidad..."
             /> 
 
-            <button className={styles.continue} id="boton" onClick={aggEspecialiadad}> Agregar </button>
+            <button className={styles.continue} id="boton" onClick={aggEspecialidad}> Agregar </button>
+            <button className={styles.continue} id="boton" onClick={cargar}> Cargar </button>
+
 
           </div>
         </div>
