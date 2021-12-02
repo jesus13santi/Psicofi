@@ -71,18 +71,20 @@
 }
 
 .boton {
-    background-color: #763D80;
+    background-color: #522B59;
     margin-right: 20px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 20px;
     color: white;
     border: none;
     outline: none;
     font-size: 20px;
+    font-weight: 600;
 }
 
 .boton:hover {
     cursor: pointer;
+    background-color:  #763D80;
 }
 
 .eliminar {
@@ -182,6 +184,8 @@ input[type="checkbox"]:checked+label {
 
 .button {
     background-color: #763D80;
+    font-weight: 600;
+    font-size: 20px;
     border: none;
     color: white;
     padding: 20px;
