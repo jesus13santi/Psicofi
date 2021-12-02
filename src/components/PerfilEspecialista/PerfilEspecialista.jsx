@@ -6,11 +6,12 @@ import styles from "./PerfilEspecialista.module.css";
 import { db } from "../../utils/firebaseConfig";
 import $ from "jquery";
 import firebase from "firebase";
+import Footer from "../Footer/Footer";
 //import es from "date-fns/locale/es";
 import uniqid from "uniqid";
 import Loading from "../Loading/Loading";
 
-const PerfilEspecialista = () => {
+const PerfilEspecialista = ({areas}) => {
   const [date, setDate] = useState(new Date());
   const [birthday, setBirthday] = useState("");
   const [biography, setBiography] = useState("");
@@ -196,11 +197,6 @@ const PerfilEspecialista = () => {
       } else {
         setError("Ya ingreso una cita con esa fecha y hora");
       }
-      
-    
-    
-    
-    
     
   };
   const deleteAppointment = async (id) => {
@@ -213,6 +209,7 @@ const PerfilEspecialista = () => {
     setUser(updateUser);
     alert("Cita Eliminada");
   };
+// Funcion para mostrar la fecha de la cita
   function diaSemana(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -225,6 +222,7 @@ const PerfilEspecialista = () => {
     // console.log(date1.toLocaleDateString("es-MX", options));
     return result;
   }
+  // Funcion para mostrar la fecha de su cumpleaños
   function diaBirthday(x) {
     const date1 = new Date(x.replace(/-+/g, "/"));
     const options = {
@@ -258,62 +256,60 @@ const PerfilEspecialista = () => {
   }
 
   return (
-    <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
-      <div className={styles.titulo}>Mi perfil</div>
-      <form>
-        <div>
-          <div className={styles.etiqueta}>
-            <label for="NombreCompleto">Nombre Completo:</label>
-          </div>
-          <div className={styles.campo}>
-            <label id="NombreCompleto">{user.name}</label>
-          </div>
-        </div>
-        <div>
-          <div className={styles.etiqueta}>
-            <label for="FechaNacimiento">Fecha de nacimiento:</label>
-          </div>
-          <div className={styles.campo}>
-            <label name="FechaNacimiento">{diaBirthday(user.birthday)}</label>
-          </div>
-        </div>
-        <div>
-          <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
-            <label for="FotoPerfil">Foto de perfil:</label>
-          </div>
-          <div
-            className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
-          >
-            <img src={user.photo} className={styles.fotoperfil}></img>
-              <label for={styles.upload} class={styles.boton1}>
+    <>
+      <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
+        <div className={styles.titulo}>Mi perfil</div>
+        <form>
+          <div className={styles.boxInput}>
+            <h3 for="NombreCompleto">Nombre Completo:</h3>
+
+            <p id="NombreCompleto">{user.name}</p>
+
+            <h3 for="FechaNacimiento">Fecha de nacimiento:</h3>
+
+            {/* <input
+                name = "FechaNacimiento"
+                className={styles.entrada}
+                type="date"
+                id="FechaNacimiento"
+                defaultValue={birthday} 
+                onChange = {e => user.birthday = e.target.value}              
+              ></input> */}
+            <p>{diaBirthday(user.birthday)}</p>
+
+            <h3 for="FotoPerfil">Foto de perfil:</h3>
+
+            <div
+              className={`${styles.campofoto} ${styles.campo}  ${styles.lineagruesa}`}
+            >
+              <picture className={styles.boxPhoto}>
+                <img src={user.photo} className={styles.fotoperfil}></img>
+              </picture>
+              <div className={styles.boxBtn}>
+                <label for={styles.upload} class={styles.boton}>
                   Cambiar
-              </label>
-              <input id={styles.upload} className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
-              <a href="#" className={`${styles.boton1} ${styles.eliminar}`}>
-                Eliminar
-              </a>
-          </div>
-        </div>
-        <div>
-          <div className={styles.etiqueta}>
-            <label for="correo">Correo electrónico:</label>
-          </div>
-          <div className={styles.campo}>
-            <input
-              name="correo"
-              className={styles.entrada}
-              type="email"
-              id="correo"
-              defaultValue={user.email}
-              onChange={(e) => (user.email = e.target.value)}
-            ></input>
-          </div>
-        </div>
-        <div>
-          <div className={styles.etiqueta}>
-            <label for="telefono">Teléfono:</label>
-          </div>
-          <div className={styles.campo}>
+                </label>
+
+                <input
+                  id={styles.upload}
+                  className={styles.boton}
+                  type="file"
+                  onChange={(e) => {
+                    upload(e.target.files[0]);
+                  }}
+                />
+                <button className={`${styles.boton} ${styles.eliminar}`}>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+
+            <h3 for="correo">Correo electrónico:</h3>
+
+            <label>{user.email}</label>
+
+            <h3 for="telefono">Teléfono:</h3>
+
             <input
               name="telefono"
               className={styles.entrada}
@@ -322,13 +318,9 @@ const PerfilEspecialista = () => {
               defaultValue={user.number}
               onChange={(e) => (user.number = e.target.value)}
             ></input>
-          </div>
-        </div>
-        <div>
-          <div className={styles.etiqueta}>
-            <label for="pais">Lugar de residencia:</label>
-          </div>
-          <div className={styles.campo}>
+
+            <h3 for="pais">Lugar de residencia:</h3>
+
             <input
               type="text"
               name="pais"
@@ -337,172 +329,121 @@ const PerfilEspecialista = () => {
               defaultValue={user.pais}
               onChange={(e) => (user.pais = e.target.value)}
             ></input>
-          </div>
-        </div>
-        <div>
-          <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
-            <label for="description">Biografía:</label>
-          </div>
-          <div className={`${styles.campo} ${styles.lineagruesa}`}>
+
+            <h3 for="description">Biografía:</h3>
+
             <textarea
-              className={styles.entrada}
+              className={`${styles.entrada} ${styles.btn}`}
               id="description"
               defaultValue={user.description}
               onChange={(e) => (user.description = e.target.value)}
             />
-          </div>
-        </div>
-        <div className={styles.subtitulo}>
-          <label>Especialidades</label>
-        </div>
-        <div className={styles.texto}>
-          <label>
-            Marque a continuación las opciones que coincidan con sus
-            Especialidades
-          </label>
-        </div>
-        <div className={styles.seleccion}>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="ansiedad"
-            value="ansiedad"
-            id="ansiedad"
-          />
-          <label className={styles.checklabel} for="ansiedad">
-            Ansiedad
-          </label>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="autoestima"
-            value="autoestima"
-            id="autoestima"
-          />
-          <label className={styles.checklabel} for="autoestima">
-            Autoestima
-          </label>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="sexualidad"
-            value="sexualidad"
-            id="sexualidad"
-          />
-          <label className={styles.checklabel} for="sexualidad">
-            Sexualidad
-          </label>
-        </div>
-        <div className={styles.seleccion}>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="estres"
-            value="estres"
-            id="estres"
-          />
-          <label className={styles.checklabel} for="estres">
-            Estres
-          </label>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="amorosos"
-            value="Problemsa amorosos"
-            id="amorosos"
-          />
-          <label className={styles.checklabel} for="amorosos">
-            Problemas amorosos
-          </label>
-          <input
-            className={styles.checkbox}
-            type="checkbox"
-            name="desarrollo"
-            value="desarrollo"
-            id="desarrollo"
-          />
-          <label className={styles.checklabel} for="desarrollo">
-            Desarrollo personal
-          </label>
-        </div>
-        <div className={styles.submit}>
-          <input
-            type="button"
-            className={styles.boton}
-            value="Guardar cambios"
-            onClick={handleOnClick}
-          ></input>
-        </div>
-      </form>
-      <div className={styles.boxAgregarCita}>
-        <div className={styles.boxInputAgregarCita}>
-          <h1 className={styles.title}>Agregar citas disponibles</h1>
-          <input
-            name="date"
-            type="date"
-            onChange={handleOnChange}
-            className={styles.picker}
-          />
-          <input
-            name="hour"
-            type="time"
-            value={values.hour}
-            onChange={handleOnChange}
-            disabled={values.date === ""}
-            className={styles.picker}
-          />
 
-          {/* <DatePicker
+            <h3>Condiciones a tratar</h3>
+          </div>
+          <div className={styles.texto}>
+            <label>
+              Marque a continuación las opciones que coincidan con sus problemas
+            </label>
+          </div>
+          <div className={styles.seleccion}>
+            {!!areas &&
+              areas.map((area) => (
+                <div>
+                  <input
+                    className={styles.checkbox}
+                    type="checkbox"
+                    name={area.especialidad}
+                    value={area.especialidad}
+                    id={area.especialidad}
+                  />
+                  <label className={styles.checklabel} for={area.especialidad}>
+                    {area.especialidad}
+                  </label>
+                </div>
+              ))}
+          </div>
+          <div className={styles.submit}>
+            <input
+              type="button"
+              className={`${styles.boton} ${styles.btn2}`}
+              value="Guardar cambios"
+              onClick={handleOnClick}
+            ></input>
+          </div>
+        </form>
+        <div className={styles.boxAgregarCita}>
+          <div className={styles.boxInputAgregarCita}>
+            <h1 className={styles.title}>Agregar citas disponibles</h1>
+            <input
+              name="date"
+              type="date"
+              onChange={handleOnChange}
+              className={styles.picker}
+            />
+            <input
+              name="hour"
+              type="time"
+              value={values.hour}
+              onChange={handleOnChange}
+              disabled={values.date === ""}
+              className={styles.picker}
+            />
+
+            {/* <DatePicker
         selected={date}
         // onChange={OnChange}
         locale="es"
         className="pickers"
         dateFormat="dd 'de' MMM 'de' yyyy"
       /> */}
-          <input
-            type="button"
-            value="Agregar cita"
-            onClick={agregarCita}
-            className={styles.button}
-          />
-          {error !== "" && <span className={styles.error}>{error}</span>}
-        </div>
-        <div className={styles.rightSize}>
-          <h1 className={styles.title}>Citas Disponibles</h1>
-          <div className={styles.citas}>
-            {user.appointments.length !== 0 ? (
-              <>
-                <div className={styles.titleList}>
-                  <h3>Fecha:</h3>
-                  <h3>Hora:</h3>
-                </div>
+            <input
+              type="button"
+              value="Agregar cita"
+              onClick={agregarCita}
+              className={styles.button}
+            />
+            {error !== "" && <span className={styles.error}>{error}</span>}
+          </div>
+          <div className={styles.rightSize}>
+            <h1 className={styles.title}>Citas Disponibles</h1>
+            <div className={styles.citas}>
+              {user.appointments.length !== 0 ? (
+                <>
+                  <div className={styles.titleList}>
+                    <h3>Fecha:</h3>
+                    <h3>Hora:</h3>
+                  </div>
 
-                {ordenar(user.appointments).map((m) => (
-                  <>
-                    {m.status === 2 && (
-                      <div key={m.id} className={styles.cita}>
-                        <p className={styles.grid}>{diaSemana(m.date)}</p>
-                        <p className={styles.grid}>
-                          {m.hour}
-                          <button
-                            className={styles.btnDelete}
-                            onClick={() => deleteAppointment(m.id)}
-                          >
-                            Borrar
-                          </button>
-                        </p>
-                      </div>
-                    )}
-                  </>
-                ))}
-              </>
-            ) : (
-              <span>No hay citas disponibles</span>
-            )}
+                  {ordenar(user.appointments).map((m) => (
+                    <>
+                      {console.log(user.appointments.date)}
+                      {m.status === 2 && date < new Date(m.date) && (
+                        <div key={m.id} className={styles.cita}>
+                          <p className={styles.grid}>{diaSemana(m.date)}</p>
+                          <p className={styles.grid}>
+                            {m.hour}
+                            <button
+                              className={styles.btnDelete}
+                              onClick={() => deleteAppointment(m.id)}
+                            >
+                              Borrar
+                            </button>
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  ))}
+                </>
+              ) : (
+                <span>No hay citas disponibles</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

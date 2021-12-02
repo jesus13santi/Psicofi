@@ -6,549 +6,140 @@
     padding-bottom: 60px;
     padding-left: 10%;
     padding-right: 10%;
-   
-   }
-
-   .fondorosa {
-       background-color: rgb(247, 232, 249);
-   }
-   
-   
-   
-   .fotoperfil{
-       border-radius: 25%;
-       width: 7em;
-       height: 7em;
-   }
-   
-   .boton{
-    text-decoration: none;
     background-color: #763D80;
-    color: white;
-    margin: 0.5em;
-    border-radius: 2em;
-    padding: 0.8em 7em;
-    cursor: pointer; 
-    border: none;
-}
-
-   .boton1{
-    text-decoration: none;
-    background-color: #763D80;
-    color: white;
-    margin: 0.5em;
-    border-radius: 2em;
-    padding: 0.5em 2em;
-    cursor: pointer; 
-    border: none;
-    }
-
-   .boton:hover{
-       background-color: #522B59;
-   }
-   
-   .eliminar{
-       background-color: black!important;
-   }
-   
-   .titulo{
-    margin-bottom: 1.25rem;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 48px;
-    line-height: 72px;
     color: #522B59;
-   }
-   .etiqueta{
-       width: 20%;
-       float: left;
-       text-align: right;
-       margin-right: 5%;
-       height: 3em;
-       
-   }
-   .etiqueta label{
-       color: #522B59;
-       font-weight: bold;
-       
-   }
-   .campo{
-       text-align: left;
-       float:right;
-       width: 70%;
-       height: 3em;
-       margin-left: 5%;
-       font-size: medium;
-   }
-   .lineagruesa{
-       height: 4em!important;
-       margin-bottom: 2em;
-   }
-   .entrada{
-       border-radius: 25px;
-       display:inline-block;
-       padding:5px 10px;
-       border-width: 1px;
-       line-height:140%;
-       width: 35em;
-       border-color: #522B59;
-   }
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
    
-   .campofoto {
-       display: flex;
-       align-items: center ;
    }
-   .lineagruesa a{
-       margin-left: 2em;
-   }
-   
-   .lineagruesa textarea{
-       height: 10em;
-   }
-   .checkbox{
-       position: absolute;
-       display: absolute;
-       opacity: 0;
-   }
-   .checklabel{
-       border: 2px solid #522B59;
-       background-color: white;
-       color: #522B59;   
-       font-weight: bold;
-       font-size: large;
-       display: inline-block;
-       width: 180px;
-       justify-content: center;
-       align-items: center;
-       
-       padding: 5px;
-       border-radius: 25px;
-       cursor: pointer;
-       -webkit-touch-callout: none;
-       -webkit-user-select: none;
-       -moz-user-select: none;
-       -ms-user-select: none;
-       user-select: none;
-       margin: 30px;
-       text-align: center;
-   }
-   
-   input[type="checkbox"]:checked + label {
-       border: 2px solid #763D80;
-       background-color: #763D80;
-       color: white;
-   }
-   
-   .subtitulo label{
-       color: #522B59;
-       font-size: larger;
-       font-weight: bold;
-   }
-   .subtitulo{
+   .titulo{
+       font-size: 72px;
        margin-bottom: 20px;
    }
-   .texto{
-       margin-bottom: 30px;
-   }
-   .texto label{
-       color: #522B59;
-       font-size: medium;
-   }
-   
-   .seleccion{
-       
-       margin-bottom: 10px;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       
-   }
-   
-   
-   .submit input{
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-   }
-   
-   #upload{
-       display: none;
-       background-color: black;
-   }
-
-   /* TABLET */
-@media (max-width:1024px){
-    .bordecontenedor{
-        border-radius: 60px;
-        width: 685px;
-        margin: 5%;
-        padding-top: 60px;
-        padding-bottom: 60px;
-        padding-left: 8%;
-        padding-right: 10%;
-       
-       }
-       .fondorosa {
-           background-color: rgb(247, 232, 249);
-       }
-       
-       
-       
-       .fotoperfil{
-           border-radius: 50%;
-           width: 7em;
-           height: 7em;
-       }
-       
-       .boton{
-           text-decoration: none;
-           background-color: #763D80;
-           color: white;
-           margin: 0.5em;
-           border-radius: 2em;
-           padding: 1em 5em;
-           cursor: pointer; 
-           border: none;
-       }
-       .boton1{
-        text-decoration: none;
-        background-color: #763D80;
-        color: white;
-        margin: 0.5em;
-        border-radius: 2em;
-        padding: 0.5em 2em;
-        cursor: pointer; 
-        border: none;
-        }
-       .boton:hover{
-           background-color: #522B59;
-       }
-       
-       .eliminar{
-           background-color: black!important;
-       }
-       
-       .titulo{
-        margin-bottom: 1.25rem;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 48px;
-        line-height: 72px;
-        color: #522B59;
-       }
-       .etiqueta{
-           width: 20%;
-           float: left;
-           text-align: right;
-           margin-right: 5%;
-           height: 3em;
-       }
-       .etiqueta label{
-           color: #522B59;
-           font-weight: bold;
-       }
-       .campo{
-           text-align: left;
-           float:right;
-           width: 70%;
-           height: 3em;
-           margin-left: 5%;
-           font-size: medium;
-       }
-       .lineagruesa{
-           height: 7em!important;
-           margin-bottom: 2em;
-       }
-       .entrada{
-           border-radius: 25px;
-           display:inline-block;
-           padding:5px 10px;
-           border-width: 1px;
-           line-height:140%;
-           width: 30em;
-           border-color: #522B59;
-       }
-       
-       .campofoto {
-           display: flex;
-           align-items: center ;
-       }
-       .lineagruesa a{
-           margin-left: 2em;
-       }
-       
-       .lineagruesa textarea{
-           height: 10em;
-       }
-       .checkbox{
-           position: absolute;
-           display: absolute;
-           opacity: 0;
-           
-       }
-       .checklabel{
-           border: 2px solid #522B59;
-           background-color: white;
-           color: #522B59;   
-           font-weight: bold;
-           font-size: large;
-           display: inline-block;
-           width: 180px;
-           justify-content: center;
-           align-items: center;
-           
-           padding: 10px;
-           border-radius: 25px;
-           cursor: pointer;
-           -webkit-touch-callout: none;
-           -webkit-user-select: none;
-           -moz-user-select: none;
-           -ms-user-select: none;
-           user-select: none;
-           margin: 30px;
-           text-align: center;
-         
-       }
-       
-       input[type="checkbox"]:checked + label {
-           border: 2px solid #763D80;
-           background-color: #763D80;
-           color: white;
-       }
-       
-       .subtitulo label{
-           color: #522B59;
-           font-size: larger;
-           font-weight: bold;
-       }
-       .subtitulo{
-           margin-bottom: 15px;
-           position: static;
-       }
-       .texto{
-           margin-bottom: 30px;
-           position: static;
-       }
-       .texto label{
-           color: #522B59;
-           font-size: medium;
-       }
-       
-       .seleccion{
-    
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-       
-       
-       .submit input{
-           display: block;
-           margin-left: auto;
-           margin-right: auto;
-       }
-       
-       #upload{
-           display: none;
-           background-color: black;
-       }
-    
-}
-
-/* MOBILE */
-
-@media (max-width:540px) {
-    .bordecontenedor{
-    border-radius: 60px;
-    width: 90%;
-    margin: 5%;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    padding-left: 10%;
-    padding-right: 10%;
-   
-   }
    .fondorosa {
        background-color: rgb(247, 232, 249);
    }
-   
-   
-   
-   .fotoperfil{
-       border-radius: 25%;
-       width: 7em;
-       height: 7em;
+   .boxInput{
        
-   }
-   
-   .boton{
-    text-decoration: none;
-    background-color: #763D80;
-    color: white;
-    margin: 0.5em;
-    border-radius: 2em;
-    padding: 1em 3.5em;
-    cursor: pointer; 
-    border: none;
-       
-       
-   }
-
-   .boton1{
-    text-decoration: none;
-    background-color: #763D80;
-    color: white;
-    margin: 0.5em;
-    border-radius: 2em;
-    padding: 0.5em 1em;
-    cursor: pointer; 
-    border: none;
-    }
-
-   .boton:hover{
-       background-color: #522B59;
-   }
-   
-   .eliminar{
-       background-color: black!important;
-   }
-   
-   .titulo{
-    margin-bottom: 1.25rem;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 72px;
-    color: #522B59;
-    text-align: center;
-   }
-   .etiqueta{
-       width: 90%;
-       float: left;
-       text-align: left;
-       margin-right: 59%;
-       height: 3em;
-   }
-   .etiqueta label{
-       color: #522B59;
-       font-weight: bold;
-       font-size: 120%;
-   }
-   .campo{
-       text-align: left;
-       float: left;
-       width: 65%;
-       height: 3em;
-       margin-left: 0.1%;
-       
-       font-size: medium;
-       
-       
-   }
-   .lineagruesa{
-       height: 7em!important;
-       margin-bottom: 4.5em;
+       display: grid;
+       grid-template-columns: .2fr 1fr;
+       gap: 1rem;
    }
    .entrada{
-       border-radius: 25px;
-       display:block;
-       padding:9px 20px;
-       border-width: 1.2px;
-       line-height:140%;
-       width: 20em;
-       border-color: #522B59;
+       border-radius: 10px;
+       padding: 10px;
+       border: 1px solid #522B59;
+       outline: none;
    }
-   
    .campofoto {
-       
-       align-items: right;
-       display: inline-block;
-       grid-template-columns: (1, 1fr);
+      
+       display: flex;
+       align-items: center;
        width: 100%;
-       
-       
-   }
-   .lineagruesa a{
-       margin-left: 2em;
    }
    
-   .lineagruesa textarea{
-       height: 10em;
+   .boxPhoto {
+     
+       width: 120px;
+       height: 120px;
+       overflow: hidden;
+       border-radius: 100%;
+       margin-right: 15px;
+       background-size: cover;
+   
+   }
+   
+   .boxPhoto img {
+       width: 100%;
+       height: 100%;
+       position: relative;
+       border-radius: 100%;
+   
+   }
+   #upload {
+       display: none;
+       background-color: black;
+   }
+   .boton{
+       background-color: #763D80;
+       margin-right: 20px;
+       padding: 10px;
+       border-radius: 20px;
+       color: white;
+       border: none;
+       outline: none;
+       font-size: 20px;
+   }
+   .boton:hover{
+       cursor: pointer;
+   }
+   .eliminar{
+       background-color: black;
+   }
+   .seleccion{
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr ;
    }
    .checkbox{
-       position: absolute;
-       display: absolute;
-       opacity: 0;
-       
+       display: none;
    }
-   .checklabel{
+   .checklabel {
        border: 2px solid #522B59;
        background-color: white;
-       color: #522B59;   
+       color: #522B59;
        font-weight: bold;
        font-size: large;
-       display: inline-block;
+       display: flex;
        width: 180px;
        justify-content: center;
        align-items: center;
-       
+       height: 60px;
        padding: 5px;
        border-radius: 25px;
        cursor: pointer;
-       -webkit-touch-callout: none;
+       /* -webkit-touch-callout: none;
        -webkit-user-select: none;
        -moz-user-select: none;
-       -ms-user-select: none;
-       user-select: none;
+       -ms-user-select: none; */
+       /* user-select: none; */
        margin: 30px;
        text-align: center;
-
-     
    }
-   
-   input[type="checkbox"]:checked + label {
+   input[type="checkbox"]:checked+label {
        border: 2px solid #763D80;
        background-color: #763D80;
        color: white;
    }
-   
-   .subtitulo label{
-       color: #522B59;
-       font-size: x-large;
-       font-weight: bold;
-   }
-   .subtitulo{
-       margin-bottom: 15px;
-   }
-   .texto{
-       margin-bottom: 30px;
-   }
-   .texto label{
-       color: #522B59;
-       font-size: medium;
-   }
-   
-   .seleccion{
-       
-       margin: 12px;
-       display: grid;
-       align-items: center;
-       justify-content: space-between;
-       grid-template-columns: repeat(1, 1fr);
-       
-   }
-
-   
-   
-   .submit input{
+   .btn2{
        display: block;
-       margin-left: auto;
-       margin-right: auto;
+      margin-left: auto;
+      margin-right: auto;
    }
+   .boxBtn {
+       display: flex;
+       flex-direction: row;
+       
+   }
+   @media (max-width:768px) {
+       .boxInput{
+           grid-template-columns: 1fr;
+          
+       }
+       .titulo{
+           font-size: 24px;
+       }
+       .bordecontenedor{
+           font-size:16px;
+       }
+       .seleccion{
+           grid-template-columns: 1fr;
+       }
+       .campofoto{
+           flex-direction: column;
+       }
+       
    
-   #upload{
-       display: none;
-       background-color: black;
+   
    }
-}
