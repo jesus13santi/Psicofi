@@ -35,36 +35,38 @@ const PsicoList = ({ psicologos,areas }) => {
     });
     return listaOrdenada;
   };
-  // const ordenarRatings = (lista) => {
-  //   const listaOrdenada = lista.slice().sort((a, b) => {
-
-  //     const nameA = a.ratings.reduce((c, d) => c + d, 0) / a.ratings.length;
+  
+  const ordenarRatings = (lista) => {
+    const listaOrdenada = lista.slice().sort((a, b) => {
+      const nameA = a.ratings.reduce((c, d) => c + d, 0)/a.ratings.length;
       
-  //     const nameB = b.ratings.reduce((c, d) => a + d, 0) / b.length;
-  //     console.log("nameB", nameB);
-  //     if (!nameA && nameB) {
-  //       return -1;
-  //     }
-  //     if (!nameB && nameA) {
-  //       return 1;
-  //     }
-  //     if (nameA < nameB) {
-  //       return -1;
-  //     }
-  //     if (nameA > nameB) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  //   return listaOrdenada;
-  // };
+      const nameB = b.ratings.reduce((c, d) => c + d, 0) / b.ratings.length;
+
+      console.log("nameB", nameB);
+      
+      if (!nameA && nameB) {
+        return -1;
+      }
+      if (!nameB && nameA) {
+        return 1;
+      }
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    return listaOrdenada;
+  };
  
   const haddleSelect = (e) => {
     setOrden(e.target.value);
     if (e.target.value === "ordenAlfabetico") {
       setListaOrdenada(ordenarNombres(psicologos));
     } else if (e.target.value === "ranking") {
-      console.log("Hola")
+      setListaOrdenada(ordenarRatings(psicologos));
     } else {
       setListaOrdenada(psicologos);
     }

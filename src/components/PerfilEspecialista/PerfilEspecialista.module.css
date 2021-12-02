@@ -301,3 +301,6 @@ input[type="checkbox"]:checked+label {
         margin-bottom: 20px;
     }
 }
+.aux2{
+    display: none;
+}

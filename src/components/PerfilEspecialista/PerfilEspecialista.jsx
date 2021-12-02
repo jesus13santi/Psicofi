@@ -24,6 +24,7 @@ const PerfilEspecialista = ({areas}) => {
     date: "",
   });
   const history = useHistory();
+  const aux = [];
   
   useEffect(() => {
     console.log("####################################");
@@ -62,23 +63,14 @@ const PerfilEspecialista = ({areas}) => {
     if (validar_campos()) {
       console.log(biography);
       console.log(user.id);
+
       let problemas = [];
-      $.each(
-        [
-          "Ansiedad",
-          "Parejas",
-          "sexualidad",
-          "estres",
-          "amorosos",
-          "desarrollo",
-        ],
-        function (index, value) {
-          if ($("#" + value).prop("checked")) {
-            problemas.push(value);
-          }
+      $.each(aux, function (index, value) {
+        if ($("#" + value).prop("checked")) {
+          problemas.push(value);
         }
-      );
-      console.log(problemas);
+      });
+
       user.problemas = problemas;
       await db.collection("users").doc(user.id).update({
         number: user.number,
@@ -86,11 +78,10 @@ const PerfilEspecialista = ({areas}) => {
         description: user.description,
         problemas: problemas,
       });
-      const updateUser = await getUserByEmail(user.email);
-      setUser(updateUser);
       history.push("/deck");
     }
   };
+
 
   const actualizarUsuario = async () => {
     console.log(user);
@@ -350,6 +341,9 @@ const PerfilEspecialista = ({areas}) => {
             {!!areas &&
               areas.map((area) => (
                 <div>
+                  <div className={styles.aux2}>
+                    {aux.push(area.especialidad)}
+                  </div>
                   <input
                     className={styles.checkbox}
                     type="checkbox"
