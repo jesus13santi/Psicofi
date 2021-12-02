@@ -120,14 +120,16 @@ function Chat() {
         
         await db.collection('users').doc(firstUid).get().then((doc)=>{
             const aux2 = doc.data().appointments
-            console.log('Citas de pepito', aux2)
+            const aux3 = (aux2.filter((item) => item.id !== id))
+            console.log('Citas sin la actual', aux3)
+            
             // usuario
             db
             .collection("users")
             .doc(firstUid)
             .update({
           appointments: [
-            ...aux2,
+            ...aux3,
             {
               date: cita.date,
               hour: cita.hour,
@@ -243,9 +245,17 @@ function Chat() {
                 </button>
                 </form>
             ) : (
-                canUserRate() && (
+                <div>
+                {user.role =='Paciente' && active =='no' && status == 0 &&(
+                
                     <PsicoRating />
                 )
+                }
+                </div>
+
+                // canUserRate() && (
+                //     <PsicoRating />
+                // )
             )}
 
             <div ref={scroll} className={styles.scrollDiv}></div>
