@@ -100,15 +100,16 @@ const PerfilPaciente = () => {
       <div className={`${styles.fondorosa} ${styles.bordecontenedor}`}>
         <div className={styles.titulo}>Mi perfil</div>
         <form>
-          <div>
+          < div className ={styles.box}>     
+            <div>
             <div className={styles.etiqueta}>
               <label for="NombreCompleto">Nombre Completo:</label>
             </div>
             <div className={styles.campo}>             
               <label id="NombreCompleto">{user.name}</label>
             </div>
-          </div>
-          <div>
+            </div>
+           <div>
             <div className={styles.etiqueta}>
               <label for="FechaNacimiento">Fecha de nacimiento:</label>
             </div>
@@ -123,8 +124,8 @@ const PerfilPaciente = () => {
               ></input> */}
               <label>{user.birthday}</label>
             </div>
-          </div>
-          <div>
+            </div>
+           <div>
             <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
               <label for="FotoPerfil">Foto de perfil:</label>
             </div>
@@ -133,16 +134,16 @@ const PerfilPaciente = () => {
             >
               
               <img src={user.photo} className={styles.fotoperfil}></img>
-              <label for={styles.upload} class={styles.boton}>
+              <label for={styles.upload} class={styles.boton1}>
                   Cambiar
               </label>
               <input id={styles.upload} className={styles.boton} type="file" onChange={(e)=>{upload(e.target.files[0])}}/>
-              <a href="#" className={`${styles.boton} ${styles.eliminar}`}>
+              <a href="#" className={`${styles.boton1} ${styles.eliminar}`}>
                 Eliminar
               </a>
             </div>
-          </div>
-          <div>
+           </div>
+           <div>
             <div className={styles.etiqueta}>
               <label for="correo">Correo electrónico:</label>
             </div>
@@ -156,8 +157,8 @@ const PerfilPaciente = () => {
                 onChange = {e => user.email = e.target.value}
               ></input>
             </div>
-          </div>
-          <div>
+           </div>
+           <div>
             <div className={styles.etiqueta}>
               <label for="telefono">Teléfono:</label>
             </div>
@@ -171,8 +172,8 @@ const PerfilPaciente = () => {
                 onChange = {e => user.number = e.target.value}
               ></input>
             </div>
-          </div>
-          <div>
+           </div>
+           <div>
             <div className={styles.etiqueta}>
               <label for="pais">Lugar de residencia:</label>
             </div>
@@ -186,8 +187,8 @@ const PerfilPaciente = () => {
                 onChange = {e => user.pais = e.target.value}
               ></input>
             </div>
-          </div>
-          <div>
+           </div>
+           <div>
             <div className={`${styles.etiqueta} ${styles.lineagruesa}`}>
               <label for="description">Biografía:</label>
             </div>
@@ -199,6 +200,8 @@ const PerfilPaciente = () => {
                 onChange = {e => user.description = e.target.value}
               />
             </div>
+          </div>
+
           </div>
           <div className={styles.subtitulo}>
             <label>Condiciones a tratar</label>
