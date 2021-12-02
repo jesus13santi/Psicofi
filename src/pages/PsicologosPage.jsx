@@ -5,7 +5,7 @@ import { db } from "../utils/firebaseConfig";
 
 const PsicologosPage = ({children}) => {
   const [psicologos, setPsicologos] = useState([]);
-  
+  const [areas, setAreas]=useState([])
   
   const [isLoading, setLoading] = useState(true);
   const getArrayCollection = (snapshot) => {
@@ -26,22 +26,29 @@ const PsicologosPage = ({children}) => {
   const fetchPsico = async () => {
     const userReference = db.collection("users");
     const snapshot = await userReference.where("role", "==", "Psicologo").get();
-    
     if (!snapshot.size) return null;
     const listaPsico = getElementArrayCollection(snapshot);
     setPsicologos(listaPsico);
     
   };
+  const fetchEspecialidades = async () => {
+    const userReference = db.collection("especialidades");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaAreas = getElementArrayCollection(snapshot);
+    setAreas(listaAreas);
+  };
 
   useEffect(() => {
     fetchPsico();
+    fetchEspecialidades();
     setLoading(false);
   }, []);
-
+ 
   return (
     <div>
       {isLoading ? <h1>Cargando...</h1> :
-       <PsicoList psicologos={psicologos} />}
+       <PsicoList psicologos={psicologos} areas={areas} />}
     </div>
   );
 };
