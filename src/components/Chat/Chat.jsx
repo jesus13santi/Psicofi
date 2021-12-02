@@ -106,6 +106,7 @@ function Chat() {
         const cita = user.appointments.find(
             (element) => element.id == id
           );
+        console.log('ID', id)
         const aux = (user.appointments.filter((item) => item.id !== id))
         console.log('cita',cita)
         console.log('aux',aux)
@@ -116,20 +117,28 @@ function Chat() {
         const firstName = users[1].name
         const firstPhoto = users[1].img
         
+
         const secondUid = users[1].id
         const secondName = users[0].name
         const secondPhoto = users[0].img
         
+
+        console.log(`UID: ${firstUid} Nombre: ${secondName}`)
+        console.log(`UID: ${secondUid} Nombre: ${firstName}`)
+
         await db.collection('users').doc(firstUid).get().then((doc)=>{
+            console.log('ENTRA 1')
             const aux2 = doc.data().appointments
-            console.log('Citas de pepito', aux2)
+            const aux3 = (aux2.filter((item) => item.id !== id))
+            console.log('AUX 3', aux3)
+            console.log('AUX 2', aux2)
             // usuario
             db
             .collection("users")
             .doc(firstUid)
             .update({
           appointments: [
-            ...aux2,
+            ...aux3,
             {
               date: cita.date,
               hour: cita.hour,
