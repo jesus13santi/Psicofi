@@ -4,16 +4,7 @@ import Video from "../../img/mdi_video.png";
 import Calendar from "../../img/mdi_calendar-blank.png";
 import ArrowLarge from "../../img/ArrowLarge.png";
 import ArrowSmall from "../../img/ArrowSmall.png";
-import logoInstagram from "../../img/icons_instagram.png";
-import logoFacebook from "../../img/icons_facebook.png";
-import logoTwitter from "../../img/icons_twitter.png";
-import logoMail from "../../img/icons_mail.png";
-import logoWhat from "../../img/icons_whatsapp.png";
-import photo from "../../img/photo.png";
-import Loading from "../Loading/Loading"
 import { useHistory } from "react-router-dom";
-import BigLogo from "../../img/Group.png";
-import Fondo from "../../img/shutterstock_1739543105.jpg";
 import { useState, useEffect } from "react";
 import { db } from "../../utils/firebaseConfig";
 import Footer from "../Footer/Footer";

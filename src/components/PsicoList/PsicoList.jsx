@@ -62,7 +62,7 @@ const PsicoList = ({ psicologos,areas }) => {
         <div className={styles.boxPsico}>
           <div className={styles.firstText}>
             <div className={styles.boxTitle}>
-              <h1 className={styles.title}>Especialistas</h1>
+              <h2 className={styles.title}>Especialistas</h2>
               <input
                 name="search"
                 className={styles.input}
