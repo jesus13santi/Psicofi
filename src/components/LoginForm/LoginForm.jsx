@@ -64,7 +64,7 @@ function LoginForm() {
 
   const handleOnChange = (event) => {
     const { value, name: inputName } = event.target;
-    // console.log({ inputName, value });
+    // //console.log({ inputName, value });
     setValues({ ...values, [inputName]: value });
   };
 
@@ -75,11 +75,11 @@ function LoginForm() {
     try{
       await auth.signInWithEmailAndPassword(values.email, values.password);
       setLoading(false);
-      console.log("LOGIN_PASSWOROD");
+      //console.log("LOGIN_PASSWOROD");
       
 
     }catch(e){
-      console.log(e.code)
+      //console.log(e.code)
       setError("Usuario o Contraseña invalido, por favor verifique e intente de nuevo.")
       setLoading(false);
     }

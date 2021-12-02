@@ -32,7 +32,7 @@ function Chat() {
 
     useEffect(()=> {
         if (db){
-            console.log('docs')
+            //console.log('docs')
             db.collection("chats").doc(id).onSnapshot((doc)=> {
                     const data = doc.data()
                     setMessages(data.msjs)
@@ -104,14 +104,14 @@ function Chat() {
         const cita = user.appointments.find(
             (element) => element.id == id
           );
-        console.log('ID', id)
+        //console.log('ID', id)
         const aux = (user.appointments.filter((item) => item.id !== id))
-        console.log('cita',cita)
-        console.log('aux',aux)
-        console.log('USERS', users)
+        //console.log('cita',cita)
+        //console.log('aux',aux)
+        //console.log('USERS', users)
 
         const firstUid = users[0].id
-        console.log(firstUid)
+        //console.log(firstUid)
         const firstName = users[1].name
         const firstPhoto = users[1].img
         
@@ -121,15 +121,15 @@ function Chat() {
         const secondPhoto = users[0].img
         
 
-        console.log(`UID: ${firstUid} Nombre: ${secondName}`)
-        console.log(`UID: ${secondUid} Nombre: ${firstName}`)
+        //console.log(`UID: ${firstUid} Nombre: ${secondName}`)
+        //console.log(`UID: ${secondUid} Nombre: ${firstName}`)
 
         await db.collection('users').doc(firstUid).get().then((doc)=>{
-            console.log('ENTRA 1')
+            //console.log('ENTRA 1')
             const aux2 = doc.data().appointments
             const aux3 = (aux2.filter((item) => item.id !== id))
-            console.log('AUX 3', aux3)
-            console.log('AUX 2', aux2)
+            //console.log('AUX 3', aux3)
+            //console.log('AUX 2', aux2)
             // usuario
             db
             .collection("users")

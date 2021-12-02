@@ -27,10 +27,10 @@ const Checkout = ({psicologo,cita}) =>  {
 
   const calcularTotales = () =>{
     let suma = 0;
-    console.log('******************************')
+    //console.log('******************************')
     suma = suma + committedFieldsToAdd.precio;
     setSubtotal(suma);
-    console.log(parseInt(subtotal));
+    //console.log(parseInt(subtotal));
     setImpuestos(subtotal*0.16);
     setAmount(subtotal+impuestos);
   }
@@ -38,16 +38,16 @@ const Checkout = ({psicologo,cita}) =>  {
    
   const onError = (err) =>{
     setError("Error, por favor verifique y vuelva a intentarlo.")
-    console.log(err);
+    //console.log(err);
   }
   const onSuccess = (suc) =>{
     handdleAppointment()
-    console.log(suc);
+    //console.log(suc);
   }
 
   const onCancel = (canc) =>{
     setError("Se cancelo su operacion.")
-    console.log(canc);
+    //console.log(canc);
   }
   
 
@@ -56,7 +56,7 @@ const Checkout = ({psicologo,cita}) =>  {
     try {
       await db.collection("chats").doc(uid).set(user);
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
   };
   

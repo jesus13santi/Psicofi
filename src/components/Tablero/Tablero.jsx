@@ -12,7 +12,7 @@ import Loading from "../Loading/Loading";
 
 function Tablero() {
     const {user, setUser}= useContext(UserContext);
-    console.log(user)
+    //console.log(user)
     
     return (
     <>
@@ -25,7 +25,7 @@ function Tablero() {
         <h1 className={styles.boxTitle}>
           Citas próximas: 
         </h1>
-        {"Next App",console.log(user.nextAppointments)}
+
         <div className={styles.citasProximas}>
         
         {user.appointments.length > 0 ?(

@@ -41,7 +41,7 @@ const PsicoList = ({ psicologos,areas }) => {
   //     const nameA = a.ratings.reduce((c, d) => c + d, 0) / a.ratings.length;
       
   //     const nameB = b.ratings.reduce((c, d) => a + d, 0) / b.length;
-  //     console.log("nameB", nameB);
+  //     //console.log("nameB", nameB);
   //     if (!nameA && nameB) {
   //       return -1;
   //     }
@@ -64,14 +64,14 @@ const PsicoList = ({ psicologos,areas }) => {
     if (e.target.value === "ordenAlfabetico") {
       setListaOrdenada(ordenarNombres(psicologos));
     } else if (e.target.value === "ranking") {
-      console.log("Hola")
+      //console.log("Hola")
     } else {
       setListaOrdenada(psicologos);
     }
   };
-  console.log(listaOrdenada)
+  //console.log(listaOrdenada)
   const handdleEsp=(e)=>{
-    console.log(e.target.value)
+    //console.log(e.target.value)
     setEsp(e.target.value);
   }
   const cambiarLista = async () => {
@@ -80,7 +80,7 @@ const PsicoList = ({ psicologos,areas }) => {
     }
   };
 
-  console.log(orden);
+  //console.log(orden);
 
   return (
     <>
