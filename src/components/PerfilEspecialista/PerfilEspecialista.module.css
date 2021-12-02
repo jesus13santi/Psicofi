@@ -4,8 +4,8 @@
     margin: 5%;
     padding-top: 60px;
     padding-bottom: 60px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: #763D80;
     color: #522B59;
     font-size: 18px;
@@ -16,7 +16,7 @@
 }
 
 .titulo {
-    font-size: 72px;
+    font-size: 48px;
     font-weight: 800;
     margin-bottom: 20px;
 }
@@ -73,6 +73,7 @@
 .boton {
     background-color: #522B59;
     margin-right: 20px;
+    margin-top: 30px;
     padding: 15px;
     border-radius: 20px;
     color: white;
@@ -85,20 +86,27 @@
 .boton:hover {
     cursor: pointer;
     background-color:  #763D80;
+    color: white;
 }
 
 .eliminar {
-    background-color: black;
+    background-color: white;
+    border: 1px solid;
+    border-color: #522B59;
+    color: #522B59;
 }
+
 
 .seleccion {
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 15px 15px;
 }
 
 .checkbox {
     display: none;
+    
 }
 
 .checklabel {
@@ -108,7 +116,7 @@
     font-weight: bold;
     font-size: large;
     display: flex;
-    width: 180px;
+    width: 100%;
     justify-content: center;
     align-items: center;
     height: 60px;
@@ -120,9 +128,13 @@
     -moz-user-select: none;
     -ms-user-select: none; */
     /* user-select: none; */
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    
     text-align: center;
+}
+
+.checklabel:hover {
+    background: rgb(247, 232, 249);
 }
 
 input[type="checkbox"]:checked+label {
@@ -153,7 +165,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .title {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
@@ -183,7 +195,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .button {
-    background-color: #763D80;
+    background-color: #522B59;
     font-weight: 600;
     font-size: 20px;
     border: none;
@@ -193,7 +205,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .button:hover {
-    background-color: #522B59;
+    background-color:  #763D80;
 }
 
 .citas {
@@ -292,6 +304,10 @@ input[type="checkbox"]:checked+label {
     }
     .seleccion{
         grid-template-columns: 1fr 1fr;
+        grid-gap: 10px 10px;
+    }
+    .checklabel{
+        width: 100%;
     }
     
     
@@ -304,4 +320,13 @@ input[type="checkbox"]:checked+label {
     .button{
         margin-bottom: 20px;
     }
+    .seleccion{
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .checklabel{
+        width: 100%;
+    }
+
 }
