@@ -8,13 +8,33 @@ import styles from "./Admin.module.css";
 
 const Admin = ({ pendientes, rechazados }) => {
   const [value, setValue] = useState("");
-  const [especialidades, setEspecialidades] = useState([]);
-  
+  const [valueB, setValueB] = useState("");
+
+  const aggEspecialiadad = async(e) =>{
+    const esp = document.getElementById("especialidad").value; 
+    db.collection("especialidades").add({
+      especialidad: esp  
+    })
+  }
 
   const handleOnchange = (event) => {
     setValue(event.target.value.toLowerCase());
   };
+
   const searchingTerm = (value) => {
+    return function (x) {
+      return (
+        x.name.toLowerCase().includes(value)
+
+      );
+    };
+  };
+
+  const handleOnchangeB = (event) => {
+    setValueB(event.target.value.toLowerCase());
+  };
+
+  const searchingTermB = (value) => {
     return function (x) {
       return (
         x.name.toLowerCase().includes(value)
@@ -62,14 +82,14 @@ const Admin = ({ pendientes, rechazados }) => {
               className={styles.input}
               type="text"
               placeholder="Buscar..."
-              onChange={handleOnchange}
+              onChange={handleOnchangeB}
             />
           </div>
         </div>
 
         <div className={styles.list}>
           
-            {rechazados.filter(searchingTerm(value)).map((rechazado) => (
+            {rechazados.filter(searchingTermB(valueB)).map((rechazado) => (
                   <CardAdmin
                     key={rechazado.id}
                     id={rechazado.id}
@@ -81,9 +101,30 @@ const Admin = ({ pendientes, rechazados }) => {
                 ))}
         </div>
       </div>
+      <div className={styles.boxAdmin}>
+        <div className={styles.firstText}>  
+          <div className={styles.boxTitle}>
+            <h1 className={styles.title}>Agregar especialidad</h1>
+          </div>
+
+          
+          <div className={styles.inputAgg}>
+
+            <input
+              id="especialidad"
+              className={styles.agg}
+              type="text"
+              placeholder="Especialidad..."
+            /> 
+
+            <button className={styles.continue} id="boton" onClick={aggEspecialiadad}> Agregar </button>
+
+          </div>    
+        </div>
+      </div>
         
 
-      </div>
+    </div>
   );
 };
 
