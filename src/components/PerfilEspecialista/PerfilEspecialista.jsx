@@ -12,11 +12,51 @@ import uniqid from "uniqid";
 import Loading from "../Loading/Loading";
 import swal from "sweetalert";
 
-const PerfilEspecialista = ({areas}) => {
+const PerfilEspecialista = () => {
+
+  const [areas, setAreas]=useState([])
+  const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+  /*
+  useEffect(() => {        
+      //console.log(user)
+  })*/
+  const getArrayCollection = (snapshot) => {
+    const collection = [];
+    snapshot.forEach((element) => {
+      collection.push({
+        id: element.id,
+        ...element.data(),
+      });
+    });
+    return collection;
+  };
+  const getElementArrayCollection = (snapshot) => {
+    const collection = getArrayCollection(snapshot);
+    return collection;
+  };
+
+ 
+  const fetchEspecialidades = async () => {
+    const userReference = db.collection("especialidades");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaAreas = getElementArrayCollection(snapshot);
+    setAreas(listaAreas);
+  };
+
+  useEffect(() => {
+    
+    fetchEspecialidades();
+    
+  }, []);
+
+
+
+
   const [date, setDate] = useState(new Date());
   const [birthday, setBirthday] = useState("");
   const [biography, setBiography] = useState("");
-  const { user, setUser, getUserByEmail } = useContext(UserContext);
+  // const { user, setUser, getUserByEmail } = useContext(UserContext);
   // const [TodayCompare, setTodayCompare]=useState("")
   // const [Date1Compare, setDate1Compare]=useState("")
   const [error, setError] = useState("");

@@ -7,7 +7,6 @@ import TestimoniosPage from "./pages/TestimoniosPage";
 import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
-import PerfilPaciente from './components/PerfilPaciente/PerfilPaciente'
 import Perfil from './components/Perfil/Perfil'
 import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 import ElectionPage from "./pages/ElectionPage";
@@ -38,11 +37,11 @@ function Routes() {
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
       {/* <exact path="/perfilPaciente" component={PerfilPaciente}></exact> */}
-      <Route
+      {/* <Route
         exact
         path="/perfilEspecialista"
         component={PerfilEspecialista}
-      ></Route>
+      ></Route> */}
       <Route
         exact
         path="/profile/:uid"

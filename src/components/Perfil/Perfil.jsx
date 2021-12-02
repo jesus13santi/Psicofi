@@ -8,50 +8,17 @@ import PerfilPaciente from "../PerfilPaciente/PerfilPaciente";
 import Loading from "../Loading/Loading";
 
 const Perfil = () => {
-    const [areas, setAreas]=useState(null)
-    const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
-    /*
-    useEffect(() => {        
-        //console.log(user)
-    })*/
-    const getArrayCollection = (snapshot) => {
-      const collection = [];
-      snapshot.forEach((element) => {
-        collection.push({
-          id: element.id,
-          ...element.data(),
-        });
-      });
-      return collection;
-    };
-    const getElementArrayCollection = (snapshot) => {
-      const collection = getArrayCollection(snapshot);
-      return collection;
-    };
-
-   
-    const fetchEspecialidades = async () => {
-      const userReference = db.collection("especialidades");
-      const snapshot = await userReference.get();
-      if (!snapshot.size) return null;
-      const listaAreas = getElementArrayCollection(snapshot);
-      setAreas(listaAreas);
-    };
-
-    useEffect(() => {
-      
-      fetchEspecialidades();
-      
-    }, []);
+    
     //console.log(areas)
- 
+    const { user, setUser, getUserByEmail } = useContext(UserContext);
     return (
       <>
         {!!user ? (
-          <div>
-            {user.role == "Psicologo" && <PerfilEspecialista areas={areas} />}
 
-            {user.role == "Paciente" && <PerfilPaciente areas={areas} />}
+          <div>
+            {user.role == "Psicologo" && <PerfilEspecialista />}
+
+            {user.role == "Paciente" && <PerfilPaciente />}
           </div>
         ) : (
           <div>

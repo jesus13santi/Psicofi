@@ -8,11 +8,50 @@ import $ from 'jquery';
 import firebase from "firebase";
 import Footer from "../Footer/Footer";
 
-const PerfilPaciente = ({areas}) => {
+const PerfilPaciente = () => {
+
+  const [areas, setAreas]=useState([])
+  const { user, setUser ,createUser,getUserByEmail } = useContext(UserContext);
+  /*
+  useEffect(() => {        
+      //console.log(user)
+  })*/
+  const getArrayCollection = (snapshot) => {
+    const collection = [];
+    snapshot.forEach((element) => {
+      collection.push({
+        id: element.id,
+        ...element.data(),
+      });
+    });
+    return collection;
+  };
+  const getElementArrayCollection = (snapshot) => {
+    const collection = getArrayCollection(snapshot);
+    return collection;
+  };
+
+ 
+  const fetchEspecialidades = async () => {
+    const userReference = db.collection("especialidades");
+    const snapshot = await userReference.get();
+    if (!snapshot.size) return null;
+    const listaAreas = getElementArrayCollection(snapshot);
+    setAreas(listaAreas);
+  };
+
+  useEffect(() => {
+    
+    fetchEspecialidades();
+    
+  }, []);
+
+
+
     const [birthday, setBirthday] = useState("");    
     const [biography, setBiography] = useState("");
-    const {getUserByEmail} = useContext(UserContext) 
-    const { user, setUser } = useContext(UserContext);
+    // const {getUserByEmail} = useContext(UserContext) 
+    // const { user, setUser } = useContext(UserContext);
     const history = useHistory();
     const aux=[];
     
