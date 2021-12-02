@@ -119,10 +119,10 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                 <div className={styles.addIncidencia}>
 
                                     <div className={styles.iAtribute}>
-                                        <h3 className={styles.tag}>Fecha:</h3>
+                                        <h3 className={styles.incTag}>Fecha:</h3>
                                         <p className={styles.text}>{today}</p>
                                         <p></p>
-                                        <h3 className={styles.tag}>Título:</h3>
+                                        <h3 className={styles.incTag}>Título:</h3>
 
                                         <input
                                             name="title"
@@ -133,7 +133,7 @@ const IndividualPatient = ({ id, name, email, pais, number, photo, incidencias }
                                             ></input>
 
                                         <p></p>
-                                        <h3 className={styles.tag}>Descripción:</h3>
+                                        <h3 className={styles.incTag}>Desc:</h3>
                                         <div className={styles.textAreaBox}>
 
                                             <textarea
