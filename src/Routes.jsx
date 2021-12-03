@@ -36,22 +36,8 @@ function Routes() {
       <PrivateRoute exact path="/election" component={ElectionPage}></PrivateRoute>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
-      {/* <exact path="/perfilPaciente" component={PerfilPaciente}></exact> */}
-      {/* <Route
-        exact
-        path="/perfilEspecialista"
-        component={PerfilEspecialista}
-      ></Route> */}
-      <Route
-        exact
-        path="/profile/:uid"
-        component={PerfilVistaPacientePage}
-      ></Route>
-      <Route
-        exact
-        path="/profilePsico/:uid"
-        component={PerfilVistaPsicoPage}
-      ></Route>
+      <Route exact path="/profile/:uid" component={PerfilVistaPacientePage}></Route>
+      <Route exact path="/profilePsico/:uid" component={PerfilVistaPsicoPage}></Route>
       <PrivateRoute exact path="/perfil" component={Perfil}></PrivateRoute>
       <PrivateRoute exact path="/deck" component={TableroPage}></PrivateRoute>
       <PrivateRoute exact path="/upload" component={UploadPage}></PrivateRoute>
