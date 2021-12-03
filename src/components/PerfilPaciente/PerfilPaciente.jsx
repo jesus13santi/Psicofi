@@ -7,6 +7,7 @@ import { db } from '../../utils/firebaseConfig';
 import $ from 'jquery';
 import firebase from "firebase";
 import Footer from "../Footer/Footer";
+import swal from "sweetalert";
 
 const PerfilPaciente = () => {
 
@@ -102,6 +103,12 @@ const PerfilPaciente = () => {
                 "description": user.description,
                 "problemas": problemas
               })
+              swal(
+                "Sus datos han sido modificados exitosamente.",
+                "",
+                "success"
+              );
+              
             history.push("/deck")
           }
         }
@@ -156,6 +163,7 @@ const PerfilPaciente = () => {
           });
           const updateUser = await getUserByEmail(user.email);
           setUser(updateUser);
+          swal("Foto Eliminada", "Su foto ha sido eliminada exitosamente.", "success");
           
           
       }

@@ -118,6 +118,11 @@ const PerfilEspecialista = () => {
         description: user.description,
         problemas: problemas,
       });
+      swal(
+        "Sus datos han sido modificados exitosamente.",
+        "",
+        "success"
+      );
       history.push("/deck");
     }
   };
@@ -180,6 +185,7 @@ const PerfilEspecialista = () => {
     });
     const updateUser = await getUserByEmail(user.email);
     setUser(updateUser);
+    swal("Foto Eliminada", "Su foto ha sido eliminada exitosamente.", "success");
     
     
 }
