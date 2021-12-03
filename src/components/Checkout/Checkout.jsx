@@ -5,7 +5,7 @@ import styles from "./Checkout.module.css";
 import { db } from '../../utils/firebaseConfig';
 import { UserContext } from '../../context/UserContext';
 import { useHistory, useParams } from 'react-router-dom';
-
+import swal from "sweetalert";
 const Checkout = ({psicologo,cita}) =>  {
       const params =useParams()
       const {user,setUser, getUserByEmail}= useContext(UserContext)
@@ -46,7 +46,7 @@ const Checkout = ({psicologo,cita}) =>  {
   }
 
   const onCancel = (canc) =>{
-    setError("Se cancelo su operacion.")
+    setError("Se canceló su operación.")
     //console.log(canc);
   }
   
@@ -120,19 +120,23 @@ const Checkout = ({psicologo,cita}) =>  {
           ],
         });
 
-      alert("cita Creada");
+      swal(
+        "Cita Agendada",
+        "Su cita se agendó exitosamente.",
+        "success"
+      );
       const updateUser = await getUserByEmail(user.email);
       setUser(updateUser);
       history.push("/deck");
     } else {
-      alert("No se selecciono ninguna cita");
+      swal("No se selecciono ninguna cita", "Su cita no se pudo agendar exitosamente.","warning");
     }
   };
   
 
   return (
     <div className={`${styles.boxcontenedor}`}>
-      <h1>Ultimo Paso!</h1>
+      <h1>Último Paso!</h1>
       <div className={styles.firstBox}>
         <div>
           <h3>{committedFieldsToAdd.tipo}</h3>
@@ -159,6 +163,14 @@ const Checkout = ({psicologo,cita}) =>  {
           onError={onError}
           onSuccess={onSuccess}
           onCancel={onCancel}
+          className={styles.btnPaypal}
+          style={{
+            color: "blue",
+            size: "responsive",
+            shape: "pill",
+            label: "pay",
+           
+          }}
         />
       </div>
       {!!error && (

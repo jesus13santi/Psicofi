@@ -224,8 +224,11 @@ const Hpage = () => {
                     <div className={styles.valoracion}>
                       <p>
                         Valoración:{" "}
-                        {psicologo.ratings.reduce((a, b) => a + b, 0) /
-                          psicologo.length}
+                        {(
+                          psicologo.ratings.reduce((a, b) => a + b, 0) /
+                          psicologo.ratings.length
+                        ).toFixed(1)}
+                        ★
                       </p>
                     </div>
                     <p className={styles.especialidaesExtra}>
