@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './SentMessage.module.css'
 
 function SentMessage({name, time, photo, msj}){

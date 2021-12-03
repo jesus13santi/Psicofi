@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Tablero.module.css";
 import UTabCard from "../UTabCard/UTabCard";
 import CardStory from "../CardStory/CardStory";

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect,useContext } from "react";
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 import styles from "./Checkout.module.css";
@@ -18,7 +17,7 @@ const Checkout = ({psicologo,cita}) =>  {
       const [client, setClient] = useState({
         sandbox:     "AazrcZrjAQ-QojuUC2UM1OnwjMTG63n_Ymsk-Ue4BF0FjKk5FCmACHCKxeBSEQ6XPDeX-yLMU_juZbrV",
         production: 'YOUR-PRODUCTION-APP-ID'}); 
-        const [committedFieldsToAdd, setCommittedFieldsToAdd] = React.useState({tipo: 'Cita 1 Hora', especialista: psicologo.name, precio: 29});
+        const [committedFieldsToAdd, setCommittedFieldsToAdd] = useState({tipo: 'Cita 1 Hora', especialista: psicologo.name, precio: 29});
       const [error, setError]=useState(null)
      
         useEffect(() => {

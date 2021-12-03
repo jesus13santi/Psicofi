@@ -1,7 +1,5 @@
-import React from "react";
 import styles from "./CardPsico.module.css";
 import { Link, useHistory } from "react-router-dom";
-import start from "../../img/start.png"
 
 
 const CardPsico = ({ id, name, pais, photo, description, problemas, rating }) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import PerfilVistaPaciente from "../components/PerfilVistaPaciente/PerfilVistaPaciente";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";

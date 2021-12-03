@@ -1,4 +1,3 @@
-import React from 'react'
 import Perfil from '../components/Perfil/Perfil'
 
 const PerfilPage = () => {

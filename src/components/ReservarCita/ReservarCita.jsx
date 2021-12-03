@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ReservarCita.module.css";
 import Footer from "../Footer/Footer";
 import { useState, useContext } from "react";

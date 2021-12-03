@@ -1,20 +1,16 @@
-import React from "react";
 import IndividualPatient from "../components/IndividualPatient/IndividualPatient";
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../utils/firebaseConfig";
-import { UserContext } from "../context/UserContext";
 import Loading from "../components/Loading/Loading";
 
 const IndividualPatientPage = () => {
 
     const params = useParams();
-    const {user}= useContext(UserContext);
     const [patient, setPatient] = useState(null);
-    const [isLoading, setLoading] = useState(true);
   
     const fetchPatient = async () => {
-    const listaPatients = db.collection("users")
+        db.collection("users")
         .doc(params.uid)
         .get()
         .then((user) => {

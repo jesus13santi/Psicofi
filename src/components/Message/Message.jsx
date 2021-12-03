@@ -1,4 +1,3 @@
-import React from 'react'
 import SentMessage from '../SentMessage/SentMessage'
 import RecievedMessage from '../RecievedMessage/RecievedMessage'
 import { useContext } from "react";

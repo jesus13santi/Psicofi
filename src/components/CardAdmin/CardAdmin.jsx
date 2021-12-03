@@ -1,6 +1,4 @@
-import React from "react";
 import styles from "./CardAdmin.module.css";
-import img from "../../img/photo.png";
 import { db } from "../../utils/firebaseConfig"
 
 const CardAdmin = ({ id, name, pais, photo, pdf }) => {
