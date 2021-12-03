@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 import { db } from "../../utils/firebaseConfig";
 import { UserContext } from "../../context/UserContext";
 import { useParams, useHistory } from "react-router-dom";
-import UltimoPaso from "../UltimoPaso/UltimoPaso"
+import swal from "sweetalert";
 import Loading from "../Loading/Loading";
 import Checkout from "../Checkout/Checkout";
 
@@ -72,73 +72,16 @@ const ReservarCita = ({ psicologo }) => {
   };
 
   const handdleAppointment = async () => {
-    setUltimoPaso(true)
-    // if (cita !== ""){
-    //   const cita1 = psicologo.appointments.find(
-    //     (element) => element.id === cita
-    //   );
-      
-      
-    //   createChat(
-    //     {
-    //       active: "no",
-    //       msjs: [],
-    //       status: 1,
-    //       users: [
-    //         { img: user.photo, name: user.name, id:user.id },
-    //         { img: psicologo.photo, name: psicologo.name, id:params.uid },
-    //       ],
-    //     },
-    //     cita
-    //   );
-    //   const newArray = psicologo.appointments.filter((item) => item.id !== cita);
-
-    //   // Update cita del psicologo
-    //   await db
-    //     .collection("users")
-    //     .doc(params.uid)
-    //     .update({
-    //       appointments: [
-    //         ...newArray,
-    //         {
-    //           date: cita1.date,
-    //           hour: cita1.hour,
-    //           id: cita1.id,
-    //           status: 1,
-    //           name: user.name,
-    //           photo: user.photo,
-    //           uid: user.id
-    //         },
-    //       ],
-    //     });
-        
-    //   // Update Usuario logueado
-    //   await db
-    //     .collection("users")
-    //     .doc(user.id)
-    //     .update({
-    //       appointments: [
-    //         ...user.appointments,
-    //         {
-    //           date: cita1.date,
-    //           hour: cita1.hour,
-    //           id: cita1.id,
-    //           status: 1,
-    //           name: psicologo.name,
-    //           photo: psicologo.photo,
-    //           uid: params.uid
-    //         },
-    //       ],
-    //     });
-
-    //   //console.log("cita Creada");
-    //   const updateUser = await getUserByEmail(user.email);
-    //   setUser(updateUser);
-    //   history.push('/deck')
-
-    // }else{
-    //   //console.log("No se selecciono ninguna cita")
-    // }
+    if(!cita){
+      swal(
+        "No se selecciono ninguna cita",
+        "",
+        "warning"
+      );
+    }else{
+      setUltimoPaso(true);
+    }
+    
     
   };
   return (
@@ -174,20 +117,7 @@ const ReservarCita = ({ psicologo }) => {
                     ))}
                 </select>
               </div>
-              {/* <div className={styles.inputAndTitle}>
-                <h3>Breve descripcion:</h3>
-                <div className={styles.textAreaBox}>
-                  <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="Razones por las cuales se necesita una consulta, e. j. problemas amorosos"
-                    className={styles.textArea}
-                  ></textarea>
-                  <p>máx. 400 caracteres</p>
-                </div>
-              </div> */}
+             
             </div>
             <button className={styles.button} onClick={handdleAppointment}>
               Continuar al Pago

@@ -44,16 +44,16 @@ const PsicoList = ({ psicologos,areas }) => {
 
       
       if (!nameA && nameB) {
-        return -1;
+        return 1;
       }
       if (!nameB && nameA) {
-        return 1;
-      }
-      if (nameA < nameB) {
         return -1;
       }
-      if (nameA > nameB) {
+      if (nameA < nameB) {
         return 1;
+      }
+      if (nameA > nameB) {
+        return -1;
       }
       return 0;
     });
@@ -151,7 +151,7 @@ const PsicoList = ({ psicologos,areas }) => {
                       ) : (
                         psicologo.problemas.map((problema) => (
                           <>
-                            {problema === esp && (
+                            {problema.toLowerCase() === esp.toLowerCase() && (
                               <CardPsico
                                 key={psicologo.id}
                                 id={psicologo.id}

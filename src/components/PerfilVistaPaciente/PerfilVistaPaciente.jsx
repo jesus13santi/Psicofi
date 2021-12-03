@@ -29,7 +29,8 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,
                 <h3 className={styles.title}>Valoracion: </h3>
                 <div className={styles.estrella}>
                   <p className={`${styles.text} ${styles.text1}`}>
-                    {total / ratings.length} <img src={start} alt="" />
+                    {(total / ratings.length).toFixed(1)}
+                    <img src={start} alt="" />
                   </p>
                 </div>
 
@@ -70,14 +71,13 @@ const PerfilVistaPaciente = ({id,name,birthday,pais,description,photo,problemas,
             </div>
           </div>
           <div className={styles.feedback}>
-            {!!incidencias && (
-                incidencias.map((inc) => (
-                  <div className={styles.incidencia}>
-                    <p className={styles.quote}>{inc.description}</p>
-                    <p>- {inc.name}</p>
-                  </div>
-                ))
-              )}
+            {!!incidencias &&
+              incidencias.map((inc) => (
+                <div className={styles.incidencia}>
+                  <p className={styles.quote}>{inc.description}</p>
+                  <p>- {inc.name}</p>
+                </div>
+              ))}
           </div>
           <button
             className={styles.button}
