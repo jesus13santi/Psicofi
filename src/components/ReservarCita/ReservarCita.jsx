@@ -14,7 +14,7 @@ const ReservarCita = ({ psicologo }) => {
   const params = useParams()
   const history = useHistory()
   const { user, setUser, getUserByEmail } = useContext(UserContext);
-  const [cita, setCita] = useState("Hola");
+  const [cita, setCita] = useState("");
   const [today,setToday]=useState(new Date())
   const [ultimoPaso, setUltimoPaso]= useState(false)
   function diaSemana(x) {
