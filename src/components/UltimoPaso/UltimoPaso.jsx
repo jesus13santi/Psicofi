@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './UltimoPaso.module.css'
 const UltimoPaso = () => {
     return (

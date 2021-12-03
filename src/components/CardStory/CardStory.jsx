@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardStory.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useContext } from "react";

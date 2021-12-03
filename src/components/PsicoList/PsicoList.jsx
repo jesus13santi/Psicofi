@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Footer from "../Footer/Footer";
 import CardPsico from "../CardPsico/CardPsico";
 import styles from "./PsicoList.module.css";

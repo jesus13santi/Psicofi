@@ -1,4 +1,3 @@
-import React from 'react'
 import logoInstagram from "../../img/icons_instagram.png";
 import logoFacebook from "../../img/icons_facebook.png";
 import logoTwitter from "../../img/icons_twitter.png";

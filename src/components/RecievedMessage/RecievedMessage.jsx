@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './RecievedMessage.module.css'
 
 function RecievedMessage({name, time, photo, msj}){

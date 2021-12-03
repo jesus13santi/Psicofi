@@ -1,70 +1,12 @@
-# Getting Started with Create React App
+# PsicoFi Therapy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Psicofi es una plataforma dedicada a la psicología en línea que se encarga de conectar a pacientes y psicólogos en una modalidad virtual. La plataforma ofrece al cliente la posibilidad de buscar especialistas de todas partes del mundo, para agendar citas con los que consideren más adecuados, según su especialidad. La modalidad de estas citas es virtual síncrona, es decir, que a la hora de la cita pautada el especialista invitará al cliente a una videollamada. Los especialistas deben registrarse en la plataforma con sus datos personales y luego, enviar sus credenciales para que sean validadas luego por el equipo de administradores, que se encargan de filtrar los especialistas que desean optar por un puesto en la plataforma. Los clientes deben registrarse simplemente con sus datos personales.
 
-## Available Scripts
+La plataforma cuenta con una base de datos y un sistema de autenticación que verifica que el usuario esté registrado y cuál es su rol. El rol puede ser paciente, especialista, administrador, especialista pendiente y especialista rechazado; lo que puede hacer cada usuario en la página depende de su rol. Para revisar estas funciones en detalle, revisar el manual de usuario.
 
-In the project directory, you can run:
+Para desarrollar la aplicación, se utilizó React, que es una biblioteca Javascript de código abierto, diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página (SPA). Además, la aplicación  cuenta con una base de datos y hosting en Firebase, donde se encuentra todo lo referente a usuarios, citas y chats.
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Entre las ventajas que posee la plataforma para alcanzar un producto de calidad, flexibilidad y de fácil manejo para los usuarios, se pueden destacar:
+Permite agendar citas y hacer pagos en directo sin importar la ubicación del paciente o del especialista.
+Facilita la comunicación entre el paciente y el especialista mediante el chat integrado en la aplicación.
+Permite mostrar de manera sencilla la disponibilidad de los especialistas, así como sus especialidades, facilitando al cliente la elección del especialista más conveniente según sus necesidades.

@@ -1,4 +1,3 @@
-import React from 'react'
 import Historia from '../components/Historia/Historia'
 
 const HistoriaPage = () => {

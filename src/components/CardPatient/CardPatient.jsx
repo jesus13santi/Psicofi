@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardPatient.module.css";
 import { Link, useHistory } from "react-router-dom";
 

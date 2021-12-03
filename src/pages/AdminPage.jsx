@@ -1,7 +1,6 @@
-import React from 'react'
 import Admin from "../components/Admin/Admin"
 import { db } from "../utils/firebaseConfig";
-import { useState, useEffect,useContext,createContext } from "react";
+import { useState, useEffect } from "react";
 
 
 const AdminPage = () => {

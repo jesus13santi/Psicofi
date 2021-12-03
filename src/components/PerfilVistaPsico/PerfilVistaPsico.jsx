@@ -1,4 +1,3 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./PerfilVistaPsico.module.css";
 import { useContext } from "react";

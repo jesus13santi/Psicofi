@@ -1,12 +1,9 @@
-import React from 'react'
 import styles from './ChatView.module.css'
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Loading from '../Loading/Loading';
 import Footer from '../Footer/Footer';
 import CardChat from '../CardChat/CardChat';
-import { useState, useEffect } from "react";
-import { app } from 'firebase';
 
 const ChatView = () => {
     const {user, setUser}= useContext(UserContext);

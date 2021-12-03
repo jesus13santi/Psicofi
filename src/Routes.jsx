@@ -1,4 +1,3 @@
-import React from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -8,10 +7,8 @@ import PsicologosPage from "./pages/PsicologosPage";
 import PreciosPage from "./pages/PreciosPage";
 import TableroPage from './pages/TableroPage';
 import Perfil from './components/Perfil/Perfil'
-import PerfilEspecialista from './components/PerfilEspecialista/PerfilEspecialista'
 import ElectionPage from "./pages/ElectionPage";
 import UploadPage from "./pages/UploadPage";
-import PerfilPage from "./pages/PerfilPage";
 import PerfilVistaPacientePage from "./pages/PerfilVistaPacientePage";
 import PerfilVistaPsicoPage from "./pages/PerfilVistaPsicoPage";
 import HistoriaPage from "./pages/HistoriaPage";
@@ -36,22 +33,8 @@ function Routes() {
       <PrivateRoute exact path="/election" component={ElectionPage}></PrivateRoute>
       <Route exact path="/login" component={LoginPage}></Route>
       <Route exact path="/precio" component={PreciosPage}></Route>
-      {/* <exact path="/perfilPaciente" component={PerfilPaciente}></exact> */}
-      {/* <Route
-        exact
-        path="/perfilEspecialista"
-        component={PerfilEspecialista}
-      ></Route> */}
-      <Route
-        exact
-        path="/profile/:uid"
-        component={PerfilVistaPacientePage}
-      ></Route>
-      <Route
-        exact
-        path="/profilePsico/:uid"
-        component={PerfilVistaPsicoPage}
-      ></Route>
+      <Route exact path="/profile/:uid" component={PerfilVistaPacientePage}></Route>
+      <Route exact path="/profilePsico/:uid" component={PerfilVistaPsicoPage}></Route>
       <PrivateRoute exact path="/perfil" component={Perfil}></PrivateRoute>
       <PrivateRoute exact path="/deck" component={TableroPage}></PrivateRoute>
       <PrivateRoute exact path="/upload" component={UploadPage}></PrivateRoute>

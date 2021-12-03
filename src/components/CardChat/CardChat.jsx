@@ -1,6 +1,4 @@
-import React from "react";
 import styles from "./CardChat.module.css";
-import img from "../../img/photo.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
