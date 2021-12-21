@@ -1,4 +1,5 @@
 # PsicoFi Therapy
+https://psicofi.web.app/
 
 Psicofi es una plataforma dedicada a la psicología en línea que se encarga de conectar a pacientes y psicólogos en una modalidad virtual. La plataforma ofrece al cliente la posibilidad de buscar especialistas de todas partes del mundo, para agendar citas con los que consideren más adecuados, según su especialidad. La modalidad de estas citas es virtual síncrona, es decir, que a la hora de la cita pautada el especialista invitará al cliente a una videollamada. Los especialistas deben registrarse en la plataforma con sus datos personales y luego, enviar sus credenciales para que sean validadas luego por el equipo de administradores, que se encargan de filtrar los especialistas que desean optar por un puesto en la plataforma. Los clientes deben registrarse simplemente con sus datos personales.
 
